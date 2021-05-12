@@ -1,0 +1,73 @@
+<div class="projLayoutDiv">
+  <br />
+  <button class="term-header" (click)="showDiv.summer = !showDiv.summer">
+    Summer 2020</button
+  ><br />
+
+  <div *ngIf="showDiv.summer" class="summer-cards">
+    <div *ngFor="let Proj of projects; index as i">
+      <div *ngIf="Proj['term'] === 'Summer 2020'" class="card mt-3">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title" id="card-title">{{ Proj["title"] }}</h5>
+            <p class="card-text-short" id="card-text">
+              {{ Proj["desc-short"] }}
+            </p>
+            <button class="btn" (click)="hide[i] = !hide[i]">
+              Read More...
+            </button>
+            <div [hidden]="!hide[i]">
+              <h4>{{ Proj["desc-long"] }}</h4>
+            </div>
+          </div>
+          <div class="card-footer">
+            <div class="leader-text" id="leader-text">
+              <small>{{ "Team leader: " + Proj["teamleader"] }}</small>
+            </div>
+            <div class="client-text" id="client-text">
+              <small>{{ "Status: " + Proj["status"] }}</small>
+            </div>
+            <div class="status-text" id="status-text">
+              <small>{{ "Client: " + Proj["client"] }}</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <br />
+  <button class="term-header" (click)="showDiv.fall = !showDiv.fall">
+    Fall 2020</button
+  ><br />
+
+  <div *ngIf="showDiv.fall" class="summer-cards">
+    <div *ngFor="let Proj of projects; index as i">
+      <div *ngIf="Proj['term'] === 'Fall 2020'" class="card mt-3">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">{{ Proj["title"] }}</h5>
+            <p class="card-text-short">{{ Proj["desc-short"] }}</p>
+            <button class="btn" (click)="hide[i] = !hide[i]">
+              Read More...
+            </button>
+            <div [hidden]="!hide[i]">
+              <h4>{{ Proj["desc-long"] }}</h4>
+            </div>
+          </div>
+          <div class="card-footer">
+            <div class="leader-text">
+              <small>{{ "Team leader: " + Proj["teamleader"] }}</small>
+            </div>
+            <div class="client-text" id="client-text">
+              <small>{{ "Status: " + Proj["status"] }}</small>
+            </div>
+            <div class="status-text" id="status-text">
+              <small>{{ "Client: " + Proj["client"] }}</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

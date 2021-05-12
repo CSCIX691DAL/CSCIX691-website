@@ -1,0 +1,54 @@
+<main>
+  <div class="outer">
+    <div class="welcome"><p>Welcome to Dalhousie X691.03</p><P>Community Outreach</P></div>
+      <form class="form">
+        <!-- <mat-slide-toggle (click)="onClientClicked()" [(ngModel)]="client" name="client">Client</mat-slide-toggle> -->
+
+        <!-- <div id="banner">
+          <mat-form-field appearance="outline" class="form-control">
+            <mat-label><i>Banner Number</i></mat-label>
+            <input required pattern="[Bb][\d]+" [(ngModel)]="banner" name="lastName" matInput type="text">
+            <mat-hint>What is your banner number?</mat-hint>
+          </mat-form-field>
+        </div> -->
+
+        <mat-form-field appearance="outline" class="form-control">
+          <mat-label><i>First Name</i></mat-label>
+          <input required [(ngModel)]="firstName" name="firstName" matInput type="name">
+          <mat-hint>What's ya name, fam</mat-hint>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="form-control">
+          <mat-label><i>Surname</i></mat-label>
+          <input required [(ngModel)]="lastName" name="lastName" matInput type="name">
+          <mat-hint>What is your surname?</mat-hint>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="form-control">
+          <mat-label><i>Organization</i></mat-label>
+          <input required [(ngModel)]="organization" name="organization" matInput type="name">
+          <mat-hint>What organization are you representing?</mat-hint>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="form-control">
+          <mat-label><i>E-Mail</i></mat-label>
+          <input required [(ngModel)]="email" name="email" matInput type="email">
+          <mat-hint>Choose an e-mail address to register</mat-hint>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="form-control">
+          <mat-label><i>Password</i></mat-label>
+          <input required minlength="6" [(ngModel)]="password" name="password" matInput type="password">
+          <mat-hint>Must be at least 6 characters </mat-hint>
+        </mat-form-field>
+
+        <mat-error>{{errorMessage}}</mat-error>
+
+        <button (click)="onSubmit()" class="register" mat-button>Register</button>
+
+        <div class="form-footer">
+          <a routerLink="../auth">Have an account already?</a>
+        </div>
+      </form>
+  </div>
+</main>

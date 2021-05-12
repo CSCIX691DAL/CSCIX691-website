@@ -1,0 +1,116 @@
+.projLayoutDiv {
+  font-family: "Bahnschrift", "Arial Narrow", serif;
+  max-width: 1300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: auto;
+}
+
+a {
+  color: #c08c0c;
+}
+
+h1 {
+  width: 85%;
+  align-self: center;
+  margin: 2rem;
+}
+
+.term-header {
+  font-weight: bold;
+  align-self: center;
+  width: 85%;
+}
+
+.titles {
+  position: absolute;
+  top: 180px;
+  left: 450px;
+}
+.jumboTitle {
+  font-size: 3rem;
+  text-align: center;
+  margin-top: 6rem;
+  margin-left: 5rem;
+}
+
+.jumboSubTitle {
+  text-align: center;
+  font-size: 2rem;
+  margin-left: 5rem;
+}
+
+.card-title {
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.card {
+  flex: 0 1 100%;
+  align:center;
+
+}
+
+.summer-cards {
+  width:85%;
+  float:center;
+  margin-left:93px;
+
+}
+.card-body {
+  width: 100%;
+}
+
+.card-footer {
+  text-align: center;
+}
+
+.leader-text {
+  float: left;
+  display: inline-block;
+}
+
+.status-text {
+  display: inline-block;
+}
+
+.card-text-short {
+  word-break: break-word;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  line-height: 16px; /* fallback */
+  max-height: 32px; /* fallback */
+  -webkit-line-clamp: 2; /* number of lines to show */
+  -webkit-box-orient: vertical;
+}
+
+.client-text {
+  float: right;
+  display: inline-block;
+}
+
+.projIntro {
+  width: 85%;
+  align-self: center;
+  margin: 2rem;
+  background-color: #707372;
+  color: #ffffff;
+}
+
+button {
+  background-color: #c08c0c;
+  font-family: "Bahnschrift", "Arial Narrow", serif;
+}
+.btn {
+  color: #3c2726;
+  background-color: transparent;
+  border: none;
+  font-family: "Bahnschrift", "Arial Narrow", serif;
+}
+
+.btn:hover {
+  background-color: #c7bcc2;
+  font-weight: bold;
+}

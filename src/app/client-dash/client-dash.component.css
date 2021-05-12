@@ -1,0 +1,89 @@
+.clientContent {
+  min-height: 800px;
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.submitRFP{
+	background-color: #c08c0c;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    height: 40px;
+    width:320px;
+    margin-top: 10px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+}
+
+.sideBar {
+  min-height: 800px;
+  background-color: #000000;
+  max-width: 350px;
+  width: 15%;
+  color: white;
+}
+
+.sidebarNav li {
+  height: 2em;
+  margin: 2em;
+  width: 100%;
+}
+
+.sidebarNav li a {
+  color: white;
+  font-size: large;
+  text-decoration: none;
+  height: 2em;
+  padding: 0.7em 2em 0.7em 2em;
+  width: 100%;
+}
+
+.sidebarNav li a:hover {
+  color: white;
+  background-color: #c08c0c;
+  width: 100%;
+  font-size: large;
+  text-decoration: none;
+}
+
+.RequestsCard {
+  width: 95%;
+  margin: 2rem;
+}
+
+.evaluationCard {
+  width: 95%;
+  margin: 2rem;
+}
+
+.projectsCard {
+  width: 95%;
+  margin: 2rem;
+}
+
+.otherCard {
+  width: 95%;
+  margin: 2rem;
+}
+.members2 {
+  margin-top: 2rem;
+}
+
+.column1{
+  width: 40%;
+}
+
+.column2 {
+  width: 40%;
+}
+
+.RFPCard {
+  width: 95%;
+  margin: 2rem;
+}
+
+mat-form-field {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}

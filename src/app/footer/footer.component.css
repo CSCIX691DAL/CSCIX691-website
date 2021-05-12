@@ -1,0 +1,69 @@
+.footDiv {
+  display: flex;
+  flex-flow: row wrap;
+  background-color: rgba(112, 115, 114, 1);
+  color: white;
+  /*margin-top: 2rem;*/
+}
+
+.footerNav {
+  list-style-type: none;
+  padding-right: 3rem;
+  width: 45%
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  max-width: 45%;
+}
+
+li {
+  float: right;
+  margin: 1rem;
+}
+
+p {
+  max-width: 45%;
+  padding: 0;
+  align-self: center;
+  text-align: left;
+}
+
+.copyright {
+  margin-bottom: 0px;
+}
+
+.contactUsDiv {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+div p {
+  margin-left: 1em;
+}
+
+.contactButton {
+  margin: 0;
+  color: #FFFFFF;
+  border-style: none;
+}
+
+.contactButton:active {
+  color: #FFFFFF;
+}
+
+.contactButton:hover {
+  color: #c08c0c;
+  outline-color: #c08c0c;
+}
+
+.copyrightButton {
+  color: #FFFFFF;
+}
+
+.modalBody {
+  background-image: url("../../assets/images/DalLogo.PNG");
+}

@@ -1,0 +1,96 @@
+.homeLayoutDiv {
+  font-family: 'Bahnschrift', "Arial Narrow", serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: auto;
+}
+
+  a {
+    color: #c08c0c;
+  }
+
+.titles {
+  position: absolute;
+  top: 180px;
+  left: 450px;
+}
+
+.card-title {
+  font-weight: bold;
+  font-size: 18px;
+}
+.webTitle {
+  font-size: 4em;
+}
+
+.webSubTitle {
+  font-size: 2em;
+}
+
+.projIntro {
+  width: 85%;
+  align-self: center;
+  margin: 2rem;
+  background-color: #707372;
+  color: #FFFFFF;
+}
+
+
+.startProjectSection {
+  width: 30%;
+  margin: 1rem;
+}
+
+.pastProjectsSection {
+  width: 30%;
+  margin: 1rem;
+}
+
+.forStudentsSection {
+  width: 30%;
+  margin: 1rem;
+}
+
+.topRowLinks {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-self: center;
+  margin: auto;
+}
+
+
+.btn {
+  color: #3C2726;
+  background-color: transparent;
+  border: none;
+  font-family: 'Bahnschrift', "Arial Narrow", serif;
+  text-align: left;
+}
+
+.btn:hover {
+  background-color: #C7BCC2;
+  font-weight: bold;
+}
+
+.jumboTitle {
+  font-size: calc(1rem + 3vw);
+  margin-top: 6rem;
+  margin-left: 5rem;
+}
+
+.jumboSubTitle {
+  font-size: calc(1rem + 1vw);
+  text-align: center;
+  margin-left: 5rem;
+}
+
+.testimonials {
+  display: flex;
+  width: 70%;
+  flex-direction: column;
+  justify-content: center;
+  align-self: center;
+  margin: auto auto 2rem auto;
+}

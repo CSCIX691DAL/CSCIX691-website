@@ -1,0 +1,250 @@
+<div class="adminContent">
+  <!-- Sidebar Start -->
+  <div class="wrapper sideBar">
+    <nav id="sidebar">
+      <ul class="list-unstyled components sidebarNav">
+        <li class="active">
+          <a href="admin-dashboard">Overview</a>
+        </li>
+        <li>
+          <a href="admin-dashboard">Members</a>
+        </li>
+        <li>
+          <a href="admin-dashboard">Projects</a>
+        </li>
+        <li>
+          <a href="admin-dashboard">RFPs</a>
+        </li>
+        <li>
+          <a href="../changepw">Update Password</a>
+      </ul>
+    </nav>
+  </div>
+  <!-- Sidebar End -->
+  <!-- Column 1 Start -->
+  <div class="column1">
+    <!-- Pending Project Requests Start -->
+    <div class="RFPCard">
+      <mat-card>
+        <mat-card-title>Pending RFPs</mat-card-title>
+        <mat-card-content>
+          <table class="table">
+            <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Company</th>
+              <th scope="col">RFP Link</th>
+              <th scope="col">Status</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let r of activeRFPs; index as i">
+              <th scope="row">{{i + 1}}</th>
+              <td>{{ r["organization"] }}</td>
+              <td (click)="generatePDF(r)" class="linkDisplay"><a href="/admin-dashboard">View RFP</a></td>
+              <div ngbDropdown class="dropdownClass">
+                <td ngbDropdownToggle>{{ r["status"] }}</td>
+                <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                  <button ngbDropdownItem (click)="ApproveRFP(r)">Approve Request</button>
+                  <button ngbDropdownItem (click)="RejectRFP(r)">Reject Request</button>
+                </div>
+              </div>
+
+            </tr>
+            </tbody>
+          </table>
+        </mat-card-content>
+      </mat-card>
+    </div>
+    <!-- Pending Project Requests End -->
+    <!-- Active Project Start -->
+    <div class="analyticsCard">
+      <mat-card>
+        <mat-card-title>Active Projects</mat-card-title>
+        <mat-card-content>
+          <div id="accordion">
+            <div class="card">
+              <div class="card-header" id="headingOne">
+                <h5 class="mb-0">
+                  <button class="btn btn-outline" (click)="collapse1.toggle()" [attr.aria-expanded]="!isCollapsed1"
+                          aria-controls="collapseExample">
+                    X691 Course Website - Team I
+                  </button>
+                </h5>
+              </div>
+
+              <div #collapse1="ngbCollapse" [(ngbCollapse)]="isCollapsed1" data-parent="#accordion">
+                <div class="card-body">
+                  Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf
+                  moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
+                  Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda
+                  shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea
+                  proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim
+                  aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                </div>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-header" id="headingTwo">
+                <h5 class="mb-0">
+                  <button class="btn btn-outline" (click)="collapse2.toggle()" [attr.aria-expanded]="!isCollapsed2"
+                          aria-controls="collapseExample">
+                    Risk Management Project - Team Fred Winters
+                  </button>
+                </h5>
+              </div>
+              <div #collapse2="ngbCollapse" [(ngbCollapse)]="isCollapsed2" data-parent="#accordion">
+                <div class="card-body">
+                  Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf
+                  moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
+                  Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda
+                  shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea
+                  proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim
+                  aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                </div>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-header" id="headingThree">
+                <h5 class="mb-0">
+                  <button class="btn btn-outline" (click)="collapse3.toggle()" [attr.aria-expanded]="!isCollapsed3"
+                          aria-controls="collapseExample">
+                    Bluethumb Project - Team OtherTeam
+                  </button>
+                </h5>
+              </div>
+              <div #collapse3="ngbCollapse" [(ngbCollapse)]="isCollapsed3" data-parent="#accordion">
+                <div class="card-body">
+                  Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf
+                  moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
+                  Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda
+                  shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea
+                  proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim
+                  aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                </div>
+              </div>
+            </div>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+    <!-- Active Project End -->
+    <!-- csv upload start -->
+    <div class="otherCard">
+      <mat-card>
+        <mat-card-title>Student File Upload</mat-card-title>
+
+        <mat-card-content>
+          <label class="form-label" for="customFile">Upload Student CSV</label>
+          <input type="file" accept=".csv" class="form-control" id="customFile" (change)="changeListener($event.target.files)"/>
+        </mat-card-content>
+
+        <mat-card-content *ngIf="!showConfirm; else showConfirmBlock">
+          <button type="button" class="btn btn-secondary" (click)="showConfirmButton()">Batch Create</button>
+        </mat-card-content>
+        <ng-template #showConfirmBlock>
+          <p class="mat-error">This will batch create Student Accounts for each line!</p>
+          <span><button type="button" class="btn btn-secondary" (click)="batchCreateStudents()">Confirm</button></span>
+          <button type="button" class="btn btn-secondary" (click)="showConfirmButton()">Cancel</button>
+        </ng-template>
+
+      </mat-card>
+    </div>
+    <!-- csv upload end -->
+  </div>
+  <!-- Column 1 End -->
+  <!-- Column 2 Start -->
+  <div class="column2">
+    <!-- Members Start -->
+    <div class="membersCard">
+      <mat-card class="members1">
+        <mat-card-title>Active Members</mat-card-title>
+        <mat-card-content>
+          <table class="table">
+            <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">First Name</th>
+              <th scope="col">Last Name</th>
+              <th scope="col">Email</th>
+              <th scope="col">Type</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let u of actUsers; index as i">
+              <th scope="row">{{i + 1}}</th>
+              <td>{{ u["fName"] }}</td>
+              <td>{{ u["sName"] }}</td>
+              <td>{{ u["email"] }}</td>
+              <td *ngIf="u.org">Client</td>
+              <td *ngIf="u.admin === true">Admin</td>
+              <td *ngIf="u.admin === false && !u.org">Student</td>
+            </tr>
+
+            </tbody>
+          </table>
+        </mat-card-content>
+      </mat-card>
+      <!-- Active members ends -->
+      <mat-card class="members2">
+        <mat-card-title>Inactive Members</mat-card-title>
+        <mat-card-content>
+          <table class="table">
+            <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">First Name</th>
+              <th scope="col">Last Name</th>
+              <th scope="col">Email</th>
+              <th scope="col">Type</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let k of inactUsers; index as j">
+              <th scope="row">{{j + 1}}</th>
+              <td>{{ k["fName"] }}</td>
+              <td>{{ k["sName"] }}</td>
+              <td>{{ k["email"] }}</td>
+              <td *ngIf="k.org">Client</td>
+              <td *ngIf="k.admin === true">Admin</td>
+              <td *ngIf="k.admin === false && !k.org">Student</td>
+            </tr>
+
+            </tbody>
+          </table>
+        </mat-card-content>
+      </mat-card>
+    </div>
+    <!-- Members End -->
+    <!-- Other Start End -->
+    <div class="otherCard">
+      <mat-card>
+        <mat-card-title>Other Admin Stuffs</mat-card-title>
+        <mat-card-content>
+          Thank you for visiting the website for Dalhousie's Community Outreach class. This class provides students with
+          invaluable experience working with real-world projects and actual clients to ensure the clients' needs are
+          met. This
+          experience is all gained through group work and in-class guidance that provides students with a safe first
+          experience
+          with actual projects.
+        </mat-card-content>
+        <mat-card-content>
+          In this class, students are placed in groups that consist of second, third and fourth year students,
+          distributed evenly
+          to ensure a fair and productive mix of skill, learning and leadership development. These groups are overseen
+          and
+          mentored by exceptional and experienced Teaching Assistants that will ensure both that the students meet the
+          learning
+          outcomes and that the clients leave happy with a product that will be valuable to them. Student groups will
+          communicate directly with the client in order to fully understand client expectations, desired features and
+          receive
+          feedback and provide deliverables at specified increments. The students themselves will manage the
+          deliverables and
+          expectations and present the final product at the end of the designated semester.
+        </mat-card-content>
+      </mat-card>
+    </div>
+
+  </div>
+  <!-- Column 2 End -->
+</div>

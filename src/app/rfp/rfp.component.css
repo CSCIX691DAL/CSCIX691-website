@@ -1,0 +1,92 @@
+.rfp-page {
+  width: 100%;
+  height: 100%;
+  min-height: 600px;
+  background-image: url("../../assets/images/DalLogo.PNG");
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin-top: 0;
+  padding-top: 0;
+}
+
+.submitRFP{
+  background-color: #c08c0c;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  height: 40px;
+  width:320px;
+  margin-top: 10px;
+}
+.form {
+  width: 95%;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  margin: 40px auto 50px 85px;
+  text-align: left;
+}
+.rfpInner {
+  max-width: 1300px;
+  margin: 3rem auto 3rem auto;
+  display: flex;
+  flex-flow: column;
+  text-align: center;
+}
+
+.rfpH1 {
+  margin-bottom: 0;
+}
+
+.rfpH3 {
+  width: 90%;
+  margin: 0 auto 1rem auto;
+  padding: 1rem;
+}
+
+.rfpForm {
+  width: 90%;
+  margin: 1em auto 1em auto
+}
+
+.shortInput {
+  width: 35%;
+  min-width: 10rem;
+  margin: auto 1rem auto 1rem;
+}
+
+.selectInput {
+  width: 30%;
+  min-width: 10rem;
+  margin: 0 1rem auto 1rem;
+}
+
+.longInput {
+  width: 73%;
+  min-width: 10rem;
+  margin: auto 1rem auto 1rem;
+}
+
+.Textarea {
+  width: 75%;
+  min-width: 10rem;
+  margin: auto 1rem auto 1rem;
+}
+
+.labels {
+  text-align: left;
+  margin: auto 1rem auto 1rem;
+}
+
+.selectionDiv {
+  display: flex;
+  flex-flow: column;
+  width: 75%;
+  margin: 1rem auto 1rem auto;
+}
+
+.date {
+  width: 35%;
+  min-width: 10rem;
+  margin: auto 1rem auto 1rem;
+}

@@ -1,0 +1,50 @@
+<div>
+  <div class="outer">
+    <div class="welcome"><p>Welcome to Dalhousie X691.03</p><P>Community Outreach</P></div>
+      <form class="form">
+        
+        <mat-form-field appearance="outline" class="form-control">
+          <mat-label><i>E-Mail</i></mat-label>
+          <input matInput type="text" id="email" [(ngModel)]="email" name="email">
+          <mat-hint>Enter your e-mail address</mat-hint>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="form-control">
+          <mat-label><i>Password</i></mat-label>
+          <input matInput type="password" id="password" [(ngModel)]="password" name="password">
+          <mat-hint>Enter your password</mat-hint>
+        </mat-form-field>
+
+        <input class="login"  value="Login" type="button" (click)="login()" mat-button>
+
+        <div class="form-footer">
+
+          <a routerLink="#" (click)="open(passwordResetModal)">Forgot Password?</a>
+          <a routerLink="../register">Create Account</a>
+        </div><br><br>
+      </form>
+  </div>
+</div>
+
+<ng-template #passwordResetModal let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Fill in your email and click the confirmation below. If a matching address is found in our system we will send reset instructions to it</h4>
+    <button type="button" class="btn btn-secondary" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">×</span>
+    </button>
+  </div>
+
+  <div class="modal-body">
+    <form>
+      <mat-form-field appearance="outline" class="form-control">
+        <mat-label><i>E-Mail</i></mat-label>
+        <input matInput type="email" id="resetEmail" [(ngModel)]="resetEmail" name="resetEmail" required>
+        <mat-hint>Enter your account's e-mail address</mat-hint>
+      </mat-form-field>
+      <input *ngIf="isValidMailFormat(resetEmail)" class="login" value="Reset password" type="button" (click)="resetPassword()" mat-button>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <p id='resetConfirmation' hidden>An email has been sent to your address.</p>
+  </div>
+</ng-template>

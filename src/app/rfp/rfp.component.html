@@ -1,0 +1,247 @@
+<div class="rfp-page">
+  <div class="rfpInner">
+    <h1 class="rfpH1">Submit a Request for Project</h1>
+    <h3 class="rfpH3">Complete an RFP to apply to have your application built by one of our student teams! Get a great project and help
+    students gain real life experience simultaneously.  Please fill out all the fields below and provide as much detail as possible
+    to give us a great idea of the scope of the desired project.</h3>
+    <mat-card class="rfpForm">
+	<!-- RFP Section Start -->
+    <div class="RFPCard">
+      <mat-card-content>
+        <form id="submitRFP" class="form">
+          <mat-form-field class="shortInput"><mat-label>Project Title: </mat-label><input matInput required [(ngModel)]="projectTitle" name="projectTitle" type="string"></mat-form-field>
+
+          <!-- Section -->
+
+          <mat-form-field class="shortInput"><mat-label>Contact Name: </mat-label><input required [(ngModel)]="contactName" name="contactName" matInput type="string"></mat-form-field>
+          <mat-form-field class="longInput"><mat-label>Organization: </mat-label><input required [(ngModel)]="organization" name="organization" matInput type="string"></mat-form-field>
+          <mat-form-field class="shortInput"><mat-label>Contact Email: </mat-label><input required [(ngModel)]="contactEmail" name="contactEmail"matInput type="string"></mat-form-field>
+          <mat-form-field class="shortInput"><mat-label>Contact Phone Number: </mat-label><input required [(ngModel)]="contactPhone" name="contactPhone"matInput type="string"></mat-form-field>
+          <mat-form-field class="longInput"><mat-label>Mailing Address: </mat-label><input required [(ngModel)]="mailingAddress" name="mailingAddress" matInput type="string"></mat-form-field>
+
+          <!-- Problem -->
+          <div class="selectionDiv">
+            <mat-label class="labels">Briefly describe the organization, including its mission or primary function(s): </mat-label>
+            <mat-form-field class="Textarea"><textarea required [(ngModel)]="problem" name="problem" matInput type="string"></textarea></mat-form-field>
+
+            <!-- Desired Outcome -->
+
+            <mat-label class="labels">Describe the ideal situation if this problem were solved in the best possible way (whatever that might be): </mat-label>
+            <mat-form-field class="Textarea"><textarea required [(ngModel)]="idealSituation" name="idealSituation" matInput type="string"></textarea></mat-form-field>
+
+            <div>
+              <mat-label class="labels">Do you require specific software to be used in solving this problem? </mat-label>
+              <mat-form-field class="selectInput">
+                <mat-label class="labels">Select</mat-label>
+                <mat-select [(ngModel)]="specificSoftware" name="specificSoftware">
+                  <mat-option *ngFor="let select of specificSoftwareOptions" [value]="select.name">
+                    {{select.name}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+
+            <div>
+              <mat-label class="labels">If you answered yes or maybe to the previous question, please specify: </mat-label>
+              <mat-form-field class="Textarea"><textarea required [(ngModel)]="specifySpecificSoftware" name="specifySpecificSoftware" matInput type="string"></textarea></mat-form-field>
+            </div>
+
+            <div>
+              <mat-label class="labels">Do you prefer to have the students report to you by video call meeting? </mat-label>
+              <mat-form-field class="selectInput">
+                <mat-label class="labels">Select</mat-label>
+                <mat-select [(ngModel)]="videoCallMeeting" name="videoCallMeeting">
+                  <mat-option *ngFor="let select of reportingOptions" [value]="select.name">
+                    {{select.name}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+
+            <div>
+              <mat-label class="labels">Do you prefer to have the students report to you by email? </mat-label>
+              <mat-form-field class="selectInput">
+                <mat-label>Select</mat-label>
+                <mat-select [(ngModel)]="emailReporting" name="emailReporting">
+                  <mat-option *ngFor="let select of reportingOptions" [value]="select.name">
+                    {{select.name}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+
+            <div>
+              <mat-label class="labels">Other types of reporting (please specify): </mat-label>
+              <mat-form-field class="Textarea"><textarea required [(ngModel)]="specifyOtherReporting" name="specifyOtherReporting" matInput type="string"></textarea></mat-form-field>
+            </div>
+
+            <div>
+              <mat-label class="labels">Will a confidentiality agreement (NDA) be required? </mat-label>
+              <mat-form-field class="selectInput">
+                <mat-label>Select</mat-label>
+                <mat-select [(ngModel)]="requireNDA" name="requireNDA">
+                  <mat-option *ngFor="let select of defaultOptions" [value]="select.name">
+                    {{select.name}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+
+            <div>
+              <mat-label class="labels">Will an Intellectual Property Assignment (IP) be required? </mat-label>
+              <mat-form-field class="selectInput">
+                <mat-label >Select</mat-label>
+                <mat-select [(ngModel)]="requireIP" name="requireIP">
+                  <mat-option *ngFor="let select of defaultOptions" [value]="select.name">
+                    {{select.name}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+
+            <div>
+              <mat-label class="labels">Do you have a budget for this project? </mat-label>
+              <mat-form-field class="selectInput">
+                <mat-label>Select</mat-label>
+                <mat-select [(ngModel)]="budget" name="budget">
+                  <mat-option *ngFor="let select of defaultOptions" [value]="select.name">
+                    {{select.name}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+
+            <div>
+              <mat-label class="labels">If you have a budget for this project, specify the amount available: </mat-label>
+              <mat-form-field class="shortInput"><input required [(ngModel)]="specifyBudget" name="specifyBudget" matInput type="string"></mat-form-field>
+            </div>
+
+            <div>
+              <mat-label class="labels">Will the target user(s) require a training session? </mat-label>
+              <mat-form-field class="selectInput">
+                <mat-label>Select</mat-label>
+                <mat-select [(ngModel)]="trainingSession" name="trainingSession">
+                  <mat-option *ngFor="let select of defaultOptions" [value]="select.name">
+                    {{select.name}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+
+            <div>
+              <mat-label class="labels">Will the target user(s) require How-To documentation? </mat-label>
+              <mat-form-field class="selectInput">
+                <mat-label>Select</mat-label>
+                <mat-select [(ngModel)]="howToDocumentation" name="howToDocumentation">
+                  <mat-option *ngFor="let select of defaultOptions" [value]="select.name">
+                    {{select.name}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+
+            <div>
+              <mat-label class="labels">Are there any other considerations regarding usability? </mat-label>
+              <mat-form-field class="selectInput">
+                <mat-label>Select</mat-label>
+                <mat-select [(ngModel)]="usabilityConsiderations" name="usabilityConsiderations">
+                  <mat-option *ngFor="let select of defaultOptions" [value]="select.name">
+                    {{select.name}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+
+            <div>
+              <mat-label class="labels">If yes, please specify here: (for example, the user interface must work fast enough) </mat-label>
+              <mat-form-field class="Textarea"><textarea required [(ngModel)]="specifyUsabilityConsiderations" name="specifyUsabilityConsiderations" matInput type="string"></textarea></mat-form-field>
+            </div>
+
+            <!-- Testing -->
+
+            <div>
+              <mat-label class="labels">Will you require real-life testing of the system before the delivery date? </mat-label>
+              <mat-form-field class="selectInput">
+                <mat-label>Select</mat-label>
+                <mat-select [(ngModel)]="realLifeTesting" name="realLifeTesting">
+                  <mat-option *ngFor="let select of defaultOptions" [value]="select.name">
+                    {{select.name}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+
+            <div>
+              <mat-label class="labels">If yes, who would do this testing? </mat-label>
+              <mat-form-field class="selectInput">
+                <mat-label>Select</mat-label>
+                <mat-select [(ngModel)]="specifyTesters" name="specifyTesters">
+                  <mat-option *ngFor="let select of specifyTestersOptions" [value]="select.name">
+                    {{select.name}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <mat-label class="labels">If student team: What kind of tests should be performed? (please describe): </mat-label>
+            <mat-form-field class="Textarea"><textarea required [(ngModel)]="kindOfTests" name="kindOfTests" matInput type="string"></textarea></mat-form-field>
+
+            <mat-label class="labels">What amount or type of sample data will you provide to the team to facilitate this? </mat-label>
+            <mat-form-field class="Textarea"><textarea required [(ngModel)]="sampleData" name="sampleData" matInput type="string"></textarea></mat-form-field>
+          <!-- Project Agreement -->
+
+          <h2>Project Agreement</h2>
+          <h3> I agree that my organization / work group is aware of this project and I (or my delegate) am willing to
+            work with a student group to solve the business problem identified within the time period of the upcoming
+            school semester.
+            <br>I will address concerns primarily to my student team contact, escalating issues to the
+            instructor if a problem remains unaddressed.
+            <br>I agree that any change requests to the project-based off the
+            original proposal and/or project plan must be documented and signed by both the client and the student team
+            (leader). Any change requests deemed “major” in scope, time, quality, cost, etc as determined by the client
+            and/or the student group must also be forwarded to the instructor in a timely manner for consideration and/or
+            approval. Major change requests include, but are not exclusive to, the following:
+            <br>–A fluctuation of +/- 25% estimated workload
+            <br>–A fluctuation of +/- 25% estimated or actual budget
+            <br>–A change in dates for milestones, including the final deliverable
+            <br>–A change in the primary contact
+            <br>–A loss or gain of a major resource or stakeholder
+            <br>–A substantial change in project objectives or goals
+            <br>I acknowledge that I am aware of this general timeline for the project and will be available to complete the
+            appropriate reviews on schedule:
+            <br>–RFPs must be submitted before the first day of classes for the semester
+            <br>–I (or my delegate(s)) will attend the Project class (11:30 AM – 1:00 PM) to make a presentation
+            regarding this project to the students on the Tuesday or Thursday of the first week of the term, and to answer
+            any questions the students might have about the nature of the project. In Winter 2021, we attend classes remotely
+            using teams and collaborate ultra. The client can create a video presentation to upload in class or attend a remote session.
+            <br>–I will receive a student proposal within ten days of making this presentation.
+            <br>–I will review it and return it to the team with feedback or approval and will sign off the document with
+            the team lead no more than a week after receiving the proposal.
+            <br>–I will receive a mostly-complete deliverable about 2-3 weeks prior to the end of the term.
+            <br>–I will review the deliverable and return it to the team with feedback or approval within one week of receiving it.
+            <br>–I will receive the final deliverable no more than two weeks after receiving the ‘draft’version.
+            <br>–I will submit a feedback form to the instructor regarding the quality of the deliverable and my overall
+            satisfaction with the project within one week of receiving the final deliverable.</h3>
+
+            <div>
+              <mat-label class="labels">Do you accept the Project Agreement? </mat-label>
+              <mat-form-field>
+                <mat-label>Select</mat-label>
+                <mat-select [(ngModel)]="projectAgreement" name="projectAgreement">
+                  <mat-option *ngFor="let select of defaultOptions" [value]="select.name">
+                    {{select.name}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+
+            <mat-form-field class="date"><mat-label>Date: </mat-label><input required [(ngModel)]="date" name="date" matInput type="date"></mat-form-field>
+
+            <button (click)="generatePDF()" class="submitRFP" routerLink='/submitRFP' mat-button>Submit RFP</button>
+          </div>
+        </form>
+      </mat-card-content>
+    </div>
+    <!-- RFP Section End -->
+    </mat-card>
+  </div>
+</div>

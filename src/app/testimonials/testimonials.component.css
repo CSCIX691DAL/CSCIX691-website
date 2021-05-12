@@ -1,0 +1,23 @@
+.card {
+  padding: 1em;
+  margin-bottom: 1em;
+  margin-left: 1em;
+  margin-right: 1em;
+  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.1), 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+  width: 95%;
+}
+
+.stars {
+  display: flex;
+  flex-flow: row wrap;
+  align-content: center;
+}
+
+.singleStar {
+  width: 1rem;
+  color: #c08c0c;
+}
+
+h2 {
+  margin-bottom: 0px;
+}

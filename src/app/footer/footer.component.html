@@ -1,0 +1,46 @@
+<footer class="bg-light text-center text-lg-start footer">
+  <!-- Modal Start -->
+  <ng-template #mymodal let-modal>
+    <div class="modal-body modalBody">
+      <h3>Course Instructor - Mohammed Etemad</h3>
+      <div class="contactUsDiv">
+        <p><strong>Email:</strong></p>
+        <p>etemad@dal.ca</p>
+      </div>
+      <div class="contactUsDiv">
+        <p><strong>Phone:</strong></p>
+        <p>+1 902-418-9420</p>
+      </div>
+      <div class="addressDiv">
+        <p><strong>Address:</strong></p>
+        <p>Faculty of Computer Science<br/>
+        Dalhousie University<br/>
+        6050 University Avenue<br/>
+        PO BOX 15000<br/>
+        Halifax, NS, B3H 4R2 <br/>
+        Canada</p>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Ok</button>
+    </div>
+  </ng-template>
+  <!-- Modal End -->
+  <!-- Copyright -->
+  <div class="text-left p-3 footDiv">
+    <ul class="mt-2 mt-lg-0 w-100 footerNav">
+      <li>
+        <button class="btn copyrightButton">© 2020 Copyright: Dalhousie University - Faculty of Computer Science</button>
+      </li>
+    </ul>
+    <ul class="mt-2 mt-lg-0 w-100 footerNav">
+      <li class="nav-item active">
+        <button class="btn contactButton" (click)="open(mymodal)">Contact Us</button>
+      </li>
+      <li class="nav-item active">
+        <button class="btn contactButton" (click)="open(mymodal)">Privacy</button>
+      </li>
+    </ul>
+  </div>
+   <!-- Copyright -->
+</footer>
