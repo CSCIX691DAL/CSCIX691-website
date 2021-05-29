@@ -7,8 +7,7 @@ import {NgxCsvParser} from 'ngx-csv-parser';
 import {NgxCSVParserError} from 'ngx-csv-parser';
 import pdfMake from 'pdfmake/build/pdfmake';
 import pdfFonts from 'pdfmake/build/vfs_fonts';
-
-pdfMake.vfs = pdfFonts.pdfMake.vfs;
+import RFP from '../rfp/rfp.model';
 
 @Component({
   selector: 'app-admin-dash',
@@ -18,7 +17,6 @@ pdfMake.vfs = pdfFonts.pdfMake.vfs;
 export class AdminDashComponent implements OnInit {
   actUsers: Object[];
   inactUsers: Object[];
-  activeRFPs: Object[];
   public isCollapsed1 = true;
   public isCollapsed2 = true;
   public isCollapsed3 = true;
@@ -31,7 +29,6 @@ export class AdminDashComponent implements OnInit {
               private rfpService: RfpService) {
     this.actUsers = [];
     this.inactUsers = [];
-    this.activeRFPs = [];
   }
 
   ngOnInit(): void {
@@ -41,8 +38,12 @@ export class AdminDashComponent implements OnInit {
 
     this.getActiveUsersFromDB();
     this.getInactiveUsersFromDB();
-    this.getRFPFromDB();
-    console.log(this.activeRFPs);
+
+    pdfMake.vfs = pdfFonts.pdfMake.vfs;
+  }
+
+  getRFPs(): RFP[] {
+    return this.rfpService.getRFPs();
   }
 
   getActiveUsersFromDB() {
@@ -67,14 +68,6 @@ export class AdminDashComponent implements OnInit {
         if (userInfo1['active'] === false) {
           this.inactUsers.push(value.toJSON());
         }
-      });
-    });
-  }
-
-  getRFPFromDB() {
-    this.rfpService.getRFPs().then((values) => {
-      values.forEach((value) => {
-        this.activeRFPs.push(value.toJSON());
       });
     });
   }
@@ -108,47 +101,16 @@ export class AdminDashComponent implements OnInit {
     this.ngOnInit();
   }
 
-  generatePDF(rfp: Object) {
-    const docDefinition = {
-      content: [
-        {text: 'Project title: ' + rfp['projectTitle'] + '\n\n', fontSize: 32},
-        {
-          ul: [
-            'Contact Name: ' + rfp['contactName'] + '\n\n',
-            'Organization: ' + rfp['organization'] + '\n\n',
-            'Contact Email:' + rfp['contactEmail'] + '\n\n',
-            'Mailing Address: ' + rfp['mailingAddress'] + '\n\n\n'
-          ]
-        },
-        {text: 'Briefly describe the organization, including its mission or primary function(s)\n\n', style: 'header'},
-        {
-          ul: [
-            rfp['problem'] + '\n\n'
-          ]
-        },
-        {text: 'Describe the ideal situation if this problem were solved in the best possible way (whatever that might be)' + '\n\n', style: 'header'},
-        {
-          ul: [
-            'Ideal Situation: ' + rfp['idealSituation'] + '\n\n',
-            'Specific Software: ' + rfp['specifySpecificSoftware'] + '\n\n',
-            'Specific and detailed reporting: ' + rfp['specifyOtherReporting'] + '\n\n',
-            'Budget: ' + rfp['specifyBudget'] + '\n\n',
-            'Usability Considerations: ' + rfp['specifyUsabilityConsiderations'] + '\n\n',
-
-          ]
-        },
-      ]
-    };
-
+  generatePDF(rfp: RFP): void {
+    const docDefinition = this.rfpService.getDocumentDefinition(rfp);
     pdfMake.createPdf(docDefinition).open();
   }
 
-  ApproveRFP(rfp: Object) {
-    this.rfpService.ApproveRFP({rfp: rfp});
+  ApproveRFP(rfp: RFP): void {
+    
   }
 
-  RejectRFP(rfp: Object) {
-    this.rfpService.DenyRFP(rfp);
+  RejectRFP(rfp: RFP): void {
+    
   }
-
 }
