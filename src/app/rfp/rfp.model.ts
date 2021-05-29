@@ -37,28 +37,5 @@ export default class RFP {
   projectAgreement: string;
   date: string;
 
-  defaultOptions: any[] = [
-    {name: 'Yes'},
-    {name: 'No'},
-  ];
-
-  specificSoftwareOptions: any[] = [
-    {name: 'Yes'},
-    {name: 'No'},
-    {name: 'Maybe'},
-  ];
-
-  reportingOptions: any[] = [
-    {name: 'Weekly'},
-    {name: 'Bi-Weekly'},
-    {name: 'Not at all'},
-  ];
-
-  specifyTestersOptions: any[] = [
-    {name: 'Student team'},
-    {name: 'Someone from our office'},
-    {name: 'Not applicable'},
-  ];
-
   status = 'Pending';
 }

@@ -12,6 +12,29 @@ import RFP from './rfp.model';
 export class RfpComponent implements OnInit {
   rfp = new RFP();
 
+  defaultOptions: any[] = [
+    {name: 'Yes'},
+    {name: 'No'},
+  ];
+
+  specificSoftwareOptions: any[] = [
+    {name: 'Yes'},
+    {name: 'No'},
+    {name: 'Maybe'},
+  ];
+
+  reportingOptions: any[] = [
+    {name: 'Weekly'},
+    {name: 'Bi-Weekly'},
+    {name: 'Not at all'},
+  ];
+
+  specifyTestersOptions: any[] = [
+    {name: 'Student team'},
+    {name: 'Someone from our office'},
+    {name: 'Not applicable'},
+  ];
+
   ngOnInit(): void {
     pdfMake.vfs = pdfFonts.pdfMake.vfs;
   }

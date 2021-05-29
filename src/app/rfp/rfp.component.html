@@ -34,7 +34,7 @@
               <mat-form-field class="selectInput">
                 <mat-label class="labels">Select</mat-label>
                 <mat-select [(ngModel)]="rfp.specificSoftware" name="specificSoftware">
-                  <mat-option *ngFor="let select of rfp.specificSoftwareOptions" [value]="select.name">
+                  <mat-option *ngFor="let select of specificSoftwareOptions" [value]="select.name">
                     {{select.name}}
                   </mat-option>
                 </mat-select>
@@ -51,7 +51,7 @@
               <mat-form-field class="selectInput">
                 <mat-label class="labels">Select</mat-label>
                 <mat-select [(ngModel)]="rfp.videoCallMeeting" name="videoCallMeeting">
-                  <mat-option *ngFor="let select of rfp.reportingOptions" [value]="select.name">
+                  <mat-option *ngFor="let select of reportingOptions" [value]="select.name">
                     {{select.name}}
                   </mat-option>
                 </mat-select>
@@ -63,7 +63,7 @@
               <mat-form-field class="selectInput">
                 <mat-label>Select</mat-label>
                 <mat-select [(ngModel)]="rfp.emailReporting" name="emailReporting">
-                  <mat-option *ngFor="let select of rfp.reportingOptions" [value]="select.name">
+                  <mat-option *ngFor="let select of reportingOptions" [value]="select.name">
                     {{select.name}}
                   </mat-option>
                 </mat-select>
@@ -80,7 +80,7 @@
               <mat-form-field class="selectInput">
                 <mat-label>Select</mat-label>
                 <mat-select [(ngModel)]="rfp.requireNDA" name="requireNDA">
-                  <mat-option *ngFor="let select of rfp.defaultOptions" [value]="select.name">
+                  <mat-option *ngFor="let select of defaultOptions" [value]="select.name">
                     {{select.name}}
                   </mat-option>
                 </mat-select>
@@ -92,7 +92,7 @@
               <mat-form-field class="selectInput">
                 <mat-label >Select</mat-label>
                 <mat-select [(ngModel)]="rfp.requireIP" name="requireIP">
-                  <mat-option *ngFor="let select of rfp.defaultOptions" [value]="select.name">
+                  <mat-option *ngFor="let select of defaultOptions" [value]="select.name">
                     {{select.name}}
                   </mat-option>
                 </mat-select>
@@ -104,7 +104,7 @@
               <mat-form-field class="selectInput">
                 <mat-label>Select</mat-label>
                 <mat-select [(ngModel)]="rfp.budget" name="budget">
-                  <mat-option *ngFor="let select of rfp.defaultOptions" [value]="select.name">
+                  <mat-option *ngFor="let select of defaultOptions" [value]="select.name">
                     {{select.name}}
                   </mat-option>
                 </mat-select>
@@ -121,7 +121,7 @@
               <mat-form-field class="selectInput">
                 <mat-label>Select</mat-label>
                 <mat-select [(ngModel)]="rfp.trainingSession" name="trainingSession">
-                  <mat-option *ngFor="let select of rfp.defaultOptions" [value]="select.name">
+                  <mat-option *ngFor="let select of defaultOptions" [value]="select.name">
                     {{select.name}}
                   </mat-option>
                 </mat-select>
@@ -133,7 +133,7 @@
               <mat-form-field class="selectInput">
                 <mat-label>Select</mat-label>
                 <mat-select [(ngModel)]="rfp.howToDocumentation" name="howToDocumentation">
-                  <mat-option *ngFor="let select of rfp.defaultOptions" [value]="select.name">
+                  <mat-option *ngFor="let select of defaultOptions" [value]="select.name">
                     {{select.name}}
                   </mat-option>
                 </mat-select>
@@ -145,7 +145,7 @@
               <mat-form-field class="selectInput">
                 <mat-label>Select</mat-label>
                 <mat-select [(ngModel)]="rfp.usabilityConsiderations" name="usabilityConsiderations">
-                  <mat-option *ngFor="let select of rfp.defaultOptions" [value]="select.name">
+                  <mat-option *ngFor="let select of defaultOptions" [value]="select.name">
                     {{select.name}}
                   </mat-option>
                 </mat-select>
@@ -164,7 +164,7 @@
               <mat-form-field class="selectInput">
                 <mat-label>Select</mat-label>
                 <mat-select [(ngModel)]="rfp.realLifeTesting" name="realLifeTesting">
-                  <mat-option *ngFor="let select of rfp.defaultOptions" [value]="select.name">
+                  <mat-option *ngFor="let select of defaultOptions" [value]="select.name">
                     {{select.name}}
                   </mat-option>
                 </mat-select>
@@ -176,7 +176,7 @@
               <mat-form-field class="selectInput">
                 <mat-label>Select</mat-label>
                 <mat-select [(ngModel)]="rfp.specifyTesters" name="specifyTesters">
-                  <mat-option *ngFor="let select of rfp.specifyTestersOptions" [value]="select.name">
+                  <mat-option *ngFor="let select of specifyTestersOptions" [value]="select.name">
                     {{select.name}}
                   </mat-option>
                 </mat-select>
@@ -227,7 +227,7 @@
               <mat-form-field>
                 <mat-label>Select</mat-label>
                 <mat-select [(ngModel)]="rfp.projectAgreement" name="projectAgreement">
-                  <mat-option *ngFor="let select of rfp.defaultOptions" [value]="select.name">
+                  <mat-option *ngFor="let select of defaultOptions" [value]="select.name">
                     {{select.name}}
                   </mat-option>
                 </mat-select>
