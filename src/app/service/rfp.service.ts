@@ -39,8 +39,13 @@ export class RfpService {
   // Adds a new RFP
   createRFP(rfp: RFP): any {
     let reference = this.rfpReference.push(rfp);
-    this.getRFPs(); // update list of RFPs
+    this.refreshRFPs(); // update list of RFPs
     return reference;
+  }
+
+  // Change an existing RFP
+  updateRFP(rfp: RFP, changes: Object): Promise<void> {
+    return this.rfpReference.update(rfp.key, changes);
   }
 
   // Returns a document structure for generating a PDF for a given RFP

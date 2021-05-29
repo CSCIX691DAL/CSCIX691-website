@@ -106,11 +106,13 @@ export class AdminDashComponent implements OnInit {
     pdfMake.createPdf(docDefinition).open();
   }
 
+  // Set an RFP's status to approved
   ApproveRFP(rfp: RFP): void {
-    
+    this.rfpService.updateRFP(rfp, {status: 'Approved'});
   }
 
+  // Set an RFP's status to rejected
   RejectRFP(rfp: RFP): void {
-    
+    this.rfpService.updateRFP(rfp, {status: 'Rejected'});
   }
 }
