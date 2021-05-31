@@ -5,30 +5,30 @@
   ><br />
 
   <div *ngIf="showDiv.summer" class="summer-cards">
-    <div *ngFor="let Proj of projects; index as i">
-      <div *ngIf="Proj['term'] === 'Summer 2020'" class="card mt-3">
+    <div *ngFor="let Proj of getPastProjects(); index as i">
+      <div *ngIf="Proj.term === 'Summer 2020'" class="card mt-3">
         <div class="card">
           <div class="card-body">
-            <h5 class="card-title" id="card-title">{{ Proj["title"] }}</h5>
+            <h5 class="card-title" id="card-title">{{ Proj.title }}</h5>
             <p class="card-text-short" id="card-text">
-              {{ Proj["desc-short"] }}
+              {{ Proj.descShort }}
             </p>
             <button class="btn" (click)="hide[i] = !hide[i]">
               Read More...
             </button>
             <div [hidden]="!hide[i]">
-              <h4>{{ Proj["desc-long"] }}</h4>
+              <h4>{{ Proj.descLong }}</h4>
             </div>
           </div>
           <div class="card-footer">
             <div class="leader-text" id="leader-text">
-              <small>{{ "Team leader: " + Proj["teamleader"] }}</small>
+              <small>{{ "Team leader: " + Proj.teamLeader }}</small>
             </div>
             <div class="client-text" id="client-text">
-              <small>{{ "Status: " + Proj["status"] }}</small>
+              <small>{{ "Status: " + Proj.status }}</small>
             </div>
             <div class="status-text" id="status-text">
-              <small>{{ "Client: " + Proj["client"] }}</small>
+              <small>{{ "Client: " + Proj.client }}</small>
             </div>
           </div>
         </div>
@@ -43,27 +43,27 @@
 
   <div *ngIf="showDiv.fall" class="summer-cards">
     <div *ngFor="let Proj of projects; index as i">
-      <div *ngIf="Proj['term'] === 'Fall 2020'" class="card mt-3">
+      <div *ngIf="Proj.term === 'Fall 2020'" class="card mt-3">
         <div class="card">
           <div class="card-body">
-            <h5 class="card-title">{{ Proj["title"] }}</h5>
-            <p class="card-text-short">{{ Proj["desc-short"] }}</p>
+            <h5 class="card-title">{{ Proj.title }}</h5>
+            <p class="card-text-short">{{ Proj.descShort }}</p>
             <button class="btn" (click)="hide[i] = !hide[i]">
               Read More...
             </button>
             <div [hidden]="!hide[i]">
-              <h4>{{ Proj["desc-long"] }}</h4>
+              <h4>{{ Proj.descLong }}</h4>
             </div>
           </div>
           <div class="card-footer">
             <div class="leader-text">
-              <small>{{ "Team leader: " + Proj["teamleader"] }}</small>
+              <small>{{ "Team leader: " + Proj.teamLeader }}</small>
             </div>
             <div class="client-text" id="client-text">
-              <small>{{ "Status: " + Proj["status"] }}</small>
+              <small>{{ "Status: " + Proj.status }}</small>
             </div>
             <div class="status-text" id="status-text">
-              <small>{{ "Client: " + Proj["client"] }}</small>
+              <small>{{ "Client: " + Proj.client }}</small>
             </div>
           </div>
         </div>
