@@ -32,6 +32,8 @@ import { RfpComponent } from './rfp/rfp.component';
 import {TestimonialsPageComponent} from './testimonialsPage/testimonialsPage.component';
 import {MatSelectModule} from '@angular/material/select';
 import { NgxCsvParserModule } from 'ngx-csv-parser';
+import { PopoutWindowModule } from 'angular-popout-window';
+
 
 @NgModule({
   declarations: [
@@ -72,6 +74,7 @@ import { NgxCsvParserModule } from 'ngx-csv-parser';
     NgbCollapseModule,
     MatSelectModule,
     NgxCsvParserModule,
+    PopoutWindowModule
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]

@@ -7,6 +7,8 @@ import {NgxCsvParser} from 'ngx-csv-parser';
 import {NgxCSVParserError} from 'ngx-csv-parser';
 import pdfMake from 'pdfmake/build/pdfmake';
 import pdfFonts from 'pdfmake/build/vfs_fonts';
+import { importType } from '@angular/compiler/src/output/output_ast';
+
 
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
@@ -149,6 +151,9 @@ export class AdminDashComponent implements OnInit {
 
   RejectRFP(rfp: Object) {
     this.rfpService.DenyRFP(rfp);
+  }
+  creatAnnoucement(){
+
   }
 
 }
