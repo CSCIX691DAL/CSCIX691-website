@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FirebaseService} from '../service/clientdash.service';
+import RFP from '../rfp/rfp.model';
+import { RfpService } from '../service/rfp.service';
 
 @Component({
   selector: 'app-client-dash',
@@ -7,11 +8,8 @@ import { FirebaseService} from '../service/clientdash.service';
   styleUrls: ['./client-dash.component.css']
 })
 export class ClientDashComponent implements OnInit {
-  RFPs: Object[];
-
-  constructor(private firebaseService: FirebaseService) {
-    this.RFPs = [];
-  }
+  constructor(private rfpService: RfpService) { }
+  
   public isCollapsed1 = true;
   public isCollapsed2 = true;
   public isCollapsed3 = true;
@@ -21,17 +19,9 @@ export class ClientDashComponent implements OnInit {
     if (!localStorage.getItem("isLogin") || !(localStorage.getItem("userType") === "client")) {
       window.location.href = "/";
     }
-    this.getRFPsFromDatabase();
   }
 
-  getRFPsFromDatabase() {
-    this.firebaseService.getRFPs().then(values => {
-      values.forEach(value => {
-        this.RFPs.push(value.toJSON());
-      })
-    });
+  getRFPs(): RFP[] {
+    return this.rfpService.getRFPs();
   }
-
-
-
 }
