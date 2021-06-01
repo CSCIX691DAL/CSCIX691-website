@@ -17,6 +17,7 @@ pdfMake.vfs = pdfFonts.pdfMake.vfs;
 })
 export class AdminDashComponent implements OnInit {
   actUsers: Object[];
+  actStudents: Object[];
   inactUsers: Object[];
   activeRFPs: Object[];
   public isCollapsed1 = true;
@@ -32,6 +33,7 @@ export class AdminDashComponent implements OnInit {
     this.actUsers = [];
     this.inactUsers = [];
     this.activeRFPs = [];
+    this.actStudents = [];
   }
 
   ngOnInit(): void {
@@ -42,6 +44,7 @@ export class AdminDashComponent implements OnInit {
     this.getActiveUsersFromDB();
     this.getInactiveUsersFromDB();
     this.getRFPFromDB();
+    this.getActiveStudentsFromDB();
     console.log(this.activeRFPs);
   }
 
@@ -52,6 +55,19 @@ export class AdminDashComponent implements OnInit {
         let userInfo = value.toJSON();
         if (userInfo['active'] === true) {
           this.actUsers.push(value.toJSON());
+        }
+
+
+      });
+    });
+  }
+  getActiveStudentsFromDB() {
+
+    this.firebaseService.getUsers().then((values) => {
+      values.forEach((value) => {
+        let userInfo = value.toJSON();
+        if (userInfo['active'] === true&&userInfo['studentID']!=undefined) {
+          this.actStudents.push(value.toJSON());
         }
 
 
@@ -150,5 +166,10 @@ export class AdminDashComponent implements OnInit {
   RejectRFP(rfp: Object) {
     this.rfpService.DenyRFP(rfp);
   }
+
+  X691(){
+
+  }
+
 
 }

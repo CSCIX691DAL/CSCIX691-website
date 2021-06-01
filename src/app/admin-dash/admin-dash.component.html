@@ -214,6 +214,38 @@
           </table>
         </mat-card-content>
       </mat-card>
+      <mat-card class="members2">
+        <mat-card-title>Active Students</mat-card-title>
+        <mat-card-content>
+          <table class="table">
+            <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">First Name</th>
+              <th scope="col">Last Name</th>
+              <th scope="col">Email</th>
+              <th scope="col">Team</th>
+            </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let u of actStudents; index as i">
+              <th scope="row">{{i + 1}}</th>
+              <td>{{ u["fName"] }}</td>
+              <td>{{ u["sName"] }}</td>
+              <td>{{ u["email"] }}</td>
+              <div ngbDropdown class="dropdownClass">
+                <td ngbDropdownToggle>Select Team</td>
+                <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                  <button ngbDropdownItem (click)="X691">X691 Course Website</button>
+                  <button ngbDropdownItem (click)="Risk">Risk Management</button>
+                </div>
+              </div>
+            </tr>
+
+            </tbody>
+          </table>
+        </mat-card-content>
+      </mat-card>
     </div>
     <!-- Members End -->
     <!-- Other Start End -->
