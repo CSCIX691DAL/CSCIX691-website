@@ -163,16 +163,12 @@
             <thead>
             <tr>
               <th scope="col">Project</th>
-              <!--  <th scope="col">Client</th>
-              <th scope="col">Description</th> -->
               <th scope="col">Azure Link</th>
             </tr>
             </thead>
             <tbody>
             <tr *ngFor='let Projects of getProjects()'>
               <td>{{Projects.title}}</td>
-              <!--<td>{{Projects.client}}</td>
-              <td>{{Projects.descShort}}</td> --> <!-- Description is not showing up!-->
               <td><a href="{{Projects.azureLink}}">Link</a></td>
             </tr>
 

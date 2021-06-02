@@ -135,9 +135,21 @@
       <mat-card class="members3">
         <mat-card-title>Azure Links</mat-card-title>
         <mat-card-content>
-          List of Azure Links:
-          <!-- needs to be dynamically taken from the DB-->
-          <a href="https://dev.azure.com/x691w21i/Website%20Summer%202021" target="_blank" class="btn">Team C Azure Link</a>
+          <table class="table">
+            <thead>
+            <tr>
+              <th scope="col">Project</th>
+              <th scope="col">Azure Link</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor='let Projects of getProjects()'>
+              <td>{{Projects.title}}</td>
+              <td><a href="{{Projects.azureLink}}">Link</a></td>
+            </tr>
+
+            </tbody>
+          </table>
         </mat-card-content>
       </mat-card>
       <!-- Iteration Evaluations ends -->
