@@ -10,6 +10,9 @@
           <a href="student-dashboard">Submitted RFP's</a>
         </li>
         <li>
+          <a href="student-dashboard">Project Azure Links</a>
+        </li>
+        <li>
           <a href="student-dashboard">Past Projects</a>
         </li>
         <li>
@@ -127,6 +130,26 @@
         <mat-card-title>Iteration Evaluations</mat-card-title>
         <mat-card-content>
           No Iterations Evaluations have been completed
+        </mat-card-content>
+      </mat-card>
+      <mat-card class="members3">
+        <mat-card-title>Azure Links</mat-card-title>
+        <mat-card-content>
+          <table class="table">
+            <thead>
+            <tr>
+              <th scope="col">Project</th>
+              <th scope="col">Azure Link</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor='let Projects of getProjects()'>
+              <td>{{Projects.title}}</td>
+              <td><a href="{{Projects.azureLink}}">Link</a></td>
+            </tr>
+
+            </tbody>
+          </table>
         </mat-card-content>
       </mat-card>
       <!-- Iteration Evaluations ends -->

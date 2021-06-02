@@ -2,6 +2,7 @@ import RFP from "../rfp/rfp.model";
 
 export default class Project {
     key?: string | null;
+    azureLink: string;
     rfp: RFP;
     client: string;
     descShort: string;

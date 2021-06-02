@@ -62,14 +62,14 @@
                 <h5 class="mb-0">
                   <button class="btn btn-outline" (click)="collapse1.toggle()" [attr.aria-expanded]="!isCollapsed1"
                           aria-controls="collapseExample">
-                    X691 Course Website - Team I
+                    X691 Course Website - Team C
                   </button>
                 </h5>
               </div>
 
               <div #collapse1="ngbCollapse" [(ngbCollapse)]="isCollapsed1" data-parent="#accordion">
                 <div class="card-body">
-                  Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                  Test Description for X691 Course Website - Team C
                 </div>
               </div>
             </div>
@@ -154,6 +154,26 @@
         <mat-card-title>Upcoming Iterations</mat-card-title>
         <mat-card-content>
           You have no upcoming Iterations
+        </mat-card-content>
+      </mat-card>
+      <mat-card class="members3">
+        <mat-card-title>Azure Links</mat-card-title>
+        <mat-card-content>
+          <table class="table">
+            <thead>
+            <tr>
+              <th scope="col">Project</th>
+              <th scope="col">Azure Link</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor='let Projects of getProjects()'>
+              <td>{{Projects.title}}</td>
+              <td><a href="{{Projects.azureLink}}">Link</a></td>
+            </tr>
+
+            </tbody>
+          </table>
         </mat-card-content>
       </mat-card>
     </div>
