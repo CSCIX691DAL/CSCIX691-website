@@ -1,3 +1,4 @@
+import { ProjectService } from './../service/project.service';
 import {Component, OnInit} from '@angular/core';
 import {ThrowStmt} from '@angular/compiler';
 import {FirebaseService} from '../service/users.service';
@@ -26,7 +27,8 @@ export class AdminDashComponent implements OnInit {
   constructor(private firebaseService: FirebaseService,
               private authService: AuthService,
               private ngxCsvParser: NgxCsvParser,
-              private rfpService: RfpService) {
+              private rfpService: RfpService,
+              private projectService: ProjectService) {
     this.actUsers = [];
     this.inactUsers = [];
   }
@@ -42,8 +44,11 @@ export class AdminDashComponent implements OnInit {
     pdfMake.vfs = pdfFonts.pdfMake.vfs;
   }
 
-  getRFPs(): RFP[] {
-    return this.rfpService.getRFPs();
+  // returns a list of pending RFPs
+  getPendingRFPs(): RFP[] {
+    return this.rfpService.getRFPs().filter((rfp, index, array) => {
+      return rfp.status == 'Pending';
+    });
   }
 
   getActiveUsersFromDB() {
@@ -106,11 +111,16 @@ export class AdminDashComponent implements OnInit {
     pdfMake.createPdf(docDefinition).open();
   }
 
+  // Set an RFP's status to approved and make it a project
   ApproveRFP(rfp: RFP): void {
-    
+    // approve RFP
+    this.rfpService.updateRFP(rfp, {status: 'Approved'});
+    // create project out of RFP
+    this.projectService.createProject(rfp);
   }
 
+  // Set an RFP's status to rejected
   RejectRFP(rfp: RFP): void {
-    
+    this.rfpService.updateRFP(rfp, {status: 'Rejected'});
   }
 }
