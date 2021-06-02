@@ -1,6 +1,7 @@
+import { ProjectService } from './../service/project.service';
 import { ThrowStmt } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
-import { FirebaseService } from '../service/past.service';
+import Project from '../projects/project.model';
 
 @Component({
   selector: 'app-past',
@@ -8,8 +9,6 @@ import { FirebaseService } from '../service/past.service';
   styleUrls: ['./past.component.css'],
 })
 export class PastComponent implements OnInit {
-  projects: Object[];
-
   hide=[];
 
   showDiv = {
@@ -17,19 +16,18 @@ export class PastComponent implements OnInit {
     summer: true,
   };
 
-  constructor(private firebaseService: FirebaseService) {
-    this.projects = [];
-  }
+  constructor(private projectsService: ProjectService) { }
 
-  ngOnInit(): void {
-    this.getPastFromDB();
-  }
-  getPastFromDB() {
-    this.firebaseService.getPast().then((values) => {
-      values.forEach((value) => {
-        this.projects.push(value.toJSON());
+  ngOnInit(): void { }
 
-      });
+  // gets completed projects from the database
+  getPastProjects(): Project[] {
+    // get projects from the database
+    let projects = this.projectsService.getProjects();
+    // filter out any incomplete projects
+    projects.filter((project, index, array) => {
+      return project.status == 'Completed';
     });
+    return projects;
   }
 }
