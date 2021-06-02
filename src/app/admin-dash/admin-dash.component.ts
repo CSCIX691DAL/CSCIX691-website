@@ -42,8 +42,11 @@ export class AdminDashComponent implements OnInit {
     pdfMake.vfs = pdfFonts.pdfMake.vfs;
   }
 
-  getRFPs(): RFP[] {
-    return this.rfpService.getRFPs();
+  // returns a list of pending RFPs
+  getPendingRFPs(): RFP[] {
+    return this.rfpService.getRFPs().filter((rfp, index, array) => {
+      return rfp.status == 'Pending';
+    });
   }
 
   getActiveUsersFromDB() {
