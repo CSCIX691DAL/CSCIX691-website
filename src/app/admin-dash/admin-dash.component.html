@@ -75,6 +75,9 @@
 
                 <div #collapsed="ngbCollapse" [ngbCollapse]="!isCollapsed" data-parent="#accordion">
                   <div class="card-body">
+                    <a href="{{ project.azureLink }}" target="_blank">Click here to see the Azure board for this project.</a>
+                    <br>
+                    <br>
                     {{ project.descLong }}
                   </div>
                 </div>
