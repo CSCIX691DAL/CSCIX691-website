@@ -128,4 +128,37 @@ export class AdminDashComponent implements OnInit {
   RejectRFP(rfp: RFP): void {
     this.rfpService.updateRFP(rfp, {status: 'Rejected'});
   }
+
+  toggleEditLinkTextbox(index: number): void {
+    let editSection = <HTMLElement>document.getElementsByClassName("editLink").item(index);
+    let viewSection = <HTMLElement>document.getElementsByClassName("viewLink").item(index);
+
+    // if the edit section is hidden
+    if (editSection.style.display == 'none') {
+      // show the edit section
+      editSection.style.display = 'block';
+      // hide the link
+      viewSection.style.display = 'none';
+    } else {
+      // hide the edit section
+      editSection.style.display = 'none';
+      // show the link
+      viewSection.style.display = 'block';
+      // reset the textbox's value
+      (<HTMLInputElement>document.getElementsByClassName("editLinkTextbox").item(index)).value = '';
+    }
+  }
+
+  editAzureLink(index: number, project: Project): void {
+    // get new link from textbox
+    let newLink = (<HTMLInputElement>document.getElementsByClassName("editLinkTextbox").item(index)).value;
+
+    if (newLink != '') {
+      // update the project
+      this.projectService.updateProject(project, {azureLink: newLink});
+    }
+
+    // hide the edit section
+    this.toggleEditLinkTextbox(index);
+  }
 }
