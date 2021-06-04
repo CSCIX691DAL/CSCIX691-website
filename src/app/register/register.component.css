@@ -39,7 +39,6 @@ p {
 
 .form-footer a:hover {
     color:#c08c0c;
-    
   }
 
   .homeback a:hover {
@@ -66,7 +65,7 @@ a:visited {
 }
 
 .register {
-    background-color: #c08c0c; 
+    background-color: #c08c0c;
     color: white;
     border: none;
     border-radius: 25px;
