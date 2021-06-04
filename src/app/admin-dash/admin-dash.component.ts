@@ -8,6 +8,9 @@ import {NgxCSVParserError} from 'ngx-csv-parser';
 import pdfMake from 'pdfmake/build/pdfmake';
 import pdfFonts from 'pdfmake/build/vfs_fonts';
 import { importType } from '@angular/compiler/src/output/output_ast';
+import { PopoutWindowModule } from 'angular-popout-window';
+import {Component, Inject} from '@angular/core';
+import {MatDialog, MAT_DIALOG_DATA} from '@angular/material/dialog';
 
 
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
@@ -30,7 +33,8 @@ export class AdminDashComponent implements OnInit {
   constructor(private firebaseService: FirebaseService,
               private authService: AuthService,
               private ngxCsvParser: NgxCsvParser,
-              private rfpService: RfpService) {
+              private rfpService: RfpService,
+              public dialog: MatDialog) {
     this.actUsers = [];
     this.inactUsers = [];
     this.activeRFPs = [];
@@ -152,8 +156,17 @@ export class AdminDashComponent implements OnInit {
   RejectRFP(rfp: Object) {
     this.rfpService.DenyRFP(rfp);
   }
-  creatAnnoucement(){
+  openDialog() {
+    const dialogRef = this.dialog.open(DialogContentExampleDialog);//didn't know what is link for this 
 
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
   }
-
 }
+  @Component({
+    selector: 'dialog-content-example-dialog',
+    templateUrl: 'admin-dash-window.compont.html',
+  })
+  export class DialogContentExampleDialog {}//this function is link of window.html page to pop out the case
+

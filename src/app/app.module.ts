@@ -33,7 +33,8 @@ import {TestimonialsPageComponent} from './testimonialsPage/testimonialsPage.com
 import {MatSelectModule} from '@angular/material/select';
 import { NgxCsvParserModule } from 'ngx-csv-parser';
 import { PopoutWindowModule } from 'angular-popout-window';
-
+import {MatDialogModule} from '@angular/material/dialog';
+ 
 
 @NgModule({
   declarations: [
@@ -54,7 +55,7 @@ import { PopoutWindowModule } from 'angular-popout-window';
     ChangepwComponent,
     PastComponent,
     RfpComponent,
-
+    
   ],
   imports: [
     BrowserModule,
@@ -74,7 +75,9 @@ import { PopoutWindowModule } from 'angular-popout-window';
     NgbCollapseModule,
     MatSelectModule,
     NgxCsvParserModule,
-    PopoutWindowModule
+    PopoutWindowModule,
+    MatDialogModule,
+    
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]
