@@ -9,6 +9,7 @@ import {NgxCSVParserError} from 'ngx-csv-parser';
 import pdfMake from 'pdfmake/build/pdfmake';
 import pdfFonts from 'pdfmake/build/vfs_fonts';
 import RFP from '../rfp/rfp.model';
+import Project from '../projects/project.model';
 
 @Component({
   selector: 'app-admin-dash',
@@ -18,9 +19,6 @@ import RFP from '../rfp/rfp.model';
 export class AdminDashComponent implements OnInit {
   actUsers: Object[];
   inactUsers: Object[];
-  public isCollapsed1 = true;
-  public isCollapsed2 = true;
-  public isCollapsed3 = true;
   showConfirm: boolean = false;
   studentRecords: any[] = [];
 
@@ -49,6 +47,13 @@ export class AdminDashComponent implements OnInit {
     return this.rfpService.getRFPs().filter((rfp, index, array) => {
       return rfp.status == 'Pending';
     });
+  }
+
+  // Returns a list of projects with status 'Active'
+  getActiveProjects(): Project[] {
+    return this.projectService.getProjects().filter((project, index, array) => {
+      return project.status == 'Active';
+    })
   }
 
   getActiveUsersFromDB() {

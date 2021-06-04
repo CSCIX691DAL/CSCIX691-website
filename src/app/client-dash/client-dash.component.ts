@@ -14,11 +14,6 @@ import { ProjectService } from '../service/project.service';
 export class ClientDashComponent implements OnInit {
   constructor(private rfpService: RfpService, private projectService: ProjectService) { }
 
-  public isCollapsed1 = true;
-  public isCollapsed2 = true;
-  public isCollapsed3 = true;
-  public isCollapsed4 = true;
-
   ngOnInit(): void {
     if (!localStorage.getItem("isLogin") || !(localStorage.getItem("userType") === "client")) {
       window.location.href = "/";
