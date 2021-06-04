@@ -75,3 +75,19 @@
 .dropdownClass {
   margin: auto;
 }
+
+.icon {
+  height: 5%;
+  width: 5%;
+  margin-left: 0.2rem;
+  display: inline;
+}
+
+.editLink {
+  display: none;
+}
+
+.editLinkTextbox {
+  margin-left: 0.5rem;
+  width: 50%;
+}
