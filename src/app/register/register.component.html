@@ -1,6 +1,6 @@
 <main>
   <div class="outer">
-    <div class="welcome"><p>Welcome to Dalhousie X691.03</p><P>Community Outreach</P></div>
+    <div class="welcome title"><p>Welcome to Dalhousie X691.03</p><P>Community Outreach</P></div>
       <form class="form">
         <!-- <mat-slide-toggle (click)="onClientClicked()" [(ngModel)]="client" name="client">Client</mat-slide-toggle> -->
 
@@ -15,25 +15,25 @@
         <mat-form-field appearance="outline" class="form-control">
           <mat-label><i>First Name</i></mat-label>
           <input required [(ngModel)]="firstName" name="firstName" matInput type="name">
-          <mat-hint>What's ya name, fam</mat-hint>
+          <mat-hint>Please input your first name</mat-hint>
         </mat-form-field>
 
         <mat-form-field appearance="outline" class="form-control">
           <mat-label><i>Surname</i></mat-label>
           <input required [(ngModel)]="lastName" name="lastName" matInput type="name">
-          <mat-hint>What is your surname?</mat-hint>
+          <mat-hint>Please input your surname</mat-hint>
         </mat-form-field>
 
         <mat-form-field appearance="outline" class="form-control">
           <mat-label><i>Organization</i></mat-label>
           <input required [(ngModel)]="organization" name="organization" matInput type="name">
-          <mat-hint>What organization are you representing?</mat-hint>
+          <mat-hint>Please input the organization you represent</mat-hint>
         </mat-form-field>
 
         <mat-form-field appearance="outline" class="form-control">
           <mat-label><i>E-Mail</i></mat-label>
           <input required [(ngModel)]="email" name="email" matInput type="email">
-          <mat-hint>Choose an e-mail address to register</mat-hint>
+          <mat-hint>Please input a valid email</mat-hint>
         </mat-form-field>
 
         <mat-form-field appearance="outline" class="form-control">
