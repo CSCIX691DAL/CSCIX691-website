@@ -91,3 +91,15 @@
   margin-left: 0.5rem;
   width: 50%;
 }
+
+.form {
+  width: 100%;
+}
+
+.announcement {
+  width: 100%;
+}
+
+#announcementDesc {
+  height: 150px;
+}

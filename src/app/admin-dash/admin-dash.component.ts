@@ -3,6 +3,8 @@ import {Component, OnInit} from '@angular/core';
 import {ThrowStmt} from '@angular/compiler';
 import {FirebaseService} from '../service/users.service';
 import {RfpService} from '../service/rfp.service';
+import {AnnouncementService} from '../service/announcement.service';
+import Announcement from "../admin-dash/announcement.model"
 import {AuthService} from '../service/auth.service';
 import {NgxCsvParser} from 'ngx-csv-parser';
 import {NgxCSVParserError} from 'ngx-csv-parser';
@@ -26,7 +28,8 @@ export class AdminDashComponent implements OnInit {
               private authService: AuthService,
               private ngxCsvParser: NgxCsvParser,
               private rfpService: RfpService,
-              private projectService: ProjectService) {
+              private projectService: ProjectService, 
+              private announcementService: AnnouncementService) {
     this.actUsers = [];
     this.inactUsers = [];
   }
@@ -161,4 +164,23 @@ export class AdminDashComponent implements OnInit {
     // hide the edit section
     this.toggleEditLinkTextbox(index);
   }
+  
+  CreateAnnouncement() {
+
+    let test = new Announcement();
+    test.title = (<HTMLInputElement>document.getElementById("announcementTitle")).value;
+    test.desc = (<HTMLInputElement>document.getElementById("announcementDesc")).value;
+    test.date = Date();
+
+    if(test.title == "" || test.desc == ""){
+      window.alert("Please fill out all sections");
+    }
+    else{
+      this.announcementService.pushAnnouncement(test);
+
+      window.alert("Your announcement has been created");
+    }
+  
+  }
+
 }
