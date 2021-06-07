@@ -27,8 +27,7 @@ export class AuthService {
         // add client to database
         this.userService.addClient(value.user.uid, email, firstName, lastName, organization);
         console.log('Successfully created client.');
-        // navigate to login page
-        window.location.href = "/auth";
+        this.login(email, password);
       })
       .catch(err => {
         localStorage.clear();
