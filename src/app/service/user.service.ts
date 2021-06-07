@@ -44,6 +44,7 @@ export class UserService {
   addClient(id: string, email: string, firstName: string, lastName: string, organization: string): void {
     // construct the client object
     let client = new Client();
+    client.active = true
     client.email = email;
     client.fName = firstName;
     client.sName = lastName;
