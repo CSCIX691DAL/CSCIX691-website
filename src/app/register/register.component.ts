@@ -36,9 +36,8 @@ export class RegisterComponent implements OnInit {
 
   onSubmit(): void {
     if(this.validate()) {
-      this.authService.signup(this.email, this.password, this.firstName, this.lastName, this.organization);
+      this.authService.signupClient(this.email, this.password, this.firstName, this.lastName, this.organization);
     }
-
   }
 
   // onClientClicked(): void {
