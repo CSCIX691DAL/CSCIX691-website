@@ -24,9 +24,11 @@ export class AuthService {
     this.firebaseAuth
       .createUserWithEmailAndPassword(email, password)
       .then(value => {
+        // add client to database
         this.userService.addClient(value.user.uid, email, firstName, lastName, organization);
-        this.login(email, password);
         console.log('Successfully created client.');
+        // navigate to login page
+        window.location.href = "/auth";
       })
       .catch(err => {
         localStorage.clear();
@@ -40,8 +42,8 @@ export class AuthService {
     return this.firebaseAuth
       .createUserWithEmailAndPassword(email, password)
       .then(value => {
-        this.userService.addStudent(value.user.uid, email, firstName, lastName, studentID, isTeamLeader);
-        this.login(email, password);
+        // add student to database
+        this.userService.addStudent(value.user.uid, email, firstName, lastName, studentID, isTeamLeader, false);
         console.log('Successfully created student.');
       })
       .catch(err => {
