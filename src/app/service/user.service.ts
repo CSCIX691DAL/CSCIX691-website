@@ -15,6 +15,7 @@ export class UserService {
 
   constructor(private db: AngularFireDatabase) {
     this.userReference = db.list('users/');
+    this.refreshUsers();
   }
 
   // Populates the list of users by reading from the database
@@ -68,5 +69,17 @@ export class UserService {
 
     // add student to database
     this.addUser(id, student);
+  }
+
+  isStudent(user: User): boolean {
+    return user.userType == UserType.Student;
+  }
+
+  isClient(user: User): boolean {
+    return user.userType == UserType.Client;
+  }
+
+  isAdmin(user: User): boolean {
+    return user.userType == UserType.Admin;
   }
 }
