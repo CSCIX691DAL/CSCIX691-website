@@ -61,7 +61,7 @@ export class UserService {
     student.fName = firstName;
     student.sName = lastName;
     student.studentID = studentID;
-    student.userType = UserType.Client;
+    student.userType = UserType.Student;
     student.teamLeader = isTeamLeader;
 
     // add student to database
