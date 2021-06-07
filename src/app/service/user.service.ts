@@ -55,7 +55,7 @@ export class UserService {
     this.addUser(id, client);
   }
 
-  addStudent(id: string, email: string, firstName: string, lastName: string, studentID: string, isTeamLeader: boolean): void {
+  addStudent(id: string, email: string, firstName: string, lastName: string, studentID: string, isTeamLeader: boolean, active: boolean): void {
     // construct the student object
     let student = new Student();
     student.email = email;
@@ -64,6 +64,7 @@ export class UserService {
     student.studentID = studentID;
     student.userType = UserType.Student;
     student.teamLeader = isTeamLeader;
+    student.active = active;
 
     // add student to database
     this.addUser(id, student);
