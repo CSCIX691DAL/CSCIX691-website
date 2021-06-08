@@ -1,11 +1,11 @@
+import { UserService } from './../service/user.service';
 import { ProjectService } from './../service/project.service';
 import {Component, OnInit} from '@angular/core';
-import {ThrowStmt} from '@angular/compiler';
-import {FirebaseService} from '../service/users.service';
 import {RfpService} from '../service/rfp.service';
 import {AuthService} from '../service/auth.service';
 import {NgxCsvParser} from 'ngx-csv-parser';
 import {NgxCSVParserError} from 'ngx-csv-parser';
+import { User } from '../user/user.model';
 import pdfMake from 'pdfmake/build/pdfmake';
 import pdfFonts from 'pdfmake/build/vfs_fonts';
 import RFP from '../rfp/rfp.model';
@@ -17,18 +17,14 @@ import Project from '../projects/project.model';
   styleUrls: ['./admin-dash.component.css']
 })
 export class AdminDashComponent implements OnInit {
-  actUsers: Object[];
-  inactUsers: Object[];
   showConfirm: boolean = false;
   studentRecords: any[] = [];
 
-  constructor(private firebaseService: FirebaseService,
+  constructor(private userService: UserService,
               private authService: AuthService,
               private ngxCsvParser: NgxCsvParser,
               private rfpService: RfpService,
               private projectService: ProjectService) {
-    this.actUsers = [];
-    this.inactUsers = [];
   }
 
   ngOnInit(): void {
@@ -63,29 +59,17 @@ export class AdminDashComponent implements OnInit {
     })
   }
 
-  getActiveUsersFromDB() {
-
-    this.firebaseService.getUsers().then((values) => {
-      values.forEach((value) => {
-        let userInfo = value.toJSON();
-        if (userInfo['active'] === true) {
-          this.actUsers.push(value.toJSON());
-        }
-
-
-      });
+  // Returns a list of active users
+  getActiveUsersFromDB(): User[] {
+    return this.userService.getUsers().filter((user, index, array) => {
+      return user.active;
     });
   }
 
-  getInactiveUsersFromDB() {
-
-    this.firebaseService.getUsers().then((values) => {
-      values.forEach((value) => {
-        let userInfo1 = value.toJSON();
-        if (userInfo1['active'] === false) {
-          this.inactUsers.push(value.toJSON());
-        }
-      });
+  // Returns a list of inactive users
+  getInactiveUsersFromDB(): User[] {
+    return this.userService.getUsers().filter((user, index, array) => {
+      return !user.active;
     });
   }
 
@@ -108,6 +92,7 @@ export class AdminDashComponent implements OnInit {
   }
 
   async batchCreateStudents() {
+    /* WILL BE FIXED WITH USER STORY 471
     for (let student of this.studentRecords) {
       let studentId = student['OrgDefinedId'].split('#')[1];
       await this.authService.signupStudent(student['Email'], studentId, student['First Name'], student['Last Name'], studentId);
@@ -116,6 +101,7 @@ export class AdminDashComponent implements OnInit {
     this.studentRecords = [];
     this.showConfirm = false;
     this.ngOnInit();
+    */
   }
 
   generatePDF(rfp: RFP): void {
