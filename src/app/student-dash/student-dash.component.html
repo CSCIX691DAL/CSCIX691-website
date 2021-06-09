@@ -10,6 +10,9 @@
           <a href="student-dashboard">Submitted RFP's</a>
         </li>
         <li>
+          <a href="student-dashboard">Project Azure Links</a>
+        </li>
+        <li>
           <a href="student-dashboard">Past Projects</a>
         </li>
         <li>
@@ -23,85 +26,56 @@
   <!-- Sidebar End -->
   <!-- Column 1 Start -->
   <div class="column1">
-    <!-- Pending Project Requests Start -->
-    <div class="RequestsCard">
+    <!-- my current project(s) Start -->
+    <div class="projectsCard">
       <mat-card>
         <mat-card-title>Current Project</mat-card-title>
         <mat-card-content>
-          <table class="table">
-            <thead>
-            <tr>
-              <th scope="col">Project Name</th>
-              <th scope="col">Project Type</th>
-              <th scope="col">RFP</th>
-              <th scope="col">Status</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-              <td>X691 Course Website</td>
-              <td>Web Application</td>
-              <td><a href="assets/images/TopImage.JPG">RFP</a></td>
-              <td>Accepted</td>
-            </tr>
-            <tr>
-              <td>Risk Management Platform</td>
-              <td>Web Application</td>
-              <td><a href="assets/images/TopImage.JPG">RFP</a></td>
-              <td>Accepted</td>
-            </tr>
-            <tr>
-              <td>Health Application</td>
-              <td>Mobile</td>
-              <td><a href="assets/images/TopImage.JPG">RFP</a></td>
-              <td>Submitted</td>
-            </tr>
-            <tr>
-              <td>Mobile Game</td>
-              <td>Mobile</td>
-              <td><a href="assets/images/TopImage.JPG">RFP</a></td>
-              <td>Pending</td>
-            </tr>
-            </tbody>
-          </table>
+          <div id="accordion">
+            <div *ngFor="let project of getMyProjects()">
+              <div class="card">
+                <div class="card-header" id="headingOne">
+                  <h5 class="mb-0">
+                    <button class="btn btn-outline" (click)="collapsed.toggle()">
+                      {{ project.title }}
+                    </button>
+                  </h5>
+                </div>
+
+                  <div #collapsed="ngbCollapse" [ngbCollapse]="!isCollapsed" data-parent="#accordion">
+                    <div class="card-body">
+                      <a href="{{ project.azureLink }}" target="_blank">Click here to see the Azure board for this project.</a>
+                      <br> <br>
+                      {{ project.descLong }}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>      
         </mat-card-content>
       </mat-card>
     </div>
-    <!-- Pending Project Requests End -->
+    <!-- my current project(s) end -->
     <!-- Active Project Start -->
     <div class="projectsCard">
       <mat-card>
         <mat-card-title>Past Projects</mat-card-title>
         <mat-card-content>
           <div id="accordion">
-            <div class="card">
-              <div class="card-header" id="headingOne">
-                <h5 class="mb-0">
-                  <button class="btn btn-outline" (click)="collapse1.toggle()" [attr.aria-expanded]="!isCollapsed1"
-                          aria-controls="collapseExample">
-                    X691 Course Website - Team I
-                  </button>
-                </h5>
-              </div>
-
-              <div #collapse1="ngbCollapse" [(ngbCollapse)]="isCollapsed1" data-parent="#accordion">
-                <div class="card-body">
-                  Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+            <div *ngFor="let project of getPastProjects()">
+              <div class="card">
+                <div class="card-header" id="headingOne">
+                  <h5 class="mb-0">
+                    <button class="btn btn-outline" (click)="collapsed.toggle()">
+                      {{ project.title }}
+                    </button>
+                  </h5>
                 </div>
-              </div>
-            </div>
-            <div class="card">
-              <div class="card-header" id="headingTwo">
-                <h5 class="mb-0">
-                  <button class="btn btn-outline" (click)="collapse2.toggle()" [attr.aria-expanded]="!isCollapsed2"
-                          aria-controls="collapseExample">
-                    Risk Management Project - Team Fred Winters
-                  </button>
-                </h5>
-              </div>
-              <div #collapse2="ngbCollapse" [(ngbCollapse)]="isCollapsed2" data-parent="#accordion">
-                <div class="card-body">
-                  Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+
+                <div #collapsed="ngbCollapse" [ngbCollapse]="!isCollapsed" data-parent="#accordion">
+                  <div class="card-body">
+                    {{ project.descLong }}
+                  </div>
                 </div>
               </div>
             </div>
@@ -127,6 +101,26 @@
         <mat-card-title>Iteration Evaluations</mat-card-title>
         <mat-card-content>
           No Iterations Evaluations have been completed
+        </mat-card-content>
+      </mat-card>
+      <mat-card class="members3">
+        <mat-card-title>Azure Links</mat-card-title>
+        <mat-card-content>
+          <table class="table">
+            <thead>
+            <tr>
+              <th scope="col">Project</th>
+              <th scope="col">Azure Link</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor='let Projects of getProjects()'>
+              <td>{{Projects.title}}</td>
+              <td><a href="{{Projects.azureLink}}" target="_blank">Link</a></td>
+            </tr>
+
+            </tbody>
+          </table>
         </mat-card-content>
       </mat-card>
       <!-- Iteration Evaluations ends -->

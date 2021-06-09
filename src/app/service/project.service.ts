@@ -37,6 +37,7 @@ export class ProjectService {
   // Adds a new Project
   createProject(rfp: RFP): any {
     let project = new Project();
+    project.azureLink = 'https://dev.azure.com/x691w21i/Website%20Summer%202021'; //place holder for azurelinks
     project.rfp = rfp;
     project.client = rfp.contactName;
     project.descShort = rfp.problem;
@@ -45,11 +46,16 @@ export class ProjectService {
     project.teamLeader = 'Mr. Placeholder' // change this once Teams are implemented
     project.term = this.setNextTerm();
     project.title = rfp.projectTitle;
-    //this.type = 
+    //this.type =
 
     let reference = this.projectReference.push(project);
     this.refreshProjects(); // update list of Projects
     return reference;
+  }
+
+  // Change an existing project
+  updateProject(project: Project, changes: Object): Promise<void> {
+    return this.projectReference.update(project.key, changes);
   }
 
   // Sets a new project's Term to the next academic term, based on the current time
