@@ -43,7 +43,7 @@ export class ProjectService {
     project.descShort = rfp.problem;
     project.descLong = 'Testing testing testing' // need further clarification of where this comes from
     project.status = 'Accepted';
-    project.teamLeader = 'Mr. Placeholder' // change this once Teams are implemented
+    project.team = null;
     project.term = this.setNextTerm();
     project.title = rfp.projectTitle;
     //this.type =

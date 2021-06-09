@@ -1,4 +1,5 @@
 import RFP from "../rfp/rfp.model";
+import Team from "../team/team.model";
 
 export default class Project {
     key?: string | null;
@@ -8,7 +9,7 @@ export default class Project {
     descShort: string;
     descLong: string;
     status: string;
-    teamLeader: string; // ideally replace this with a Team object once implemented
+    team?: Team | null;
     term: string;
     title: string;
     type: string;
