@@ -45,6 +45,13 @@ export class AdminDashComponent implements OnInit {
     });
   }
 
+  // returns a list of rejected RFPs
+  getRejectedRFPs(): RFP[] {
+    return this.rfpService.getRFPs().filter((rfp, index, array) => {
+      return rfp.status == 'Rejected';
+    });
+  }
+
   // Returns a list of projects with status 'Active'
   getActiveProjects(): Project[] {
     return this.projectService.getProjects().filter((project, index, array) => {
@@ -103,7 +110,7 @@ export class AdminDashComponent implements OnInit {
   }
 
   // Set an RFP's status to approved and make it a project
-  ApproveRFP(rfp: RFP): void {
+  approveRFP(rfp: RFP): void {
     // approve RFP
     this.rfpService.updateRFP(rfp, {status: 'Approved'});
     // create project out of RFP
@@ -111,8 +118,13 @@ export class AdminDashComponent implements OnInit {
   }
 
   // Set an RFP's status to rejected
-  RejectRFP(rfp: RFP): void {
+  rejectRFP(rfp: RFP): void {
     this.rfpService.updateRFP(rfp, {status: 'Rejected'});
+  }
+
+  // Delete an RFP from the database
+  deleteRFP(rfp: RFP): void {
+    this.rfpService.deleteRFP(rfp);
   }
 
   toggleEditLinkTextbox(index: number): void {

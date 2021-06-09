@@ -34,7 +34,7 @@
               <th scope="col">#</th>
               <th scope="col">Company</th>
               <th scope="col">RFP Link</th>
-              <th scope="col">Status</th>
+              <th scope="col">Actions</th>
             </tr>
             </thead>
             <tbody>
@@ -42,14 +42,40 @@
               <th scope="row">{{i + 1}}</th>
               <td>{{ r.organization }}</td>
               <td (click)="generatePDF(r)" class="linkDisplay"><a href="/admin-dashboard">View RFP</a></td>
-              <div ngbDropdown class="dropdownClass">
-                <td ngbDropdownToggle>{{ r.status }}</td>
-                <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-                  <button ngbDropdownItem (click)="ApproveRFP(r)">Approve Request</button>
-                  <button ngbDropdownItem (click)="RejectRFP(r)">Reject Request</button>
-                </div>
-              </div>
-
+              <td>
+                <button class="actionButton" (click)="approveRFP(r)">Approve</button>
+                <button class="actionButton" (click)="rejectRFP(r)">Reject</button>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </mat-card-content>
+      </mat-card>
+    </div>
+    <!-- Pending Project Requests End -->
+    <!-- Rejected Project Requests Start -->
+    <div class="RFPCard">
+      <mat-card>
+        <mat-card-title>Rejected RFPs</mat-card-title>
+        <mat-card-content>
+          <table class="table">
+            <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Company</th>
+              <th scope="col">RFP Link</th>
+              <th scope="col">Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let r of getRejectedRFPs(); index as i">
+              <th scope="row">{{i + 1}}</th>
+              <td>{{ r.organization }}</td>
+              <td (click)="generatePDF(r)" class="linkDisplay"><a href="/admin-dashboard">View RFP</a></td>
+              <td>
+                <button class="actionButton" (click)="approveRFP(r)">Approve</button>
+                <button class="actionButton" (click)="deleteRFP(r)">Delete</button>
+              </td>
             </tr>
             </tbody>
           </table>
