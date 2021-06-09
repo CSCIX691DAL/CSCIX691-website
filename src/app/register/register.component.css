@@ -38,12 +38,11 @@ p {
 }
 
 .form-footer a:hover {
-    color:thistle
-    
+    color:#c08c0c;
   }
 
   .homeback a:hover {
-    color:thistle
+    color:#c08c0c;
   }
 
   a:link {
@@ -74,8 +73,6 @@ a:visited {
     width:320px;
     margin-top: 10px;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-	/*position: absolute;*/
-	/*right: 0px;*/
 }
 
 .form-control {
