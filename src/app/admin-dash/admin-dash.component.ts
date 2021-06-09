@@ -85,16 +85,24 @@ export class AdminDashComponent implements OnInit {
   }
 
   async batchCreateStudents() {
-    /* WILL BE FIXED WITH USER STORY 471
-    for (let student of this.studentRecords) {
-      let studentId = student['OrgDefinedId'].split('#')[1];
-      await this.authService.signupStudent(student['Email'], studentId, student['First Name'], student['Last Name'], studentId);
-      console.log(student);
+    try {
+      for (let student of this.studentRecords) {
+        // generate a random password
+        let randomPassword = Math.random().toString(36)
+        // TODO: Add users to Team specified in CSV file once teams are implemented
+        await this.authService.signupStudent(student['Email'], randomPassword, student['First Name'], student['Last Name'], student['OrgDefindID'], student['Team Leaders'].toLowerCase() == 'true');
+        // send password reset email to student
+        this.authService.resetPassword(student['Email'])
+        console.log(student);
+      }
+      alert('Students created successfully.');
+    } catch(exception: any) {
+      alert('An error occurred. Failed to create students.');
+    } finally {
+      this.studentRecords = [];
+      this.showConfirm = false;
+      this.ngOnInit();
     }
-    this.studentRecords = [];
-    this.showConfirm = false;
-    this.ngOnInit();
-    */
   }
 
   generatePDF(rfp: RFP): void {
