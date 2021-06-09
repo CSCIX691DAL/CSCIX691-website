@@ -5,6 +5,7 @@ export enum UserType {
 }
 
 export class User {
+  key?: string | null;
   active: boolean;
   fName: string;
   sName: string;

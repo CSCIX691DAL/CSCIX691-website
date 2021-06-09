@@ -35,6 +35,11 @@ export class UserService {
     return this.users;
   }
 
+  // Change an existing user
+  updateUser(user: User, changes: Object): Promise<void> {
+    return this.userReference.update(user.key, changes);
+  }
+
   // Adds a user to the database
   addUser(id: string, user: User) {
     let reference = this.userReference.set(id, user);
