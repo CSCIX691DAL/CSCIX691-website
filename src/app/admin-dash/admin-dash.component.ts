@@ -167,16 +167,17 @@ export class AdminDashComponent implements OnInit {
   
   CreateAnnouncement() {
 
-    let test = new Announcement();
-    test.title = (<HTMLInputElement>document.getElementById("announcementTitle")).value;
-    test.desc = (<HTMLInputElement>document.getElementById("announcementDesc")).value;
-    test.date = Date();
+    let newAnnouncement = new Announcement();
+    newAnnouncement.title = (<HTMLInputElement>document.getElementById("announcementTitle")).value;
+    newAnnouncement.desc = (<HTMLInputElement>document.getElementById("announcementDesc")).value;
+    newAnnouncement.date = Date();
+    newAnnouncement.user = localStorage.getItem("name");
 
-    if(test.title == "" || test.desc == ""){
+    if(newAnnouncement.title == "" || newAnnouncement.desc == ""){
       window.alert("Please fill out all sections");
     }
     else{
-      this.announcementService.pushAnnouncement(test);
+      this.announcementService.pushAnnouncement(newAnnouncement);
 
       window.alert("Your announcement has been created");
     }
