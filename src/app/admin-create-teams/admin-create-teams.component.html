@@ -1,0 +1,42 @@
+<div class="clientContent">
+    <!-- Sidebar Start -->
+    <div class="wrapper sideBar">
+      <nav id="sidebar">
+        <ul class="list-unstyled components sidebarNav">
+          <li class="active">
+            <a href="admin-dashboard">Overview</a>
+          </li>
+          <li>
+            <a href="admin-dashboard">Members</a>
+          </li>
+          <li>
+            <a href="admin-dashboard">Projects</a>
+          </li>
+          <li>
+            <a href="admin-dashboard">RFPs</a>
+          </li>
+          
+          <li>
+            <a href="admin-create-teams">Create Teams</a>
+          </li>
+  
+          <li>
+            <a href="../changepw">Update Password</a>
+        </ul>
+      </nav>
+    </div>
+    <div class="quest" >
+        <form id="teamForm" >
+            <h1>Create Group</h1>
+          <label for="fname">Enter Group Name</label>
+          <br>
+          <input type="text" id="groupName" >
+          <br>
+          <label for="lname">First Member</label>
+          <br>
+          <input type="text" id="memberName" >
+          <br>  
+          <button (click)="createGroup()" type="reset" value="Submit"> Submit </button>
+        </form>
+          
+      </div>

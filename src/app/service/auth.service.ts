@@ -1,10 +1,11 @@
-import { UserService } from './user.service';
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
-import { AngularFireDatabase, AngularFireList } from '@angular/fire/database'
+import { AngularFireDatabase } from '@angular/fire/database'
 import { Router } from '@angular/router';
+
+import * as firebase from 'firebase/app';
 import 'firebase/auth';
-import { UserType } from '../user/user.model';
+
 
 @Injectable({
   providedIn: 'root'
@@ -12,22 +13,30 @@ import { UserType } from '../user/user.model';
 export class AuthService {
   email: string;
   authState: any = null;
-
-  constructor(private firebaseAuth: AngularFireAuth, private db: AngularFireDatabase, private router: Router, private userService: UserService) {
+  constructor(private firebaseAuth: AngularFireAuth, private db: AngularFireDatabase, private router: Router) {
     this.firebaseAuth.authState.subscribe((auth) => {
       this.authState = auth;
     });
   }
 
-  signupClient(email: string, password: string, firstName: string, lastName: string, organization: string): void {
+  signup(email: string, password: string, firstName: string, lastName: string, organization: string): void {
     //Attempt to create a new user in the authentication database
     this.firebaseAuth
       .createUserWithEmailAndPassword(email, password)
+
       .then(value => {
-        // add client to database
-        this.userService.addClient(value.user.uid, email, firstName, lastName, organization);
-        console.log('Successfully created client.');
+        //console.log('Success!', value);
+        var userId = value.user.uid;
+        this.db.database.ref('users/' + userId).set({
+          email: email,
+          admin: false,
+          active:true,
+          fName: firstName,
+          sName: lastName,
+          org: organization
+        });
         this.login(email, password);
+
       })
       .catch(err => {
         localStorage.clear();
@@ -36,14 +45,23 @@ export class AuthService {
       });
   }
 
-  signupStudent(email: string, password: string, firstName: string, lastName: string, studentID: string, isTeamLeader: boolean): Promise<void> {
+  signupStudent(email: string, password: string, firstName: string, lastName: string, studentID: string): Promise<void> {
     //Attempt to create a new user in the authentication database
     return this.firebaseAuth
       .createUserWithEmailAndPassword(email, password)
+
       .then(value => {
-        // add student to database
-        this.userService.addStudent(value.user.uid, email, firstName, lastName, studentID, isTeamLeader, false);
-        console.log('Successfully created student.');
+        //console.log('Success!', value.user);
+        var userId = value.user.uid;
+        this.db.database.ref('users/' + userId).set({
+          email: email,
+          admin: false,
+          active:false,
+          fName: firstName,
+          sName: lastName,
+          studentID: studentID
+        });
+
       })
       .catch(err => {
         console.log('Something went wrong:', err.message);
@@ -69,10 +87,10 @@ export class AuthService {
           let userInfo = value.toJSON();
           console.log('Login was a success!');
           localStorage.setItem('isLogin', 'true');
-          if (userInfo['userType'] == UserType.Admin) {
+          if (userInfo['admin']) {
             localStorage.setItem("userType", "admin");
             window.location.href = "/admin-dashboard";
-          } else if (userInfo['userType'] == UserType.Client) {
+          } else if (userInfo['org']) {
             localStorage.setItem("userType", "client");
             window.location.href = "/client-dashboard";
           } else {

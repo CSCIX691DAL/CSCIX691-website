@@ -1,0 +1,57 @@
+.clientContent {
+    min-height: 800px;
+    display: flex;
+    flex-flow: row wrap;
+  }
+  
+  .sideBar {
+    min-height: 800px;
+    background-color: #000000;
+    max-width: 350px;
+    width: 15%;
+    color: white;
+  }
+  
+  .sidebarNav li {
+    height: 2em;
+    margin: 2em;
+    width: 100%;
+  }
+  
+  .sidebarNav li a {
+    color: white;
+    font-size: large;
+    text-decoration: none;
+    height: 2em;
+    padding: 0.7em 2em 0.7em 2em;
+    width: 100%;
+  }
+  
+  .sidebarNav li a:hover {
+    color: white;
+    background-color: #c08c0c;
+    width: 100%;
+    font-size: large;
+    text-decoration: none;
+  }
+  
+  .quest {
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20px;  
+  }
+
+  input {
+    height: 50px;
+    width: 600px;
+  }
+  
+  button {
+    background-color:green;
+    color: white;
+    height: 50px;
+    width: 600px;
+    padding: 14px 20px;
+    margin: 9px 0;
+  }
+  

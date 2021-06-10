@@ -10,7 +10,9 @@ import { ProjectsComponent } from './projects/projects.component';
 import { ChangepwComponent } from './changepw/changepw.component';
 import {RfpComponent} from './rfp/rfp.component';
 import {TestimonialsPageComponent} from './testimonialsPage/testimonialsPage.component';
+import {StudentQuestionnaireComponent} from './student-questionnaire/student-questionnaire.component';
 
+import {AdminCreateTeamsComponent} from './admin-create-teams/admin-create-teams.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent},
@@ -18,11 +20,14 @@ const routes: Routes = [
   { path: 'projects', component: ProjectsComponent},
   { path: 'register', component: RegisterComponent},
   { path: 'student-dashboard', component: StudentDashComponent},
+  { path: 'student-questionnaire', component: StudentQuestionnaireComponent},
   { path: 'client-dashboard', component: ClientDashComponent},
   { path: 'admin-dashboard', component: AdminDashComponent},
   { path: 'changepw', component: ChangepwComponent},
   { path: 'submitRFP', component: RfpComponent},
   { path: 'testimonialsPage', component: TestimonialsPageComponent},
+
+  { path: 'admin-create-teams', component: AdminCreateTeamsComponent},
 ];
 
 @NgModule({

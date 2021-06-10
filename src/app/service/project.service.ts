@@ -53,11 +53,6 @@ export class ProjectService {
     return reference;
   }
 
-  // Change an existing project
-  updateProject(project: Project, changes: Object): Promise<void> {
-    return this.projectReference.update(project.key, changes);
-  }
-
   // Sets a new project's Term to the next academic term, based on the current time
   setNextTerm(): string {
     // get the current date
