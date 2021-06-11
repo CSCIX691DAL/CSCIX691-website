@@ -1,0 +1,17 @@
+<div class="card">
+    <div class="card-header" id="headingTwo">
+      <h5 class="mb-0">
+        <button class="btn btn-outline" (click)="collapse.toggle()"
+            [attr.aria-expanded]="!collapsed"
+            aria-controls="accordian">
+            <ng-content select="[header]"></ng-content>
+        </button>
+      </h5>
+    </div>
+    <div #collapse="ngbCollapse" [(ngbCollapse)]="collapsed"
+     data-parent="#accordion">
+        <div class="card-body">
+            <ng-content select="[content]"></ng-content>
+        </div>
+    </div>
+  </div>

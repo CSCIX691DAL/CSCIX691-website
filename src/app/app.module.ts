@@ -32,6 +32,7 @@ import { RfpComponent } from './rfp/rfp.component';
 import {TestimonialsPageComponent} from './testimonialsPage/testimonialsPage.component';
 import {MatSelectModule} from '@angular/material/select';
 import { NgxCsvParserModule } from 'ngx-csv-parser';
+import {AccordianComponent} from './accordian/accordian.component';
 
 @NgModule({
   declarations: [
@@ -52,6 +53,7 @@ import { NgxCsvParserModule } from 'ngx-csv-parser';
     ChangepwComponent,
     PastComponent,
     RfpComponent,
+    AccordianComponent,
 
   ],
   imports: [
