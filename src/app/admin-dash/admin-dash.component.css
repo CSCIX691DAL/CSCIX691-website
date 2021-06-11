@@ -92,6 +92,18 @@
   width: 50%;
 }
 
+.form {
+  width: 100%;
+}
+
+.announcement {
+  width: 100%;
+}
+
+#announcementDesc {
+  height: 150px;
+}
+
 .actionButton {
   background-color: white;
   color: black;
