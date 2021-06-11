@@ -10,14 +10,12 @@ import { ProjectsComponent } from './projects/projects.component';
 import { ChangepwComponent } from './changepw/changepw.component';
 import {RfpComponent} from './rfp/rfp.component';
 import {TestimonialsPageComponent} from './testimonialsPage/testimonialsPage.component';
-import {StudentQuestionnaireComponent} from './student-questionnaire/student-questionnaire.component';
 
 
 const routes: Routes = [
   { path: '', component: HomeComponent},
   { path: 'auth', component: AuthComponent},
   { path: 'projects', component: ProjectsComponent},
-  { path: 'student-questionnaire', component: StudentQuestionnaireComponent},
   { path: 'register', component: RegisterComponent},
   { path: 'student-dashboard', component: StudentDashComponent},
   { path: 'client-dashboard', component: ClientDashComponent},
