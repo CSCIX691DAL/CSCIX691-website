@@ -1,13 +1,13 @@
+import { UserService } from './../service/user.service';
 import { ProjectService } from './../service/project.service';
 import {Component, OnInit} from '@angular/core';
-import {ThrowStmt} from '@angular/compiler';
-import {FirebaseService} from '../service/users.service';
 import {RfpService} from '../service/rfp.service';
 import {AnnouncementService} from '../service/announcement.service';
 import Announcement from "../admin-dash/announcement.model"
 import {AuthService} from '../service/auth.service';
 import {NgxCsvParser} from 'ngx-csv-parser';
 import {NgxCSVParserError} from 'ngx-csv-parser';
+import { User } from '../user/user.model';
 import pdfMake from 'pdfmake/build/pdfmake';
 import pdfFonts from 'pdfmake/build/vfs_fonts';
 import RFP from '../rfp/rfp.model';
@@ -19,19 +19,15 @@ import Project from '../projects/project.model';
   styleUrls: ['./admin-dash.component.css']
 })
 export class AdminDashComponent implements OnInit {
-  actUsers: Object[];
-  inactUsers: Object[];
   showConfirm: boolean = false;
   studentRecords: any[] = [];
 
-  constructor(private firebaseService: FirebaseService,
+  constructor(private userService: UserService,
               private authService: AuthService,
               private ngxCsvParser: NgxCsvParser,
               private rfpService: RfpService,
-              private projectService: ProjectService, 
+              private projectService: ProjectService,
               private announcementService: AnnouncementService) {
-    this.actUsers = [];
-    this.inactUsers = [];
   }
 
   ngOnInit(): void {
@@ -52,6 +48,13 @@ export class AdminDashComponent implements OnInit {
     });
   }
 
+  // returns a list of rejected RFPs
+  getRejectedRFPs(): RFP[] {
+    return this.rfpService.getRFPs().filter((rfp, index, array) => {
+      return rfp.status == 'Rejected';
+    });
+  }
+
   // Returns a list of projects with status 'Active'
   getActiveProjects(): Project[] {
     return this.projectService.getProjects().filter((project, index, array) => {
@@ -59,29 +62,17 @@ export class AdminDashComponent implements OnInit {
     })
   }
 
-  getActiveUsersFromDB() {
-
-    this.firebaseService.getUsers().then((values) => {
-      values.forEach((value) => {
-        let userInfo = value.toJSON();
-        if (userInfo['active'] === true) {
-          this.actUsers.push(value.toJSON());
-        }
-
-
-      });
+  // Returns a list of active users
+  getActiveUsersFromDB(): User[] {
+    return this.userService.getUsers().filter((user, index, array) => {
+      return user.active;
     });
   }
 
-  getInactiveUsersFromDB() {
-
-    this.firebaseService.getUsers().then((values) => {
-      values.forEach((value) => {
-        let userInfo1 = value.toJSON();
-        if (userInfo1['active'] === false) {
-          this.inactUsers.push(value.toJSON());
-        }
-      });
+  // Returns a list of inactive users
+  getInactiveUsersFromDB(): User[] {
+    return this.userService.getUsers().filter((user, index, array) => {
+      return !user.active;
     });
   }
 
@@ -104,6 +95,7 @@ export class AdminDashComponent implements OnInit {
   }
 
   async batchCreateStudents() {
+    /* WILL BE FIXED WITH USER STORY 471
     for (let student of this.studentRecords) {
       let studentId = student['OrgDefinedId'].split('#')[1];
       await this.authService.signupStudent(student['Email'], studentId, student['First Name'], student['Last Name'], studentId);
@@ -112,6 +104,7 @@ export class AdminDashComponent implements OnInit {
     this.studentRecords = [];
     this.showConfirm = false;
     this.ngOnInit();
+    */
   }
 
   generatePDF(rfp: RFP): void {
@@ -120,7 +113,7 @@ export class AdminDashComponent implements OnInit {
   }
 
   // Set an RFP's status to approved and make it a project
-  ApproveRFP(rfp: RFP): void {
+  approveRFP(rfp: RFP): void {
     // approve RFP
     this.rfpService.updateRFP(rfp, {status: 'Approved'});
     // create project out of RFP
@@ -128,8 +121,13 @@ export class AdminDashComponent implements OnInit {
   }
 
   // Set an RFP's status to rejected
-  RejectRFP(rfp: RFP): void {
+  rejectRFP(rfp: RFP): void {
     this.rfpService.updateRFP(rfp, {status: 'Rejected'});
+  }
+
+  // Delete an RFP from the database
+  deleteRFP(rfp: RFP): void {
+    this.rfpService.deleteRFP(rfp);
   }
 
   toggleEditLinkTextbox(index: number): void {
