@@ -57,50 +57,17 @@
         <mat-card-title>All Active and Past Projects</mat-card-title>
         <mat-card-content>
           <div id="accordion">
-            <app-accordian>
-              <p header>X691 Course Website - Team I</p>
-              <p content>
-                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf
-                moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
-                Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda
-                shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea
-                proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim
-                aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-              </p>
-            </app-accordian>
-            <app-accordian>
-              <p header>Risk Management Project - Team Fred Winters</p>
-              <p content>
-                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf
-                moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
-                Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda
-                shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea
-                proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim
-                aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-              </p>
-            </app-accordian>
-            <app-accordian>
-              <p header>Bluethumb Project - Team OtherTeam</p>
-              <p content>
-                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf
-                moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
-                Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda
-                shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea
-                proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim
-                aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-              </p>
-            </app-accordian>
-            <app-accordian>
-              <p header>KanBan Board</p>
-              <p content>
-                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf
-                moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
-                Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda
-                shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea
-                proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim
-                aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-              </p>
-            </app-accordian>
+            <div *ngFor="let project of getProjects()">
+              <app-accordian>
+                <p header>{{ project.title }}</p>
+                <div content>
+                  <a href="{{ project.azureLink }}" target="_blank">Click here to see the Azure board for this project.</a>
+                    <br>
+                    <br>
+                    {{ project.descLong }}
+                </div>
+              </app-accordian>
+            </div>
           </div>
         </mat-card-content>
       </mat-card>
@@ -136,6 +103,26 @@
         <mat-card-title>Upcoming Iterations</mat-card-title>
         <mat-card-content>
           You have no upcoming Iterations
+        </mat-card-content>
+      </mat-card>
+      <mat-card class="members3">
+        <mat-card-title>Azure Links</mat-card-title>
+        <mat-card-content>
+          <table class="table">
+            <thead>
+            <tr>
+              <th scope="col">Project</th>
+              <th scope="col">Azure Link</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor='let Projects of getProjects()'>
+              <td>{{Projects.title}}</td>
+              <td><a href="{{Projects.azureLink}}" target="_blank">Link</a></td>
+            </tr>
+
+            </tbody>
+          </table>
         </mat-card-content>
       </mat-card>
     </div>

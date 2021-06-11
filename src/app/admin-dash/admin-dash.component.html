@@ -34,22 +34,48 @@
               <th scope="col">#</th>
               <th scope="col">Company</th>
               <th scope="col">RFP Link</th>
-              <th scope="col">Status</th>
+              <th scope="col">Actions</th>
             </tr>
             </thead>
             <tbody>
-            <tr *ngFor="let r of getRFPs(); index as i">
+            <tr *ngFor="let r of getPendingRFPs(); index as i">
               <th scope="row">{{i + 1}}</th>
               <td>{{ r.organization }}</td>
               <td (click)="generatePDF(r)" class="linkDisplay"><a href="/admin-dashboard">View RFP</a></td>
-              <div ngbDropdown class="dropdownClass">
-                <td ngbDropdownToggle>{{ r.status }}</td>
-                <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-                  <button ngbDropdownItem (click)="ApproveRFP(r)">Approve Request</button>
-                  <button ngbDropdownItem (click)="RejectRFP(r)">Reject Request</button>
-                </div>
-              </div>
-
+              <td>
+                <button class="actionButton" (click)="approveRFP(r)">Approve</button>
+                <button class="actionButton" (click)="rejectRFP(r)">Reject</button>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </mat-card-content>
+      </mat-card>
+    </div>
+    <!-- Pending Project Requests End -->
+    <!-- Rejected Project Requests Start -->
+    <div class="RFPCard">
+      <mat-card>
+        <mat-card-title>Rejected RFPs</mat-card-title>
+        <mat-card-content>
+          <table class="table">
+            <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Company</th>
+              <th scope="col">RFP Link</th>
+              <th scope="col">Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let r of getRejectedRFPs(); index as i">
+              <th scope="row">{{i + 1}}</th>
+              <td>{{ r.organization }}</td>
+              <td (click)="generatePDF(r)" class="linkDisplay"><a href="/admin-dashboard">View RFP</a></td>
+              <td>
+                <button class="actionButton" (click)="approveRFP(r)">Approve</button>
+                <button class="actionButton" (click)="deleteRFP(r)">Delete</button>
+              </td>
             </tr>
             </tbody>
           </table>
@@ -63,39 +89,31 @@
         <mat-card-title>Active Projects</mat-card-title>
         <mat-card-content>
           <div id="accordion">
-            <app-accordian>
-              <p header>X691 Course Website - Team I</p>
-              <p content>
-                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf
-                moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
-                Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda
-                shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea
-                proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim
-                aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-              </p>
-            </app-accordian>
-            <app-accordian>
-              <p header>Risk Management Project - Team Fred Winters</p>
-              <p content>
-                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf
-                moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
-                Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda
-                shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea
-                proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim
-                aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-              </p>
-            </app-accordian>
-            <app-accordian>
-              <p header>Bluethumb Project - Team OtherTeam</p>
-              <p content>
-                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf
-                  moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
-                  Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda
-                  shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea
-                  proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim
-                  aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-              </p>
-            </app-accordian>
+            <div *ngFor="let project of getActiveProjects(); index as i">
+              <app-accordian>
+                <p header>{{ project.title }}</p>
+                <div content>
+                  <div class="viewLink">
+                    <p>
+                      <a href="{{ project.azureLink }}" target="_blank">Click here to see the Azure board for this project.</a>
+                      <!-- image from https://commons.wikimedia.org/wiki/File:Edit_icon_(the_Noun_Project_30184).svg accessed June 4, 2021 -->
+                      <input type="image" class="icon" src="..\..\assets\images\editIcon.png" alt="Edit link" (click)="toggleEditLinkTextbox(i)">
+                    </p>
+                  </div>
+                  <div class="editLink" style="display: none">
+                    <label for="editLinkTextbox">Enter Azure link:</label>
+                    <input type="text" class="editLinkTextbox">
+                    <!-- image from https://www.pngwing.com/en/free-png-ynlki/download accessed June 4, 2021 -->
+                    <input type="image" class="icon" src="..\..\assets\images\checkIcon.png" alt="Confirm" (click)="editAzureLink(i, project)">
+                    <!-- image from https://www.pngjoy.com/preview/p8c3o7r0f0w8i1_cancel-icon-cross-transparent-png/ accessed June 4, 2021 -->
+                    <input type="image" class="icon" src="..\..\assets\images\cancelIcon.png" alt="Cancel" (click)="toggleEditLinkTextbox(i)">
+                  </div>
+                  <br>
+                  <br>
+                  {{ project.descLong }}
+                </div>
+              </app-accordian>
+            </div>
           </div>
         </mat-card-content>
       </mat-card>
@@ -143,14 +161,14 @@
             </tr>
             </thead>
             <tbody>
-            <tr *ngFor="let u of actUsers; index as i">
+            <tr *ngFor="let u of getActiveUsersFromDB(); index as i">
               <th scope="row">{{i + 1}}</th>
-              <td>{{ u["fName"] }}</td>
-              <td>{{ u["sName"] }}</td>
-              <td>{{ u["email"] }}</td>
-              <td *ngIf="u.org">Client</td>
-              <td *ngIf="u.admin === true">Admin</td>
-              <td *ngIf="u.admin === false && !u.org">Student</td>
+              <td>{{ u.fName }}</td>
+              <td>{{ u.sName }}</td>
+              <td>{{ u.email }}</td>
+              <td *ngIf="userService.isClient(u)">Client</td>
+              <td *ngIf="userService.isAdmin(u)">Admin</td>
+              <td *ngIf="userService.isStudent(u)">Student</td>
             </tr>
 
             </tbody>
@@ -172,14 +190,14 @@
             </tr>
             </thead>
             <tbody>
-            <tr *ngFor="let k of inactUsers; index as j">
+            <tr *ngFor="let k of getInactiveUsersFromDB(); index as j">
               <th scope="row">{{j + 1}}</th>
-              <td>{{ k["fName"] }}</td>
-              <td>{{ k["sName"] }}</td>
-              <td>{{ k["email"] }}</td>
-              <td *ngIf="k.org">Client</td>
-              <td *ngIf="k.admin === true">Admin</td>
-              <td *ngIf="k.admin === false && !k.org">Student</td>
+              <td>{{ k.fName }}</td>
+              <td>{{ k.sName }}</td>
+              <td>{{ k.email }}</td>
+              <td *ngIf="userService.isClient(k)">Client</td>
+              <td *ngIf="userService.isAdmin(k)">Admin</td>
+              <td *ngIf="userService.isStudent(k)">Student</td>
             </tr>
 
             </tbody>
