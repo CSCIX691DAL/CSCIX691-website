@@ -13,18 +13,19 @@
       <li class="nav-item authNav" *ngIf="isLogin==='true'">
         <a class="nav-link" href="/" (click)="logout()">Logout</a>
       </li>
-
+      <li class="nav-item active" *ngIf="isLogin==='true'">
+          <a class="nav-link" href="/announcement">Announcement</a>
+        </li>
       <li class="nav-item authNav" *ngIf="isLogin!=='true'">
         <a class="nav-link" href="/auth">Login</a>
       </li>
-
-
       <li class="nav-item active">
         <a class="nav-link" href="/projects">Projects</a>
       </li>
       <li class="nav-item active" *ngIf="isLogin==='true'">
         <a class="nav-link" href="/{{userType}}-dashboard">Dashboard</a>
       </li>
+     
 
     </ul>
   </div>

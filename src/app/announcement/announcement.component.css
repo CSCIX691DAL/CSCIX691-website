@@ -1,0 +1,26 @@
+.annoIntro {
+    width: 75%;
+    line-height: 155%;
+    align-self: center;
+    margin: 2rem;
+    background-color: #707372;
+    color: #ffffff;
+  }
+.heading1 {
+  padding: 2%;
+  
+ 
+  }
+  .jumboTitle {
+    font-size:  calc(1rem + 3vw);
+    text-align: center;
+    margin-top: 6rem;
+    margin-left: 5rem;
+  }
+  
+  .jumboSubTitle {
+    text-align: center;
+    font-size: calc(1rem + 1vw);
+    margin-left: 5rem;
+  }
+  
