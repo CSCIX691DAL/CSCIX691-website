@@ -9,8 +9,6 @@ import Questionnaire from './student-questionnaire.model';
   styleUrls: ['./student-questionnaire.component.css']
 })
 export class StudentQuestionnaireComponent implements OnInit {
-  
-  
   leader: string = ''; 
   pastCourses: string = ''; 
   studentRep: string = ''; 
@@ -18,7 +16,6 @@ export class StudentQuestionnaireComponent implements OnInit {
   pastRemote: string = ''; 
   acc: string = '';  
   pastReality: string = ''; 
-  
   pastAgileSoft: string = ''; 
   pastGitEX: string = ''; 
   pastAgileScrum: string = ''; 
