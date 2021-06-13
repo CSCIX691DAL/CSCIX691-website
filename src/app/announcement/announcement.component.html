@@ -1,0 +1,32 @@
+<div class="announcementLayoutDiv">
+    <div
+    class="p-5 text-center bg-image"
+    style="
+      background-image: url('../../assets/images/TopImage.JPG');
+      height: 320px;
+    ">
+      <div class="mask">
+        <div class="d-flex justify-content-center align-items-center h-100">
+          <div>
+            <h1 class="mb-lg-3 jumboTitle">Welcome to CSCI X691</h1>
+            <h4 class="mb-3 jumboSubTitle">Dalhousie Community Outreach</h4>
+          </div>
+        </div>
+      </div>
+  </div>
+
+  <h1 class="heading1" >Welcome to the announcement page</h1>
+
+  <div *ngFor="let r of getAnnouncement();">
+    <div  class="card card-block testimonials">
+        <h2 class="card-title">{{ r.title }}</h2>
+        <mat-card-content>
+          {{ r.desc }}
+        </mat-card-content>
+        
+        <h4 class="card-subtitle">Submit by "{{ r.user }}" at {{ r.date | date:'yyyy/MM/dd h:mm:ss a' }}</h4>
+    </div>
+    <br>
+  </div>
+  
+</div>

@@ -69,6 +69,7 @@ export class AuthService {
           let userInfo = value.toJSON();
           console.log('Login was a success!');
           localStorage.setItem('isLogin', 'true');
+          localStorage.setItem('name', userInfo['fName'] + " " + userInfo['sName']);
           if (userInfo['userType'] == UserType.Admin) {
             localStorage.setItem("userType", "admin");
             window.location.href = "/admin-dashboard";

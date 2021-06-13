@@ -2,6 +2,8 @@ import { UserService } from './../service/user.service';
 import { ProjectService } from './../service/project.service';
 import {Component, OnInit} from '@angular/core';
 import {RfpService} from '../service/rfp.service';
+import {AnnouncementService} from '../service/announcement.service';
+import Announcement from "../announcement/announcement.model"
 import {AuthService} from '../service/auth.service';
 import {NgxCsvParser} from 'ngx-csv-parser';
 import {NgxCSVParserError} from 'ngx-csv-parser';
@@ -24,7 +26,8 @@ export class AdminDashComponent implements OnInit {
               private authService: AuthService,
               private ngxCsvParser: NgxCsvParser,
               private rfpService: RfpService,
-              private projectService: ProjectService) {
+              private projectService: ProjectService,
+              private announcementService: AnnouncementService) {
   }
 
   ngOnInit(): void {
@@ -159,4 +162,24 @@ export class AdminDashComponent implements OnInit {
     // hide the edit section
     this.toggleEditLinkTextbox(index);
   }
+  
+  CreateAnnouncement() {
+
+    let newAnnouncement = new Announcement();
+    newAnnouncement.title = (<HTMLInputElement>document.getElementById("announcementTitle")).value;
+    newAnnouncement.desc = (<HTMLInputElement>document.getElementById("announcementDesc")).value;
+    newAnnouncement.date = Date();
+    newAnnouncement.user = localStorage.getItem("name");
+
+    if(newAnnouncement.title == "" || newAnnouncement.desc == ""){
+      window.alert("Please fill out all sections");
+    }
+    else{
+      this.announcementService.createAnnouncement(newAnnouncement);
+
+      window.alert("Your announcement has been created");
+    }
+  
+  }
+
 }
