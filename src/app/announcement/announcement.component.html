@@ -15,7 +15,7 @@
       </div>
   </div>
 
-  <h1 class="heading1" >Welcome to announcement page</h1>
+  <h1 class="heading1" >Welcome to the announcement page</h1>
 
   <div *ngFor="let r of getAnnouncement();">
     <div  class="card card-block testimonials">
@@ -24,7 +24,7 @@
           {{ r.desc }}
         </mat-card-content>
         
-        <h4 class="card-subtitle">Submit by "{{ r.user }}" at {{ r.date }}</h4>
+        <h4 class="card-subtitle">Submit by "{{ r.user }}" at {{ r.date | date:'yyyy/MM/dd h:mm:ss a' }}</h4>
     </div>
     <br>
   </div>
