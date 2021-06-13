@@ -1,10 +1,8 @@
-
-
 export default class Announcement {
-    
-    
-    date: string;
-    desc: string;
+    key?: string | null;
     title: string;
+    desc: string;
     user: string;
+    date: string;
   }
+  

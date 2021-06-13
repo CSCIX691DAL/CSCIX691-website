@@ -3,7 +3,7 @@ import { ProjectService } from './../service/project.service';
 import {Component, OnInit} from '@angular/core';
 import {RfpService} from '../service/rfp.service';
 import {AnnouncementService} from '../service/announcement.service';
-import Announcement from "../admin-dash/announcement.model"
+import Announcement from "./announcement.model"
 import {AuthService} from '../service/auth.service';
 import {NgxCsvParser} from 'ngx-csv-parser';
 import {NgxCSVParserError} from 'ngx-csv-parser';
@@ -175,7 +175,7 @@ export class AdminDashComponent implements OnInit {
       window.alert("Please fill out all sections");
     }
     else{
-      this.announcementService.pushAnnouncement(newAnnouncement);
+      this.announcementService.createAnnouncement(newAnnouncement);
 
       window.alert("Your announcement has been created");
     }

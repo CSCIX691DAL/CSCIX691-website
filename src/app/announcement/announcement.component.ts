@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import Announcement from '../announcement/announcement.model';
+import { AnnouncementService } from '../service/announcement.service';
+
 @Component({
   selector: 'app-announcement',
   templateUrl: './announcement.component.html',
@@ -7,11 +9,11 @@ import Announcement from '../announcement/announcement.model';
 })
 export class AnnouncementComponent implements OnInit {
 
-  constructor() { }
+  constructor(private announcementService: AnnouncementService) { }
 
   ngOnInit(): void {
   }
-  //getAnnouncement(): Announcement[]{
-
-  //}
+  getAnnouncement(): Announcement[]{
+    return this.announcementService.getAnnouncements().reverse();
+  }
 }
