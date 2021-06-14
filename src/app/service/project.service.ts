@@ -39,7 +39,8 @@ export class ProjectService {
     let project = new Project();
     project.azureLink = 'https://dev.azure.com/x691w21i/Website%20Summer%202021'; //place holder for azurelinks
     project.rfp = rfp;
-    project.client = rfp.contactName;
+    project.contactName = rfp.contactName;
+    project.client = rfp.client; // set client to currently logged-in user
     project.descShort = rfp.problem;
     project.descLong = 'Testing testing testing' // need further clarification of where this comes from
     project.status = 'Accepted';
