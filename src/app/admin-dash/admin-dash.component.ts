@@ -1,3 +1,4 @@
+import { TeamService } from './../service/team.service';
 import { UserService } from './../service/user.service';
 import { ProjectService } from './../service/project.service';
 import {Component, OnInit} from '@angular/core';
@@ -10,6 +11,7 @@ import pdfMake from 'pdfmake/build/pdfmake';
 import pdfFonts from 'pdfmake/build/vfs_fonts';
 import RFP from '../rfp/rfp.model';
 import Project from '../projects/project.model';
+import Team from '../team/team.model';
 
 @Component({
   selector: 'app-admin-dash',
@@ -24,7 +26,8 @@ export class AdminDashComponent implements OnInit {
               private authService: AuthService,
               private ngxCsvParser: NgxCsvParser,
               private rfpService: RfpService,
-              private projectService: ProjectService) {
+              private projectService: ProjectService,
+              private teamService: TeamService) {
   }
 
   ngOnInit(): void {
@@ -91,6 +94,29 @@ export class AdminDashComponent implements OnInit {
         let randomPassword = Math.random().toString(36)
         // TODO: Add users to Team specified in CSV file once teams are implemented
         await this.authService.signupStudent(student['Email'], randomPassword, student['First Name'], student['Last Name'], student['OrgDefindID'], student['Team Leaders'].toLowerCase() == 'true');
+        
+        // if a project team name was specified
+        if (student['Project Team']) {
+          // attempt to get the team from the database
+          let team = this.teamService.getTeamByName(student['Project Team']);
+          // if the team does not exist
+          if (!team) {
+            // create the team
+            team = new Team();
+            team.name = student['Project Team'];
+            team.members = [];
+            // add the team to the database
+            this.teamService.addTeam(team);
+            team = null;
+            // get the team from the database
+            team = this.teamService.getTeamByName(student['Project Team']);
+          }
+
+          // get the newly created student from the database
+          let newStudent = this.userService.getStudentByID(student['OrgDefindID']);
+          // add the student to the team
+          this.teamService.addStudentToTeam(team, newStudent);
+        }
         // send password reset email to student
         this.authService.resetPassword(student['Email'])
         console.log(student);

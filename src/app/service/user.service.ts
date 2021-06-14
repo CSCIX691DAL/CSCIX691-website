@@ -15,6 +15,9 @@ export class UserService {
 
   constructor(private db: AngularFireDatabase) {
     this.userReference = db.list('users/');
+    db.database.ref('users/').on('value', snapshot => {
+      this.users = snapshot.val();
+    });
     this.refreshUsers();
   }
 
@@ -35,6 +38,14 @@ export class UserService {
     return this.users;
   }
 
+  getStudentByID(studentID: string): Student {
+    let student = Object.values(this.users).filter((user, index, array) => {
+      return (<Student>user).studentID == studentID;
+    });
+
+    return <Student>student[0];
+  }
+
   // Change an existing user
   updateUser(user: User, changes: Object): Promise<void> {
     return this.userReference.update(user.key, changes);
@@ -43,6 +54,7 @@ export class UserService {
   // Adds a user to the database
   addUser(id: string, user: User) {
     let reference = this.userReference.set(id, user);
+    this.userReference.update(id, { key: id });
     this.refreshUsers(); // update list of users
     return reference;
   }
