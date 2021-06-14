@@ -38,7 +38,7 @@
             </tr>
             </thead>
             <tbody>
-            <tr *ngFor='let RFPs of getRFPs()'>
+            <tr *ngFor='let RFPs of getMyRFPs()'>
               <td>{{RFPs.projectTitle}}</td>
               <td>{{RFPs.organization}}</td>
               <td><a href="assets/images/TopImage.JPG">RFP</a></td>
@@ -57,7 +57,7 @@
         <mat-card-title>All Active and Past Projects</mat-card-title>
         <mat-card-content>
           <div id="accordion">
-            <div *ngFor="let project of getProjects()">
+            <div *ngFor="let project of getMyProjects()">
               <div class="card">
                 <div class="card-header" id="headingOne">
                   <h5 class="mb-0">
@@ -125,7 +125,7 @@
             </tr>
             </thead>
             <tbody>
-            <tr *ngFor='let Projects of getProjects()'>
+            <tr *ngFor='let Projects of getMyProjects()'>
               <td>{{Projects.title}}</td>
               <td><a href="{{Projects.azureLink}}" target="_blank">Link</a></td>
             </tr>
