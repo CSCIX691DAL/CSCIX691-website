@@ -70,47 +70,47 @@
           <label>7. Project Choice #3 *</label>
           <br>
           <select id="projectChoice3" >
-            <option *ngFor='let Projects of getProjects()' value={{Projects.title}}>{{Projects.title}}</option>
+            <option *ngFor='let Projects of getPrgitojects()' value={{Projects.title}}>{{Projects.title}}</option>
           </select>
           <br>
           <br>
           <label>8. Would you like to be a leader *</label>
           <br>
-          <input class="rad" type="radio" name="leader" value="Yes" checked>
+          <input (change)="leaderCheck($event)" class="rad" type="radio" name="leader" value="Yes" checked>
           <label>&nbsp; Yes</label><br>
-          <input class="rad" type="radio" name="leader" value="No" checked>
+          <input (change)="leaderCheck($event)" class="rad" type="radio" name="leader" value="No" checked>
           <label>&nbsp; No</label><br>
           <br>
           <label>9. Have you taken any of CSCI 2691, 3691, 4691 in Summer 2020, or Fall 2020? *</label>
           <br>
-          <input class="rad" type="radio" name="pastCourses" value="Yes">
+          <input (change)="pastCoursesCheck($event)" class="rad" type="radio" name="pastCourses" value="Yes">
           <label>&nbsp; Yes</label><br>
-          <input class="rad" type="radio" name="pastCourses" value="No">
+          <input (change)="pastCoursesCheck($event)" class="rad" type="radio" name="pastCourses" value="No">
           <label>&nbsp;  No</label><br>
           <br>
 
           <label>10. Would you like to be a student representative? *</label>
           <br>
-          <input class="rad" type="radio" name="studentRep" value="Yes">
+          <input (change)="studentRepCheck($event)" class="rad" type="radio" name="studentRep" value="Yes">
           <label>&nbsp; Yes</label><br>
-          <input class="rad" type="radio" name="studentRep" value="No">
+          <input (change)="studentRepCheck($event)" class="rad" type="radio" name="studentRep" value="No">
           <label>&nbsp;  No</label><br>
           <br>
 
           <label>11. Are you comfortable accepting the IP and NDA policies of the client? *</label>
           <br>
-          <input class="rad" type="radio" name="ipNDA" value="Yes">
+          <input (change)="ipNDACheck($event)" class="rad" type="radio" name="ipNDA" value="Yes">
           <label>&nbsp;  Yes</label><br>
-          <input class="rad" type="radio" name="ipNDA" value="No">
+          <input (change)="ipNDACheck($event)" class="rad" type="radio" name="ipNDA" value="No">
           <label>&nbsp;  No</label><br>
           <br>
 
           <label>12. Have you taken any of the remote versions of CSCI X691 offered in Winter 2020, 
             <br>Summer 2020, Fall 2021, Winter 2021 *</label>
           <br>
-          <input class="rad" type="radio" name="pastRemote" value="Yes">
+          <input (change)="pastRemoteCheck($event)" class="rad" type="radio" name="pastRemote" value="Yes">
           <label>&nbsp;  Yes</label><br>
-          <input class="rad" type="radio" name="pastRemote" value="No">
+          <input (change)="pastRemoteCheck($event)" class="rad" type="radio" name="pastRemote" value="No">
           <label>&nbsp;  No</label><br>
           <br>
 
@@ -123,9 +123,9 @@
           <label>14. Do you need any accommodation? see <br>
             https://www.dal.ca/campus_life/academic-support/<br>accessibility/accommodations-.html</label>
           <br>
-          <input class="rad" type="radio" name="acc" value="Yes">
+          <input (change)="accCheck($event)" class="rad" type="radio" name="acc" value="Yes">
           <label >&nbsp; Yes</label><br>
-          <input class="rad" type="radio" name="acc" value="No">
+          <input (change)="accCheck($event)" class="rad" type="radio" name="acc" value="No">
           <label>&nbsp; No</label><br>
           <br>
           <label>15. Operating systems in the laptops you use *</label>
@@ -144,185 +144,190 @@
 
           <label>17. Do you have any experience in Agile Software development? *</label>
           <br>
-          <input class="rad" type="radio" name="pastAgileSoft" value="I do not know what is Agile">
+          <input (change)="pastAgileSoftCheck($event)" class="rad" type="radio" name="pastAgileSoft" value="I do not know what is Agile">
           <label>&nbsp; I do not know what is Agile</label><br>
-          <input class="rad" type="radio" name="pastAgileSoft" value="No experience but know the theory">
+          <input (change)="pastAgileSoftCheck($event)" class="rad" type="radio" name="pastAgileSoft" value="No experience but know the theory">
           <label>&nbsp;  No experience but know the theory</label><br>
-          <input class="rad" type="radio" name="pastAgileSoft"  value="Little experience">
+          <input (change)="pastAgileSoftCheck($event)" class="rad" type="radio" name="pastAgileSoft"  value="Little experience">
           <label >&nbsp;  Little experience</label><br>
-          <input class="rad" type="radio" name="pastAgileSoft"  value="Considerable experience">
+          <input (change)="pastAgileSoftCheck($event)" class="rad" type="radio" name="pastAgileSoft"  value="Considerable experience">
           <label >&nbsp;  Considerable experience</label><br>
-          <input class="rad" type="radio" name="pastAgileSoft" value="I call myself Agile Practitioner">
+          <input (change)="pastAgileSoftCheck($event)" class="rad" type="radio" name="pastAgileSoft" value="I call myself Agile Practitioner">
           <label >&nbsp;  I call myself Agile Practitioner</label><br>
           <br>
 
           <label>18. How much are you familiar with GitLab? *</label>
           <br>
-          <input class="rad" type="radio" name="pastGitEX" value="Not at all">
+          <input (change)="pastGitEXCheck($event)" class="rad" type="radio" name="pastGitEX" value="Not at all">
           <label>&nbsp;  Not at all </label><br>
-          <input class="rad" type="radio" name="pastGitEX" value="Low">
+          <input (change)="pastGitEXCheck($event)" class="rad" type="radio" name="pastGitEX" value="Low">
           <label>&nbsp;  Low</label><br>
-          <input class="rad" type="radio" name="pastGitEX" value="Average level">
+          <input (change)="pastGitEXCheck($event)" class="rad" type="radio" name="pastGitEX" value="Average level">
           <label>&nbsp;  Average level</label><br>
-
-          <input class="rad" type="radio" name="pastGitEX" value="Use it frequently">
+          <input (change)="pastGitEXCheck($event)" class="rad" type="radio" name="pastGitEX" value="Use it frequently">
           <label>&nbsp;  Use it frequently</label><br>
           <br>
 
           <label>19. How much are you familiar with Agile/Scrum? *</label>
           <br>
-          <input class="rad" type="radio" name="pastAgileScrum" value="Not at all">
+          <input (change)="pastAgileScrumCheck($event)" class="rad" type="radio" name="pastAgileScrum" value="Not at all">
           <label>&nbsp;  Not at all </label><br>
-          <input class="rad" type="radio" name="pastAgileScrum" value="Low">
+          <input (change)="pastAgileScrumCheck($event)" class="rad" type="radio" name="pastAgileScrum" value="Low">
           <label> &nbsp; Low</label><br>
-          <input class="rad" type="radio" name="pastAgileScrum" value="Average level">
+          <input (change)="pastAgileScrumCheck($event)" class="rad" type="radio" name="pastAgileScrum" value="Average level">
           <label>&nbsp;  Average level</label><br>
-          <input class="rad" type="radio" name="pastAgileScrum" value="Use it frequently">
+          <input (change)="pastAgileScrumCheck($event)" class="rad" type="radio" name="pastAgileScrum" value="Use it frequently">
           <label>&nbsp;  Use it frequently</label><br>
           <br>
 
           <label>20. How much do you familiar with AngularJS/Angular? *</label>
           <br>
-          <input class="rad" type="radio" name="pastAngular" value="Not at all">
+          <input (change)="pastAngularCheck($event)" class="rad" type="radio" name="pastAngular" value="Not at all">
           <label>&nbsp;  Not at all </label><br>
-          <input class="rad" type="radio" name="pastAngular" value="Low">
+          <input (change)="pastAngularCheck($event)" class="rad" type="radio" name="pastAngular" value="Low">
           <label>&nbsp;  Low</label><br>
-          <input class="rad" type="radio" name="pastAngular" value="Average level">
+          <input (change)="pastAngularCheck($event)" class="rad" type="radio" name="pastAngular" value="Average level">
           <label>&nbsp;  Average level</label><br>
-          <input class="rad" type="radio" name="pastAngular" value="Use it frequently">
+          <input (change)="pastAngularCheck($event)" class="rad" type="radio" name="pastAngular" value="Use it frequently">
           <label>&nbsp;  Use it frequently</label><br>
           <br>
 
           <label>21. How much are you familiar with ReactJS? *</label>
           <br>
-          <input class="rad" type="radio" name="pastReact" value="Not at all">
+          <input (change)="pastReactCheck($event)" class="rad" type="radio" name="pastReact" value="Not at all">
           <label>&nbsp;  Not at all </label><br>
-          <input class="rad" type="radio" name="pastReact" value="Low">
+          <input (change)="pastReactCheck($event)" class="rad" type="radio" name="pastReact" value="Low">
           <label>&nbsp;  Low</label><br>
-          <input class="rad" type="radio" name="pastReact" value="Average level">
+          <input (change)="pastReactCheck($event)" class="rad" type="radio" name="pastReact" value="Average level">
           <label>&nbsp;  Average level</label><br>
-          <input class="rad" type="radio" name="pastReact" value="Use it frequently">
+          <input (change)="pastReactCheck($event)" class="rad" type="radio" name="pastReact" value="Use it frequently">
           <label>&nbsp;  Use it frequently</label><br>
           <br>
 
           <label>22. How much are you familiar with NextJS? *</label>
           <br>
-          <input class="rad" type="radio" name="pastNext" value="Not at all">
+          <input (change)="pastNextCheck($event)" class="rad" type="radio" name="pastNext" value="Not at all">
           <label>&nbsp;  Not at all </label><br>
-          <input class="rad" type="radio" name="pastNext" value="Low">
+          <input (change)="pastNextCheck($event)" class="rad" type="radio" name="pastNext" value="Low">
           <label>&nbsp;  Low</label><br>
-          <input class="rad" type="radio" name="pastNext" value="Average level">
+          <input (change)="pastNextCheck($event)" class="rad" type="radio" name="pastNext" value="Average level">
           <label>&nbsp;  Average level</label><br>
-          <input class="rad" type="radio" name="pastNext" value="Use it frequently">
+          <input (change)="pastNextCheck($event)" class="rad" type="radio" name="pastNext" value="Use it frequently">
           <label>&nbsp;  Use it frequently</label><br>
           <br>
 
           <label>23. How much are you familiar with Flutter? *</label>
           <br>
-          <input class="rad" type="radio" name="pastFlutter" value="Not at all">
+          <input (change)="pastFlutterCheck($event)" class="rad" type="radio" name="pastFlutter" value="Not at all">
           <label>&nbsp;  Not at all </label><br>
-          <input class="rad" type="radio" name="pastFlutter" value="Low">
+          <input (change)="pastFlutterCheck($event)" class="rad" type="radio" name="pastFlutter" value="Low">
           <label>&nbsp;  Low</label><br>
-          <input class="rad" type="radio" name="pastFlutter" value="Average level">
+          <input (change)="pastFlutterCheck($event)" class="rad" type="radio" name="pastFlutter" value="Average level">
           <label>&nbsp;  Average level</label><br>
-          <input class="rad" type="radio" name="pastFlutter" value="Use it frequently">
+          <input (change)="pastFlutterCheck($event)" class="rad" type="radio" name="pastFlutter" value="Use it frequently">
           <label>&nbsp;  Use it frequently</label><br>
           <br>
 
           <label>24. How much are you familiar with Firebase? *</label>
           <br>
-          <input class="rad" type="radio" name="pastFirebase" value="Not at all">
+          <input (change)="pastFirebaseCheck($event)" class="rad" type="radio" name="pastFirebase" value="Not at all">
           <label>&nbsp;  Not at all </label><br>
-          <input class="rad" type="radio" name="pastFirebase" value="Low">
+          <input (change)="pastFirebaseCheck($event)" class="rad" type="radio" name="pastFirebase" value="Low">
           <label>&nbsp;  Low</label><br>
-          <input class="rad" type="radio" name="pastFirebase" value="Average level">
+          <input (change)="pastFirebaseCheck($event)" class="rad" type="radio" name="pastFirebase" value="Average level">
           <label>&nbsp;  Average level</label><br>
-          <input class="rad" type="radio" name="pastFirebase" value="Use it frequently">
+          <input (change)="pastFirebaseCheck($event)" class="rad" type="radio" name="pastFirebase" value="Use it frequently">
           <label>&nbsp;  Use it frequently</label><br>
           <br>
 
           <label>25. How much are you familiar with Azure Board? *</label>
           <br>
-          <input class="rad" type="radio" name="pastAzure" value="Not at all">
+          <input (change)="pastAzureCheck($event)" class="rad" type="radio" name="pastAzure" value="Not at all">
           <label>&nbsp;  Not at all </label><br>
-          <input class="rad" type="radio" name="pastAzure"  value="Low">
+          <input (change)="pastAzureCheck($event)" class="rad" type="radio" name="pastAzure"  value="Low">
           <label>&nbsp;  Low</label><br>
-          <input class="rad" type="radio" name="pastAzure"  value="Average level">
+          <input (change)="pastAzureCheck($event)" class="rad" type="radio" name="pastAzure"  value="Average level">
           <label>&nbsp;  Average level</label><br>
-          <input class="rad" type="radio" name="pastAzure"  value="Use it frequently">
+          <input (change)="pastAzureCheck($event)" class="rad" type="radio" name="pastAzure"  value="Use it frequently">
           <label>&nbsp;  Use it frequently</label><br>
           <br>
 
           <label>26. How much are you familiar with AEM? *</label>
           <br>
-          <input class="rad" type="radio" name="pastAEM" value="Not at all">
+          <input (change)="pastAEMCheck($event)" class="rad" type="radio" name="pastAEM" value="Not at all">
           <label>&nbsp;  Not at all </label><br>
-          <input class="rad" type="radio" name="pastAEM" value="Low">
+          <input (change)="pastAEMCheck($event)" class="rad" type="radio" name="pastAEM" value="Low">
           <label>&nbsp;  Low</label><br>
-          <input class="rad" type="radio" name="pastAEM" value="Average level">
+          <input (change)="pastAEMCheck($event)" class="rad" type="radio" name="pastAEM" value="Average level">
           <label>&nbsp;  Average level</label><br>
-          <input class="rad" type="radio" name="pastAEM" value="Use it frequently">
+          <input (change)="pastAEMCheck($event)" class="rad" type="radio" name="pastAEM" value="Use it frequently">
           <label>&nbsp;  Use it frequently</label><br>
           <br>
 
           <label>27. How much are you familiar with HTML,CSS? *</label>
           <br>
-          <input class="rad" type="radio" name="pastHTMLCSS" value="Not at all">
+          <input (change)="pastHTMLCSSCheck($event)" class="rad" type="radio" name="pastHTMLCSS" value="Not at all">
           <label>&nbsp;  Not at all </label><br>
-          <input class="rad" type="radio" name="pastHTMLCSS" value="Low">
+          <input (change)="pastHTMLCSSCheck($event)" class="rad" type="radio" name="pastHTMLCSS" value="Low">
           <label>&nbsp;  Low</label><br>
-          <input class="rad" type="radio" name="pastHTMLCSS" value="Average level">
+          <input (change)="pastHTMLCSSCheck($event)" class="rad" type="radio" name="pastHTMLCSS" value="Average level">
           <label>&nbsp;  Average level</label><br>
-          <input class="rad" type="radio" name="pastHTMLCSS" value="Use it frequently">
+          <input (change)="pastHTMLCSSCheck($event)" class="rad" type="radio" name="pastHTMLCSS" value="Use it frequently">
           <label>&nbsp;  Use it frequently</label><br>
           <br>
 
           <label>28. How much are you familiar with PHP? *</label>
           <br>
-          <input class="rad" type="radio" name="pastPHP" value="Not at all">
+          <input (change)="pastPHPCheck($event)" class="rad" type="radio" name="pastPHP" value="Not at all">
           <label>&nbsp;  Not at all </label><br>
-          <input class="rad" type="radio" name="pastPHP" value="Low">
+          <input (change)="pastPHPCheck($event)" class="rad" type="radio" name="pastPHP" value="Low">
           <label>&nbsp;  Low</label><br>
-          <input class="rad" type="radio" name="pastPHP" value="Average level">
+          <input (change)="pastPHPCheck($event)" class="rad" type="radio" name="pastPHP" value="Average level">
           <label>&nbsp;  Average level</label><br>
-          <input class="rad" type="radio" name="pastPHP" value="Use it frequently">
+          <input (change)="pastPHPCheck($event)" class="rad" type="radio" name="pastPHP" value="Use it frequently">
           <label>&nbsp;  Use it frequently</label><br>
           <br>
 
           <label>29. How much are you familiar with wireframing? *</label>
           <br>
-          <input class="rad" type="radio" name="pastWire" value="Not at all">
+          <input (change)="pastWireCheck($event)" class="rad" type="radio" name="pastWire" value="Not at all">
           <label>&nbsp;  Not at all </label><br>
-          <input class="rad" type="radio" name="pastWire" value="Low">
+          <input (change)="pastWireCheck($event)" class="rad" type="radio" name="pastWire" value="Low">
           <label>&nbsp;  Low</label><br>
-          <input class="rad" type="radio" name="pastWire" value="Average level">
+          <input (change)="pastWireCheck($event)" class="rad" type="radio" name="pastWire" value="Average level">
           <label>&nbsp;  Average level</label><br>
-          <input class="rad" type="radio" name="pastWire" value="Use it frequently">
+          <input (change)="pastWireCheck($event)" class="rad" type="radio" name="pastWire" value="Use it frequently">
           <label>&nbsp;  Use it frequently</label><br>
           <br>
 
           <label>30. How much are you familiar with digital animation? *</label>
           <br>
-          <input class="rad" type="radio" name="pastAnimation" value="Not at all">
+          <input (change)="pastAnimationCheck($event)" class="rad" type="radio" name="pastAnimation" value="Not at all">
           <label>&nbsp;  Not at all </label><br>
-          <input class="rad" type="radio" name="pastAnimation" value="Low">
+          <input (change)="pastAnimationCheck($event)" class="rad" type="radio" name="pastAnimation" value="Low">
           <label>&nbsp;  Low</label><br>
-          <input class="rad" type="radio" name="pastAnimation" value="Average level">
+          <input (change)="pastAnimationCheck($event)" class="rad" type="radio" name="pastAnimation" value="Average level">
           <label>&nbsp;  Average level</label><br>
-          <input class="rad" type="radio" name="pastAnimation" value="Use it frequently">
+          <input (change)="pastAnimationCheck($event)" class="rad" type="radio" name="pastAnimation" value="Use it frequently">
           <label>&nbsp;  Use it frequently</label><br>
           <br>
 
           <label>31. How much are you familiar with augmented reality? *</label>
           <br>
-          <input class="rad" type="radio" name="pastReality" value="Not at all">
+          <input (change)="pastRealityCheck($event)" class="rad" type="radio" name="pastReality" value="Not at all">
           <label>&nbsp;  Not at all </label><br>
-          <input class="rad" type="radio" name="pastReality" value="Low">
+          <input (change)="pastRealityCheck($event)" class="rad" type="radio" name="pastReality" value="Low">
           <label>&nbsp;  Low</label><br>
-          <input class="rad" type="radio" name="pastReality" value="Average level">
+          <input (change)="pastRealityCheck($event)" class="rad" type="radio" name="pastReality" value="Average level">
           <label>&nbsp;  Average level</label><br>
-          <input class="rad" type="radio" name="pastReality" value="Use it frequently">
+          <input (change)="pastRealityCheck($event)" class="rad" type="radio" name="pastReality" value="Use it frequently">
           <label>&nbsp;  Use it frequently</label><br>
+          <br> 
+
+          
+          
+          
+          
           <br>
           <label>32. From which time zone (country, city and time difference to Halifax) 
             <br>you are connecting to the course? *</label>
@@ -332,11 +337,3 @@
           <button (click)="addQuest()" type="submit" value="Submit"> Submit </button>
         </form>
       </div>
-
-
-
-
-
-
-
-
