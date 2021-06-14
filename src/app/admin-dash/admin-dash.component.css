@@ -91,3 +91,28 @@
   margin-left: 0.5rem;
   width: 50%;
 }
+
+.form {
+  width: 100%;
+}
+
+.announcement {
+  width: 100%;
+}
+
+#announcementDesc {
+  height: 150px;
+}
+
+.actionButton {
+  background-color: white;
+  color: black;
+  border: 2px solid #707372;
+  transition-duration: 0.2s;
+  margin: 0.25rem;
+}
+
+.actionButton:hover {
+  background-color: #707372;
+  color: white;
+}

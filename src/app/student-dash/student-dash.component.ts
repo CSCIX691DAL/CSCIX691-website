@@ -27,4 +27,9 @@ export class StudentDashComponent implements OnInit {
       return project.status == 'Completed';
     });
   }
+  getMyProjects(): Project[]{
+    return this.projectService.getProjects().filter((project, index, array) => {
+      return project.status == 'Active';
+    });
+  }
 }

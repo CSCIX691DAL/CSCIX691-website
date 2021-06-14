@@ -3,6 +3,8 @@ import { UserService } from './../service/user.service';
 import { ProjectService } from './../service/project.service';
 import {Component, OnInit} from '@angular/core';
 import {RfpService} from '../service/rfp.service';
+import {AnnouncementService} from '../service/announcement.service';
+import Announcement from "../announcement/announcement.model"
 import {AuthService} from '../service/auth.service';
 import {NgxCsvParser} from 'ngx-csv-parser';
 import {NgxCSVParserError} from 'ngx-csv-parser';
@@ -27,7 +29,9 @@ export class AdminDashComponent implements OnInit {
               private ngxCsvParser: NgxCsvParser,
               private rfpService: RfpService,
               private projectService: ProjectService,
-              private teamService: TeamService) {
+              private teamService: TeamService,
+              private announcementService: AnnouncementService) {
+
   }
 
   ngOnInit(): void {
@@ -45,6 +49,13 @@ export class AdminDashComponent implements OnInit {
   getPendingRFPs(): RFP[] {
     return this.rfpService.getRFPs().filter((rfp, index, array) => {
       return rfp.status == 'Pending';
+    });
+  }
+
+  // returns a list of rejected RFPs
+  getRejectedRFPs(): RFP[] {
+    return this.rfpService.getRFPs().filter((rfp, index, array) => {
+      return rfp.status == 'Rejected';
     });
   }
 
@@ -137,7 +148,7 @@ export class AdminDashComponent implements OnInit {
   }
 
   // Set an RFP's status to approved and make it a project
-  ApproveRFP(rfp: RFP): void {
+  approveRFP(rfp: RFP): void {
     // approve RFP
     this.rfpService.updateRFP(rfp, {status: 'Approved'});
     // create project out of RFP
@@ -145,8 +156,13 @@ export class AdminDashComponent implements OnInit {
   }
 
   // Set an RFP's status to rejected
-  RejectRFP(rfp: RFP): void {
+  rejectRFP(rfp: RFP): void {
     this.rfpService.updateRFP(rfp, {status: 'Rejected'});
+  }
+
+  // Delete an RFP from the database
+  deleteRFP(rfp: RFP): void {
+    this.rfpService.deleteRFP(rfp);
   }
 
   toggleEditLinkTextbox(index: number): void {
@@ -181,4 +197,24 @@ export class AdminDashComponent implements OnInit {
     // hide the edit section
     this.toggleEditLinkTextbox(index);
   }
+  
+  CreateAnnouncement() {
+
+    let newAnnouncement = new Announcement();
+    newAnnouncement.title = (<HTMLInputElement>document.getElementById("announcementTitle")).value;
+    newAnnouncement.desc = (<HTMLInputElement>document.getElementById("announcementDesc")).value;
+    newAnnouncement.date = Date();
+    newAnnouncement.user = localStorage.getItem("name");
+
+    if(newAnnouncement.title == "" || newAnnouncement.desc == ""){
+      window.alert("Please fill out all sections");
+    }
+    else{
+      this.announcementService.createAnnouncement(newAnnouncement);
+
+      window.alert("Your announcement has been created");
+    }
+  
+  }
+
 }

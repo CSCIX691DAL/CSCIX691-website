@@ -48,6 +48,11 @@ export class RfpService {
     return this.rfpReference.update(rfp.key, changes);
   }
 
+  // Delete an RFP from the database
+  deleteRFP(rfp: RFP): Promise<void> {
+    return this.rfpReference.remove(rfp.key);
+  }
+
   // Returns a document structure for generating a PDF for a given RFP
   getDocumentDefinition(rfp: RFP) : Object {
     return {

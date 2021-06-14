@@ -16,6 +16,9 @@
           <a href="student-dashboard">Past Projects</a>
         </li>
         <li>
+          <a href="student-questionnaire">Questionnaire</a>
+        </li>
+        <li>
           <a href="student-dashboard">Other</a>
         </li>
         <li>
@@ -26,51 +29,36 @@
   <!-- Sidebar End -->
   <!-- Column 1 Start -->
   <div class="column1">
-    <!-- Pending Project Requests Start -->
-    <div class="RequestsCard">
+    <!-- my current project(s) Start -->
+    <div class="projectsCard">
       <mat-card>
         <mat-card-title>Current Project</mat-card-title>
         <mat-card-content>
-          <table class="table">
-            <thead>
-            <tr>
-              <th scope="col">Project Name</th>
-              <th scope="col">Project Type</th>
-              <th scope="col">RFP</th>
-              <th scope="col">Status</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-              <td>X691 Course Website</td>
-              <td>Web Application</td>
-              <td><a href="assets/images/TopImage.JPG">RFP</a></td>
-              <td>Accepted</td>
-            </tr>
-            <tr>
-              <td>Risk Management Platform</td>
-              <td>Web Application</td>
-              <td><a href="assets/images/TopImage.JPG">RFP</a></td>
-              <td>Accepted</td>
-            </tr>
-            <tr>
-              <td>Health Application</td>
-              <td>Mobile</td>
-              <td><a href="assets/images/TopImage.JPG">RFP</a></td>
-              <td>Submitted</td>
-            </tr>
-            <tr>
-              <td>Mobile Game</td>
-              <td>Mobile</td>
-              <td><a href="assets/images/TopImage.JPG">RFP</a></td>
-              <td>Pending</td>
-            </tr>
-            </tbody>
-          </table>
+          <div id="accordion">
+            <div *ngFor="let project of getMyProjects()">
+              <div class="card">
+                <div class="card-header" id="headingOne">
+                  <h5 class="mb-0">
+                    <button class="btn btn-outline" (click)="collapsed.toggle()">
+                      {{ project.title }}
+                    </button>
+                  </h5>
+                </div>
+
+                  <div #collapsed="ngbCollapse" [ngbCollapse]="!isCollapsed" data-parent="#accordion">
+                    <div class="card-body">
+                      <a href="{{ project.azureLink }}" target="_blank">Click here to see the Azure board for this project.</a>
+                      <br> <br>
+                      {{ project.descLong }}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>      
         </mat-card-content>
       </mat-card>
     </div>
-    <!-- Pending Project Requests End -->
+    <!-- my current project(s) end -->
     <!-- Active Project Start -->
     <div class="projectsCard">
       <mat-card>
