@@ -33,6 +33,7 @@ import {TestimonialsPageComponent} from './testimonialsPage/testimonialsPage.com
 import {MatSelectModule} from '@angular/material/select';
 import { NgxCsvParserModule } from 'ngx-csv-parser';
 import { AnnouncementComponent } from './announcement/announcement.component';
+import { StudentQuestionnaireComponent } from './student-questionnaire/student-questionnaire.component';
 
 @NgModule({
   declarations: [
@@ -52,6 +53,7 @@ import { AnnouncementComponent } from './announcement/announcement.component';
     TestimonialsPageComponent,
     ChangepwComponent,
     PastComponent,
+    StudentQuestionnaireComponent,
     RfpComponent,
     AnnouncementComponent,
 
