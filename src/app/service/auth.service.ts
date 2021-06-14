@@ -42,7 +42,7 @@ export class AuthService {
       .createUserWithEmailAndPassword(email, password)
       .then(value => {
         // add student to database
-        this.userService.addStudent(value.user.uid, email, firstName, lastName, studentID, isTeamLeader, false);
+        this.userService.addStudent(value.user.uid, email, firstName, lastName, studentID, isTeamLeader);
         console.log('Successfully created student.');
       })
       .catch(err => {
@@ -67,6 +67,7 @@ export class AuthService {
         let userId = value.user.uid;
         this.db.database.ref(('users/' + userId)).get().then(value => {
           let userInfo = value.toJSON();
+          this.db.database.ref(('users/' + userId)).update({ hasLoggedInBefore: true });
           console.log('Login was a success!');
           localStorage.setItem('isLogin', 'true');
           localStorage.setItem('name', userInfo['fName'] + " " + userInfo['sName']);
@@ -78,8 +79,8 @@ export class AuthService {
             window.location.href = "/client-dashboard";
           } else {
             localStorage.setItem("userType", "student");
-            if (!(userInfo['active'] === undefined) && (userInfo['active'] === false)) {
-              window.location.href = "/changepw";
+            if (!userInfo['active'] && userInfo['hasLoggedInBefore']) {
+              alert('Your account is inactive.')
             } else {
               window.location.href = "/student-dashboard";
             }
