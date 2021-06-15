@@ -35,7 +35,7 @@
         <mat-card-title>Current Project</mat-card-title>
         <mat-card-content>
           <div id="accordion">
-            <div *ngFor="let project of getMyProjects()">
+            <div *ngFor="let project of getMyActiveProjects()">
               <div class="card">
                 <div class="card-header" id="headingOne">
                   <h5 class="mb-0">
@@ -65,7 +65,7 @@
         <mat-card-title>Past Projects</mat-card-title>
         <mat-card-content>
           <div id="accordion">
-            <div *ngFor="let project of getPastProjects()">
+            <div *ngFor="let project of getMyPastProjects()">
               <div class="card">
                 <div class="card-header" id="headingOne">
                   <h5 class="mb-0">
@@ -117,7 +117,7 @@
             </tr>
             </thead>
             <tbody>
-            <tr *ngFor='let Projects of getProjects()'>
+            <tr *ngFor='let Projects of getMyActiveProjects()'>
               <td>{{Projects.title}}</td>
               <td><a href="{{Projects.azureLink}}" target="_blank">Link</a></td>
             </tr>

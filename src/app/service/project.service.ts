@@ -1,3 +1,4 @@
+import { TeamService } from './team.service';
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase, AngularFireList } from '@angular/fire/database'
 import { map } from 'rxjs/operators';
@@ -11,7 +12,7 @@ export class ProjectService {
   projectReference: AngularFireList<Project>;
   projects?: Project[];
 
-  constructor(private db: AngularFireDatabase) {
+  constructor(private db: AngularFireDatabase, private teamService: TeamService) {
     this.projectReference = db.list('Projects/');
     this.refreshProjects();
   }
@@ -89,5 +90,20 @@ export class ProjectService {
     }
 
     return nextTerm + ' ' + yearOfNextTerm;
+  }
+
+  // gets a list of projects associated with a user
+  getProjectsByUID(uid: string): Project[] {
+    return this.projects.filter((project, index, array) => {
+      // if the project has an associated team...
+      if (project.team) {
+        // get the team object
+        let projectTeam = this.teamService.getTeamByKey(project.team);
+        // if the user is on the team...
+        if (projectTeam.members[uid]) {
+          return true;
+        }
+      }
+    });
   }
 }

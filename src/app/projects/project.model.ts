@@ -10,7 +10,7 @@ export default class Project {
     descShort: string;
     descLong: string;
     status: string;
-    team?: Team | null;
+    team: string; // team reference
     term: string;
     title: string;
     type: string;
