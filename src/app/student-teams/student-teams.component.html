@@ -1,0 +1,62 @@
+<div class="adminContent">
+    <!-- Sidebar Start -->
+    <div class="wrapper sideBar">
+      <nav id="sidebar">
+        <ul class="list-unstyled components sidebarNav">
+          <li class="active">
+            <a href="admin-dashboard">Overview</a>
+          </li>
+          <li>
+            <a href="admin-dashboard">Members</a>
+          </li>
+          <li>
+            <a href="admin-dashboard">Projects</a>
+          </li>
+          <li>
+            <a href="admin-dashboard">RFPs</a>
+          </li>
+          <li>
+              <a href="active-students">Active Students</a>
+          </li>
+          <li>
+            <a href="../changepw">Update Password</a>
+        </ul>
+      </nav>
+    </div>
+    <!-- Sidebar End -->
+    <!--Main Content-->
+    <div>
+      <mat-card class="members2">
+          <mat-card-title>Active Students</mat-card-title>
+          <mat-card-content>
+            <table class="table">
+              <thead style="overflow: scroll;">
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">First Name</th>
+                <th scope="col">Last Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Team</th>
+              </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let u of getActiveStudentsFromDB(); index as i">
+                <th scope="row">{{i + 1}}</th>
+                <td>{{ u["fName"] }}</td>
+                <td>{{ u["sName"] }}</td>
+                <td>{{ u["email"] }}</td>
+                <div ngbDropdown class="dropdownClass">
+                  <td ngbDropdownToggle id ="selectDropDown">Select Team</td>
+                  
+                  <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                    <button ngbDropdownItem (click)="X691">X691 Course Website</button>
+                    <button ngbDropdownItem (click)="Risk">Risk Management</button>
+                  </div>
+                </div>
+              </tr>
+              </tbody>
+            </table>
+          </mat-card-content>
+        </mat-card>
+    </div>
+  </div>
