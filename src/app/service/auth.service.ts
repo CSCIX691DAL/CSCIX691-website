@@ -70,6 +70,7 @@ export class AuthService {
           this.db.database.ref(('users/' + userId)).update({ hasLoggedInBefore: true });
           console.log('Login was a success!');
           localStorage.setItem('isLogin', 'true');
+          localStorage.setItem('uid', userId);
           localStorage.setItem('name', userInfo['fName'] + " " + userInfo['sName']);
           if (userInfo['userType'] == UserType.Admin) {
             localStorage.setItem("userType", "admin");

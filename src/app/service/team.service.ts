@@ -49,6 +49,19 @@ export class TeamService {
     this.teamReference.remove(team.key);
   }
 
+  // Returns a team with the specified key. Returns null if the team doesn't exist
+  getTeamByKey(key: string): Team {
+    let team = Object.values(this.teams).filter((team, index, array) => {
+      return team.key == key;
+    });
+
+    if (!team) {
+      return null;
+    }
+
+    return team.length == 0 ? null : team[0];
+  }
+
   // Returns a team with the specified name. Returns null if the team doesn't exist
   getTeamByName(teamName: string): Team {
     let team = Object.values(this.teams).filter((team, index, array) => {

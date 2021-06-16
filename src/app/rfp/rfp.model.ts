@@ -1,6 +1,7 @@
 export default class RFP {
   key?: string | null;
   projectTitle: string;
+  client: string // client reference
 
   // Section
   contactName: string;
