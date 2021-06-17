@@ -12,7 +12,7 @@ import {RfpComponent} from './rfp/rfp.component';
 import {TestimonialsPageComponent} from './testimonialsPage/testimonialsPage.component';
 import { AnnouncementComponent } from './announcement/announcement.component';
 import {StudentQuestionnaireComponent} from './student-questionnaire/student-questionnaire.component';
-
+import { AdminCreateTeamsComponent } from './admin-create-teams/admin-create-teams.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent},
@@ -27,6 +27,7 @@ const routes: Routes = [
   { path: 'student-questionnaire', component: StudentQuestionnaireComponent},
   { path: 'testimonialsPage', component: TestimonialsPageComponent},
   { path: 'announcement', component: AnnouncementComponent},
+  { path: 'admin-create-teams', component: AdminCreateTeamsComponent},
 ];
 
 @NgModule({

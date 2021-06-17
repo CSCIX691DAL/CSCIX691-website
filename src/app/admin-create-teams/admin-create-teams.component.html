@@ -1,0 +1,61 @@
+
+<div class="adminContent">
+    <!-- Sidebar Start -->
+    <div class="wrapper sideBar">
+      <nav id="sidebar">
+        <ul class="list-unstyled components sidebarNav">
+          <li class="active">
+            <a href="admin-dashboard">Overview</a>
+          </li>
+          <li>
+            <a href="admin-dashboard">Members</a>
+          </li>
+          <li>
+            <a href="admin-dashboard">Projects</a>
+          </li>
+          <li>
+            <a href="admin-dashboard">RFPs</a>
+          </li>
+          <li>
+            <a href="admin-create-teams">Create Teams</a>
+          </li>
+          <li>
+            <a href="../changepw">Update Password</a>
+        </ul>
+      </nav>
+    </div>
+    <div class="container">
+      <h1>{{title}}</h1>
+      <h1><strong>Create or Edit Project Groups</strong></h1>
+    
+      <div class="list-container"><!--Code taken from https://medium.com/codetobe/learn-how-to-drag-drop-items-in-angular-7-20395c262ab0-->
+        <div class="column-container">
+          <div class="list"
+               cdkDropList
+               #todoList="cdkDropList"
+               [cdkDropListData]="activeStudents"
+               [cdkDropListConnectedTo]="[doneList]"
+               (cdkDropListDropped)="changeDragDropTable($event)">
+            <h2 id="tableTitle">Tech to learn</h2>
+            <mat-card *ngFor="let todo of activeStudents" cdkDrag>
+              <mat-card-header>
+                <mat-card-title>{{todo.name}}</mat-card-title>
+              </mat-card-header>
+            </mat-card>
+          </div>
+        </div>
+        <div class="column-container">
+          <div class="list"
+               cdkDropList
+               #doneList="cdkDropList"
+               [cdkDropListData]="projectGroups"
+               [cdkDropListConnectedTo]="todoList"
+               (cdkDropListDropped)="changeDragDropTable($event)">
+            <h2 id="tableTitle">Tech learned</h2>
+            <mat-card *ngFor="let complete of projectGroups" cdkDrag>
+              <mat-card-header>
+                <mat-card-title>{{complete.name}}</mat-card-title>
+              </mat-card-header>
+            </mat-card>
+          </div>
+        </div>

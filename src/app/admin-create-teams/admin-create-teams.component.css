@@ -1,0 +1,151 @@
+.adminContent {
+    min-height: 800px;
+    display: flex;
+    flex-flow: row wrap;
+  }
+  
+  .sideBar {
+    min-height: 800px;
+    background-color: #000000;
+    max-width: 350px;
+    width: 15%;
+    color: white;
+  }
+  
+  .sidebarNav li {
+    height: 2em;
+    margin: 2em;
+    width: 100%;
+  }
+  
+  .sidebarNav li a {
+    color: white;
+    font-size: large;
+    text-decoration: none;
+    height: 2em;
+    padding: 0.7em 2em 0.7em 2em;
+    width: 100%;
+  }
+  
+  .sidebarNav li a:hover {
+    color: white;
+    background-color: #c08c0c;
+    width: 100%;
+    font-size: large;
+    text-decoration: none;
+  }
+  
+  .RFPCard {
+    width: 95%;
+    margin: 2rem;
+  }
+  
+  .membersCard {
+    width: 95%;
+    margin: 2rem;
+  }
+  
+  .analyticsCard {
+    width: 95%;
+    margin: 2rem;
+  }
+  
+  .otherCard {
+    width: 95%;
+    margin: 2rem;
+  }
+  .members2 {
+    margin-top: 2rem;
+  }
+  
+  .column1{
+    width: 40%;
+  }
+  
+  .column2 {
+    width: 40%;
+  }
+  
+  .linkDisplay {
+    min-width: 4rem;
+  }
+  
+  .dropdownClass {
+    margin: auto;
+  }
+  
+  .icon {
+    height: 5%;
+    width: 5%;
+    margin-left: 0.2rem;
+    display: inline;
+  }
+  
+  .editLink {
+    display: none;
+  }
+  
+  .editLinkTextbox {
+    margin-left: 0.5rem;
+    width: 50%;
+  }
+  
+  .form {
+    width: 100%;
+  }
+  
+  .announcement {
+    width: 100%;
+  }
+  
+  #announcementDesc {
+    height: 150px;
+  }
+  
+  .actionButton {
+    background-color: white;
+    color: black;
+    border: 2px solid #707372;
+    transition-duration: 0.2s;
+    margin: 0.25rem;
+  }
+  
+  .actionButton:hover {
+    background-color: #707372;
+    color: white;
+  }
+
+
+
+
+
+  
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#tableTitle {
+  display: flex;
+  justify-content: center;
+}
+.column-container {
+  width: 350px;
+  margin: 0 15px 0;
+  display: inline-block;
+  vertical-align: top;
+}
+mat-card {
+  margin: 1em;
+  cursor: pointer;
+}
+.list {
+  border: black solid 1px;
+
+}
+
+
+
+
+
+ 
