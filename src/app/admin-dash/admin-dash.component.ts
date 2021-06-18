@@ -79,6 +79,9 @@ export class AdminDashComponent implements OnInit {
       return !user.active;
     });
   }
+  deleteMember(user:User): void {
+    this.userService.deleteUser(user);
+  }
 
   showConfirmButton() {
     this.showConfirm = !this.showConfirm;
