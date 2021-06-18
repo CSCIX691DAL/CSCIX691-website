@@ -101,4 +101,7 @@ export class AuthService {
     localStorage.clear();
     window.location.href = "/";
   }
+  delete(): void{
+    this.firebaseAuth.
+  }
 }
