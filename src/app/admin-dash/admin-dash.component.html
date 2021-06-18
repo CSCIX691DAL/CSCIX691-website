@@ -195,6 +195,9 @@
               <td *ngIf="userService.isClient(u)">Client</td>
               <td *ngIf="userService.isAdmin(u)">Admin</td>
               <td *ngIf="userService.isStudent(u)">Student</td>
+              <td>
+                <button class="actionButton" (click)="deleteMember(u)">Delete</button>
+              </td>
             </tr>
 
             </tbody>
@@ -224,6 +227,9 @@
               <td *ngIf="userService.isClient(k)">Client</td>
               <td *ngIf="userService.isAdmin(k)">Admin</td>
               <td *ngIf="userService.isStudent(k)">Student</td>
+              <td>
+                <button class="actionButton" (click)="deleteMember(k)">Delete</button>
+              </td>
             </tr>
 
             </tbody>
