@@ -34,6 +34,7 @@ import {MatSelectModule} from '@angular/material/select';
 import { NgxCsvParserModule } from 'ngx-csv-parser';
 import { AnnouncementComponent } from './announcement/announcement.component';
 import { StudentQuestionnaireComponent } from './student-questionnaire/student-questionnaire.component';
+import {AccordianComponent} from './accordian/accordian.component';
 
 @NgModule({
   declarations: [
@@ -56,6 +57,7 @@ import { StudentQuestionnaireComponent } from './student-questionnaire/student-q
     StudentQuestionnaireComponent,
     RfpComponent,
     AnnouncementComponent,
+    AccordianComponent,
 
   ],
   imports: [

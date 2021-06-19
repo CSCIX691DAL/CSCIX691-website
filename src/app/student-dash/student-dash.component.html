@@ -36,25 +36,16 @@
         <mat-card-content>
           <div id="accordion">
             <div *ngFor="let project of getMyActiveProjects()">
-              <div class="card">
-                <div class="card-header" id="headingOne">
-                  <h5 class="mb-0">
-                    <button class="btn btn-outline" (click)="collapsed.toggle()">
-                      {{ project.title }}
-                    </button>
-                  </h5>
-                </div>
-
-                  <div #collapsed="ngbCollapse" [ngbCollapse]="!isCollapsed" data-parent="#accordion">
-                    <div class="card-body">
-                      <a href="{{ project.azureLink }}" target="_blank">Click here to see the Azure board for this project.</a>
+              <app-accordian>
+                <p header>{{ project.title }}</p>
+                <div content>
+                  <a href="{{ project.azureLink }}" target="_blank">Click here to see the Azure board for this project.</a>
                       <br> <br>
                       {{ project.descLong }}
-                    </div>
-                  </div>
                 </div>
-              </div>
-            </div>      
+              </app-accordian>
+            </div>
+          </div>
         </mat-card-content>
       </mat-card>
     </div>
@@ -66,21 +57,10 @@
         <mat-card-content>
           <div id="accordion">
             <div *ngFor="let project of getMyPastProjects()">
-              <div class="card">
-                <div class="card-header" id="headingOne">
-                  <h5 class="mb-0">
-                    <button class="btn btn-outline" (click)="collapsed.toggle()">
-                      {{ project.title }}
-                    </button>
-                  </h5>
-                </div>
-
-                <div #collapsed="ngbCollapse" [ngbCollapse]="!isCollapsed" data-parent="#accordion">
-                  <div class="card-body">
-                    {{ project.descLong }}
-                  </div>
-                </div>
-              </div>
+              <app-accordian>
+                <p header>{{ project.title }}</p>
+                <div content>{{ project.descLong }}</div>
+              </app-accordian>
             </div>
           </div>
         </mat-card-content>
