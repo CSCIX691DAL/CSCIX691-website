@@ -1,9 +1,9 @@
 <div class="projLayoutDiv">
   <br />
-  <button class="term-header" (click)="showDiv.summer = !showDiv.summer">
+  <button class="term-header pt-3 pb-3" (click)="showDiv.summer = !showDiv.summer">
     Summer 2020</button
   ><br />
-
+ 
   <div *ngIf="showDiv.summer" class="summer-cards">
     <div *ngFor="let Proj of getPastProjects(); index as i">
       <div *ngIf="Proj.term === 'Summer 2020'" class="card mt-3">
@@ -37,12 +37,12 @@
   </div>
 
   <br />
-  <button class="term-header" (click)="showDiv.fall = !showDiv.fall">
+  <button class="term-header pt-3 pb-3" (click)="showDiv.fall = !showDiv.fall">
     Fall 2020</button
   ><br />
 
   <div *ngIf="showDiv.fall" class="summer-cards">
-    <div *ngFor="let Proj of projects; index as i">
+    <div *ngFor="let Proj of getPastProjects(); index as i">
       <div *ngIf="Proj.term === 'Fall 2020'" class="card mt-3">
         <div class="card">
           <div class="card-body">
