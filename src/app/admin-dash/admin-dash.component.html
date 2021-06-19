@@ -141,6 +141,23 @@
       </mat-card>
     </div>
     <!-- csv upload end -->
+    <div class="otherCard">
+      <mat-card>
+        <mat-card-title> Create New Announcement </mat-card-title>
+        
+        <mat-card-content>
+          <p> Fill in the boxes then click the button below to create a new announcement. </p>
+        </mat-card-content>
+
+        <mat-card-content>
+          <form id="announcementCreation" class="form">
+            <mat-form-field class="announcement"><mat-label>Announcement Title: </mat-label><input required name="announcementTitle" id="announcementTitle" matInput type="string"></mat-form-field>
+            <mat-form-field class="announcement"><mat-label>Announcement Description: </mat-label><textarea required name="announcementDesc" id="announcementDesc" matInput type="string"></textarea></mat-form-field>
+            <button type="reset" class="btn btn-secondary" (click)="CreateAnnouncement()"> Create Announcement </button>
+          </form>
+        </mat-card-content>
+      </mat-card>
+    </div>
   </div>
   <!-- Column 1 End -->
   <!-- Column 2 Start -->

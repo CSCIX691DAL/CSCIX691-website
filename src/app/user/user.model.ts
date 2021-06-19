@@ -5,9 +5,11 @@ export enum UserType {
 }
 
 export class User {
+  key?: string | null;
   active: boolean;
   fName: string;
   sName: string;
   email: string;
+  hasLoggedInBefore: boolean;
   userType: UserType;
 }

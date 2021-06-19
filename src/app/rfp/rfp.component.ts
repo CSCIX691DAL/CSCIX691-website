@@ -56,7 +56,10 @@ export class RfpComponent implements OnInit {
     if (rfp.projectTitle, rfp.contactName, rfp.organization, rfp.contactEmail, rfp.contactPhone,
       rfp.mailingAddress, rfp.problem, rfp.idealSituation, rfp.specifySpecificSoftware, rfp.specifyOtherReporting,
       rfp.specifyBudget, rfp.specifyUsabilityConsiderations, rfp.kindOfTests, rfp.sampleData) {
-
+      
+      // set the RFP's client to the currently logged-in user
+      rfp.client = localStorage.getItem('uid');
+      
       console.log('in');
       const docDefinition = this.rfpService.getDocumentDefinition(rfp);
       pdfMake.createPdf(docDefinition).open();

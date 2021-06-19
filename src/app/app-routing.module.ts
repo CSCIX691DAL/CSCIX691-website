@@ -10,6 +10,8 @@ import { ProjectsComponent } from './projects/projects.component';
 import { ChangepwComponent } from './changepw/changepw.component';
 import {RfpComponent} from './rfp/rfp.component';
 import {TestimonialsPageComponent} from './testimonialsPage/testimonialsPage.component';
+import { AnnouncementComponent } from './announcement/announcement.component';
+import {StudentQuestionnaireComponent} from './student-questionnaire/student-questionnaire.component';
 
 
 const routes: Routes = [
@@ -22,7 +24,9 @@ const routes: Routes = [
   { path: 'admin-dashboard', component: AdminDashComponent},
   { path: 'changepw', component: ChangepwComponent},
   { path: 'submitRFP', component: RfpComponent},
+  { path: 'student-questionnaire', component: StudentQuestionnaireComponent},
   { path: 'testimonialsPage', component: TestimonialsPageComponent},
+  { path: 'announcement', component: AnnouncementComponent},
 ];
 
 @NgModule({
