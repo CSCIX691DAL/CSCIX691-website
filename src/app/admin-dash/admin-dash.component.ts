@@ -14,7 +14,6 @@ import pdfFonts from 'pdfmake/build/vfs_fonts';
 import RFP from '../rfp/rfp.model';
 import Project from '../projects/project.model';
 import Team from '../team/team.model';
-
 @Component({
   selector: 'app-admin-dash',
   templateUrl: './admin-dash.component.html',
@@ -23,6 +22,8 @@ import Team from '../team/team.model';
 export class AdminDashComponent implements OnInit {
   showConfirm: boolean = false;
   studentRecords: any[] = [];
+  
+  
 
   constructor(private userService: UserService,
               private authService: AuthService,
@@ -38,7 +39,7 @@ export class AdminDashComponent implements OnInit {
     if (!localStorage.getItem("isLogin") || !(localStorage.getItem("userType") === "admin")) {
       window.location.href = "/";
     }
-
+    
     this.getActiveUsersFromDB();
     this.getInactiveUsersFromDB();
 
@@ -72,6 +73,7 @@ export class AdminDashComponent implements OnInit {
       return user.active;
     });
   }
+ 
 
   // Returns a list of inactive users
   getInactiveUsersFromDB(): User[] {

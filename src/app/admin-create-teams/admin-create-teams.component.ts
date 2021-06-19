@@ -1,7 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import Project from '../projects/project.model';
 import { ProjectService } from '../service/project.service';
+import { TeamService } from './../service/team.service';
+import { Student } from '../user/student.model';
+import { User } from '../user/user.model';
+import { UserService } from './../service/user.service';
 import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
+import Team from '../team/team.model';
 
 @Component({
   selector: 'app-admin-create-teams',
@@ -10,12 +15,15 @@ import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag
 })
 export class AdminCreateTeamsComponent implements OnInit {
 
-  constructor(private projectService: ProjectService) { }
+  constructor(private TeamService: TeamService,
+    private userService: UserService
+    ) { }
 
   ngOnInit(): void {
+
   }
-  getProjects(): Project[] {
-    return this.projectService.getProjects();
+  getTeams(): Team[] {
+    return Object.values(this.TeamService.getTeams());
   }
 
 
@@ -35,6 +43,7 @@ export class AdminCreateTeamsComponent implements OnInit {
 
 
   activeStudents = [
+
     {
       name: 'Michael Brian',
     },
@@ -58,5 +67,15 @@ export class AdminCreateTeamsComponent implements OnInit {
     },
 
   ];
+
+ 
+  //Returns a list of Active Students
+  getActiveStudentsFromDB(): User[] {
+    return this.userService.getUsers().filter((user, index, array) => {
+      
+      return user.active && this.userService.isStudent(user)&& (<Student>user).team == undefined
+    });
+  }
+  
 }
 

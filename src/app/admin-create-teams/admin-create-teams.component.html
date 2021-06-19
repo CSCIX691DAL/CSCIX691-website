@@ -31,13 +31,13 @@
           <div class="list"
                cdkDropList
                #todoList="cdkDropList"
-               [cdkDropListData]="activeStudents"
+               [cdkDropListData]="getActiveStudentsFromDB()"
                [cdkDropListConnectedTo]="[doneList]"
                (cdkDropListDropped)="changeDragDropTable($event)">
             <h2 id="tableTitle">Available Students</h2>
-            <mat-card *ngFor="let todo of activeStudents" cdkDrag>
+            <mat-card *ngFor="let todo of getActiveStudentsFromDB()" cdkDrag>
               <mat-card-header>
-                <mat-card-title>{{todo.name}}</mat-card-title>
+                <mat-card-title>{{todo.fName}}</mat-card-title>
               </mat-card-header>
             </mat-card>
           </div>
@@ -47,14 +47,14 @@
           <div class="list"
                cdkDropList
                #doneList="cdkDropList"
-               [cdkDropListData]="projectGroups"
+               [cdkDropListData]="getTeams()"
                [cdkDropListConnectedTo]="todoList"
                (cdkDropListDropped)="changeDragDropTable($event)">
                <h2 id="tableTitle">Current Team in Selected Project</h2>
                <select id="projectChoice1" >
-                <option *ngFor='let Projects of getProjects()' value={{Projects.title}}>{{Projects.title}}</option>
+                <option *ngFor='let team of getTeams()' value={{team.name}}>{{team.name}}</option>
               </select>
-            <mat-card *ngFor="let complete of projectGroups" cdkDrag>
+            <mat-card *ngFor="let complete of getTeams()" cdkDrag>
               <mat-card-header>
                 <mat-card-title>{{complete.name}}</mat-card-title>
               </mat-card-header>
