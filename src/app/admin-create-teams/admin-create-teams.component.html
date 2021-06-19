@@ -25,9 +25,7 @@
       </nav>
     </div>
     <div class="container">
-      <h1>{{title}}</h1>
       <h1><strong>Create or Edit Project Groups</strong></h1>
-    
       <div class="list-container"><!--Code taken from https://medium.com/codetobe/learn-how-to-drag-drop-items-in-angular-7-20395c262ab0-->
         <div class="column-container">
           <div class="list"
@@ -36,7 +34,7 @@
                [cdkDropListData]="activeStudents"
                [cdkDropListConnectedTo]="[doneList]"
                (cdkDropListDropped)="changeDragDropTable($event)">
-            <h2 id="tableTitle">Tech to learn</h2>
+            <h2 id="tableTitle">Available Students</h2>
             <mat-card *ngFor="let todo of activeStudents" cdkDrag>
               <mat-card-header>
                 <mat-card-title>{{todo.name}}</mat-card-title>
@@ -44,6 +42,7 @@
             </mat-card>
           </div>
         </div>
+        
         <div class="column-container">
           <div class="list"
                cdkDropList
@@ -51,7 +50,10 @@
                [cdkDropListData]="projectGroups"
                [cdkDropListConnectedTo]="todoList"
                (cdkDropListDropped)="changeDragDropTable($event)">
-            <h2 id="tableTitle">Tech learned</h2>
+               <h2 id="tableTitle">Current Team in Selected Project</h2>
+               <select id="projectChoice1" >
+                <option *ngFor='let Projects of getProjects()' value={{Projects.title}}>{{Projects.title}}</option>
+              </select>
             <mat-card *ngFor="let complete of projectGroups" cdkDrag>
               <mat-card-header>
                 <mat-card-title>{{complete.name}}</mat-card-title>
