@@ -34,36 +34,29 @@ export class AdminCreateTeamsComponent implements OnInit {
   }
 
 
-
-
-
   activeStudents = [
     {
-      name: 'Student 1',
+      name: 'Michael Brian',
     },
     {
-      name: 'Student 2',
+      name: 'Emily Jane',
     },
     {
-      name: 'Student 3',
+      name: 'Jasper Cools',
     },
     {
-      name: 'Student 4',
+      name: 'Ty MacDonald',
     }
   ];
 
   projectGroups = [
     {
-      name: 'Project 1',
+      name: 'Rob Doe',
     },
     {
-      name: 'Project 1',
+      name: 'Ben Mike',
     },
-    {
-      name: 'Project 1',
-    },
-    {
-      name: 'Project 1',
-    }
+
   ];
 }
+
