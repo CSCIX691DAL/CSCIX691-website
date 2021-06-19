@@ -1,6 +1,6 @@
 .projLayoutDiv {
   font-family: "Bahnschrift", "Arial Narrow", serif;
-  max-width: 1300px;
+  max-width: 1450px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -20,7 +20,8 @@ h1 {
 .term-header {
   font-weight: bold;
   align-self: center;
-  width: 85%;
+  width: 100%;
+  font-size: large;
 }
 
 .titles {
@@ -53,9 +54,8 @@ h1 {
 }
 
 .summer-cards {
-  width:85%;
+  width:100%;
   float:center;
-  margin-left:93px;
 
 }
 .card-body {
