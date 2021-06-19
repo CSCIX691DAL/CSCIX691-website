@@ -31,33 +31,32 @@
   <div class="column1">
     <!-- my current project(s) Start -->
     <div class="projectsCard">
-      <mat-card>
-        <mat-card-title>Current Project</mat-card-title>
-        <mat-card-content>
-          <div id="accordion">
-            <div *ngFor="let project of getMyActiveProjects()">
-              <div class="card">
-                <div class="card-header" id="headingOne">
-                  <h5 class="mb-0">
-                    <button class="btn btn-outline" (click)="collapsed.toggle()">
-                      {{ project.title }}
-                    </button>
-                  </h5>
-                </div>
-
-                  <div #collapsed="ngbCollapse" [ngbCollapse]="!isCollapsed" data-parent="#accordion">
-                    <div class="card-body">
-                      <a href="{{ project.azureLink }}" target="_blank">Click here to see the Azure board for this project.</a>
-                      <br> <br>
-                      {{ project.descLong }}
-                    </div>
-                  </div>
-                </div>
+      <mat-card-title>Current Project</mat-card-title>
+      <mat-card-content>
+        <table class="table">
+          <tbody>
+          <tr *ngFor="let project of getMyActiveProjects(); index as i">
+            <div class="card-header" id="headingOne">
+              <h5 class="mb-0">
+                <button class="btn btn-outline" (click)="collapsed.toggle()">
+                  {{ project.title }}
+                </button>
+              </h5>
+            </div>
+            <div #collapsed="ngbCollapse" [ngbCollapse]="!isCollapsed" data-parent="#accordion">
+              <div class="card-body">
+                <a href="{{ project.azureLink }}" target="_blank">Click here to see the Azure board for this project.</a>
+                <br> <br>
+                {{ project.descLong }}
               </div>
-            </div>      
-        </mat-card-content>
-      </mat-card>
+            </div>
+          </tr>
+          </tbody>
+        </table>
+      </mat-card-content>
+  
     </div>
+  
     <!-- my current project(s) end -->
     <!-- Active Project Start -->
     <div class="projectsCard">
