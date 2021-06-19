@@ -13,12 +13,13 @@
             <p class="card-text-short" id="card-text">
               {{ Proj.descShort }}
             </p>
-            <button class="btn" (click)="hide[i] = !hide[i]">
-              Read More...
-            </button>
             <div [hidden]="!hide[i]">
               <h4>{{ Proj.descLong }}</h4>
             </div>
+            <button class="btn" (click)="hide[i] = !hide[i]">
+              Read More...
+            </button>
+            
           </div>
           <div class="card-footer">
             <div class="leader-text" id="leader-text">
@@ -48,12 +49,12 @@
           <div class="card-body">
             <h5 class="card-title">{{ Proj.title }}</h5>
             <p class="card-text-short">{{ Proj.descShort }}</p>
-            <button class="btn" (click)="hide[i] = !hide[i]">
-              Read More...
-            </button>
             <div [hidden]="!hide[i]">
               <h4>{{ Proj.descLong }}</h4>
             </div>
+            <button class="btn" (click)="hide[i] = !hide[i]">
+              Read More...
+            </button>
           </div>
           <div class="card-footer">
             <div class="leader-text">
