@@ -144,8 +144,10 @@ mat-card {
 
 }
 
-
-
-
-
- 
+select{
+  font-weight: bold;
+  border-left: none;
+  font-size: 20px;
+  height: 50px;
+  width: 349px;
+}
