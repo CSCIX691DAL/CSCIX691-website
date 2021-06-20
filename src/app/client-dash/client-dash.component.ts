@@ -36,7 +36,7 @@ export class ClientDashComponent implements OnInit {
     newTestimonial.testimonial_text = (<HTMLInputElement>document.getElementById("testimonialDesc")).value;
     newTestimonial.rating = (<HTMLInputElement>document.getElementById("testimonialRating")).value;
     newTestimonial.client_name = localStorage.getItem("name");
-    newTestimonial.company_name = localStorage.getItem("org");
+    newTestimonial.company_name = localStorage.getItem("org");// there have a issue
 
     if(newTestimonial.client_designation == "" ||newTestimonial.testimonial_text  == "" || newTestimonial.rating =="" ){
       window.alert("Please fill out all sections");
