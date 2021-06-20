@@ -4,7 +4,7 @@
     justify-content: center;
     height: 100vh;
     background-color:#d3d3d3;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+    font-family:  'Arial Regular'
   
 }
 
@@ -17,11 +17,12 @@
 
 .welcome {
     margin-left: 50px;
-    margin-top: 40px;
+    margin-top: 3rem;
+    margin-bottom: -1rem;
     width:400px;
     display: inline-block;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    font-size:larger;
+    font-family:  'Arial Regular';
+    font-size:22px;
 }
 
 p {
@@ -31,7 +32,7 @@ p {
 a:link {
     text-decoration: none;
     color:#c08c0c;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+    font-family:  'Arial Regular'
   }
 
   a:visited {
@@ -46,6 +47,8 @@ a:link {
     margin-top:40px;
     margin-right: auto;
     text-align: left;
+    font-family:  'Arial Regular'
+    
 }
 
 .login {
@@ -56,7 +59,7 @@ a:link {
     width:320px;
 	color: white;
     margin-top: 10px;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+    font-family:  'Arial Regular'
 }
 
 .form-control {
@@ -65,7 +68,7 @@ a:link {
     border:black;
     background-color:white;
 	
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+    
 }
 
 .form-footer {
@@ -76,19 +79,18 @@ a:link {
 }
 
 .form-footer a:hover {
-    color:thistle
+    color:#c08c0c;
   }
 
   .homeback a:hover {
-    color:thistle
+    color:#c08c0c;
   }
 
   .mat-label {
-    
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+    font-family:  'Arial Regular'
   
   }
 
   h4, mat-button {
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-family:  'Arial Regular'
   }

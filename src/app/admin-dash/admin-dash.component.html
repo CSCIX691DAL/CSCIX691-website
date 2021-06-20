@@ -90,38 +90,29 @@
         <mat-card-content>
           <div id="accordion">
             <div *ngFor="let project of getActiveProjects(); index as i">
-              <div class="card">
-                <div class="card-header" id="headingFOne">
-                  <h5 class="mb-0">
-                    <button class="btn btn-outline" (click)="collapsed.toggle()">
-                      {{ project.title }}
-                    </button>
-                  </h5>
-                </div>
-
-                <div #collapsed="ngbCollapse" [ngbCollapse]="!isCollapsed" data-parent="#accordion">
-                  <div class="card-body">
-                    <div class="viewLink">
-                      <p>
-                        <a href="{{ project.azureLink }}" target="_blank">Click here to see the Azure board for this project.</a>
-                        <!-- image from https://commons.wikimedia.org/wiki/File:Edit_icon_(the_Noun_Project_30184).svg accessed June 4, 2021 -->
-                        <input type="image" class="icon" src="..\..\assets\images\editIcon.png" alt="Edit link" (click)="toggleEditLinkTextbox(i)">
-                      </p>
-                    </div>
-                    <div class="editLink" style="display: none">
-                      <label for="editLinkTextbox">Enter Azure link:</label>
-                      <input type="text" class="editLinkTextbox">
-                      <!-- image from https://www.pngwing.com/en/free-png-ynlki/download accessed June 4, 2021 -->
-                      <input type="image" class="icon" src="..\..\assets\images\checkIcon.png" alt="Confirm" (click)="editAzureLink(i, project)">
-                      <!-- image from https://www.pngjoy.com/preview/p8c3o7r0f0w8i1_cancel-icon-cross-transparent-png/ accessed June 4, 2021 -->
-                      <input type="image" class="icon" src="..\..\assets\images\cancelIcon.png" alt="Cancel" (click)="toggleEditLinkTextbox(i)">
-                    </div>
-                    <br>
-                    <br>
-                    {{ project.descLong }}
+              <app-accordian>
+                <p header>{{ project.title }}</p>
+                <div content>
+                  <div class="viewLink">
+                    <p>
+                      <a href="{{ project.azureLink }}" target="_blank">Click here to see the Azure board for this project.</a>
+                      <!-- image from https://commons.wikimedia.org/wiki/File:Edit_icon_(the_Noun_Project_30184).svg accessed June 4, 2021 -->
+                      <input type="image" class="icon" src="..\..\assets\images\editIcon.png" alt="Edit link" (click)="toggleEditLinkTextbox(i)">
+                    </p>
                   </div>
+                  <div class="editLink" style="display: none">
+                    <label for="editLinkTextbox">Enter Azure link:</label>
+                    <input type="text" class="editLinkTextbox">
+                    <!-- image from https://www.pngwing.com/en/free-png-ynlki/download accessed June 4, 2021 -->
+                    <input type="image" class="icon" src="..\..\assets\images\checkIcon.png" alt="Confirm" (click)="editAzureLink(i, project)">
+                    <!-- image from https://www.pngjoy.com/preview/p8c3o7r0f0w8i1_cancel-icon-cross-transparent-png/ accessed June 4, 2021 -->
+                    <input type="image" class="icon" src="..\..\assets\images\cancelIcon.png" alt="Cancel" (click)="toggleEditLinkTextbox(i)">
+                  </div>
+                  <br>
+                  <br>
+                  {{ project.descLong }}
                 </div>
-              </div>
+              </app-accordian>
             </div>
           </div>
         </mat-card-content>
