@@ -58,6 +58,7 @@ export class UserService {
     this.refreshUsers(); // update list of users
     return reference;
   }
+  
   deleteUser(user: User): Promise<void> {
     return this.userReference.remove(user.key);
   }
