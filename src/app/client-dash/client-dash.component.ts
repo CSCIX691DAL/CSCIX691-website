@@ -12,21 +12,32 @@ import Testimonial from './testimonial.model';
   styleUrls: ['./client-dash.component.css']
 })
 export class ClientDashComponent implements OnInit {
+
   constructor(private rfpService: RfpService, private projectService: ProjectService,
               private testimonial: TestimonialService) { }
+
+  clientID: string;
+
+  
 
   ngOnInit(): void {
     if (!localStorage.getItem("isLogin") || !(localStorage.getItem("userType") === "client")) {
       window.location.href = "/";
     }
+
+    this.clientID = localStorage['uid']; // get id of currently logged-in client
   }
 
-  getRFPs(): RFP[] {
-    return this.rfpService.getRFPs();
+  getMyRFPs(): RFP[] {
+    return this.rfpService.getRFPs().filter((rfp, index, array) => {
+      return rfp.client == this.clientID;
+    });
   }
 
-  getProjects(): Project[] {
-    return this.projectService.getProjects();
+  getMyProjects(): Project[] {
+    return this.projectService.getProjects().filter((project, index, array) => {
+      return project.client == this.clientID;
+    });
   }
 
   CreateTestimonial() {

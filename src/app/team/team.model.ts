@@ -4,7 +4,6 @@ import { Student } from "../user/student.model";
 export default class Team {
     key?: string | null;
     name: string;
-    leaders: Student[];
-    members: Student[];
+    members: string[]; // array of student keys
     project: Project;
   }

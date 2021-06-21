@@ -5,11 +5,12 @@ export default class Project {
     key?: string | null;
     azureLink: string;
     rfp: RFP;
-    client: string;
+    client: string; // client reference
+    contactName: string;
     descShort: string;
     descLong: string;
     status: string;
-    team?: Team | null;
+    team: string; // team reference
     term: string;
     title: string;
     type: string;

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
 import { map } from 'rxjs/operators';
-import Announcement from '../admin-dash/announcement.model';
+import Announcement from '../announcement/announcement.model';
 
 @Injectable({
   providedIn: 'root'
