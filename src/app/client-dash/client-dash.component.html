@@ -45,7 +45,7 @@
               <td><a href="assets/images/TopImage.JPG">RFP</a></td>
               <td>{{RFPs.status}}</td>
               <td>
-                <button class="actionButton" (click)="editRFP(r)">Edit</button>
+                <button class="actionButton" routerLink="/editRFP/{{RFPs.key}}">Edit</button>
               </td>
             </tr>
 

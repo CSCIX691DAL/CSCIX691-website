@@ -24,6 +24,7 @@ const routes: Routes = [
   { path: 'admin-dashboard', component: AdminDashComponent},
   { path: 'changepw', component: ChangepwComponent},
   { path: 'submitRFP', component: RfpComponent},
+  { path: 'editRFP/:id', component: RfpComponent},
   { path: 'student-questionnaire', component: StudentQuestionnaireComponent},
   { path: 'testimonialsPage', component: TestimonialsPageComponent},
   { path: 'announcement', component: AnnouncementComponent},
