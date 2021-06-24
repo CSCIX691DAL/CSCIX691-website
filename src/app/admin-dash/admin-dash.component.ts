@@ -40,9 +40,6 @@ export class AdminDashComponent implements OnInit {
       window.location.href = "/";
     }
 
-    this.getActiveUsersFromDB();
-    this.getInactiveUsersFromDB();
-
     pdfMake.vfs = pdfFonts.pdfMake.vfs;
   }
 
@@ -65,36 +62,6 @@ export class AdminDashComponent implements OnInit {
     return this.projectService.getProjects().filter((project, index, array) => {
       return project.status == 'Active';
     })
-  }
-
-  // Returns a list of active users
-  getActiveUsersFromDB(): User[] {
-    return this.userService.getUsers().filter((user, index, array) => {
-      return user.active;
-    });
-  }
-
-  // Returns a list of inactive users
-  getInactiveUsersFromDB(): User[] {
-    return this.userService.getUsers().filter((user, index, array) => {
-      return !user.active;
-    });
-  }
-
-  // Returns the name of the team which the given user is on. Returns 'None' if user is not on a team.
-  getTeamName(user: User): string {
-    // if the user is a student and is on a team
-    if (this.userService.isStudent(user) && (<Student>user).team) {
-      // get the team from the database
-      let team = this.teamService.getTeamByKey((<Student>user).team);
-
-      // if the team exists
-      if (team) {
-        return team.name;
-      }
-    }
-
-    return 'None';
   }
 
   deleteMember(user: User): void { 
