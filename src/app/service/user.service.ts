@@ -45,7 +45,13 @@ export class UserService {
 
     return <Student>student[0];
   }
-
+  getUserById(id: string): User {
+    let user = Object.values(this.users).filter((user, index, array) => {
+      return user.key == id;
+    });
+ 
+    return user[0];
+  }
   // Change an existing user
   updateUser(user: User, changes: Object): Promise<void> {
     return this.userReference.update(user.key, changes);

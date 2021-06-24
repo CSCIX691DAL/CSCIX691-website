@@ -28,13 +28,14 @@
       <h1><strong>Create or Edit Project Groups</strong></h1>
       <div class="list-container"><!--Code taken from https://medium.com/codetobe/learn-how-to-drag-drop-items-in-angular-7-20395c262ab0-->
         <div class="column-container">
+          
+          <h2 id="tableTitle">Available Students</h2>
           <div class="list"
                cdkDropList
                #todoList="cdkDropList"
                [cdkDropListData]="getActiveStudentsFromDB()"
                [cdkDropListConnectedTo]="[doneList]"
                (cdkDropListDropped)="changeDragDropTable($event)">
-            <h2 id="tableTitle">Available Students</h2>
             <mat-card *ngFor="let todo of getActiveStudentsFromDB()" cdkDrag>
               <mat-card-header>
                 <mat-card-title>{{todo.fName}}</mat-card-title>
@@ -44,19 +45,22 @@
         </div>
         
         <div class="column-container">
+        
+          <h2 id="tableTitle">Current Team in Selected Project</h2>
+          <select id="projectChoice1" title="Teams"  >
+            <option *ngFor='let team of getTeams()' >#{{team.name}}</option>
+          </select> 
           <div class="list"
                cdkDropList
                #doneList="cdkDropList"
                [cdkDropListData]="getTeams()"
                [cdkDropListConnectedTo]="todoList"
-               (cdkDropListDropped)="changeDragDropTable($event)">
-               <h2 id="tableTitle">Current Team in Selected Project</h2>
-               <select id="projectChoice1" >
-                <option *ngFor='let team of getTeams()' value={{team.name}}>{{team.name}}</option>
-              </select>
-            <mat-card *ngFor="let complete of getTeams()" cdkDrag>
+               (cdkDropListDropped)="changeDragDropTable($event)"
+               id="assignedStudents">
+              
+            <mat-card *ngFor="let complete of getTeamMembers(getTeamByName({{team.name}}))" cdkDrag>
               <mat-card-header>
-                <mat-card-title>{{complete.name}}</mat-card-title>
+                <mat-card-title>{{complete.studentID}}</mat-card-title>
               </mat-card-header>
             </mat-card>
           </div>
