@@ -40,9 +40,6 @@ export class AdminDashComponent implements OnInit {
       window.location.href = "/";
     }
 
-    this.getActiveUsersFromDB();
-    this.getInactiveUsersFromDB();
-
     pdfMake.vfs = pdfFonts.pdfMake.vfs;
   }
 
@@ -65,20 +62,6 @@ export class AdminDashComponent implements OnInit {
     return this.projectService.getProjects().filter((project, index, array) => {
       return project.status == 'Active';
     })
-  }
-
-  // Returns a list of active users
-  getActiveUsersFromDB(): User[] {
-    return this.userService.getUsers().filter((user, index, array) => {
-      return user.active;
-    });
-  }
-
-  // Returns a list of inactive users
-  getInactiveUsersFromDB(): User[] {
-    return this.userService.getUsers().filter((user, index, array) => {
-      return !user.active;
-    });
   }
 
   deleteMember(user: User): void { 

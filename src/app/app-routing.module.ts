@@ -1,3 +1,4 @@
+import { MembersComponent } from './members/members.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthComponent } from './auth/auth.component';
@@ -28,6 +29,7 @@ const routes: Routes = [
   { path: 'student-questionnaire', component: StudentQuestionnaireComponent},
   { path: 'testimonialsPage', component: TestimonialsPageComponent},
   { path: 'announcement', component: AnnouncementComponent},
+  { path: 'members', component: MembersComponent}
 ];
 
 @NgModule({
