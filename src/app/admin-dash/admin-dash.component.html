@@ -174,7 +174,9 @@
               <th scope="col">First Name</th>
               <th scope="col">Last Name</th>
               <th scope="col">Email</th>
+              <th scope="col">Team</th>
               <th scope="col">Type</th>
+              <th scope="col">Actions</th>
             </tr>
             </thead>
             <tbody>
@@ -183,6 +185,7 @@
               <td>{{ u.fName }}</td>
               <td>{{ u.sName }}</td>
               <td>{{ u.email }}</td>
+              <td>{{ getTeamName(u) }}</td>
               <td *ngIf="userService.isClient(u)">Client</td>
               <td *ngIf="userService.isAdmin(u)">Admin</td>
               <td *ngIf="userService.isStudent(u)">Student</td>
