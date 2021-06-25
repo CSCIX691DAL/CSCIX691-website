@@ -35,7 +35,8 @@ import { NgxCsvParserModule } from 'ngx-csv-parser';
 import { AnnouncementComponent } from './announcement/announcement.component';
 import { StudentQuestionnaireComponent } from './student-questionnaire/student-questionnaire.component';
 import {AccordianComponent} from './accordian/accordian.component';
-
+import { importType } from '@angular/compiler/src/output/output_ast';
+import {UnsubscribeComponent} from './unsubscribe/unsubscribe.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -58,6 +59,7 @@ import {AccordianComponent} from './accordian/accordian.component';
     RfpComponent,
     AnnouncementComponent,
     AccordianComponent,
+    UnsubscribeComponent,
 
   ],
   imports: [

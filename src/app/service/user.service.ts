@@ -68,6 +68,7 @@ export class UserService {
     client.sName = lastName;
     client.org = organization;
     client.userType = UserType.Client;
+    client.emailList = true;
 
     // add client to database
     this.addUser(id, client);
@@ -84,6 +85,7 @@ export class UserService {
     student.teamLeader = isTeamLeader;
     student.active = false;
     student.hasLoggedInBefore = false;
+    student.emailList = true;
 
     // add student to database
     this.addUser(id, student);
