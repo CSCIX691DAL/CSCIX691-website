@@ -32,7 +32,7 @@ export class AdminCreateTeamsComponent implements OnInit {
   getTeams(): Team[] {
     return Object.values(this.TeamService.getTeams());
   }
-  getSingleTeam():Team{
+  /*getSingleTeam():Team{
     var projectChoice1 = (<HTMLInputElement>document.getElementById("projectChoice1")).value;
     
 
@@ -40,7 +40,7 @@ export class AdminCreateTeamsComponent implements OnInit {
     return this.TeamService.getTeamByName(String(projectChoice1))
   }
 
-  
+  */
   changeDragDropTable(event: CdkDragDrop<string[]>) {//Code taken from https://medium.com/codetobe/learn-how-to-drag-drop-items-in-angular-7-20395c262ab0
     if (event.previousContainer === event.container) {
         moveItemInArray(event.container.data,
@@ -81,6 +81,12 @@ export class AdminCreateTeamsComponent implements OnInit {
       teamMembers.push(this.userService.getUserById(uid));
     }
     return teamMembers;
+  }
+  getTeamByName():Team{
+    var name = document.getElementById('projectChoice1');
+    var nameString = name.innerText;
+    let team =  this.TeamService.getTeamByName(nameString);
+    return team;
   }
 }
 

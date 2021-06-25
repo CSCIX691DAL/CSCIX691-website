@@ -48,19 +48,19 @@
         
           <h2 id="tableTitle">Current Team in Selected Project</h2>
           <select id="projectChoice1" title="Teams"  >
-            <option *ngFor='let team of getTeams()' >#{{team.name}}</option>
+            <option *ngFor='let team of getTeams()' [value]='team.name' >{{team.name}}</option>
           </select> 
-          <div class="list"
+          <div class=""
                cdkDropList
                #doneList="cdkDropList"
-               [cdkDropListData]="getTeams()"
+               [cdkDropListData]="getTeamMembers(getTeamByName())"
                [cdkDropListConnectedTo]="todoList"
                (cdkDropListDropped)="changeDragDropTable($event)"
                id="assignedStudents">
               
-            <mat-card *ngFor="let complete of getTeamMembers(getTeamByName({{team.name}}))" cdkDrag>
+            <mat-card *ngFor='let complete of getTeamMembers(getTeamByName())' cdkDrag>
               <mat-card-header>
-                <mat-card-title>{{complete.studentID}}</mat-card-title>
+                <mat-card-title  cdkDrag>{{complete.studentID}}</mat-card-title>
               </mat-card-header>
             </mat-card>
           </div>

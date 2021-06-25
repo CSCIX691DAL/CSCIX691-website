@@ -64,6 +64,7 @@ export class TeamService {
 
   // Returns a team with the specified name. Returns null if the team doesn't exist
   getTeamByName(teamName: string): Team {
+  
     let team = Object.values(this.teams).filter((team, index, array) => {
       return team.name == teamName;
     });
@@ -73,7 +74,7 @@ export class TeamService {
     }
 
     return team.length == 0 ? null : team[0];
-  }
+}
 
   // Adds a student to the members list of a team
   addStudentToTeam(team: Team, student: Student) {
