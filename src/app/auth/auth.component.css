@@ -4,7 +4,7 @@
     justify-content: center;
     height: 100vh;
     background-color:#d3d3d3;
-    font-family:  'Arial Regular'
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
   
 }
 
@@ -17,12 +17,11 @@
 
 .welcome {
     margin-left: 50px;
-    margin-top: 3rem;
-    margin-bottom: -1rem;
+    margin-top: 40px;
     width:400px;
     display: inline-block;
-    font-family:  'Arial Regular';
-    font-size:22px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size:larger;
 }
 
 p {
@@ -32,7 +31,7 @@ p {
 a:link {
     text-decoration: none;
     color:#c08c0c;
-    font-family:  'Arial Regular'
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
   }
 
   a:visited {
@@ -47,8 +46,6 @@ a:link {
     margin-top:40px;
     margin-right: auto;
     text-align: left;
-    font-family:  'Arial Regular'
-    
 }
 
 .login {
@@ -59,7 +56,7 @@ a:link {
     width:320px;
 	color: white;
     margin-top: 10px;
-    font-family:  'Arial Regular'
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
 }
 
 .form-control {
@@ -68,7 +65,7 @@ a:link {
     border:black;
     background-color:white;
 	
-    
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
 }
 
 .form-footer {
@@ -79,18 +76,19 @@ a:link {
 }
 
 .form-footer a:hover {
-    color:#c08c0c;
+    color:thistle
   }
 
   .homeback a:hover {
-    color:#c08c0c;
+    color:thistle
   }
 
   .mat-label {
-    font-family:  'Arial Regular'
+    
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
   
   }
 
   h4, mat-button {
-    font-family:  'Arial Regular'
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   }

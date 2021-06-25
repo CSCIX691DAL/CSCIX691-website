@@ -23,14 +23,6 @@ export class RfpService {
     return this.rfps;
   }
 
-  getRFPByKey(key: string): RFP {
-    let rfp = this.getRFPs().filter((rfp, index, array) => {
-      return rfp.key == key;
-    });
-
-    return rfp[0];
-  }
-
   // Populates the list of RFPs by reading from the database
   refreshRFPs(): void {
     this.rfpReference.snapshotChanges().pipe(

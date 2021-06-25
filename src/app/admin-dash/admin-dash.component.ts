@@ -14,8 +14,6 @@ import pdfFonts from 'pdfmake/build/vfs_fonts';
 import RFP from '../rfp/rfp.model';
 import Project from '../projects/project.model';
 import Team from '../team/team.model';
-import { Student } from '../user/student.model';
-
 @Component({
   selector: 'app-admin-dash',
   templateUrl: './admin-dash.component.html',
@@ -24,6 +22,8 @@ import { Student } from '../user/student.model';
 export class AdminDashComponent implements OnInit {
   showConfirm: boolean = false;
   studentRecords: any[] = [];
+  
+  
 
   constructor(private userService: UserService,
               private authService: AuthService,
@@ -39,6 +39,9 @@ export class AdminDashComponent implements OnInit {
     if (!localStorage.getItem("isLogin") || !(localStorage.getItem("userType") === "admin")) {
       window.location.href = "/";
     }
+    
+    this.getActiveUsersFromDB();
+    this.getInactiveUsersFromDB();
 
     pdfMake.vfs = pdfFonts.pdfMake.vfs;
   }
@@ -64,14 +67,19 @@ export class AdminDashComponent implements OnInit {
     })
   }
 
-  deleteMember(user: User): void { 
-    // remove user from team, if applicable
-    if (this.userService.isStudent(user)) {
-      let student = <Student>user;
-      this.teamService.removeStudentFromTeam(this.teamService.getTeamByKey(student.team), student);
-    }
-    // delete user from database
-    this.userService.deleteUser(user);
+  // Returns a list of active users
+  getActiveUsersFromDB(): User[] {
+    return this.userService.getUsers().filter((user, index, array) => {
+      return user.active;
+    });
+  }
+ 
+
+  // Returns a list of inactive users
+  getInactiveUsersFromDB(): User[] {
+    return this.userService.getUsers().filter((user, index, array) => {
+      return !user.active;
+    });
   }
 
   showConfirmButton() {

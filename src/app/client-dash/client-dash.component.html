@@ -26,7 +26,7 @@
     <!-- Pending Project Requests Start -->
     <div class="RequestsCard " >
       <mat-card>
-        <mat-card-title>My Submitted Requests</mat-card-title>
+        <mat-card-title>Submitted Requests</mat-card-title>
         <mat-card-content>
           <table class="table">
             <thead>
@@ -35,7 +35,6 @@
               <th scope="col">Organization</th>
               <th scope="col">RFP</th>
               <th scope="col">Status</th>
-              <th scope="col">Actions</th>
             </tr>
             </thead>
             <tbody>
@@ -44,11 +43,6 @@
               <td>{{RFPs.organization}}</td>
               <td><a href="assets/images/TopImage.JPG">RFP</a></td>
               <td>{{RFPs.status}}</td>
-              <td>
-                <div *ngIf="RFPs.status != 'Approved'">
-                  <button class="actionButton" routerLink="/editRFP/{{RFPs.key}}">Edit</button>
-                </div>
-              </td>
             </tr>
 
             </tbody>
@@ -60,19 +54,28 @@
     <!-- Active Project Start -->
     <div class="projectsCard">
       <mat-card>
-        <mat-card-title>My Projects</mat-card-title>
+        <mat-card-title>All Active and Past Projects</mat-card-title>
         <mat-card-content>
           <div id="accordion">
             <div *ngFor="let project of getMyProjects()">
-              <app-accordian>
-                <p header>{{ project.title }}</p>
-                <div content>
-                  <a href="{{ project.azureLink }}" target="_blank">Click here to see the Azure board for this project.</a>
+              <div class="card">
+                <div class="card-header" id="headingOne">
+                  <h5 class="mb-0">
+                    <button class="btn btn-outline" (click)="collapsed.toggle()">
+                      {{ project.title }}
+                    </button>
+                  </h5>
+                </div>
+
+                <div #collapsed="ngbCollapse" [ngbCollapse]="!isCollapsed" data-parent="#accordion">
+                  <div class="card-body">
+                    <a href="{{ project.azureLink }}" target="_blank">Click here to see the Azure board for this project.</a>
                     <br>
                     <br>
                     {{ project.descLong }}
+                  </div>
                 </div>
-              </app-accordian>
+              </div>
             </div>
           </div>
         </mat-card-content>
@@ -106,19 +109,9 @@
       <!-- Iteration Evaluations ends -->
       <!-- Upcoming Iterations -->
       <mat-card class="members2">
-        <mat-card-title> Create New Testimonial </mat-card-title>
-        
+        <mat-card-title>Upcoming Iterations</mat-card-title>
         <mat-card-content>
-          <p> Fill in the boxes then click the button below to create a new testimonial. </p>
-        </mat-card-content>
-
-        <mat-card-content>
-          <form id="testimonialCreation" class="form">
-            <mat-form-field class="testimonial"><mat-label>Testimonial Title: </mat-label><input required name="testimonialTitle" id="testimonialTitle" matInput type="string"></mat-form-field>
-            <mat-form-field class="testimonial"><mat-label>Testimonial Description: </mat-label><textarea required name="testimonialDesc" id="testimonialDesc" matInput type="string"></textarea></mat-form-field>
-            <mat-form-field class="testimonial"><mat-label>Testimonial Rating: </mat-label><textarea required name="testimonialRating" id="testimonialRating" matInput type="string"></textarea></mat-form-field>
-            <button type="reset" class="btn btn-secondary" (click)="CreateTestimonial()"> Create Testimonial </button>
-          </form>
+          You have no upcoming Iterations
         </mat-card-content>
       </mat-card>
       <mat-card class="members3">

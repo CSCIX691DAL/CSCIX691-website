@@ -29,22 +29,9 @@ h2 {
   text-align: center;
   margin: 1% 20%;
   padding: 1%;
+  border: #212529 1px solid;
   height: 100%;
-}
-
-.headerstyle {
-  width: 60%;
-  line-height: 155%;
-  align-self: center;
-  margin: 1rem;
-  background-color: #707372;
-  color: #ffffff;
-}
-
-.holder {
-  font-family: "Bahnschrift", "Arial Narrow", serif;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  margin: auto;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.1), 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  background-color: #c08c0c;
 }

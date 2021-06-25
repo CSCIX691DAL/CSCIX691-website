@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AccordianComponent } from './accordian.component';
+import { AdminCreateTeamsComponent } from './admin-create-teams.component';
 
-describe('ClientDashComponent', () => {
-  let component: AccordianComponent;
-  let fixture: ComponentFixture<AccordianComponent>;
+describe('AdminCreateTeamsComponent', () => {
+  let component: AdminCreateTeamsComponent;
+  let fixture: ComponentFixture<AdminCreateTeamsComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AccordianComponent ]
+      declarations: [ AdminCreateTeamsComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AccordianComponent);
+    fixture = TestBed.createComponent(AdminCreateTeamsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
@@ -22,4 +22,5 @@ describe('ClientDashComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+  
 });

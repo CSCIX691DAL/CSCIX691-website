@@ -62,12 +62,11 @@
 
 
 .btn {
-  color: #c08c0c;
+  color: #3C2726;
   background-color: transparent;
   border: none;
   font-family: 'Bahnschrift', "Arial Narrow", serif;
   text-align: left;
-  position: relative;right: 0.5rem;
 }
 
 .btn:hover {
@@ -77,17 +76,14 @@
 
 .jumboTitle {
   font-size: calc(1rem + 3vw);
-  font-family:  'Arial Regular';
   margin-top: 6rem;
   margin-left: 5rem;
 }
 
 .jumboSubTitle {
   font-size: calc(1rem + 1vw);
-  font-family:  'Arial Regular';
   text-align: center;
   margin-left: 5rem;
-  margin-top: 2rem;
 }
 
 .testimonials {

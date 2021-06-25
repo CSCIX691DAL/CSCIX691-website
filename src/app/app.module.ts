@@ -34,8 +34,10 @@ import {MatSelectModule} from '@angular/material/select';
 import { NgxCsvParserModule } from 'ngx-csv-parser';
 import { AnnouncementComponent } from './announcement/announcement.component';
 import { StudentQuestionnaireComponent } from './student-questionnaire/student-questionnaire.component';
-import {AccordianComponent} from './accordian/accordian.component';
-import { MembersComponent } from './members/members.component';
+import { AdminCreateTeamsComponent } from './admin-create-teams/admin-create-teams.component';
+import {DragDropModule} from '@angular/cdk/drag-drop'
+
+
 
 @NgModule({
   declarations: [
@@ -58,8 +60,8 @@ import { MembersComponent } from './members/members.component';
     StudentQuestionnaireComponent,
     RfpComponent,
     AnnouncementComponent,
-    AccordianComponent,
-    MembersComponent
+    AdminCreateTeamsComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -79,6 +81,7 @@ import { MembersComponent } from './members/members.component';
     NgbCollapseModule,
     MatSelectModule,
     NgxCsvParserModule,
+    DragDropModule,
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]
