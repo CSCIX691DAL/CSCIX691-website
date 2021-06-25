@@ -15,6 +15,9 @@ export class UserService {
 
   constructor(private db: AngularFireDatabase) {
     this.userReference = db.list('users/');
+    db.database.ref('users/').on('value', snapshot => {
+      this.users = snapshot.val();
+    });
     this.refreshUsers();
   }
 
@@ -35,11 +38,29 @@ export class UserService {
     return this.users;
   }
 
+  getStudentByID(studentID: string): Student {
+    let student = Object.values(this.users).filter((user, index, array) => {
+      return (<Student>user).studentID == studentID;
+    });
+
+    return <Student>student[0];
+  }
+
+  // Change an existing user
+  updateUser(user: User, changes: Object): Promise<void> {
+    return this.userReference.update(user.key, changes);
+  }
+
   // Adds a user to the database
   addUser(id: string, user: User) {
     let reference = this.userReference.set(id, user);
+    this.userReference.update(id, { key: id });
     this.refreshUsers(); // update list of users
     return reference;
+  }
+  
+  deleteUser(user: User): Promise<void> {
+    return this.userReference.remove(user.key);
   }
 
   addClient(id: string, email: string, firstName: string, lastName: string, organization: string): void {
@@ -56,7 +77,7 @@ export class UserService {
     this.addUser(id, client);
   }
 
-  addStudent(id: string, email: string, firstName: string, lastName: string, studentID: string, isTeamLeader: boolean, active: boolean): void {
+  addStudent(id: string, email: string, firstName: string, lastName: string, studentID: string, isTeamLeader: boolean): void {
     // construct the student object
     let student = new Student();
     student.email = email;
@@ -65,7 +86,8 @@ export class UserService {
     student.studentID = studentID;
     student.userType = UserType.Student;
     student.teamLeader = isTeamLeader;
-    student.active = active;
+    student.active = false;
+    student.hasLoggedInBefore = false;
 
     // add student to database
     this.addUser(id, student);

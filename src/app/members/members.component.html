@@ -1,0 +1,98 @@
+<div class="membersContent">
+    <!-- Sidebar Start -->
+    <div class="wrapper sideBar">
+      <nav id="sidebar">
+        <ul class="list-unstyled components sidebarNav">
+          <li class="active">
+            <a href="admin-dashboard">Overview</a>
+          </li>
+          <li>
+            <a href="members">Members</a>
+          </li>
+          <li>
+            <a href="admin-dashboard">Projects</a>
+          </li>
+          <li>
+            <a href="admin-dashboard">RFPs</a>
+          </li>
+          <li>
+            <a href="../changepw">Update Password</a>
+        </ul>
+      </nav>
+    </div>
+    <!-- Sidebar End -->
+    <div class="column1">
+        <div class="membersCard">
+            <mat-card class="members1">
+            <!-- Active Members start -->
+            <mat-card-title>Active Members</mat-card-title>
+            <mat-card-content>
+                <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">First Name</th>
+                    <th scope="col">Last Name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Team</th>
+                    <th scope="col">Type</th>
+                    <th scope="col">Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let u of getActiveUsersFromDB(); index as i">
+                    <th scope="row">{{i + 1}}</th>
+                    <td>{{ u.fName }}</td>
+                    <td>{{ u.sName }}</td>
+                    <td>{{ u.email }}</td>
+                    <td>{{ getTeamName(u) }}</td>
+                    <td *ngIf="userService.isClient(u)">Client</td>
+                    <td *ngIf="userService.isAdmin(u)">Admin</td>
+                    <td *ngIf="userService.isStudent(u)">Student</td>
+                    <td>
+                    <button class="actionButton" (click)="deleteMember(u)">Delete</button>
+                    </td>
+                </tr>
+    
+                </tbody>
+                </table>
+            </mat-card-content>
+            </mat-card>
+            <!-- Active Members ends -->
+            <mat-card class="members2">
+            <!-- Inactive Members start -->
+            <mat-card-title>Inactive Members</mat-card-title>
+            <mat-card-content>
+                <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">First Name</th>
+                    <th scope="col">Last Name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Type</th>
+                    <th scope="col">Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let k of getInactiveUsersFromDB(); index as j">
+                    <th scope="row">{{j + 1}}</th>
+                    <td>{{ k.fName }}</td>
+                    <td>{{ k.sName }}</td>
+                    <td>{{ k.email }}</td>
+                    <td *ngIf="userService.isClient(k)">Client</td>
+                    <td *ngIf="userService.isAdmin(k)">Admin</td>
+                    <td *ngIf="userService.isStudent(k)">Student</td>
+                    <td>
+                    <button class="actionButton" (click)="deleteMember(k)">Delete</button>
+                    </td>
+                </tr>
+    
+                </tbody>
+                </table>
+            </mat-card-content>
+            </mat-card>
+            <!-- Inactive Members end -->
+        </div>
+    </div>
+</div>

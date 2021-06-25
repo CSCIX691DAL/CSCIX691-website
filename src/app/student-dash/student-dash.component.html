@@ -16,6 +16,9 @@
           <a href="student-dashboard">Past Projects</a>
         </li>
         <li>
+          <a href="student-questionnaire">Questionnaire</a>
+        </li>
+        <li>
           <a href="student-dashboard">Other</a>
         </li>
         <li>
@@ -29,10 +32,10 @@
     <!-- my current project(s) Start -->
     <div class="projectsCard">
       <mat-card>
-        <mat-card-title>Current Project</mat-card-title>
+        <mat-card-title>My Current Project</mat-card-title>
         <mat-card-content>
           <div id="accordion">
-            <div *ngFor="let project of getMyProjects()">
+            <div *ngFor="let project of getMyActiveProjects()">
               <app-accordian>
                 <p header>{{ project.title }}</p>
                 <div content>
@@ -47,13 +50,32 @@
       </mat-card>
     </div>
     <!-- my current project(s) end -->
-    <!-- Active Project Start -->
+    <!-- All Active Projects Start -->
     <div class="projectsCard">
       <mat-card>
-        <mat-card-title>Past Projects</mat-card-title>
+        <mat-card-title>All Active Projects</mat-card-title>
         <mat-card-content>
           <div id="accordion">
-            <div *ngFor="let project of getPastProjects()">
+            <div *ngFor="let project of getActiveProjects()">
+              <app-accordian>
+                <p header>{{ project.title }}</p>
+                <div content>
+                    {{ project.descLong }}
+                </div>
+              </app-accordian>
+            </div>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+    <!-- All Active Projects end -->
+    <!-- My Past Projects Start -->
+    <div class="projectsCard">
+      <mat-card>
+        <mat-card-title>My Past Projects</mat-card-title>
+        <mat-card-content>
+          <div id="accordion">
+            <div *ngFor="let project of getMyPastProjects()">
               <app-accordian>
                 <p header>{{ project.title }}</p>
                 <div content>{{ project.descLong }}</div>
@@ -63,7 +85,7 @@
         </mat-card-content>
       </mat-card>
     </div>
-    <!-- Active Project End -->
+    <!-- My Past Projects End -->
   </div>
   <!-- Column 1 End -->
   <!-- Column 2 Start -->
@@ -94,7 +116,7 @@
             </tr>
             </thead>
             <tbody>
-            <tr *ngFor='let Projects of getProjects()'>
+            <tr *ngFor='let Projects of getMyActiveProjects()'>
               <td>{{Projects.title}}</td>
               <td><a href="{{Projects.azureLink}}" target="_blank">Link</a></td>
             </tr>

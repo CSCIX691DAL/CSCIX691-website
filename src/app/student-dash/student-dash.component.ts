@@ -9,6 +9,7 @@ import { ProjectService } from '../service/project.service';
   styleUrls: ['./student-dash.component.css']
 })
 export class StudentDashComponent implements OnInit {
+  uid: string;
 
   constructor(private projectService: ProjectService) { }
 
@@ -16,18 +17,27 @@ export class StudentDashComponent implements OnInit {
     if (!localStorage.getItem("isLogin") || !(localStorage.getItem("userType") === "student")) {
       window.location.href = "/";
     }
+
+    this.uid = localStorage['uid']; // get id of currently logged-in student
   }
 
   getProjects(): Project[] {
     return this.projectService.getProjects();
   }
 
-  getPastProjects(): Project[] {
-    return this.projectService.getProjects().filter((project, index, array) => {
+  getMyPastProjects(): Project[] {
+    return this.projectService.getProjectsByUID(this.uid).filter((project, index, array) => {
       return project.status == 'Completed';
     });
   }
-  getMyProjects(): Project[]{
+
+  getMyActiveProjects(): Project[] {
+    return this.projectService.getProjectsByUID(this.uid).filter((project, index, array) => {
+      return project.status == 'Active';
+    });
+  }
+
+  getActiveProjects(): Project[] {
     return this.projectService.getProjects().filter((project, index, array) => {
       return project.status == 'Active';
     });

@@ -19,16 +19,17 @@
 .homeback {
     vertical-align: middle;
     margin-left: 20px;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-family:  'Arial Regular'
 
 }
 
 .welcome {
     margin-left: 50px;
     margin-top: 40px;
-    width:400px;
+    position: relative; top: 20px;
+    width: 400px;
     display: inline-block;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-family:  'Arial Regular';
     font-size:larger;
 }
 
@@ -49,7 +50,7 @@ p {
 
     text-decoration: none;
     color: #707372;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+    font-family:  'Arial Regular'
   }
 
 a:visited {
@@ -72,7 +73,7 @@ a:visited {
     height: 40px;
     width:320px;
     margin-top: 10px;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-family:  'Arial Regular'
 }
 
 .form-control {
@@ -80,7 +81,7 @@ a:visited {
     border-radius: 25px;
     border:black;
     background-color:white;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+    font-family:  'Arial Regular'
 }
 
 .form-footer {

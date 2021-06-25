@@ -1,14 +1,16 @@
 import RFP from "../rfp/rfp.model";
+import Team from "../team/team.model";
 
 export default class Project {
     key?: string | null;
     azureLink: string;
     rfp: RFP;
-    client: string;
+    client: string; // client reference
+    contactName: string;
     descShort: string;
     descLong: string;
     status: string;
-    teamLeader: string; // ideally replace this with a Team object once implemented
+    team: string; // team reference
     term: string;
     title: string;
     type: string;
