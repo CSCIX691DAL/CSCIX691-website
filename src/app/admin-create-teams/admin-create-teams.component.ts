@@ -14,7 +14,7 @@ import Team from '../team/team.model';
   styleUrls: ['./admin-create-teams.component.css']
 })
 export class AdminCreateTeamsComponent implements OnInit {
-
+  teamMembers=[];
   constructor(private TeamService: TeamService,
     private userService: UserService
     ) { }
@@ -25,8 +25,6 @@ export class AdminCreateTeamsComponent implements OnInit {
   getTeams(): Team[] {
     return Object.values(this.TeamService.getTeams());
   }
-
-
 
   changeDragDropTable(event: CdkDragDrop<string[]>) {//Code taken from https://medium.com/codetobe/learn-how-to-drag-drop-items-in-angular-7-20395c262ab0
     if (event.previousContainer === event.container) {
@@ -41,39 +39,6 @@ export class AdminCreateTeamsComponent implements OnInit {
    }
   }
 
-
-  activeStudents = [
-
-    {
-      name: 'Michael Brian',
-    },
-    {
-      name: 'Emily Jane',
-    },
-    {
-      name: 'Jasper Cools',
-    },
-    {
-      name: 'Ty MacDonald',
-    }
-  ];
-
-  projectGroups = [
-    {
-      name: 'Rob Doe',
-    },
-    {
-      name: 'Ben Mike',
-    },
-
-  ];
-
-  
-
-
-
-
-
   //Returns a list of Active Students
   getActiveStudentsFromDB(): User[] {
     return this.userService.getUsers().filter((user, index, array) => {
@@ -82,12 +47,12 @@ export class AdminCreateTeamsComponent implements OnInit {
     });
   }
   
-    getTeamMembers(): User[] {
-      return this.userService.getUsers().filter((user, index, array) => {
-        var teamName = (<HTMLInputElement>document.getElementById("teams")).value;
-        return user.active && this.userService.isStudent(user)&& (<Student>user).team == teamName
-      });
-    }
+  getTeamMembers(): User[] {
+    return this.userService.getUsers().filter((user, index, array) => {
+      var teamName = (<HTMLInputElement>document.getElementById("teams")).value;
+      return user.active && this.userService.isStudent(user)&& (<Student>user).team == teamName
+    });
+  }
     
 }
 

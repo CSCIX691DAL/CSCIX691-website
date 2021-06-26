@@ -44,19 +44,21 @@
         </div>
         
         <div class="column-container">
+         
           <div class="list"
                cdkDropList
                #doneList="cdkDropList"
                [cdkDropListData]="getTeams()"
                [cdkDropListConnectedTo]="todoList"
                (cdkDropListDropped)="changeDragDropTable($event)">
+     
                <h2 id="tableTitle">Current Team in Selected Project</h2>
-               <select id="teams" >
-                <option *ngFor='let team of getTeams()' onchange='getTeamMembers()' value={{team.name}}>{{team.name}}</option>
-              </select>
+          <select id="teams" >
+            <option *ngFor='let team of getTeams()' (click)='getTeamMembers()' value={{team.name}}>{{team.name}}</option>
+          </select>
             <mat-card *ngFor="let complete of getTeamMembers()" cdkDrag>
               <mat-card-header>
-                <mat-card-title>{{complete.fName}}</mat-card-title>
+                <mat-card-title  id="name">{{complete.fName}}</mat-card-title>
               </mat-card-header>
             </mat-card>
           </div>
