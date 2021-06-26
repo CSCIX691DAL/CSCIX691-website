@@ -20,7 +20,7 @@ export class AdminCreateTeamsComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
-
+    
   }
   getTeams(): Team[] {
     return Object.values(this.TeamService.getTeams());
@@ -46,13 +46,19 @@ export class AdminCreateTeamsComponent implements OnInit {
       return user.active && this.userService.isStudent(user)&& (<Student>user).team == undefined
     });
   }
-  
-  getTeamMembers(): User[] {
-    return this.userService.getUsers().filter((user, index, array) => {
-      var teamName = (<HTMLInputElement>document.getElementById("teams")).value;
-      return user.active && this.userService.isStudent(user)&& (<Student>user).team == teamName
-    });
+
+  // On-change listener for the Teams drop-down
+  getTeamMembers(teamKey: string) {
+    // if no team is selected
+    if (teamKey == 'default') {
+      this.teamMembers = [];
+    }
+    // if a team is selected
+    else {
+      this.teamMembers = this.userService.getUsers().filter((user, index, array) => {
+        return user.active && this.userService.isStudent(user) && (<Student>user).team == teamKey;
+      });
+    }
   }
-    
 }
 

@@ -53,12 +53,13 @@
                (cdkDropListDropped)="changeDragDropTable($event)">
      
                <h2 id="tableTitle">Current Team in Selected Project</h2>
-          <select id="teams" >
-            <option *ngFor='let team of getTeams()' (click)='getTeamMembers()' value={{team.name}}>{{team.name}}</option>
+          <select id="teams" (change)='getTeamMembers($event.target.value)'>
+            <option value="default">Select a team</option>
+            <option *ngFor='let team of getTeams()' value={{team.key}}>{{team.name}}</option>
           </select>
-            <mat-card *ngFor="let complete of getTeamMembers()" cdkDrag>
+            <mat-card *ngFor="let student of teamMembers" cdkDrag>
               <mat-card-header>
-                <mat-card-title  id="name">{{complete.fName}}</mat-card-title>
+                <mat-card-title  id="name">{{student.fName}} {{student.sName}}</mat-card-title>
               </mat-card-header>
             </mat-card>
           </div>
