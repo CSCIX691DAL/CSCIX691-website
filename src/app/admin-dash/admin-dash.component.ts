@@ -177,6 +177,19 @@ export class AdminDashComponent implements OnInit {
     else{
       this.announcementService.createAnnouncement(newAnnouncement);
 
+      let users = this.userService.getUsers();
+
+      /*The following code is commented out as to not send emails to emails we are unsure who owns
+      for(let x = 0; x < users.length; x++){
+        if(users[x].emailList){
+          this.announcementService.sendEmail(users[x].email, users[x].fName, newAnnouncement.title, newAnnouncement.desc).subscribe((response) => {
+            console.log('Response from API is ', response);
+          }, (error) => {
+            console.log('Error is ', error);
+          })
+        }
+      }*/
+
       window.alert("Your announcement has been created");
     }
   

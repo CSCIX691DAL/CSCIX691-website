@@ -11,4 +11,5 @@ export class User {
   sName: string;
   email: string;
   userType: UserType;
+  emailList: boolean;
 }

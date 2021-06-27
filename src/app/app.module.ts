@@ -34,6 +34,7 @@ import {MatSelectModule} from '@angular/material/select';
 import { NgxCsvParserModule } from 'ngx-csv-parser';
 import { AnnouncementComponent } from './announcement/announcement.component';
 import { StudentQuestionnaireComponent } from './student-questionnaire/student-questionnaire.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -76,6 +77,7 @@ import { StudentQuestionnaireComponent } from './student-questionnaire/student-q
     NgbCollapseModule,
     MatSelectModule,
     NgxCsvParserModule,
+    HttpClientModule,
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]

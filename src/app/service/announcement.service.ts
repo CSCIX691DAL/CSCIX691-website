@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
 import { map } from 'rxjs/operators';
 import Announcement from '../announcement/announcement.model';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,8 @@ export class AnnouncementService {
   announcementReference: AngularFireList<Announcement>;
   announcements?: Announcement[];
 
-  constructor(private db: AngularFireDatabase) {
+  constructor(private db: AngularFireDatabase,
+              private http: HttpClient) {
     this.announcementReference = db.list('Announcements/');
     this.refreshAnnouncements();
   }
@@ -48,6 +50,10 @@ export class AnnouncementService {
   // Delete an Announcement from the database
   deleteAnnouncement(announcement: Announcement): Promise<void> {
     return this.announcementReference.remove(announcement.key);
+  }
+
+  sendEmail(emailTo: String, name: String, announcementTitle: String, announcementText: String){
+    return this.http.post('/api/sendEmail', {'email' : emailTo, "emailName" : name, "emailSubject" : announcementTitle, "emailBody" : announcementText});
   }
 
 }
