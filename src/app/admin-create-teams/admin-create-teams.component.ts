@@ -31,11 +31,24 @@ export class AdminCreateTeamsComponent implements OnInit {
         moveItemInArray(event.container.data,
         event.previousIndex,
         event.currentIndex);
+        event.container.data
+       
     } 
     else {
     transferArrayItem(event.previousContainer.data,
     event.container.data,
     event.previousIndex, event.currentIndex);
+    if(event.container.id=='cdk-drop-list-1'){
+      var teamName= (<HTMLInputElement>document.getElementById("teams")).value;
+      this.TeamService.addStudentToTeam(this.TeamService.getTeamByName(teamName),JSON.parse(event.container.data[event.currentIndex]))
+    }
+    if (event.container.id=='cdk-drop-list-0'){
+      var teamName= (<HTMLInputElement>document.getElementById("teams")).value;
+      
+      this.TeamService.removeStudentFromTeam(this.TeamService.getTeamByName(teamName),JSON.parse(event.container.data[event.currentIndex]))
+      //student this.userService.
+    }
+  
    }
   }
 

@@ -37,7 +37,7 @@
             <h2 id="tableTitle">Available Students</h2>
             <mat-card *ngFor="let todo of getActiveStudentsFromDB()" cdkDrag>
               <mat-card-header>
-                <mat-card-title>{{todo.fName}}</mat-card-title>
+                <mat-card-title>{{todo.fName}} {{todo.sName}}</mat-card-title>
               </mat-card-header>
             </mat-card>
           </div>
@@ -48,7 +48,7 @@
           <div class="list"
                cdkDropList
                #doneList="cdkDropList"
-               [cdkDropListData]="getTeams()"
+               [cdkDropListData]="teamMembers"
                [cdkDropListConnectedTo]="todoList"
                (cdkDropListDropped)="changeDragDropTable($event)">
      
@@ -59,7 +59,7 @@
           </select>
             <mat-card *ngFor="let student of teamMembers" cdkDrag>
               <mat-card-header>
-                <mat-card-title  id="name">{{student.fName}} {{student.sName}}</mat-card-title>
+                <mat-card-title value={{student.studentID}} id="name">{{student.fName}} {{student.sName}}</mat-card-title>
               </mat-card-header>
             </mat-card>
           </div>
