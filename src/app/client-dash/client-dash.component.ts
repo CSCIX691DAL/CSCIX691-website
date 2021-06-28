@@ -17,7 +17,9 @@ export class ClientDashComponent implements OnInit {
               private testimonial: TestimonialService) { }
 
   clientID: string;
-
+  selected = 0;
+  hovered = 0;
+  readonly = false;
   
 
   ngOnInit(): void {
@@ -45,7 +47,7 @@ export class ClientDashComponent implements OnInit {
     let newTestimonial = new Testimonial();
     newTestimonial.client_designation = (<HTMLInputElement>document.getElementById("testimonialTitle")).value;
     newTestimonial.testimonial_text = (<HTMLInputElement>document.getElementById("testimonialDesc")).value;
-    newTestimonial.rating = (<HTMLInputElement>document.getElementById("testimonialRating")).value;
+    newTestimonial.rating = this.selected;
     newTestimonial.client_name = localStorage.getItem("name");
     newTestimonial.company_name = localStorage.getItem("org");// there have a issue
 
