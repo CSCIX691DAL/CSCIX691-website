@@ -3,6 +3,6 @@ export default class Testimonial {
     client_designation: string;
     testimonial_text: string;
     client_name: string;
-    rating: string;
+    rating: string;// should be number
     company_name:string;
   }
