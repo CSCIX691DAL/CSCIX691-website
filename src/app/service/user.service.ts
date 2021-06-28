@@ -37,6 +37,12 @@ export class UserService {
   getUsers(): User[] {
     return this.users;
   }
+  getUserByEmail(email: string): User{
+    let user = Object.values(this.users).filter((user, index, array) => {
+      return (<User>user).email == email;
+    });
+    return <User>user[0];
+  }
 
   getStudentByID(studentID: string): Student {
     let student = Object.values(this.users).filter((user, index, array) => {
@@ -58,6 +64,7 @@ export class UserService {
     this.refreshUsers(); // update list of users
     return reference;
   }
+
 
   addClient(id: string, email: string, firstName: string, lastName: string, organization: string): void {
     // construct the client object
