@@ -1,23 +1,17 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark d-flex">
   <a class="navbar-brand navPosition" href="/">X691 Course Website</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
   <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-    <ul class="mr-auto mt-2 mt-lg-0">
 
+    <ul class="me-auto mt-2 mt-lg-0">
       <li class="nav-item authNav">
         <a class="nav-link" href="/register" *ngIf="isLogin !== 'true'"> Client Registration</a>
-
-      <li class="nav-item authNav" *ngIf="isLogin==='true'">
-        <a class="nav-link" href="/" (click)="logout()">Logout</a>
       </li>
       <li class="nav-item active" *ngIf="isLogin==='true'">
           <a class="nav-link" href="/announcement">Announcement</a>
-        </li>
-      <li class="nav-item authNav" *ngIf="isLogin!=='true'">
-        <a class="nav-link" href="/auth">Login</a>
       </li>
       <li class="nav-item active">
         <a class="nav-link" href="/projects">Projects</a>
@@ -25,8 +19,14 @@
       <li class="nav-item active" *ngIf="isLogin==='true'">
         <a class="nav-link" href="/{{userType}}-dashboard">Dashboard</a>
       </li>
-     
-
+    </ul>
+    <ul class="ms-auto mt-2 mt-lg-0">
+      <li class="nav-item authNav loginout" *ngIf="isLogin!=='true'">
+        <a class="nav-link" href="/auth">Login</a>
+      </li>
+      <li class="nav-item authNav loginout" *ngIf="isLogin==='true'">
+        <a class="nav-link" href="/" (click)="logout()">Logout</a>
+      </li>
     </ul>
   </div>
 </nav>
