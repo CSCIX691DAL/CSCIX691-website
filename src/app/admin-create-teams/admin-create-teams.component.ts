@@ -26,6 +26,9 @@ export class AdminCreateTeamsComponent implements OnInit {
     return Object.values(this.TeamService.getTeams());
   }
 
+
+
+
   changeDragDropTable(event: CdkDragDrop<string[]>) {//Code taken from https://medium.com/codetobe/learn-how-to-drag-drop-items-in-angular-7-20395c262ab0
     if (event.previousContainer === event.container) {
         moveItemInArray(event.container.data,
@@ -39,18 +42,25 @@ export class AdminCreateTeamsComponent implements OnInit {
     event.container.data,
     event.previousIndex, event.currentIndex);
     if(event.container.id=='cdk-drop-list-1'){
-      var teamName= (<HTMLInputElement>document.getElementById("teams")).value;
-      this.TeamService.addStudentToTeam(this.TeamService.getTeamByName(teamName),JSON.parse(event.container.data[event.currentIndex]))
+      var teamName = (<HTMLInputElement>document.getElementById("teams")).value;
+      this.TeamService.addStudentToTeam(this.TeamService.getTeamByName(teamName), JSON.parse(event.container.data[event.currentIndex]).studentID)
     }
     if (event.container.id=='cdk-drop-list-0'){
-      var teamName= (<HTMLInputElement>document.getElementById("teams")).value;
+      var teamName = (<HTMLInputElement>document.getElementById("teams")).value;
       
-      this.TeamService.removeStudentFromTeam(this.TeamService.getTeamByName(teamName),JSON.parse(event.container.data[event.currentIndex]))
+      var student = JSON.parse(event.container.data[event.currentIndex]);
+      this.TeamService.removeStudentFromTeam(this.TeamService.getTeamByKey(teamName),  this.userService.getStudentByID('B00123456'))
       //student this.userService.
     }
   
    }
   }
+
+
+
+
+
+
 
   //Returns a list of Active Students
   getActiveStudentsFromDB(): User[] {
@@ -74,4 +84,5 @@ export class AdminCreateTeamsComponent implements OnInit {
     }
   }
 }
+
 

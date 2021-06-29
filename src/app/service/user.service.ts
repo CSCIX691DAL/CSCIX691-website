@@ -38,11 +38,20 @@ export class UserService {
     return this.users;
   }
 
+  
+
+  getStudentByName(studentName: string): Student {
+    let student = Object.values(this.users).filter((user, index, array) => {
+      return (<Student>user).sName == studentName;
+    });
+
+    return <Student>student[0];
+  }
+
   getStudentByID(studentID: string): Student {
     let student = Object.values(this.users).filter((user, index, array) => {
       return (<Student>user).studentID == studentID;
     });
-
     return <Student>student[0];
   }
 

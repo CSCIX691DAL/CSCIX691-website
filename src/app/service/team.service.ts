@@ -4,6 +4,7 @@ import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
 import { map } from 'rxjs/operators';
 import Team from '../team/team.model';
 import { Student } from '../user/student.model';
+import { User } from '../user/user.model';
 
 @Injectable({
   providedIn: 'root'
@@ -84,7 +85,7 @@ export class TeamService {
   }
 
   // Removes a student from a team
-  removeStudentFromTeam(team: Team, student: Student) {
+  removeStudentFromTeam(team: Team, student: User) {
     // remove student from team
     this.db.database.ref(`Teams/${team.key}/members/${student.key}`).remove();
     // update student
