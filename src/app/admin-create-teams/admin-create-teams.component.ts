@@ -42,11 +42,17 @@ export class AdminCreateTeamsComponent implements OnInit {
     event.container.data,
     event.previousIndex, event.currentIndex);
     if(event.container.id=='cdk-drop-list-1'){
-      var teamName = (<HTMLInputElement>document.getElementById("teams")).value;
-      this.TeamService.addStudentToTeam(this.TeamService.getTeamByName(teamName), JSON.parse(event.container.data[event.currentIndex]).studentID)
+      // get the key of the team to add student to
+      let teamKey = (<HTMLInputElement>document.getElementById("teams")).value;
+      // get the student being added
+      let studentString = JSON.stringify(event.container.data[event.currentIndex])
+      let student = JSON.parse(studentString);
+
+      // add the student to the team
+      this.TeamService.addStudentToTeam(this.TeamService.getTeamByKey(teamKey), student)
     }
     if (event.container.id=='cdk-drop-list-0'){
-      var teamName = (<HTMLInputElement>document.getElementById("teams")).value;
+      let teamName = (<HTMLInputElement>document.getElementById("teams")).value;
       
       var student = JSON.parse(event.container.data[event.currentIndex]);
       this.TeamService.removeStudentFromTeam(this.TeamService.getTeamByKey(teamName),  this.userService.getStudentByID('B00123456'))
