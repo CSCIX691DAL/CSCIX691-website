@@ -82,6 +82,17 @@ h1 {
   -webkit-box-orient: vertical;
 }
 
+
+mat-card-content {
+  font-size: 17px;
+  font-family: "Bahnschrift", "Arial Narrow", serif;
+}
+
+mat-card-title {
+  font-size: 35px;
+  font-family: "Bahnschrift", "Arial Narrow", serif;
+}
+
 .client-text {
   float: right;
   display: inline-block;
@@ -89,7 +100,8 @@ h1 {
 
 .projIntro {
   width: 75%;
-  line-height: 155%;
+  line-height: 225%;
+  font-size: large;
   align-self: center;
   margin: 2rem;
   background-color: #707372;
