@@ -61,6 +61,11 @@ export class RfpService {
     return this.rfpReference.remove(rfp.key);
   }
 
+  // Updates the format of the RFP submission form according to a JSON object
+  uploadSubmissionForm(form: Object) {
+    this.db.database.ref('Forms/RFP Submission Form').set(form);
+  }
+
   // Returns a document structure for generating a PDF for a given RFP
   getDocumentDefinition(rfp: RFP) : Object {
     return {
