@@ -39,7 +39,7 @@
               <app-accordian>
                 <p header>{{ project.title }}</p>
                 <div content>
-                  <a href="{{ project.azureLink }}" target="_blank">Click here to see the Azure board for this project.</a>
+                  <a href="{{ project.azureLink }}" rel="noopener" target="_blank">Click here to see the Azure board for this project.</a>
                       <br> <br>
                       {{ project.descLong }}
                 </div>
@@ -118,7 +118,7 @@
             <tbody>
             <tr *ngFor='let Projects of getMyActiveProjects()'>
               <td>{{Projects.title}}</td>
-              <td><a href="{{Projects.azureLink}}" target="_blank">Link</a></td>
+              <td><a href="{{Projects.azureLink}}" rel="noopener" target="_blank">Link</a></td>
             </tr>
 
             </tbody>

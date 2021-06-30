@@ -95,7 +95,7 @@
                 <div content>
                   <div class="viewLink">
                     <p>
-                      <a href="{{ project.azureLink }}" target="_blank">Click here to see the Azure board for this project.</a>
+                      <a href="{{ project.azureLink }}" rel="noopener" target="_blank">Click here to see the Azure board for this project.</a>
                       <!-- image from https://commons.wikimedia.org/wiki/File:Edit_icon_(the_Noun_Project_30184).svg accessed June 4, 2021 -->
                       <input type="image" class="icon" src="..\..\assets\images\editIcon.png" alt="Edit link" (click)="toggleEditLinkTextbox(i)">
                     </p>
@@ -127,7 +127,7 @@
     <div class="otherCard">
       <mat-card>
         <mat-card-title> Create New Announcement </mat-card-title>
-        
+
         <mat-card-content>
           <p> Fill in the boxes then click the button below to create a new announcement. </p>
         </mat-card-content>
