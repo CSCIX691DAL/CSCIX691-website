@@ -208,7 +208,7 @@ export class AdminDashComponent implements OnInit {
 
       let users = this.userService.getUsers();
 
-      /*The following code is commented out as to not send emails to emails we are unsure who owns
+      /*The following code is commented out to avoid sending emails to test accounts. Uncomment when app is in production
       for(let x = 0; x < users.length; x++){
         if(users[x].emailList){
           this.announcementService.sendEmail(users[x].email, users[x].fName, newAnnouncement.title, newAnnouncement.desc).subscribe((response) => {
