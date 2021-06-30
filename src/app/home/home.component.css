@@ -33,7 +33,7 @@
   align-self: center;
   margin: 2rem;
   background-color: #707372;
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 
@@ -58,10 +58,11 @@
   justify-content: center;
   align-self: center;
   margin: auto;
+  width: 85%;
 }
 
 
-.btn {
+.btndal {
   color: #c08c0c;
   background-color: transparent;
   border: none;
@@ -70,7 +71,7 @@
   position: relative;right: 0.5rem;
 }
 
-.btn:hover {
+.btndal:hover {
   background-color: #C7BCC2;
   font-weight: bold;
 }
@@ -92,9 +93,14 @@
 
 .testimonials {
   display: flex;
-  width: 70%;
+  width: 90%;
   flex-direction: column;
   justify-content: center;
   align-self: center;
   margin: auto auto 2rem auto;
+}
+
+.focus{
+  background-color: #3ba86b;
+  color: #FFFFFF;
 }

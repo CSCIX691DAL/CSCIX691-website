@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import pdfMake from 'pdfmake/build/pdfmake';
 import pdfFonts from 'pdfmake/build/vfs_fonts';
 import RFP from './rfp.model';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-rfp',
@@ -10,7 +11,9 @@ import RFP from './rfp.model';
   styleUrls: ['./rfp.component.css'],
 })
 export class RfpComponent implements OnInit {
-  rfp = new RFP();
+  rfp: RFP;
+  id: string | undefined;
+  editMode: boolean;
 
   defaultOptions: any[] = [
     {name: 'Yes'},
@@ -37,14 +40,32 @@ export class RfpComponent implements OnInit {
 
   ngOnInit(): void {
     pdfMake.vfs = pdfFonts.pdfMake.vfs;
+    // get RFP id, if applicable
+    this.id = this.route.snapshot.params['id'];
+    // we are in edit mode if an id was specified
+    this.editMode = this.id != undefined;
+
+    if (this.editMode) {
+      // get associated RFP from the database
+      this.rfp = this.rfpService.getRFPByKey(this.id);
+    } else {
+      // create a new RFP
+      this.rfp = new RFP();
+    }
   }
 
-  constructor(private rfpService: RfpService) { }
+  constructor(private rfpService: RfpService, private route: ActivatedRoute) { }
 
   saveRFP(): void {
-    this.rfpService.createRFP(this.rfp).then(() => {
-      console.log('Created new RFP');
-    })
+    if (this.editMode) {
+      this.rfpService.updateRFP(this.rfp, this.rfp).then(() => {
+        console.log('Updated RFP');
+      });
+    } else {
+      this.rfpService.createRFP(this.rfp).then(() => {
+        console.log('Created new RFP');
+      });
+    }
   }
 
   newRFP(): void {
@@ -64,7 +85,7 @@ export class RfpComponent implements OnInit {
       const docDefinition = this.rfpService.getDocumentDefinition(rfp);
       pdfMake.createPdf(docDefinition).open();
 
-      this.rfpService.createRFP(rfp);
+      this.saveRFP();
       alert('RFP submitted successfully');
       
     } else {

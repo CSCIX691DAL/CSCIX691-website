@@ -35,6 +35,7 @@
               <th scope="col">Organization</th>
               <th scope="col">RFP</th>
               <th scope="col">Status</th>
+              <th scope="col">Actions</th>
             </tr>
             </thead>
             <tbody>
@@ -43,6 +44,11 @@
               <td>{{RFPs.organization}}</td>
               <td><a href="assets/images/TopImage.JPG">RFP</a></td>
               <td>{{RFPs.status}}</td>
+              <td>
+                <div *ngIf="RFPs.status != 'Approved'">
+                  <button class="actionButton" routerLink="/editRFP/{{RFPs.key}}">Edit</button>
+                </div>
+              </td>
             </tr>
 
             </tbody>

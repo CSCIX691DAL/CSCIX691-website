@@ -34,9 +34,12 @@ import {MatSelectModule} from '@angular/material/select';
 import { NgxCsvParserModule } from 'ngx-csv-parser';
 import { AnnouncementComponent } from './announcement/announcement.component';
 import { StudentQuestionnaireComponent } from './student-questionnaire/student-questionnaire.component';
+import { HttpClientModule } from '@angular/common/http';
 import {AccordianComponent} from './accordian/accordian.component';
 import { importType } from '@angular/compiler/src/output/output_ast';
 import {UnsubscribeComponent} from './unsubscribe/unsubscribe.component';
+import { MembersComponent } from './members/members.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -60,7 +63,7 @@ import {UnsubscribeComponent} from './unsubscribe/unsubscribe.component';
     AnnouncementComponent,
     AccordianComponent,
     UnsubscribeComponent,
-
+    MembersComponent,
   ],
   imports: [
     BrowserModule,
@@ -80,6 +83,7 @@ import {UnsubscribeComponent} from './unsubscribe/unsubscribe.component';
     NgbCollapseModule,
     MatSelectModule,
     NgxCsvParserModule,
+    HttpClientModule,
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]

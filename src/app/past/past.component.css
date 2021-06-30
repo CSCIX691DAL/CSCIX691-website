@@ -21,7 +21,7 @@ h1 {
   font-weight: bold;
   align-self: center;
   width: 100%;
-  font-size: large;
+  font-size: 25px;
 }
 
 .titles {
@@ -44,12 +44,14 @@ h1 {
 
 .card-title {
   font-weight: bold;
-  font-size: 18px;
+  font-size: 25px;
+  margin-bottom: 2rem;
 }
 
 .card {
   flex: 0 1 100%;
   align:center;
+  font-size: 15px;
 
 }
 
@@ -69,10 +71,12 @@ h1 {
 .leader-text {
   float: left;
   display: inline-block;
+  font-size: 20px;
 }
 
 .status-text {
   display: inline-block;
+  font-size: 20px;
 }
 
 .card-text-short {
@@ -89,6 +93,7 @@ h1 {
 .client-text {
   float: right;
   display: inline-block;
+  font-size: 20px;
 }
 
 .projIntro {

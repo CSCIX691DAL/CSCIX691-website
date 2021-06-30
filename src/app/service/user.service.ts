@@ -64,6 +64,10 @@ export class UserService {
     this.refreshUsers(); // update list of users
     return reference;
   }
+  
+  deleteUser(user: User): Promise<void> {
+    return this.userReference.remove(user.key);
+  }
 
 
   addClient(id: string, email: string, firstName: string, lastName: string, organization: string): void {
