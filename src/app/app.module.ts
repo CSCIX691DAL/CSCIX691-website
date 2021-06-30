@@ -35,6 +35,8 @@ import { NgxCsvParserModule } from 'ngx-csv-parser';
 import { AnnouncementComponent } from './announcement/announcement.component';
 import { StudentQuestionnaireComponent } from './student-questionnaire/student-questionnaire.component';
 import { HttpClientModule } from '@angular/common/http';
+import {AccordianComponent} from './accordian/accordian.component';
+import { MembersComponent } from './members/members.component';
 
 @NgModule({
   declarations: [
@@ -57,7 +59,8 @@ import { HttpClientModule } from '@angular/common/http';
     StudentQuestionnaireComponent,
     RfpComponent,
     AnnouncementComponent,
-
+    AccordianComponent,
+    MembersComponent
   ],
   imports: [
     BrowserModule,

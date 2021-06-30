@@ -1,3 +1,4 @@
+import { TeamService } from './../service/team.service';
 import { UserService } from './../service/user.service';
 import { ProjectService } from './../service/project.service';
 import {Component, OnInit} from '@angular/core';
@@ -12,6 +13,8 @@ import pdfMake from 'pdfmake/build/pdfmake';
 import pdfFonts from 'pdfmake/build/vfs_fonts';
 import RFP from '../rfp/rfp.model';
 import Project from '../projects/project.model';
+import Team from '../team/team.model';
+import { Student } from '../user/student.model';
 
 @Component({
   selector: 'app-admin-dash',
@@ -27,16 +30,15 @@ export class AdminDashComponent implements OnInit {
               private ngxCsvParser: NgxCsvParser,
               private rfpService: RfpService,
               private projectService: ProjectService,
+              private teamService: TeamService,
               private announcementService: AnnouncementService) {
+
   }
 
   ngOnInit(): void {
     if (!localStorage.getItem("isLogin") || !(localStorage.getItem("userType") === "admin")) {
       window.location.href = "/";
     }
-
-    this.getActiveUsersFromDB();
-    this.getInactiveUsersFromDB();
 
     pdfMake.vfs = pdfFonts.pdfMake.vfs;
   }
@@ -62,18 +64,14 @@ export class AdminDashComponent implements OnInit {
     })
   }
 
-  // Returns a list of active users
-  getActiveUsersFromDB(): User[] {
-    return this.userService.getUsers().filter((user, index, array) => {
-      return user.active;
-    });
-  }
-
-  // Returns a list of inactive users
-  getInactiveUsersFromDB(): User[] {
-    return this.userService.getUsers().filter((user, index, array) => {
-      return !user.active;
-    });
+  deleteMember(user: User): void { 
+    // remove user from team, if applicable
+    if (this.userService.isStudent(user)) {
+      let student = <Student>user;
+      this.teamService.removeStudentFromTeam(this.teamService.getTeamByKey(student.team), student);
+    }
+    // delete user from database
+    this.userService.deleteUser(user);
   }
 
   showConfirmButton() {
@@ -95,16 +93,47 @@ export class AdminDashComponent implements OnInit {
   }
 
   async batchCreateStudents() {
-    /* WILL BE FIXED WITH USER STORY 471
-    for (let student of this.studentRecords) {
-      let studentId = student['OrgDefinedId'].split('#')[1];
-      await this.authService.signupStudent(student['Email'], studentId, student['First Name'], student['Last Name'], studentId);
-      console.log(student);
+    try {
+      for (let student of this.studentRecords) {
+        // generate a random password
+        let randomPassword = Math.random().toString(36)
+        // TODO: Add users to Team specified in CSV file once teams are implemented
+        await this.authService.signupStudent(student['Email'], randomPassword, student['First Name'], student['Last Name'], student['OrgDefindID'], student['Team Leaders'].toLowerCase() == 'true');
+        
+        // if a project team name was specified
+        if (student['Project Team']) {
+          // attempt to get the team from the database
+          let team = this.teamService.getTeamByName(student['Project Team']);
+          // if the team does not exist
+          if (!team) {
+            // create the team
+            team = new Team();
+            team.name = student['Project Team'];
+            team.members = [];
+            // add the team to the database
+            this.teamService.addTeam(team);
+            team = null;
+            // get the team from the database
+            team = this.teamService.getTeamByName(student['Project Team']);
+          }
+
+          // get the newly created student from the database
+          let newStudent = this.userService.getStudentByID(student['OrgDefindID']);
+          // add the student to the team
+          this.teamService.addStudentToTeam(team, newStudent);
+        }
+        // send password reset email to student
+        this.authService.resetPassword(student['Email'])
+        console.log(student);
+      }
+      alert('Students created successfully.');
+    } catch(exception: any) {
+      alert('An error occurred. Failed to create students.');
+    } finally {
+      this.studentRecords = [];
+      this.showConfirm = false;
+      this.ngOnInit();
     }
-    this.studentRecords = [];
-    this.showConfirm = false;
-    this.ngOnInit();
-    */
   }
 
   generatePDF(rfp: RFP): void {

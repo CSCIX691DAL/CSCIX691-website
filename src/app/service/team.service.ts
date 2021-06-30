@@ -14,6 +14,10 @@ export class TeamService {
 
   constructor(private db: AngularFireDatabase, private userService: UserService) {
     this.teamReference = db.list('Teams/');
+    db.database.ref('Teams/').on('value', snapshot => {
+      this.teams = snapshot.val() ?? [];
+    });
+    
     this.refreshTeams();
   }
 
@@ -23,21 +27,16 @@ export class TeamService {
   }
 
   // Populates the list of Teams by reading from the database
-  refreshTeams(): void {
-    this.teamReference.snapshotChanges().pipe(
-      map(changes =>
-        changes.map(c =>
-          ({ key: c.payload.key, ...c.payload.val() })
-        )
-      )
-    ).subscribe(data => {
-      this.teams = data;
+  refreshTeams() {
+    this.db.database.ref('Teams/').get().then(value => {
+      this.teams = value.val() ?? [];
     });
   }
 
   // Adds a new team to the database
   addTeam(team: Team) {
-    this.teamReference.push(team); // add to database
+    let key = this.teamReference.push(team).key; // add to database
+    this.teamReference.update(key, { key: key });
   }
 
   // Changes an existing team
@@ -50,36 +49,51 @@ export class TeamService {
     this.teamReference.remove(team.key);
   }
 
+  // Returns a team with the specified key. Returns null if the team doesn't exist
+  getTeamByKey(key: string): Team {
+    let team = Object.values(this.teams).filter((team, index, array) => {
+      return team.key == key;
+    });
+
+    if (!team) {
+      return null;
+    }
+
+    return team.length == 0 ? null : team[0];
+  }
+
+  // Returns a team with the specified name. Returns null if the team doesn't exist
+  getTeamByName(teamName: string): Team {
+    let team = Object.values(this.teams).filter((team, index, array) => {
+      return team.name == teamName;
+    });
+
+    if (!team) {
+      return null;
+    }
+
+    return team.length == 0 ? null : team[0];
+  }
+
   // Adds a student to the members list of a team
   addStudentToTeam(team: Team, student: Student) {
-    this.db.database.ref(`Teams/${team.key}/members/`).push(student);
+    // update team
+    this.db.database.ref(`Teams/${team.key}/members/${student.key}`).set(true);
+    // update student
+    this.userService.updateUser(student, { team: team.key });
   }
 
   // Removes a student from a team
   removeStudentFromTeam(team: Team, student: Student) {
     // remove student from team
     this.db.database.ref(`Teams/${team.key}/members/${student.key}`).remove();
+    // update student
+    this.userService.updateUser(student, { team: null });
   }
 
   // Moves a student from one team to another
   moveStudentToTeam(from: Team, to: Team, student: Student) {
     this.removeStudentFromTeam(from, student);
     this.addStudentToTeam(to, student);
-  }
-
-  // Sets a student as a leader of a team
-  makeLeader(team: Team, student: Student) {
-    // update the student's info
-    this.userService.updateUser(student, { teamLeader: true });
-    // update the team's database entry
-    this.db.database.ref(`Teams/${team.key}/leaders/`).push(student);
-  }
-
-  // Removes a student as a leader of a team
-  unmakeLeader(team: Team, student: Student) {
-    // update the student's info
-    this.userService.updateUser(student, { teamLeader: false });
-    // update the team's database entry
-    this.db.database.ref(`Teams/${team.key}/leaders/`).push(student);
   }
 }

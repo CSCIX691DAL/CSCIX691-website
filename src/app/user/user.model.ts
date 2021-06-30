@@ -10,6 +10,7 @@ export class User {
   fName: string;
   sName: string;
   email: string;
+  hasLoggedInBefore: boolean;
   userType: UserType;
   emailList: boolean;
 }

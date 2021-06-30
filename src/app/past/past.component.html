@@ -1,9 +1,9 @@
 <div class="projLayoutDiv">
   <br />
-  <button class="term-header" (click)="showDiv.summer = !showDiv.summer">
+  <button class="term-header pt-3 pb-3" (click)="showDiv.summer = !showDiv.summer">
     Summer 2020</button
   ><br />
-
+ 
   <div *ngIf="showDiv.summer" class="summer-cards">
     <div *ngFor="let Proj of getPastProjects(); index as i">
       <div *ngIf="Proj.term === 'Summer 2020'" class="card mt-3">
@@ -13,12 +13,13 @@
             <p class="card-text-short" id="card-text">
               {{ Proj.descShort }}
             </p>
+            <div [hidden]="!hide[i]" id="card-text">
+              <h4>{{ Proj.descLong }}</h4>
+            </div>
             <button class="btn" (click)="hide[i] = !hide[i]">
               Read More...
             </button>
-            <div [hidden]="!hide[i]">
-              <h4>{{ Proj.descLong }}</h4>
-            </div>
+            
           </div>
           <div class="card-footer">
             <div class="leader-text" id="leader-text">
@@ -37,23 +38,23 @@
   </div>
 
   <br />
-  <button class="term-header" (click)="showDiv.fall = !showDiv.fall">
+  <button class="term-header pt-3 pb-3" (click)="showDiv.fall = !showDiv.fall">
     Fall 2020</button
   ><br />
 
   <div *ngIf="showDiv.fall" class="summer-cards">
-    <div *ngFor="let Proj of projects; index as i">
+    <div *ngFor="let Proj of getPastProjects(); index as i">
       <div *ngIf="Proj.term === 'Fall 2020'" class="card mt-3">
         <div class="card">
           <div class="card-body">
             <h5 class="card-title">{{ Proj.title }}</h5>
             <p class="card-text-short">{{ Proj.descShort }}</p>
-            <button class="btn" (click)="hide[i] = !hide[i]">
-              Read More...
-            </button>
             <div [hidden]="!hide[i]">
               <h4>{{ Proj.descLong }}</h4>
             </div>
+            <button class="btn" (click)="hide[i] = !hide[i]">
+              Read More...
+            </button>
           </div>
           <div class="card-footer">
             <div class="leader-text">

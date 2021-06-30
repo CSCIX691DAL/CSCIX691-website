@@ -1,50 +1,49 @@
-<div class="homeLayoutDiv">
+<div class="homeLayoutDiv lead">
   <div
     class="p-5 text-center bg-image"
     style="
-      background-image: url('../../assets/images/TopImage.JPG');
-      height: 320px;
-    "
-  >
+      background-color: #c08c0c;
+    ">
     <div class="mask">
-      <div class="d-flex justify-content-center align-items-center h-100">
+      <div class="d-flex justify-content-center align-items-center">
         <div>
-          <h1 class="mb-lg-3 jumboTitle">Welcome to CSCI X691</h1>
-          <h4 class="mb-3 jumboSubTitle">Dalhousie Community Outreach</h4>
+          <h1 class="pt-1 mt-1 jumboTitle">Welcome to CSCI X691</h1>
+          <h4 class="pb-1 mb-1 jumboSubTitle">Dalhousie Community Outreach</h4>
         </div>
       </div>
     </div>
   </div>
-  <mat-card class="projIntro">
-    <mat-card-title>Course Introduction</mat-card-title>
-    <mat-card-content>
-      Thank you for visiting the website for Dalhousie's Community Outreach class.  This class provides students with
-      invaluable experience working with real-world projects and actual clients to ensure the clients' needs are met.  This
-      experience is all gained through group work and in-class guidance that provides students with a safe first experience
-      with actual projects.
-    </mat-card-content>
-    <mat-card-content>
-      In this class, students are placed in groups that consist of second, third and fourth year students, distributed evenly
-      to ensure a fair and productive mix of skill, learning and leadership development.  These groups are overseen and
-      mentored by exceptional and experienced Teaching Assistants that will ensure both that the students meet the learning
-      outcomes and that the clients leave happy with a product that will be valuable to them. Student groups will
-      communicate directly with the client in order to fully understand client expectations, desired features and receive
-      feedback and provide deliverables at specified increments.  The students themselves will manage the deliverables and
-      expectations and present the final product at the end of the designated semester.
-    </mat-card-content>
-    <mat-card-content>
-      The course welcomes any client project that requires a development component.  We are constantly accepting new
-      project applications and encourage you to view past completed project <a href="/projects">here</a>.  If you think you have
-      a project that would match the courses students well, please feel free to complete a
-      <a href="/register">RFP (Requirement for Project)</a>.  We are excited to work with you.
-    </mat-card-content>
-  </mat-card>
+  <div class="projIntro card m-auto mt-3 mb-3">
+    <div class="card-body">
+      <h5 class="card-title">Course Introduction</h5>
+      <p class="card-text">
+        Thank you for visiting the website for Dalhousie's Community Outreach class.  This class provides students with
+        invaluable experience working with real-world projects and actual clients to ensure the clients' needs are met.  This
+        experience is all gained through group work and in-class guidance that provides students with a safe first experience
+        with actual projects.
+      </p>
+      <p class="card-text">
+        In this class, students are placed in groups that consist of second, third and fourth year students, distributed evenly
+        to ensure a fair and productive mix of skill, learning and leadership development.  These groups are overseen and
+        mentored by exceptional and experienced Teaching Assistants that will ensure both that the students meet the learning
+        outcomes and that the clients leave happy with a product that will be valuable to them. Student groups will
+        communicate directly with the client in order to fully understand client expectations, desired features and receive
+        feedback and provide deliverables at specified increments.  The students themselves will manage the deliverables and
+        expectations and present the final product at the end of the designated semester.
+      </p>
+      <p class="card-text">
+        The course welcomes any client project that requires a development component.  We are constantly accepting new
+        project applications and encourage you to view past completed project <a href="/projects">here</a>.  If you think you have
+        a project that would match the courses students well, please feel free to complete a
+        <a href="/register">RFP (Requirement for Project)</a>.  We are excited to work with you.
+      </p>
+    </div>
+  </div>
 
 <!--  Three following images were retrieved February 5, 2021 from-->
 <!--  https://www.gettyimages.ca/photos/projects?collections=ims&family=creative&license=rf&phrase=projects&sort=mostpopular#license-->
-  <div class="topRowLinks">
-      <div class="card" style="width: 18rem; margin: 1.5rem;">
-        <img class="card-img-top" src="./assets/images/clientImage.jpg" alt="client image">
+   <div class="card m-auto" style="width: 85%; margin: 1.5rem; background-color: rgba(112, 115, 114, 0.3);">
+    <!-- <img class="card-img-top" src="./assets/images/clientImage.jpg" alt="client image"> -->
         <div class="card-body">
           <h5 class="card-title">Looking to Become a Client?</h5>
           <p class="card-text">
@@ -54,10 +53,14 @@
             always open to coordinating with new clients and taking on new projects and look
             forward to hearing from you.
           </p>
-          <a href="/register" class="btn">REGISTER NOW</a>
+          <div class="text-center d-grid gap-2 mx-auto col-4">
+            <a href="/register" class="btn btn-lg focus">REGISTER NOW</a>
+          </div>
+          
         </div>
       </div>
-      <div class="card" style="width: 18rem; margin: 1.5rem;">
+<div class="topRowLinks row row-cols-1 row-cols-md-3 g-4">
+      <div class="card" style="width: 28%; margin: 1.5rem;">
         <img class="card-img-top" src="./assets/images/studentImage.jpg" alt="student image">
         <div class="card-body">
           <h5 class="card-title">Looking for Past Projects?</h5>
@@ -66,10 +69,10 @@
             our Past Projects page to see what kind of projects we take on and the results that we produce.  If there is
             something you're looking to have done that you don't see, send us an email and we can discuss the fit for this course.
           </p>
-          <a href="/projects" class="btn">READ MORE...</a>
+          <a href="/projects" class="btndal btn btn-lg">READ MORE...</a>
         </div>
       </div>
-      <div class="card" style="width: 18rem; margin: 1.5rem;">
+      <div class="card" style="width: 28%; margin: 1.5rem;">
         <img class="card-img-top" src="./assets/images/pastProjects.jpg" alt="past products">
         <div class="card-body">
           <h5 class="card-title">Are you a Student?</h5>
@@ -77,27 +80,27 @@
             If you're a student looking for information on this course, such as how the course will run, the syllabus, or any other
             information, checkout your student dashboard. All students registered for the course will have an account already created for them!
           </p>
-          <a href="/auth" class="btn">LOGIN NOW</a>
+          <a href="/auth" class="btn btndal btn-lg">LOGIN NOW</a>
         </div>
       </div>
-    <div class="card" style="width: 18rem; margin: 1.5rem;">
+    <div class="card" style="width: 28%; margin: 1.5rem;">
       <img class="card-img-top" src="./assets/images/DalCS.jpg" alt="Dal CS">
       <div class="card-body">
         <h5 class="card-title">Dalhousie - Computer Science Links</h5>
         <p class="card-text">
           If you're a student or client looking for information regarding Dalhousie's Faculty of Computer Science, such as general information,
           faculty and staff information, contact information, or any other information, checkout the links below. </p>
-        <a href="https://www.dal.ca/faculty/computerscience.html" target="_blank" class="btn">Dalhousie Computer Science</a>
-        <a href="https://www.dal.ca/faculty/computerscience/about.html" target="_blank" class="btn">About Dal Computer Science</a>
-        <a href="https://www.dal.ca/faculty/computerscience/faculty-staff.html" target="_blank" class="btn">CS Faculty and Staff</a>
-        <a href="https://www.dal.ca/faculty/computerscience/about/contact.html" target="_blank" class="btn">Dalhousie Computer Science Contact</a>
+        <a href="https://www.dal.ca/faculty/computerscience.html" target="_blank" class="btn btndal btn-lg">Dalhousie Computer Science</a><br />
+        <a href="https://www.dal.ca/faculty/computerscience/about.html" target="_blank" class="btn btndal btn-lg">About Dal Computer Science</a><br />
+        <a href="https://www.dal.ca/faculty/computerscience/faculty-staff.html" target="_blank" class="btn btndal btn-lg">CS Faculty and Staff</a><br />
+        <a href="https://www.dal.ca/faculty/computerscience/about/contact.html" target="_blank" class="btn btndal btn-lg">Dalhousie Computer Science Contact</a><br />
       </div>
     </div>
   </div>
 
   <div class="testimonials">
-    <h2>Past Client Testimonials</h2>
+    <h2 style="padding-left: 15px;">Past Client Testimonials</h2>
     <app-testimonials></app-testimonials>
-    <a href="/testimonialsPage" class='btn'>See more testimonials ></a>
+    <a href="/testimonialsPage" class='btn btndal'>See more testimonials ></a>
   </div>
 </div>

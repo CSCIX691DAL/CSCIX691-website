@@ -35,14 +35,7 @@
   text-decoration: none;
 }
 
-
-
 .RFPCard {
-  width: 95%;
-  margin: 2rem;
-}
-
-.membersCard {
   width: 95%;
   margin: 2rem;
 }
@@ -55,9 +48,6 @@
 .otherCard {
   width: 95%;
   margin: 2rem;
-}
-.members2 {
-  margin-top: 2rem;
 }
 
 .column1{
