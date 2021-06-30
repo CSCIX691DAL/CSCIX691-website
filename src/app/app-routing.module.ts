@@ -13,6 +13,7 @@ import {RfpComponent} from './rfp/rfp.component';
 import {TestimonialsPageComponent} from './testimonialsPage/testimonialsPage.component';
 import { AnnouncementComponent } from './announcement/announcement.component';
 import {StudentQuestionnaireComponent} from './student-questionnaire/student-questionnaire.component';
+import { UnsubscribeComponent } from './unsubscribe/unsubscribe.component';
 
 
 const routes: Routes = [
@@ -29,6 +30,7 @@ const routes: Routes = [
   { path: 'student-questionnaire', component: StudentQuestionnaireComponent},
   { path: 'testimonialsPage', component: TestimonialsPageComponent},
   { path: 'announcement', component: AnnouncementComponent},
+  { path: 'unsubscribe', component: UnsubscribeComponent},
   { path: 'members', component: MembersComponent}
 ];
 

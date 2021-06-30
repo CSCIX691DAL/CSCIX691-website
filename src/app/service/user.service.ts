@@ -37,6 +37,12 @@ export class UserService {
   getUsers(): User[] {
     return this.users;
   }
+  getUserByEmail(email: string): User{
+    let user = Object.values(this.users).filter((user, index, array) => {
+      return (<User>user).email == email;
+    });
+    return <User>user[0];
+  }
 
   getStudentByID(studentID: string): Student {
     let student = Object.values(this.users).filter((user, index, array) => {
@@ -63,6 +69,7 @@ export class UserService {
     return this.userReference.remove(user.key);
   }
 
+
   addClient(id: string, email: string, firstName: string, lastName: string, organization: string): void {
     // construct the client object
     let client = new Client();
@@ -72,6 +79,7 @@ export class UserService {
     client.sName = lastName;
     client.org = organization;
     client.userType = UserType.Client;
+    client.emailList = true;
 
     // add client to database
     this.addUser(id, client);
@@ -88,6 +96,7 @@ export class UserService {
     student.teamLeader = isTeamLeader;
     student.active = false;
     student.hasLoggedInBefore = false;
+    student.emailList = true;
 
     // add student to database
     this.addUser(id, student);
