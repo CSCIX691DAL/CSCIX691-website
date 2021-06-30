@@ -12,4 +12,5 @@ export class User {
   email: string;
   hasLoggedInBefore: boolean;
   userType: UserType;
+  emailList: boolean;
 }
