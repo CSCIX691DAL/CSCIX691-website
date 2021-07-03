@@ -26,7 +26,10 @@ export class AdminCreateTeamsComponent implements OnInit {
     return Object.values(this.TeamService.getTeams());
   }
 
-
+  dropDownFix(teamName){
+    if(!teamName) return null;
+    return teamName.our_teamName_id;
+  }
 
 
   changeDragDropTable(event: CdkDragDrop<string[]>) {//Code taken from https://medium.com/codetobe/learn-how-to-drag-drop-items-in-angular-7-20395c262ab0

@@ -55,7 +55,7 @@
                <h2 id="tableTitle">Current Team in Selected Project</h2>
           <select id="teams" (change)='getTeamMembers($event.target.value)'>
             <option value="default">Select a team</option>
-            <option *ngFor='let team of getTeams()' value={{team.key}}>{{team.name}}</option>
+            <option *ngFor='let team of getTeams(); trackBy: dropDownFix' value={{team.key}}>{{team.name}}</option>
           </select>
             <mat-card *ngFor="let student of teamMembers" cdkDrag>
               <mat-card-header>
