@@ -42,7 +42,7 @@
             <tr *ngFor='let RFPs of getMyRFPs()'>
               <td>{{RFPs.projectTitle}}</td>
               <td>{{RFPs.organization}}</td>
-              <td><a href="assets/images/TopImage.JPG">RFP</a></td>
+              <td (click)="generatePDF(RFPs)" class="linkDisplay"><a href="/client-dashboard">View RFP</a></td>
               <td>{{RFPs.status}}</td>
               <td>
                 <div *ngIf="RFPs.status != 'Approved'">
