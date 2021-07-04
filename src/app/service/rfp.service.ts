@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
 import { map } from 'rxjs/operators';
 import pdfMake from 'pdfmake/build/pdfmake';
@@ -8,14 +8,26 @@ import RFP from '../rfp/rfp.model';
 @Injectable({
   providedIn: 'root'
 })
-export class RfpService {
+export class RfpService implements OnInit {
   rfpReference: AngularFireList<RFP>;
   rfps?: RFP[];
+  submissionForm: Object;
 
-  constructor(private db: AngularFireDatabase) {
-    this.rfpReference = db.list('RFPs/');
+  constructor(private db: AngularFireDatabase) { 
+    this.rfpReference = this.db.list('RFPs/');
     pdfMake.vfs = pdfFonts.pdfMake.vfs;
     this.refreshRFPs();
+
+    // get the RFP submission form from the database
+    this.db.database.ref('Forms/RFP Submission Form').get().then(value => {
+      this.submissionForm = value.val();
+    }).catch(exception => {
+      console.log(exception);
+    });
+  }
+
+  ngOnInit(): void {
+    
   }
 
   // Returns a list of RFPs
@@ -66,11 +78,17 @@ export class RfpService {
     this.db.database.ref('Forms/RFP Submission Form').set(form);
   }
 
+  // Gets the RFP submission form
+  getSubmissionForm(): Object {
+    return this.submissionForm;
+  }
+
   // Returns a document structure for generating a PDF for a given RFP
   getDocumentDefinition(rfp: RFP) : Object {
-    return {
+    // define required fields
+    let documentDefinition = {
       content: [
-        {text: 'Project title: ' + rfp.projectTitle + '\n\n', fontSize: 32},
+        { text: 'Project title: ' + rfp.projectTitle + '\n\n', fontSize: 32, style: 'header' },
         {
           ul: [
             'Contact Name: ' + rfp.contactName + '\n\n',
@@ -78,25 +96,18 @@ export class RfpService {
             'Contact Email:' + rfp.contactEmail + '\n\n',
             'Mailing Address: ' + rfp.mailingAddress + '\n\n\n'
           ]
-        },
-        {text: 'Briefly describe the organization, including its mission or primary function(s)\n\n', style: 'header'},
-        {
-          ul: [
-            rfp.problem + '\n\n'
-          ]
-        },
-        {text: 'Describe the ideal situation if this problem were solved in the best possible way (whatever that might be)' + '\n\n', style: 'header'},
-        {
-          ul: [
-            'Ideal Situation: ' + rfp.idealSituation + '\n\n',
-            'Specific Software: ' + rfp.specifySpecificSoftware + '\n\n',
-            'Specific and detailed reporting: ' + rfp.specifyOtherReporting + '\n\n',
-            'Budget: ' + rfp.specifyBudget + '\n\n',
-            'Usability Considerations: ' + rfp.specifyUsabilityConsiderations + '\n\n',
-
-          ]
-        },
+        }
       ]
     };
+
+    // add answers to supplementary questions
+    for(let [key, value] of Object.entries(rfp.supplementaryAnswers)) {
+      // add the question
+      documentDefinition["content"].push({ text: this.submissionForm["questions"][key]["question"] + '\n\n', fontSize: 12, style: 'header' });
+      // add the answer
+      documentDefinition["content"].push({ ul: [ value.toString() + '\n\n' ] })
+    }
+
+    return documentDefinition;
   }
 }
