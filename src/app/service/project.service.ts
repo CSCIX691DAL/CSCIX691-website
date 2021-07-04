@@ -42,8 +42,8 @@ export class ProjectService {
     project.rfp = rfp;
     project.contactName = rfp.contactName;
     project.client = rfp.client; // set client to currently logged-in user
-    project.descShort = rfp.problem;
-    project.descLong = 'Testing testing testing' // need further clarification of where this comes from
+    project.descShort = 'Testing short description'; // need further clarification of where this comes from
+    project.descLong = 'Testing long description' // need further clarification of where this comes from
     project.status = 'Accepted';
     project.team = null;
     project.term = this.setNextTerm();
