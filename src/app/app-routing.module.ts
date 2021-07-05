@@ -14,6 +14,7 @@ import {TestimonialsPageComponent} from './testimonialsPage/testimonialsPage.com
 import { AnnouncementComponent } from './announcement/announcement.component';
 import {StudentQuestionnaireComponent} from './student-questionnaire/student-questionnaire.component';
 import { UnsubscribeComponent } from './unsubscribe/unsubscribe.component';
+import { DueDateComponent } from 'src/dueDates/dueDates.model';
 
 
 const routes: Routes = [
@@ -31,7 +32,9 @@ const routes: Routes = [
   { path: 'testimonialsPage', component: TestimonialsPageComponent},
   { path: 'announcement', component: AnnouncementComponent},
   { path: 'unsubscribe', component: UnsubscribeComponent},
-  { path: 'members', component: MembersComponent}
+  { path: 'members', component: MembersComponent},
+  { path: 'DueDates', component: DueDateComponent}
+  
 ];
 
 @NgModule({
