@@ -39,7 +39,7 @@ import {AccordianComponent} from './accordian/accordian.component';
 import { importType } from '@angular/compiler/src/output/output_ast';
 import {UnsubscribeComponent} from './unsubscribe/unsubscribe.component';
 import { MembersComponent } from './members/members.component';
-import DueDateComponent from 'src/dueDates/dueDates.model';
+import { DueDateComponent } from './dueDates/dueDates.component';
 
 @NgModule({
   declarations: [

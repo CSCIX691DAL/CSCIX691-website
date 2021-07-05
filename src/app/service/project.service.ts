@@ -4,22 +4,29 @@ import { AngularFireDatabase, AngularFireList } from '@angular/fire/database'
 import { map } from 'rxjs/operators';
 import Project from '../projects/project.model';
 import RFP from '../rfp/rfp.model';
+import DueDate from '../dueDates/dueDates.model'
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProjectService {
   projectReference: AngularFireList<Project>;
+  projectduedate: AngularFireList<DueDate>;
   projects?: Project[];
+  duedates?: DueDate[];
 
   constructor(private db: AngularFireDatabase, private teamService: TeamService) {
     this.projectReference = db.list('Projects/');
+    
     this.refreshProjects();
   }
 
   // Returns a list of Projects
   getProjects() : Project[] {
     return this.projects;
+  }
+  getDueDate() : DueDate[] {
+    return this.duedates;
   }
 
   // Populates the list of Projects by reading from the database

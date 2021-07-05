@@ -17,6 +17,9 @@
   margin: 2em;
   width: 100%;
 }
+.card-subtitle{
+  margin: 0px;
+}
 
 .sidebarNav li a {
   color: white;
