@@ -162,6 +162,26 @@
         </mat-card-content>
       </mat-card>
     </div>
+
+    <!-- Create new due date -->
+    <div class="otherCard">
+      <mat-card>
+        <mat-card-title> Create New Due Date </mat-card-title>
+
+        <mat-card-content>
+          <p> Fill in the boxes then click the button below to create a new  Assignment and Due date (Click on calendar icon to get date and time)</p>
+        </mat-card-content>
+
+        <mat-card-content>
+          <form id="announcementCreation" class="form">
+            <mat-form-field class="announcement"><mat-label>Due date Title: </mat-label><input required name="title" id="duedatetitle" matInput type="string"></mat-form-field>
+            <mat-form-field class="announcement"><input type="datetime-local" required name="duedate" id="duedate" matInput type="string"></mat-form-field>
+            <button type="reset" class="btn btn-secondary" (click)="dueDates()"> Create Due Date </button>
+          </form>
+        </mat-card-content>
+      </mat-card>
+    </div>
+    <!-- end of create due date -->
     <!-- Announcement Creation end -->
     <!-- csv upload start -->
     <div class="otherCard">
