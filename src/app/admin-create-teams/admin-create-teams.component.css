@@ -114,11 +114,6 @@
     background-color: #707372;
     color: white;
   }
-
-
-
-
-
   
 .container {
   display: flex;
@@ -130,10 +125,12 @@
   justify-content: center;
 }
 .column-container {
-  width: 350px;
+  width: 600px;
+  height: 500px;
   margin: 0 15px 0;
   display: inline-block;
   vertical-align: top;
+  padding-top: 50px;
 }
 mat-card {
   margin: 1em;
@@ -141,7 +138,10 @@ mat-card {
 }
 .list {
   border: black solid 1px;
-
+  height: inherit;
+  width: inherit;
+  overflow-y: scroll;
+  background-color: rgba(112, 115, 114, 0.15);
 }
 
 select{
@@ -150,4 +150,7 @@ select{
   font-size: 20px;
   height: 50px;
   width: 349px;
+}
+#teams{
+  width: 100%;
 }
