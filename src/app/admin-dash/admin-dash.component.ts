@@ -27,6 +27,7 @@ import { AngularFireDatabase } from '@angular/fire/database';
 export class AdminDashComponent implements OnInit {
   showConfirm: boolean = false;
   studentRecords: any[] = [];
+  rfpSubmissionForm: File;
 
 
   constructor(private userService: UserService,
@@ -84,7 +85,7 @@ export class AdminDashComponent implements OnInit {
     this.showConfirm = !this.showConfirm;
   }
 
-  public changeListener(files: FileList) {
+  public onStudentCSVUpload(files: FileList) {
     this.studentRecords = [];
     console.log(files);
     if (files && files.length > 0) {
@@ -142,6 +143,40 @@ export class AdminDashComponent implements OnInit {
     }
   }
 
+  // Gets the uploaded RFP submission form
+  onRFPSubmissionFormUpload(event) {
+    this.rfpSubmissionForm = event.target.files[0];
+  }
+
+  // Saves the uploaded RFP submission form to the database
+  uploadRFPSubmissionForm() {
+    // read JSON file
+    let fileReader = new FileReader();
+    fileReader.readAsText(this.rfpSubmissionForm, "UTF-8");
+
+    // write form to database
+    fileReader.onload = (() => {
+      try {
+        // attempt to parse JSON file
+        let form = JSON.parse(<string>fileReader.result);
+        // upload form to the database
+        this.rfpService.uploadSubmissionForm(form);
+
+        alert("RFP submission form uploaded successively.");
+      } catch (exception) {
+        // if an error occurs, log it and alert the user
+        console.log(exception);
+        alert(exception);
+      }
+    });
+    
+    // if an error occurs, log it and alert the user
+    fileReader.onerror = ((error) => {
+      console.log(error);
+      alert(error);
+    });
+  }
+
   generatePDF(rfp: RFP): void {
     const docDefinition = this.rfpService.getDocumentDefinition(rfp);
     pdfMake.createPdf(docDefinition).open();
@@ -149,6 +184,11 @@ export class AdminDashComponent implements OnInit {
 
   // Set an RFP's status to approved and make it a project
   approveRFP(rfp: RFP): void {
+    let t = new Team();
+    //set team title to the rfp title
+    t.name = rfp.projectTitle;
+    //adding team to team database
+    this.teamService.addTeam(t);
     // approve RFP
     this.rfpService.updateRFP(rfp, {status: 'Approved'});
     // create project out of RFP

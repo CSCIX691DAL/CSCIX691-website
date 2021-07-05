@@ -16,6 +16,9 @@
           <a href="admin-dashboard">RFPs</a>
         </li>
         <li>
+          <a href="admin-create-teams">Create Teams</a>
+        </li>
+        <li>
           <a href="../changepw">Update Password</a>
       </ul>
     </nav>
@@ -189,7 +192,7 @@
 
         <mat-card-content>
           <label class="form-label" for="customFile">Upload Student CSV</label>
-          <input type="file" accept=".csv" class="form-control" id="customFile" (change)="changeListener($event.target.files)"/>
+          <input type="file" accept=".csv" class="form-control" id="customFile" (change)="onStudentCSVUpload($event.target.files)"/>
         </mat-card-content>
 
         <mat-card-content *ngIf="!showConfirm; else showConfirmBlock">
@@ -204,6 +207,23 @@
       </mat-card>
     </div>
     <!-- csv upload end -->
+    <!-- RFP Submission Form Upload start -->
+    <div class="otherCard">
+      <mat-card>
+        <mat-card-title>RFP Submission Form Upload</mat-card-title>
+
+        <mat-card-content>
+          <label class="form-label" for="customFile">Upload RFP Submission Form</label>
+          <input type="file" accept=".json" class="form-control" id="customFile" (change)="onRFPSubmissionFormUpload($event)"/>
+        </mat-card-content>
+
+        <mat-card-content>
+          <button type="button" class="btn btn-secondary" (click)="uploadRFPSubmissionForm()">Upload Form</button>
+        </mat-card-content>
+
+      </mat-card>
+    </div>
+    <!-- RFP Submission Form Upload end -->
     <!-- Other Start End -->
     <div class="otherCard">
       <mat-card>

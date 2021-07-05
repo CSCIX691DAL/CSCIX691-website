@@ -1,5 +1,5 @@
 import { RfpService } from './../service/rfp.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import pdfMake from 'pdfmake/build/pdfmake';
 import pdfFonts from 'pdfmake/build/vfs_fonts';
 import RFP from './rfp.model';
@@ -11,9 +11,11 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./rfp.component.css'],
 })
 export class RfpComponent implements OnInit {
+  @ViewChild('form') form;
   rfp: RFP;
   id: string | undefined;
   editMode: boolean;
+  submissionForm: Object;
 
   defaultOptions: any[] = [
     {name: 'Yes'},
@@ -45,6 +47,9 @@ export class RfpComponent implements OnInit {
     // we are in edit mode if an id was specified
     this.editMode = this.id != undefined;
 
+    // get submission form template from database
+    this.submissionForm = this.rfpService.getSubmissionForm();
+
     if (this.editMode) {
       // get associated RFP from the database
       this.rfp = this.rfpService.getRFPByKey(this.id);
@@ -74,20 +79,17 @@ export class RfpComponent implements OnInit {
 
   // Used for creating a new RFP
   generatePDF(rfp: RFP) {
-    if (rfp.projectTitle, rfp.contactName, rfp.organization, rfp.contactEmail, rfp.contactPhone,
-      rfp.mailingAddress, rfp.problem, rfp.idealSituation, rfp.specifySpecificSoftware, rfp.specifyOtherReporting,
-      rfp.specifyBudget, rfp.specifyUsabilityConsiderations, rfp.kindOfTests, rfp.sampleData) {
-      
+    if (this.form.valid) {
       // set the RFP's client to the currently logged-in user
       rfp.client = localStorage.getItem('uid');
-      
-      console.log('in');
       const docDefinition = this.rfpService.getDocumentDefinition(rfp);
       pdfMake.createPdf(docDefinition).open();
-
+      // save RFP to the database
       this.saveRFP();
       alert('RFP submitted successfully');
-      
+
+      // route user back to the dashboard
+      window.location.href = "/client-dashboard";
     } else {
       alert('Please fill all of the required fields');
     }
