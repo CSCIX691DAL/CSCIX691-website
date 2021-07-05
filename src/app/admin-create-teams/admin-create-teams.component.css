@@ -123,6 +123,7 @@
 #tableTitle {
   display: flex;
   justify-content: center;
+  color: white;
 }
 .column-container {
   width: 600px;
