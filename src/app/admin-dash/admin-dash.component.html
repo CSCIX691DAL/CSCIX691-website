@@ -119,6 +119,27 @@
       </mat-card>
     </div>
     <!-- Active Project End -->
+    <div class="analyticsCard">
+      <mat-card>
+        <mat-card-title>Due Dates</mat-card-title>
+          <mat-card-content>
+            <table class="table">
+              <thead>
+              <tr>
+                <th scope="col">Title</th>
+                <th scope="col"> Due Date</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor='let dueDates of getDueDates()'>
+                <td>{{dueDates.title}}</td>
+                <td>{{ dueDates.date | date:'yyyy/MM/dd h:mm:ss a' }}</td>
+              </tr>
+              </tbody>
+            </table>
+          </mat-card-content>
+      </mat-card>
+    </div>
   </div>
   <!-- Column 1 End -->
   <!-- Column 2 Start -->

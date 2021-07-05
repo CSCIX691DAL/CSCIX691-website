@@ -15,6 +15,8 @@ import RFP from '../rfp/rfp.model';
 import Project from '../projects/project.model';
 import Team from '../team/team.model';
 import { Student } from '../user/student.model';
+import DueDates from '../dueDates/dueDates.model';
+import { dueDateService } from '../service/duedate.service';
 
 @Component({
   selector: 'app-admin-dash',
@@ -31,7 +33,8 @@ export class AdminDashComponent implements OnInit {
               private rfpService: RfpService,
               private projectService: ProjectService,
               private teamService: TeamService,
-              private announcementService: AnnouncementService) {
+              private announcementService: AnnouncementService,
+              private dueDateService: dueDateService) {
 
   }
 
@@ -222,6 +225,9 @@ export class AdminDashComponent implements OnInit {
       window.alert("Your announcement has been created");
     }
   
+  }
+  getDueDates(): DueDates[] {
+    return this.dueDateService.getdueDates();
   }
 
 }
