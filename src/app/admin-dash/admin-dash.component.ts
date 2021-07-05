@@ -24,6 +24,7 @@ import { Student } from '../user/student.model';
 export class AdminDashComponent implements OnInit {
   showConfirm: boolean = false;
   studentRecords: any[] = [];
+  rfpSubmissionForm: File;
 
   constructor(private userService: UserService,
               private authService: AuthService,
@@ -78,7 +79,7 @@ export class AdminDashComponent implements OnInit {
     this.showConfirm = !this.showConfirm;
   }
 
-  public changeListener(files: FileList) {
+  public onStudentCSVUpload(files: FileList) {
     this.studentRecords = [];
     console.log(files);
     if (files && files.length > 0) {
@@ -134,6 +135,40 @@ export class AdminDashComponent implements OnInit {
       this.showConfirm = false;
       this.ngOnInit();
     }
+  }
+
+  // Gets the uploaded RFP submission form
+  onRFPSubmissionFormUpload(event) {
+    this.rfpSubmissionForm = event.target.files[0];
+  }
+
+  // Saves the uploaded RFP submission form to the database
+  uploadRFPSubmissionForm() {
+    // read JSON file
+    let fileReader = new FileReader();
+    fileReader.readAsText(this.rfpSubmissionForm, "UTF-8");
+
+    // write form to database
+    fileReader.onload = (() => {
+      try {
+        // attempt to parse JSON file
+        let form = JSON.parse(<string>fileReader.result);
+        // upload form to the database
+        this.rfpService.uploadSubmissionForm(form);
+
+        alert("RFP submission form uploaded successively.");
+      } catch (exception) {
+        // if an error occurs, log it and alert the user
+        console.log(exception);
+        alert(exception);
+      }
+    });
+    
+    // if an error occurs, log it and alert the user
+    fileReader.onerror = ((error) => {
+      console.log(error);
+      alert(error);
+    });
   }
 
   generatePDF(rfp: RFP): void {

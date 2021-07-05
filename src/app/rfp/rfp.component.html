@@ -8,186 +8,61 @@
 	<!-- RFP Section Start -->
     <div class="RFPCard">
       <mat-card-content>
-        <form id="submitRFP" class="form">
+        <form id="submitRFP" class="form" #form="ngForm">
+          <!-- Required questions -->
           <mat-form-field class="shortInput"><mat-label>Project Title: </mat-label><input matInput required [(ngModel)]="rfp.projectTitle" name="projectTitle" type="string"></mat-form-field>
-
-          <!-- Section -->
-
           <mat-form-field class="shortInput"><mat-label>Contact Name: </mat-label><input required [(ngModel)]="rfp.contactName" name="contactName" matInput type="string"></mat-form-field>
           <mat-form-field class="longInput"><mat-label>Organization: </mat-label><input required [(ngModel)]="rfp.organization" name="organization" matInput type="string"></mat-form-field>
           <mat-form-field class="shortInput"><mat-label>Contact Email: </mat-label><input required [(ngModel)]="rfp.contactEmail" name="contactEmail"matInput type="string"></mat-form-field>
           <mat-form-field class="shortInput"><mat-label>Contact Phone Number: </mat-label><input required [(ngModel)]="rfp.contactPhone" name="contactPhone"matInput type="string"></mat-form-field>
           <mat-form-field class="longInput"><mat-label>Mailing Address: </mat-label><input required [(ngModel)]="rfp.mailingAddress" name="mailingAddress" matInput type="string"></mat-form-field>
 
-          <!-- Problem -->
-          <div class="selectionDiv">
-            <mat-label class="labels">Briefly describe the organization, including its mission or primary function(s): </mat-label>
-            <mat-form-field class="Textarea"><textarea required [(ngModel)]="rfp.problem" name="problem" matInput type="string"></textarea></mat-form-field>
-
-            <!-- Desired Outcome -->
-
-            <mat-label class="labels">Describe the ideal situation if this problem were solved in the best possible way (whatever that might be): </mat-label>
-            <mat-form-field class="Textarea"><textarea required [(ngModel)]="rfp.idealSituation" name="idealSituation" matInput type="string"></textarea></mat-form-field>
-
-            <div>
-              <mat-label class="labels">Do you require specific software to be used in solving this problem? </mat-label>
-              <mat-form-field class="selectInput">
-                <mat-label class="labels">Select</mat-label>
-                <mat-select [(ngModel)]="rfp.specificSoftware" name="specificSoftware">
-                  <mat-option *ngFor="let select of specificSoftwareOptions" [value]="select.name">
-                    {{select.name}}
-                  </mat-option>
-                </mat-select>
-              </mat-form-field>
+          <!-- Supplementary questions -->
+          <div class="selectionDiv" *ngFor="let question of submissionForm['questions'].values(); index as i">
+            <!-- Text answer questions -->
+            <div *ngIf="question['type'] == 'text'">
+              <!-- Required questions -->
+              <div *ngIf="question['required'] == 'true'; else optionalTextQuestion">
+                <mat-label class="labels">{{ question['question'] }} </mat-label>
+                <mat-form-field class="Textarea"><textarea required [(ngModel)]="rfp.supplementaryAnswers[i]" name="{{i}}" matInput type="string"></textarea></mat-form-field>
+              </div>
+              <!-- Optional questions -->
+              <ng-template #optionalTextQuestion>
+                <mat-label class="labels">{{ question['question'] }} </mat-label>
+                <mat-form-field class="Textarea"><textarea [(ngModel)]="rfp.supplementaryAnswers[i]" name="{{i}}" matInput type="string"></textarea></mat-form-field>
+              </ng-template>
             </div>
-
-            <div>
-              <mat-label class="labels">If you answered yes or maybe to the previous question, please specify: </mat-label>
-              <mat-form-field class="Textarea"><textarea required [(ngModel)]="rfp.specifySpecificSoftware" name="specifySpecificSoftware" matInput type="string"></textarea></mat-form-field>
+            <!-- Multiple choice questions -->
+            <div *ngIf="question['type'] == 'select'">
+              <!-- Required questions -->
+              <div *ngIf="question['required']; else optionalSelectQuestion">
+                <mat-label class="labels">{{ question['question'] }} </mat-label>
+                <mat-form-field class="selectInput">
+                  <mat-label class="labels">Select</mat-label>
+                  <mat-select required [(ngModel)]="rfp.supplementaryAnswers[i]" name="{{i}}">
+                    <mat-option *ngFor="let option of question['options']" [value]="option">
+                      {{ option }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              <!-- Optional questions -->
+              <ng-template #optionalSelectQuestion>
+                <mat-label class="labels">{{ question['question'] }} </mat-label>
+                <mat-form-field class="selectInput">
+                  <mat-label class="labels">Select</mat-label>
+                  <mat-select [(ngModel)]="rfp.supplementaryAnswers[i]" name="{{i}}">
+                    <mat-option *ngFor="let option of question['options']" [value]="option">
+                      {{ option }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </ng-template>
             </div>
+          </div>
 
-            <div>
-              <mat-label class="labels">Do you prefer to have the students report to you by video call meeting? </mat-label>
-              <mat-form-field class="selectInput">
-                <mat-label class="labels">Select</mat-label>
-                <mat-select [(ngModel)]="rfp.videoCallMeeting" name="videoCallMeeting">
-                  <mat-option *ngFor="let select of reportingOptions" [value]="select.name">
-                    {{select.name}}
-                  </mat-option>
-                </mat-select>
-              </mat-form-field>
-            </div>
-
-            <div>
-              <mat-label class="labels">Do you prefer to have the students report to you by email? </mat-label>
-              <mat-form-field class="selectInput">
-                <mat-label>Select</mat-label>
-                <mat-select [(ngModel)]="rfp.emailReporting" name="emailReporting">
-                  <mat-option *ngFor="let select of reportingOptions" [value]="select.name">
-                    {{select.name}}
-                  </mat-option>
-                </mat-select>
-              </mat-form-field>
-            </div>
-
-            <div>
-              <mat-label class="labels">Other types of reporting (please specify): </mat-label>
-              <mat-form-field class="Textarea"><textarea required [(ngModel)]="rfp.specifyOtherReporting" name="specifyOtherReporting" matInput type="string"></textarea></mat-form-field>
-            </div>
-
-            <div>
-              <mat-label class="labels">Will a confidentiality agreement (NDA) be required? </mat-label>
-              <mat-form-field class="selectInput">
-                <mat-label>Select</mat-label>
-                <mat-select [(ngModel)]="rfp.requireNDA" name="requireNDA">
-                  <mat-option *ngFor="let select of defaultOptions" [value]="select.name">
-                    {{select.name}}
-                  </mat-option>
-                </mat-select>
-              </mat-form-field>
-            </div>
-
-            <div>
-              <mat-label class="labels">Will an Intellectual Property Assignment (IP) be required? </mat-label>
-              <mat-form-field class="selectInput">
-                <mat-label >Select</mat-label>
-                <mat-select [(ngModel)]="rfp.requireIP" name="requireIP">
-                  <mat-option *ngFor="let select of defaultOptions" [value]="select.name">
-                    {{select.name}}
-                  </mat-option>
-                </mat-select>
-              </mat-form-field>
-            </div>
-
-            <div>
-              <mat-label class="labels">Do you have a budget for this project? </mat-label>
-              <mat-form-field class="selectInput">
-                <mat-label>Select</mat-label>
-                <mat-select [(ngModel)]="rfp.budget" name="budget">
-                  <mat-option *ngFor="let select of defaultOptions" [value]="select.name">
-                    {{select.name}}
-                  </mat-option>
-                </mat-select>
-              </mat-form-field>
-            </div>
-
-            <div>
-              <mat-label class="labels">If you have a budget for this project, specify the amount available: </mat-label>
-              <mat-form-field class="shortInput"><input required [(ngModel)]="rfp.specifyBudget" name="specifyBudget" matInput type="string"></mat-form-field>
-            </div>
-
-            <div>
-              <mat-label class="labels">Will the target user(s) require a training session? </mat-label>
-              <mat-form-field class="selectInput">
-                <mat-label>Select</mat-label>
-                <mat-select [(ngModel)]="rfp.trainingSession" name="trainingSession">
-                  <mat-option *ngFor="let select of defaultOptions" [value]="select.name">
-                    {{select.name}}
-                  </mat-option>
-                </mat-select>
-              </mat-form-field>
-            </div>
-
-            <div>
-              <mat-label class="labels">Will the target user(s) require How-To documentation? </mat-label>
-              <mat-form-field class="selectInput">
-                <mat-label>Select</mat-label>
-                <mat-select [(ngModel)]="rfp.howToDocumentation" name="howToDocumentation">
-                  <mat-option *ngFor="let select of defaultOptions" [value]="select.name">
-                    {{select.name}}
-                  </mat-option>
-                </mat-select>
-              </mat-form-field>
-            </div>
-
-            <div>
-              <mat-label class="labels">Are there any other considerations regarding usability? </mat-label>
-              <mat-form-field class="selectInput">
-                <mat-label>Select</mat-label>
-                <mat-select [(ngModel)]="rfp.usabilityConsiderations" name="usabilityConsiderations">
-                  <mat-option *ngFor="let select of defaultOptions" [value]="select.name">
-                    {{select.name}}
-                  </mat-option>
-                </mat-select>
-              </mat-form-field>
-            </div>
-
-            <div>
-              <mat-label class="labels">If yes, please specify here: (for example, the user interface must work fast enough) </mat-label>
-              <mat-form-field class="Textarea"><textarea required [(ngModel)]="rfp.specifyUsabilityConsiderations" name="specifyUsabilityConsiderations" matInput type="string"></textarea></mat-form-field>
-            </div>
-
-            <!-- Testing -->
-
-            <div>
-              <mat-label class="labels">Will you require real-life testing of the system before the delivery date? </mat-label>
-              <mat-form-field class="selectInput">
-                <mat-label>Select</mat-label>
-                <mat-select [(ngModel)]="rfp.realLifeTesting" name="realLifeTesting">
-                  <mat-option *ngFor="let select of defaultOptions" [value]="select.name">
-                    {{select.name}}
-                  </mat-option>
-                </mat-select>
-              </mat-form-field>
-            </div>
-
-            <div>
-              <mat-label class="labels">If yes, who would do this testing? </mat-label>
-              <mat-form-field class="selectInput">
-                <mat-label>Select</mat-label>
-                <mat-select [(ngModel)]="rfp.specifyTesters" name="specifyTesters">
-                  <mat-option *ngFor="let select of specifyTestersOptions" [value]="select.name">
-                    {{select.name}}
-                  </mat-option>
-                </mat-select>
-              </mat-form-field>
-            </div>
-            <mat-label class="labels">If student team: What kind of tests should be performed? (please describe): </mat-label>
-            <mat-form-field class="Textarea"><textarea required [(ngModel)]="rfp.kindOfTests" name="kindOfTests" matInput type="string"></textarea></mat-form-field>
-
-            <mat-label class="labels">What amount or type of sample data will you provide to the team to facilitate this? </mat-label>
-            <mat-form-field class="Textarea"><textarea required [(ngModel)]="rfp.sampleData" name="sampleData" matInput type="string"></textarea></mat-form-field>
-          <!-- Project Agreement -->
+          <div>
+            <!-- Project Agreement -->
 
           <h2>Project Agreement</h2>
           <h3> I agree that my organization / work group is aware of this project and I (or my delegate) am willing to
@@ -227,17 +102,16 @@
               <mat-form-field>
                 <mat-label>Select</mat-label>
                 <mat-select [(ngModel)]="rfp.projectAgreement" name="projectAgreement">
-                  <mat-option *ngFor="let select of defaultOptions" [value]="select.name">
-                    {{select.name}}
-                  </mat-option>
+                  <mat-option value="Yes">Yes</mat-option>
+                  <mat-option value="No">No</mat-option>
                 </mat-select>
               </mat-form-field>
             </div>
 
             <mat-form-field class="date"><mat-label>Date: </mat-label><input required [(ngModel)]="rfp.date" name="date" matInput type="date"></mat-form-field>
-
-            <button (click)="generatePDF(rfp)" class="submitRFP" routerLink='/client-dashboard' mat-button>Submit RFP</button>
           </div>
+          
+          <button (click)="generatePDF(rfp)" class="submitRFP" mat-button>Submit RFP</button>
         </form>
       </mat-card-content>
     </div>

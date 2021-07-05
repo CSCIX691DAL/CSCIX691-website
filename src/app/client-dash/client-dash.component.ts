@@ -5,6 +5,8 @@ import { TestimonialService } from '../service/testimonial_client.service';
 import Project from '../projects/project.model';
 import { ProjectService } from '../service/project.service';
 import Testimonial from './testimonial.model';
+import pdfMake from 'pdfmake/build/pdfmake';
+import pdfFonts from 'pdfmake/build/vfs_fonts';
 
 @Component({
   selector: 'app-client-dash',
@@ -26,6 +28,7 @@ export class ClientDashComponent implements OnInit {
     }
 
     this.clientID = localStorage['uid']; // get id of currently logged-in client
+    pdfMake.vfs = pdfFonts.pdfMake.vfs;
   }
 
   getMyRFPs(): RFP[] {
@@ -38,6 +41,11 @@ export class ClientDashComponent implements OnInit {
     return this.projectService.getProjects().filter((project, index, array) => {
       return project.client == this.clientID;
     });
+  }
+
+  generatePDF(rfp: RFP): void {
+    const docDefinition = this.rfpService.getDocumentDefinition(rfp);
+    pdfMake.createPdf(docDefinition).open();
   }
 
   CreateTestimonial() {
