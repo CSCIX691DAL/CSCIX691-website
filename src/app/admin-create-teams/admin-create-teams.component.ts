@@ -33,6 +33,7 @@ export class AdminCreateTeamsComponent implements OnInit {
   }
 
 
+  //this method is intended to return either null or the teams Id to prevent the teams dropdown from resetting after student is added
   dropDownFix(team){
     if(!team) return null;
     return team.our_team_id;
@@ -65,7 +66,7 @@ export class AdminCreateTeamsComponent implements OnInit {
       let studentString = JSON.stringify(event.container.data[event.currentIndex])
       let student = JSON.parse(studentString);
       this.TeamService.removeStudentFromTeam(this.TeamService.getTeamByKey(teamName), student);
-      //student this.userService.
+     
     }
   
    }
