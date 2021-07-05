@@ -14,7 +14,7 @@ import {TestimonialsPageComponent} from './testimonialsPage/testimonialsPage.com
 import { AnnouncementComponent } from './announcement/announcement.component';
 import {StudentQuestionnaireComponent} from './student-questionnaire/student-questionnaire.component';
 import { UnsubscribeComponent } from './unsubscribe/unsubscribe.component';
-
+import { AdminCreateTeamsComponent } from './admin-create-teams/admin-create-teams.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent},
@@ -31,7 +31,8 @@ const routes: Routes = [
   { path: 'testimonialsPage', component: TestimonialsPageComponent},
   { path: 'announcement', component: AnnouncementComponent},
   { path: 'unsubscribe', component: UnsubscribeComponent},
-  { path: 'members', component: MembersComponent}
+  { path: 'members', component: MembersComponent},
+  { path: 'admin-create-teams', component: AdminCreateTeamsComponent},
 ];
 
 @NgModule({

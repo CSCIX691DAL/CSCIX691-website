@@ -143,6 +143,11 @@ export class AdminDashComponent implements OnInit {
 
   // Set an RFP's status to approved and make it a project
   approveRFP(rfp: RFP): void {
+    let t = new Team();
+    //set team title to the rfp title
+    t.name = rfp.projectTitle;
+    //adding team to team database
+    this.teamService.addTeam(t);
     // approve RFP
     this.rfpService.updateRFP(rfp, {status: 'Approved'});
     // create project out of RFP
