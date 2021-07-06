@@ -222,6 +222,27 @@
         </mat-card-content>
       </mat-card>
     </div>
+
+    <div class="otherCard">
+      <mat-card>
+        <mat-card-title> Upload Question File </mat-card-title>
+
+        <mat-card-content>
+          <label class="form-label" for="customFile">Upload File</label>
+          <input type="file" accept=".json" class="form-control" id="customFile" (change)="changeListener($event.target.files)"/>
+        </mat-card-content>
+
+        <mat-card-content *ngIf="!showConfirm; else showConfirmBlock">
+          <button type="button" class="btn btn-secondary" (click)="showConfirmButton()">Form Create</button>
+        </mat-card-content>
+        <ng-template #showConfirmBlock>
+          <p class="mat-error">This will batch create Student Accounts for each line!</p>
+          <span><button type="button" class="btn btn-secondary" (click)="creatQusetion()">Confirm</button></span>
+          <button type="button" class="btn btn-secondary" (click)="showConfirmButton()">Cancel</button>
+        </ng-template>
+
+      </mat-card>
+    </div>
     <!-- Members End -->
     <!-- Other Start End -->
     <div class="otherCard">

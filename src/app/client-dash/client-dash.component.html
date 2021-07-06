@@ -110,8 +110,8 @@
           <form id="testimonialCreation" class="form">
             <mat-form-field class="testimonial"><mat-label>Testimonial Title: </mat-label><input required name="testimonialTitle" id="testimonialTitle" matInput type="string"></mat-form-field>
             <mat-form-field class="testimonial"><mat-label>Testimonial Description: </mat-label><textarea required name="testimonialDesc" id="testimonialDesc" matInput type="string"></textarea></mat-form-field>
-            <mat-form-field class="testimonial"><mat-label>Testimonial Rating: </mat-label><textarea required name="testimonialRating" id="testimonialRating" matInput type="string"></textarea></mat-form-field>
-            <ngb-rating [(rate)]="selected" (hover)="hovered=$event" (leave)="hovered=0" [readonly]="readonly"></ngb-rating>
+            <h4>Rating: </h4>
+            <ngb-rating [(rate)]="selected" (hover)="hovered=$event" (leave)="hovered=0" [readonly]="readonly" max=5 fill=100></ngb-rating>
             <br>
             <br>
             <button type="reset" class="btn btn-secondary" (click)="CreateTestimonial()"> Create Testimonial </button>

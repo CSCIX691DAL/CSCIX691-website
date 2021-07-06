@@ -19,11 +19,8 @@ export class TestimonialsComponent implements OnInit {
 
   getStars(testinmonial: any): any {
     const numStars = testinmonial.rating;
-    const starArray = [];
-    for (let i = 0; i < numStars; i++) {
-      starArray.push('star');
-    }
-    return starArray;
+    let currentRating=numStars;
+    return currentRating;
   }
 
   getTestimonialsFromDatabase() {

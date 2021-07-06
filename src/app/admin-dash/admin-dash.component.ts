@@ -217,4 +217,8 @@ export class AdminDashComponent implements OnInit {
   
   }
 
+  creatQusetion(){
+    
+  }
+
 }

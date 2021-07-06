@@ -9,7 +9,22 @@ import Testimonial from './testimonial.model';
 @Component({
   selector: 'app-client-dash',
   templateUrl: './client-dash.component.html',
-  styleUrls: ['./client-dash.component.css']
+  styleUrls: ['./client-dash.component.css'],
+  styles: [`
+    .star {
+      font-size: 1.5rem;
+      color: #b0c4de;
+    }
+    .filled {
+      color: #1e90ff;
+    }
+    .bad {
+      color: #deb0b0;
+    }
+    .filled.bad {
+      color: #ff1e1e;
+    }
+  `]
 })
 export class ClientDashComponent implements OnInit {
 
@@ -47,7 +62,7 @@ export class ClientDashComponent implements OnInit {
     let newTestimonial = new Testimonial();
     newTestimonial.client_designation = (<HTMLInputElement>document.getElementById("testimonialTitle")).value;
     newTestimonial.testimonial_text = (<HTMLInputElement>document.getElementById("testimonialDesc")).value;
-    newTestimonial.rating = this.selected;
+    newTestimonial.rating = this.selected.toString();
     newTestimonial.client_name = localStorage.getItem("name");
     newTestimonial.company_name = localStorage.getItem("org");// there have a issue
 
