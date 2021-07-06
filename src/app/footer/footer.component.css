@@ -1,3 +1,7 @@
+
+bg-light text-center text-lg-start{
+  position: fixed;
+}
 .footDiv {
   display: flex;
   flex-flow: row wrap;
