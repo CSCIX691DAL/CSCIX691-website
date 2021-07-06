@@ -39,6 +39,8 @@ import {AccordianComponent} from './accordian/accordian.component';
 import { importType } from '@angular/compiler/src/output/output_ast';
 import {UnsubscribeComponent} from './unsubscribe/unsubscribe.component';
 import { MembersComponent } from './members/members.component';
+import { DynamicFormQuestionComponent } from './questionnaire/dynamic-form-question/dynamic-form-question.component';
+import { DynamicFormComponent } from './questionnaire/dynamic-form/dynamic-form.component';
 
 @NgModule({
   declarations: [
@@ -64,6 +66,8 @@ import { MembersComponent } from './members/members.component';
     AccordianComponent,
     UnsubscribeComponent,
     MembersComponent,
+    DynamicFormQuestionComponent,
+    DynamicFormComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,23 @@
+.questionInputs {
+    width: 100%;
+}
+
+.spacing{
+    margin-bottom: 25px;
+}
+
+.questionTitle{
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.errorMessage{
+    color: red;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.questionInputs{
+    font-size: 18px;
+    min-height: 30px;
+}

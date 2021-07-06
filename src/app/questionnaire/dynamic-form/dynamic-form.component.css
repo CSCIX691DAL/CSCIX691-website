@@ -1,0 +1,17 @@
+button {
+    background-color:gray;
+    color: black;
+    height: 50px;
+    width: 600px;
+    padding: 14px 20px;
+    margin: 9px 0;
+    border: hidden;
+}
+
+.outline{
+    padding: 15px;
+    margin-bottom: 25px;
+    border-color: black;
+    border-width: 1px;
+    border-style: solid;
+}

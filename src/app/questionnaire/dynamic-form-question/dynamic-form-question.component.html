@@ -1,0 +1,16 @@
+<div [formGroup]="form" class="spacing">
+    <label [attr.for]="question.key" class="questionTitle">{{question.label}}</label>
+  
+    <div [ngSwitch]="question.controlType">
+  
+      <input *ngSwitchCase="'textbox'" [formControlName]="question.key"
+              [id]="question.key" [type]="question.type" class="questionInputs">
+  
+      <select [id]="question.key" *ngSwitchCase="'dropdown'" [formControlName]="question.key" class="questionInputs">
+        <option *ngFor="let opt of question.options" [value]="opt.key">{{opt.value}}</option>
+      </select>
+  
+    </div>
+  
+    <div class="errorMessage" *ngIf="!isValid">{{question.label}} is required</div>
+</div>
