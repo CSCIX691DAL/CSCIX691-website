@@ -17,6 +17,9 @@
   margin: 2em;
   width: 100%;
 }
+.card-subtitle{
+  margin: 0px;
+}
 
 .sidebarNav li a {
   color: white;
@@ -56,6 +59,10 @@
 }
 
 .announcements {
+  width: 95%;
+  margin: 2rem;
+}
+.dueDates {
   width: 95%;
   margin: 2rem;
 }

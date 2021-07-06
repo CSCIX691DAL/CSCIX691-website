@@ -86,6 +86,39 @@
       </mat-card>
     </div>
     <!-- My Past Projects End -->
+    <div class="dueDates">
+      <!-- <mat-card>
+        <mat-card-title>Due Dates</mat-card-title>
+        <mat-card-content>
+          <div id="accordion">
+            <div *ngFor="let dueDates of getDueDates()">
+              <app-accordian>
+                <p header>{{ dueDates.title }}</p>
+                <h4 class="card-subtitle">{{ dueDates.date | date:'yyyy/MM/dd h:mm:ss a' }}</h4>
+              </app-accordian>
+            </div>
+          </div>
+        </mat-card-content>
+      </mat-card> -->
+      <mat-card-title>Due Dates</mat-card-title>
+        <mat-card-content>
+          <table class="table">
+            <thead>
+            <tr>
+              <th scope="col">Title</th>
+              <th scope="col"> DueDate</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor='let dueDates of getDueDates()'>
+              <td>{{dueDates.title}}</td>
+              <td>{{ dueDates.date | date:'yyyy/MM/dd h:mm:ss a' }}</td>
+            </tr>
+
+            </tbody>
+          </table>
+        </mat-card-content>
+    </div>
   </div>
   <!-- Column 1 End -->
   <!-- Column 2 Start -->

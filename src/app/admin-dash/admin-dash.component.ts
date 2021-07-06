@@ -15,6 +15,9 @@ import RFP from '../rfp/rfp.model';
 import Project from '../projects/project.model';
 import Team from '../team/team.model';
 import { Student } from '../user/student.model';
+import DueDates from '../dueDates/dueDates.model';
+import { dueDateService } from '../service/duedate.service';
+import { AngularFireDatabase } from '@angular/fire/database';
 
 @Component({
   selector: 'app-admin-dash',
@@ -26,13 +29,16 @@ export class AdminDashComponent implements OnInit {
   studentRecords: any[] = [];
   rfpSubmissionForm: File;
 
+
   constructor(private userService: UserService,
               private authService: AuthService,
               private ngxCsvParser: NgxCsvParser,
               private rfpService: RfpService,
               private projectService: ProjectService,
               private teamService: TeamService,
-              private announcementService: AnnouncementService) {
+              private announcementService: AnnouncementService,
+              private dueDateService: dueDateService,
+              private db: AngularFireDatabase) {
 
   }
 
@@ -231,7 +237,23 @@ export class AdminDashComponent implements OnInit {
     // hide the edit section
     this.toggleEditLinkTextbox(index);
   }
+  makeTeam(dueDates: Object){
+    this.db.database.ref('DueDates').push(dueDates);
+  }
   
+  dueDates(){
+  let dueDate = new DueDates;
+  dueDate.title = (<HTMLInputElement>document.getElementById("duedatetitle")).value;
+  dueDate.date = (<HTMLInputElement>document.getElementById("duedate")).value;
+
+      if(dueDate.title == "" || dueDate.date == ""){
+        window.alert("Please fill out all required sections for Due Dates");
+      }
+      else{
+        this.makeTeam(dueDate);
+      }
+  }
+
   CreateAnnouncement() {
 
     let newAnnouncement = new Announcement();
@@ -262,6 +284,9 @@ export class AdminDashComponent implements OnInit {
       window.alert("Your announcement has been created");
     }
   
+  }
+  getDueDates(): DueDates[] {
+    return this.dueDateService.getdueDates();
   }
 
 }
