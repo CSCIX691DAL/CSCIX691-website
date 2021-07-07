@@ -61,7 +61,7 @@
 
             <mat-card *ngFor="let student of teamMembers" cdkDrag>
               <mat-card-header>
-                <mat-card-title value={{student.studentID}} id="name">{{student.fName}} {{student.sName}}</mat-card-title>
+                <mat-card-title value={{student.studentID}} id="name" >{{student.fName}} {{student.sName}} Leader: {{student.teamLeader}}</mat-card-title>
               </mat-card-header>
             </mat-card>
           </div>

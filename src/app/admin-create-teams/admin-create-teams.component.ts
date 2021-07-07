@@ -94,6 +94,16 @@ export class AdminCreateTeamsComponent implements OnInit {
         return user.active && this.userService.isStudent(user) && (<Student>user).team == teamKey;
       });
     }
+    
+  }
+  isLeader(s : Student){
+    if(s.teamLeader==true){
+      return true
+    }
+    else{
+      return false;
+    }
+
   }
 }
 
