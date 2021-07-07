@@ -34,8 +34,13 @@ import {MatSelectModule} from '@angular/material/select';
 import { NgxCsvParserModule } from 'ngx-csv-parser';
 import { AnnouncementComponent } from './announcement/announcement.component';
 import { StudentQuestionnaireComponent } from './student-questionnaire/student-questionnaire.component';
+import { HttpClientModule } from '@angular/common/http';
 import {AccordianComponent} from './accordian/accordian.component';
+import { importType } from '@angular/compiler/src/output/output_ast';
+import {UnsubscribeComponent} from './unsubscribe/unsubscribe.component';
+import { AdminCreateTeamsComponent } from './admin-create-teams/admin-create-teams.component';
 import { MembersComponent } from './members/members.component';
+import {DragDropModule} from '@angular/cdk/drag-drop'
 
 @NgModule({
   declarations: [
@@ -59,7 +64,9 @@ import { MembersComponent } from './members/members.component';
     RfpComponent,
     AnnouncementComponent,
     AccordianComponent,
-    MembersComponent
+    UnsubscribeComponent,
+    MembersComponent,
+    AdminCreateTeamsComponent,
   ],
   imports: [
     BrowserModule,
@@ -79,6 +86,8 @@ import { MembersComponent } from './members/members.component';
     NgbCollapseModule,
     MatSelectModule,
     NgxCsvParserModule,
+    HttpClientModule,
+    DragDropModule,
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]

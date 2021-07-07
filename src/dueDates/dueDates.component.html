@@ -1,0 +1,177 @@
+<div class="clientContent">
+    <!-- Sidebar Start -->
+    <div class="wrapper sideBar">
+      <nav id="sidebar">
+        <ul class="list-unstyled components sidebarNav">
+          <li class="active">
+            <a href="student-dashboard">Overview</a>
+          </li>
+          <li>
+            <a href="student-dashboard">Submitted RFP's</a>
+          </li>
+          <li>
+            <a href="student-dashboard">Project Azure Links</a>
+          </li>
+          <li>
+            <a href="student-dashboard">Past Projects</a>
+          </li>
+          <li>
+            <a href="student-questionnaire">Questionnaire</a>
+          </li>
+          <li>
+            <a href="student-dashboard">Other</a>
+          </li>
+          <li>
+            <a href="../changepw">Update Password</a>
+        </ul>
+      </nav>
+    </div>
+    <!-- Sidebar End -->
+    <!-- Column 1 Start -->
+    <div class="column1">
+      <!-- my current project(s) Start -->
+      <div class="projectsCard">
+        <mat-card>
+          <mat-card-title>My Current Project</mat-card-title>
+          <mat-card-content>
+            <div id="accordion">
+              <div *ngFor="let project of getMyActiveProjects()">
+                <app-accordian>
+                  <p header>{{ project.title }}</p>
+                  <div content>
+                    <a href="{{ project.azureLink }}" rel="noopener" target="_blank">Click here to see the Azure board for this project.</a>
+                        <br> <br>
+                        {{ project.descLong }}
+                  </div>
+                </app-accordian>
+              </div>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </div>
+      <!-- my current project(s) end -->
+      <!-- All Active Projects Start -->
+      <div class="projectsCard">
+        <mat-card>
+          <mat-card-title>All Active Projects</mat-card-title>
+          <mat-card-content>
+            <div id="accordion">
+              <div *ngFor="let project of getActiveProjects()">
+                <app-accordian>
+                  <p header>{{ project.title }}</p>
+                  <div content>
+                      {{ project.descLong }}
+                  </div>
+                </app-accordian>
+              </div>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </div>
+      <!-- All Active Projects end -->
+      <!-- My Past Projects Start -->
+      <div class="projectsCard">
+        <mat-card>
+          <mat-card-title>My Past Projects</mat-card-title>
+          <mat-card-content>
+            <div id="accordion">
+              <div *ngFor="let project of getMyPastProjects()">
+                <app-accordian>
+                  <p header>{{ project.title }}</p>
+                  <div content>{{ project.descLong }}</div>
+                </app-accordian>
+              </div>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </div>
+      <!-- My Past Projects End -->
+      <div class="dueDates">
+        <mat-card>
+          <mat-card-title>Due Dates</mat-card-title>
+          <mat-card-content>
+            <button (click)="dueDates()" type="submit" value="Submit"> Submit </button>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+    <!-- Column 1 End -->
+    <!-- Column 2 Start -->
+    <div class="column2">
+      <!-- Iteration Start -->
+      <div class="evaluationCard">
+        <!-- Upcoming Iterations -->
+        <mat-card class="members2">
+          <mat-card-title>Upcoming Iterations</mat-card-title>
+          <mat-card-content>
+            You have no upcoming Iterations
+          </mat-card-content>
+        </mat-card>
+        <mat-card class="members1">
+          <mat-card-title>Iteration Evaluations</mat-card-title>
+          <mat-card-content>
+            No Iterations Evaluations have been completed
+          </mat-card-content>
+        </mat-card>
+        <mat-card class="members3">
+          <mat-card-title>Azure Links</mat-card-title>
+          <mat-card-content>
+            <table class="table">
+              <thead>
+              <tr>
+                <th scope="col">Project</th>
+                <th scope="col">Azure Link</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor='let Projects of getMyActiveProjects()'>
+                <td>{{Projects.title}}</td>
+                <td><a href="{{Projects.azureLink}}" rel="noopener" target="_blank">Link</a></td>
+              </tr>
+  
+              </tbody>
+            </table>
+          </mat-card-content>
+        </mat-card>
+        <!-- Iteration Evaluations ends -->
+      </div>
+      <!-- Members End -->
+      <!-- Announcements Start -->
+      <div class="announcements">
+        <mat-card>
+          <mat-card-title>Class Announcements</mat-card-title>
+          <mat-card-content>
+            <ul class="list-group announcementLists">
+              <li class="list-group-item"><strong><a href="##">Brightspace Announcement</a></strong></li>
+              <li class="list-group-item"><strong><a href="##">Happy Reading Week</a></strong></li>
+              <li class="list-group-item"><strong><a href="##">Milestone 1 Grades Released</a></strong></li>
+            </ul>
+          </mat-card-content>
+        </mat-card>
+      </div>
+      <!-- Announcements End -->
+      <!-- Other Start -->
+      <div class="otherCard">
+        <mat-card>
+          <mat-card-title>Other Student Stuffs</mat-card-title>
+          <mat-card-content>
+            <table class="table">
+              <tbody>
+                <tr>
+                  <td>
+                    Submit the Student Questionnaire - <a class="submitQuestions" href="../../assets/images/TopImage.JPG">Start Questionnaire</a>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    Take Agile Quiz <a class="submitQuestions" href="../../assets/images/TopImage.JPG">Here</a>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+    <!-- Column 2 End -->
+  </div>

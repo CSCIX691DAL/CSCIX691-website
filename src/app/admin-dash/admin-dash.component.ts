@@ -15,6 +15,9 @@ import RFP from '../rfp/rfp.model';
 import Project from '../projects/project.model';
 import Team from '../team/team.model';
 import { Student } from '../user/student.model';
+import DueDates from '../dueDates/dueDates.model';
+import { dueDateService } from '../service/duedate.service';
+import { AngularFireDatabase } from '@angular/fire/database';
 
 @Component({
   selector: 'app-admin-dash',
@@ -24,6 +27,8 @@ import { Student } from '../user/student.model';
 export class AdminDashComponent implements OnInit {
   showConfirm: boolean = false;
   studentRecords: any[] = [];
+  rfpSubmissionForm: File;
+
 
   constructor(private userService: UserService,
               private authService: AuthService,
@@ -31,7 +36,9 @@ export class AdminDashComponent implements OnInit {
               private rfpService: RfpService,
               private projectService: ProjectService,
               private teamService: TeamService,
-              private announcementService: AnnouncementService) {
+              private announcementService: AnnouncementService,
+              private dueDateService: dueDateService,
+              private db: AngularFireDatabase) {
 
   }
 
@@ -78,7 +85,7 @@ export class AdminDashComponent implements OnInit {
     this.showConfirm = !this.showConfirm;
   }
 
-  public changeListener(files: FileList) {
+  public onStudentCSVUpload(files: FileList) {
     this.studentRecords = [];
     console.log(files);
     if (files && files.length > 0) {
@@ -136,6 +143,40 @@ export class AdminDashComponent implements OnInit {
     }
   }
 
+  // Gets the uploaded RFP submission form
+  onRFPSubmissionFormUpload(event) {
+    this.rfpSubmissionForm = event.target.files[0];
+  }
+
+  // Saves the uploaded RFP submission form to the database
+  uploadRFPSubmissionForm() {
+    // read JSON file
+    let fileReader = new FileReader();
+    fileReader.readAsText(this.rfpSubmissionForm, "UTF-8");
+
+    // write form to database
+    fileReader.onload = (() => {
+      try {
+        // attempt to parse JSON file
+        let form = JSON.parse(<string>fileReader.result);
+        // upload form to the database
+        this.rfpService.uploadSubmissionForm(form);
+
+        alert("RFP submission form uploaded successively.");
+      } catch (exception) {
+        // if an error occurs, log it and alert the user
+        console.log(exception);
+        alert(exception);
+      }
+    });
+    
+    // if an error occurs, log it and alert the user
+    fileReader.onerror = ((error) => {
+      console.log(error);
+      alert(error);
+    });
+  }
+
   generatePDF(rfp: RFP): void {
     const docDefinition = this.rfpService.getDocumentDefinition(rfp);
     pdfMake.createPdf(docDefinition).open();
@@ -143,6 +184,11 @@ export class AdminDashComponent implements OnInit {
 
   // Set an RFP's status to approved and make it a project
   approveRFP(rfp: RFP): void {
+    let t = new Team();
+    //set team title to the rfp title
+    t.name = rfp.projectTitle;
+    //adding team to team database
+    this.teamService.addTeam(t);
     // approve RFP
     this.rfpService.updateRFP(rfp, {status: 'Approved'});
     // create project out of RFP
@@ -191,7 +237,23 @@ export class AdminDashComponent implements OnInit {
     // hide the edit section
     this.toggleEditLinkTextbox(index);
   }
+  makeTeam(dueDates: Object){
+    this.db.database.ref('DueDates').push(dueDates);
+  }
   
+  dueDates(){
+  let dueDate = new DueDates;
+  dueDate.title = (<HTMLInputElement>document.getElementById("duedatetitle")).value;
+  dueDate.date = (<HTMLInputElement>document.getElementById("duedate")).value;
+
+      if(dueDate.title == "" || dueDate.date == ""){
+        window.alert("Please fill out all required sections for Due Dates");
+      }
+      else{
+        this.makeTeam(dueDate);
+      }
+  }
+
   CreateAnnouncement() {
 
     let newAnnouncement = new Announcement();
@@ -206,9 +268,25 @@ export class AdminDashComponent implements OnInit {
     else{
       this.announcementService.createAnnouncement(newAnnouncement);
 
+      let users = this.userService.getUsers();
+
+      /*The following code is commented out to avoid sending emails to test accounts. Uncomment when app is in production
+      for(let x = 0; x < users.length; x++){
+        if(users[x].emailList){
+          this.announcementService.sendEmail(users[x].email, users[x].fName, newAnnouncement.title, newAnnouncement.desc).subscribe((response) => {
+            console.log('Response from API is ', response);
+          }, (error) => {
+            console.log('Error is ', error);
+          })
+        }
+      }*/
+
       window.alert("Your announcement has been created");
     }
   
+  }
+  getDueDates(): DueDates[] {
+    return this.dueDateService.getdueDates();
   }
 
 }

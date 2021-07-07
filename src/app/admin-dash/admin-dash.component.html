@@ -16,6 +16,9 @@
           <a href="admin-dashboard">RFPs</a>
         </li>
         <li>
+          <a href="admin-create-teams">Create Teams</a>
+        </li>
+        <li>
           <a href="../changepw">Update Password</a>
       </ul>
     </nav>
@@ -95,7 +98,7 @@
                 <div content>
                   <div class="viewLink">
                     <p>
-                      <a href="{{ project.azureLink }}" target="_blank">Click here to see the Azure board for this project.</a>
+                      <a href="{{ project.azureLink }}" rel="noopener" target="_blank">Click here to see the Azure board for this project.</a>
                       <!-- image from https://commons.wikimedia.org/wiki/File:Edit_icon_(the_Noun_Project_30184).svg accessed June 4, 2021 -->
                       <input type="image" class="icon" src="..\..\assets\images\editIcon.png" alt="Edit link" (click)="toggleEditLinkTextbox(i)">
                     </p>
@@ -119,6 +122,27 @@
       </mat-card>
     </div>
     <!-- Active Project End -->
+    <div class="analyticsCard">
+      <mat-card>
+        <mat-card-title>Due Dates</mat-card-title>
+          <mat-card-content>
+            <table class="table">
+              <thead>
+              <tr>
+                <th scope="col">Title</th>
+                <th scope="col"> Due Date</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor='let dueDates of getDueDates()'>
+                <td>{{dueDates.title}}</td>
+                <td>{{ dueDates.date | date:'yyyy/MM/dd h:mm:ss a' }}</td>
+              </tr>
+              </tbody>
+            </table>
+          </mat-card-content>
+      </mat-card>
+    </div>
   </div>
   <!-- Column 1 End -->
   <!-- Column 2 Start -->
@@ -127,7 +151,7 @@
     <div class="otherCard">
       <mat-card>
         <mat-card-title> Create New Announcement </mat-card-title>
-        
+
         <mat-card-content>
           <p> Fill in the boxes then click the button below to create a new announcement. </p>
         </mat-card-content>
@@ -142,6 +166,25 @@
       </mat-card>
     </div>
     <!-- Announcement Creation end -->
+    <!-- Create new due date -->
+    <div class="otherCard">
+      <mat-card>
+        <mat-card-title> Create New Due Date </mat-card-title>
+
+        <mat-card-content>
+          <p> Fill in the boxes then click the button below to create a new  Assignment and Due date (Click on calendar icon to get date and time)</p>
+        </mat-card-content>
+
+        <mat-card-content>
+          <form id="announcementCreation" class="form">
+            <mat-form-field class="announcement"><mat-label>Due date Title: </mat-label><input required name="title" id="duedatetitle" matInput type="string"></mat-form-field>
+            <mat-form-field class="announcement"><input type="datetime-local" required name="duedate" id="duedate" matInput type="string"></mat-form-field>
+            <button type="reset" class="btn btn-secondary" (click)="dueDates()"> Create Due Date </button>
+          </form>
+        </mat-card-content>
+      </mat-card>
+    </div>
+    <!-- end of create due date -->
     <!-- csv upload start -->
     <div class="otherCard">
       <mat-card>
@@ -149,7 +192,7 @@
 
         <mat-card-content>
           <label class="form-label" for="customFile">Upload Student CSV</label>
-          <input type="file" accept=".csv" class="form-control" id="customFile" (change)="changeListener($event.target.files)"/>
+          <input type="file" accept=".csv" class="form-control" id="customFile" (change)="onStudentCSVUpload($event.target.files)"/>
         </mat-card-content>
 
         <mat-card-content *ngIf="!showConfirm; else showConfirmBlock">
@@ -164,6 +207,23 @@
       </mat-card>
     </div>
     <!-- csv upload end -->
+    <!-- RFP Submission Form Upload start -->
+    <div class="otherCard">
+      <mat-card>
+        <mat-card-title>RFP Submission Form Upload</mat-card-title>
+
+        <mat-card-content>
+          <label class="form-label" for="customFile">Upload RFP Submission Form</label>
+          <input type="file" accept=".json" class="form-control" id="customFile" (change)="onRFPSubmissionFormUpload($event)"/>
+        </mat-card-content>
+
+        <mat-card-content>
+          <button type="button" class="btn btn-secondary" (click)="uploadRFPSubmissionForm()">Upload Form</button>
+        </mat-card-content>
+
+      </mat-card>
+    </div>
+    <!-- RFP Submission Form Upload end -->
     <!-- Other Start End -->
     <div class="otherCard">
       <mat-card>

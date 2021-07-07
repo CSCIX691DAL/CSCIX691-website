@@ -1,42 +1,19 @@
 export default class RFP {
   key?: string | null;
-  projectTitle: string;
   client: string // client reference
+  status = 'Pending';
 
-  // Section
+  // Required info
+  projectTitle: string;
   contactName: string;
   organization: string;
   contactEmail: string;
   contactPhone: string;
   mailingAddress: string;
-
-  // Problem
-  problem: string;
-
-  // Desired Outcome
-  idealSituation: string;
-  specifySpecificSoftware: string;
-  specifyOtherReporting: string;
-  specifyBudget: string;
-  specifyUsabilityConsiderations: string;
-
-  // Testing
-  kindOfTests: string;
-  sampleData: string;
-
-  specificSoftware: string;
-  videoCallMeeting: string;
-  emailReporting: string;
-  requireNDA: string;
-  requireIP: string;
-  budget: string;
-  trainingSession: string;
-  howToDocumentation: string;
-  usabilityConsiderations: string;
-  realLifeTesting: string;
-  specifyTesters: string;
-  projectAgreement: string;
   date: string;
+  projectAgreement: string;
 
-  status = 'Pending';
+  // Answers to supplementary questions. 
+  // The key of each attribute is used to match the answer to a question
+  supplementaryAnswers: Object[] = [];
 }

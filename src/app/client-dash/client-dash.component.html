@@ -42,7 +42,7 @@
             <tr *ngFor='let RFPs of getMyRFPs()'>
               <td>{{RFPs.projectTitle}}</td>
               <td>{{RFPs.organization}}</td>
-              <td><a href="assets/images/TopImage.JPG">RFP</a></td>
+              <td (click)="generatePDF(RFPs)" class="linkDisplay"><a href="/client-dashboard">View RFP</a></td>
               <td>{{RFPs.status}}</td>
               <td>
                 <div *ngIf="RFPs.status != 'Approved'">
@@ -67,7 +67,7 @@
               <app-accordian>
                 <p header>{{ project.title }}</p>
                 <div content>
-                  <a href="{{ project.azureLink }}" target="_blank">Click here to see the Azure board for this project.</a>
+                  <a href="{{ project.azureLink }}" rel="noopener" target="_blank">Click here to see the Azure board for this project.</a>
                     <br>
                     <br>
                     {{ project.descLong }}
@@ -107,7 +107,7 @@
       <!-- Upcoming Iterations -->
       <mat-card class="members2">
         <mat-card-title> Create New Testimonial </mat-card-title>
-        
+
         <mat-card-content>
           <p> Fill in the boxes then click the button below to create a new testimonial. </p>
         </mat-card-content>
@@ -134,7 +134,7 @@
             <tbody>
             <tr *ngFor='let Projects of getMyProjects()'>
               <td>{{Projects.title}}</td>
-              <td><a href="{{Projects.azureLink}}" target="_blank">Link</a></td>
+              <td><a href="{{Projects.azureLink}}" rel="noopener" target="_blank">Link</a></td>
             </tr>
 
             </tbody>
