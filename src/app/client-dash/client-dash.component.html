@@ -78,6 +78,27 @@
         </mat-card-content>
       </mat-card>
     </div>
+    <!-- Feedback From client start -->
+    <div class="projectsCard">
+      <mat-card>
+        <mat-card-title>Feedback </mat-card-title>
+        <mat-card-content>
+          <p> Fill in the boxes then click the button below to post a feedback for a team </p>
+        </mat-card-content>
+        <mat-card-content>
+          <div id="accordion">
+              <form id="FeedbackCreation" class="form">
+                <mat-form-field class="feedback"><mat-label>Team: </mat-label><input required name="feedbackTeam" id="feedbackTeam" matInput type="string"></mat-form-field>
+                <mat-form-field class="feedback"><mat-label>Title: </mat-label><input required name="feedbackTitle" id="feedbackTitle" matInput type="string"></mat-form-field>
+                <mat-form-field class="feedback"><mat-label>Date: </mat-label><input required name="feedbackDate" id="feedbackDate" matInput type="datetime-local"></mat-form-field>
+                <mat-form-field class="feedback"><mat-label>Feedback: </mat-label><textarea required name="feedbackBody" id="feedbackBody" matInput type="string"></textarea></mat-form-field>
+                <button type="reset" class="btn btn-secondary" (click)="CreateFeedback()"> Create Feedback</button>
+              </form>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+    <!-- Feedback From client End -->
     <!-- Active Project End -->
     <!-- RFP Section Start -->
     <div class="RFPCard">

@@ -7,6 +7,7 @@ import { ProjectService } from '../service/project.service';
 import Testimonial from './testimonial.model';
 import pdfMake from 'pdfmake/build/pdfmake';
 import pdfFonts from 'pdfmake/build/vfs_fonts';
+import Feedback from './clientFeedback.model';
 
 @Component({
   selector: 'app-client-dash',
@@ -64,6 +65,26 @@ export class ClientDashComponent implements OnInit {
       this.testimonial.createTestimonial(newTestimonial);
 
       window.alert("Your testimonial has been created");
+    }
+  
+  }
+  
+  CreateFeedback() {
+
+    let newFeedback= new Feedback();
+    newFeedback.title = (<HTMLInputElement>document.getElementById("feedbackTitle")).value;
+    newFeedback.team = (<HTMLInputElement>document.getElementById("feedbackTeam")).value;
+    newFeedback.client = (<HTMLInputElement>document.getElementById("feedbackClient")).value;
+    newFeedback.date = (<HTMLInputElement>document.getElementById("feedbackDate")).value;
+    newFeedback.body= (<HTMLInputElement>document.getElementById("feedbackBody")).value;// there have a issue
+
+    if(newFeedback.title == "" ||newFeedback.team  == "" || newFeedback.client  == "" || newFeedback.date  == "" ||newFeedback.body  == ""  ){
+      window.alert("Please fill out all sections");
+    }
+    else{
+      // feedback --> Start here 
+      this.testimonial.createTestimonial(newFeedback);
+
     }
   
   }
