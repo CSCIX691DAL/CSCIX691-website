@@ -164,6 +164,23 @@
       </mat-card>
     </div>
     <!-- csv upload end -->
+    <!-- Student Questionnaire Form Upload start -->
+    <div class="otherCard">
+      <mat-card>
+        <mat-card-title>Student Questionnaire Form Upload</mat-card-title>
+
+        <mat-card-content>
+          <label class="form-label" for="customFile">Upload Student Questionnaire Form</label>
+          <input type="file" accept=".json" class="form-control" id="customFile" (change)="onQuestionnaireSubmissionFormUpload($event)"/>
+        </mat-card-content>
+
+        <mat-card-content>
+          <button type="button" class="btn btn-secondary" (click)="uploadStudentQuestionnaireForm()">Upload Form</button>
+        </mat-card-content>
+
+      </mat-card>
+    </div>
+    <!-- Student Questionnaire Form Upload end -->
     <!-- Other Start End -->
     <div class="otherCard">
       <mat-card>

@@ -4,9 +4,22 @@ import { DropdownQuestion } from '../questionnaire/questionDropdown';
 import { QuestionBase } from '../questionnaire/questionBase';
 import { TextboxQuestion } from '../questionnaire/questionTextbox';
 import { of } from 'rxjs';
+import { AngularFireDatabase } from '@angular/fire/database';
+import { StudentQuestionnaireService } from './studentQuestionnaire.service';
 
 @Injectable()
-export class QuestionService {
+export class QuestionService{
+
+    studentQuestionnaireForm: Object;
+
+    constructor(private db: AngularFireDatabase, private studentQuestionnaireService: StudentQuestionnaireService){
+        // get the RFP submission form from the database
+        this.db.database.ref('Forms/Student Questionnaire').get().then(value => {
+            this.studentQuestionnaireForm = value.val();
+            }).catch(exception => {
+            console.log(exception);
+        });
+    }
 
   // TODO: get from a remote source of question metadata
   getQuestions() {

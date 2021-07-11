@@ -15,6 +15,8 @@ import RFP from '../rfp/rfp.model';
 import Project from '../projects/project.model';
 import Team from '../team/team.model';
 import { Student } from '../user/student.model';
+import { StudentQuestionnaireService } from '../service/studentQuestionnaire.service';
+
 
 @Component({
   selector: 'app-admin-dash',
@@ -24,6 +26,7 @@ import { Student } from '../user/student.model';
 export class AdminDashComponent implements OnInit {
   showConfirm: boolean = false;
   studentRecords: any[] = [];
+  studentQuestionnaireForm: File;
 
   constructor(private userService: UserService,
               private authService: AuthService,
@@ -31,7 +34,8 @@ export class AdminDashComponent implements OnInit {
               private rfpService: RfpService,
               private projectService: ProjectService,
               private teamService: TeamService,
-              private announcementService: AnnouncementService) {
+              private announcementService: AnnouncementService,
+              private studentQuestionnaire: StudentQuestionnaireService) {
 
   }
 
@@ -222,6 +226,40 @@ export class AdminDashComponent implements OnInit {
       window.alert("Your announcement has been created");
     }
   
+  }
+
+  // Gets the uploaded student questionnaire form
+  onQuestionnaireSubmissionFormUpload(event) {
+    this.studentQuestionnaireForm = event.target.files[0];
+  }
+
+  // Saves the uploaded student questionnaire form to the database
+  uploadStudentQuestionnaireForm() {
+    // read JSON file
+    let fileReader = new FileReader();
+    fileReader.readAsText(this.studentQuestionnaireForm, "UTF-8");
+
+    // write form to database
+    fileReader.onload = (() => {
+      try {
+        // attempt to parse JSON file
+        let form = JSON.parse(<string>fileReader.result);
+        // upload form to the database
+        this.studentQuestionnaire.uploadQuestionnaireForm(form);
+
+        alert("student questionnaire form uploaded successively.");
+      } catch (exception) {
+        // if an error occurs, log it and alert the user
+        console.log(exception);
+        alert(exception);
+      }
+    });
+
+    // if an error occurs, log it and alert the user
+    fileReader.onerror = ((error) => {
+      console.log(error);
+      alert(error);
+    });
   }
 
 }
