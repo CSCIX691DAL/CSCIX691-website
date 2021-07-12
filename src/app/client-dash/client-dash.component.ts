@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import RFP from '../rfp/rfp.model';
 import { RfpService } from '../service/rfp.service';
 import { TestimonialService } from '../service/testimonial_client.service';
+import { FeedBacklService } from '../service/feedback.service';
 import Project from '../projects/project.model';
 import { ProjectService } from '../service/project.service';
 import Testimonial from './testimonial.model';
@@ -17,7 +18,8 @@ import Feedback from './clientFeedback.model';
 export class ClientDashComponent implements OnInit {
 
   constructor(private rfpService: RfpService, private projectService: ProjectService,
-              private testimonial: TestimonialService) { }
+              private testimonial: TestimonialService,
+              private feedback: FeedBacklService ) { }
 
   clientID: string;
 
@@ -83,7 +85,7 @@ export class ClientDashComponent implements OnInit {
     }
     else{
       // feedback --> Start here 
-      this.testimonial.createTestimonial(newFeedback);
+      this.feedback.createFeedback(newFeedback);
 
     }
   
