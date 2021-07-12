@@ -82,7 +82,20 @@ export class AdminCreateTeamsComponent implements OnInit {
     });
   }
 
-  // On-change listener for the Teams drop-down
+
+  getAllStudentsFromDB():User[]{
+    return this.userService.getUsers().filter((user, index, array) => {
+      return this.userService.isStudent(user)
+    });
+
+
+
+}  
+
+
+
+
+// On-change listener for the Teams drop-down
   getTeamMembers(teamKey: string) {
     // if no team is selected
     if (teamKey == 'default') {
