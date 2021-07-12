@@ -28,13 +28,45 @@
     <div class="container">
       <h1 class="title">Create or Edit Project Groups</h1>
       <div class="list-container"><!--Code taken from https://medium.com/codetobe/learn-how-to-drag-drop-items-in-angular-7-20395c262ab0-->
+
+        <div class="column-container">
+          
+          <mat-card>
+            <mat-card-title>Active Students and Questionnaires</mat-card-title>
+            <mat-card-content>
+              <table class="table">
+                <thead>
+                <tr>
+                  <th scope="col">Student</th>
+                  <th scope="col">Questionaire</th>
+                  
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let r of getPendingRFPs(); index as i">
+                  <th scope="row">{{i + 1}}</th>
+                  <td>{{ r.organization }}</td>
+                  <td (click)="generatePDF(r)" class="linkDisplay"><a href="/admin-dashboard">View RFP</a></td>
+                  <td>
+                    <button class="actionButton" (click)="approveRFP(r)">Approve</button>
+                    <button class="actionButton" (click)="rejectRFP(r)">Reject</button>
+                  </td>
+                </tr>
+                </tbody>
+              </table>
+            </mat-card-content>
+          </mat-card>
+      </div>
+
+
+
         <div class="column-container">
           <div class="list"
-               cdkDropList
-               #todoList="cdkDropList"
-               [cdkDropListData]="getActiveStudentsFromDB()"
-               [cdkDropListConnectedTo]="[doneList]"
-               (cdkDropListDropped)="changeDragDropTable($event)">
+              cdkDropList
+              #todoList="cdkDropList"
+              [cdkDropListData]="getActiveStudentsFromDB()"
+              [cdkDropListConnectedTo]="[doneList]"
+              (cdkDropListDropped)="changeDragDropTable($event)">
             <h2 id="tableTitle">Available Students</h2>
             <mat-card *ngFor="let todo of getActiveStudentsFromDB()" cdkDrag>
               <mat-card-header>
@@ -45,14 +77,14 @@
         </div>
         
         <div class="column-container">
-         
+        
           <div class="list"
-               cdkDropList
-               #doneList="cdkDropList"
-               [cdkDropListData]="teamMembers"
-               [cdkDropListConnectedTo]="todoList"
-               (cdkDropListDropped)="changeDragDropTable($event)">
-     
+              cdkDropList
+              #doneList="cdkDropList"
+              [cdkDropListData]="teamMembers"
+              [cdkDropListConnectedTo]="todoList"
+              (cdkDropListDropped)="changeDragDropTable($event)">
+    
           <h2 id="tableTitle">Current Team in Selected Project</h2>
           <select id="teams" (change)='getTeamMembers($event.target.value)'>
             <option value="default">Select a team</option>
@@ -66,3 +98,5 @@
             </mat-card>
           </div>
         </div>
+        
+      </div>

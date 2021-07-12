@@ -120,19 +120,22 @@
   flex-direction: column;
   align-items: center;
 }
+.cdk-drop-list{
+  width: 100% !important;
+}
 #tableTitle {
   display: flex;
   justify-content: center;
   color: white;
 }
+/*
 .column-container {
   width: 600px;
   height: 500px;
   margin: 0 15px 0;
-  display: inline-block;
   vertical-align: top;
   padding-top: 50px;
-}
+}*/
 mat-card {
   margin: 1em;
   cursor: pointer;
@@ -143,6 +146,19 @@ mat-card {
   width: inherit;
   overflow-y: scroll;
   background-color: rgba(112, 115, 114);
+}
+
+.column-container{
+  width: 31% !important;
+  height: 100%;
+  margin-left: 0% !important;
+  margin-right: 0% !important;
+
+  display: inline-block;
+  margin-top: 0%;
+}
+.list-container{
+  width: 100% !important;
 }
 h1{
   padding-top: 20px;
