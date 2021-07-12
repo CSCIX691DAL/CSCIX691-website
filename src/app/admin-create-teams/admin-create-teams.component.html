@@ -28,9 +28,10 @@
     <div class="container" >
       <h1 class="title">Create or Edit Project Groups</h1>
       <div class="list-container" >
-        <div class="column-container" id="questionnaire" >
+        <div class="column-container" style="position: relative !important; top: 23px !important;
+        overflow-y: scroll;" >
           <mat-card>
-            <mat-card-title>Active Students and Questionnaires</mat-card-title>
+            <mat-card-title>Students and Questionnaires</mat-card-title>
             <mat-card-content>
               <table class="table">
                 <thead>
@@ -40,7 +41,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                  <tr *ngFor="let student of getActiveStudentsFromDB()">
+                  <tr *ngFor="let student of getAllStudentsFromDB()">
                     <td>{{student.fName}} {{student.sName}}</td>
                   </tr>
                 </tbody>
