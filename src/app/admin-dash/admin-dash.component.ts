@@ -71,6 +71,11 @@ export class AdminDashComponent implements OnInit {
     })
   }
 
+  // Sets a project's status to 'Archived'
+  archiveProject(project: Project) {
+    this.projectService.updateProject(project, { status: 'Archived' });
+  }
+
   deleteMember(user: User): void { 
     // remove user from team, if applicable
     if (this.userService.isStudent(user)) {
