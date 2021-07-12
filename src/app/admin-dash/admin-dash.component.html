@@ -114,6 +114,8 @@
                   <br>
                   <br>
                   {{ project.descLong }}
+                  <hr>
+                  <button class="actionButton" (click)="archiveProject(project)">Archive</button>
                 </div>
               </app-accordian>
             </div>
@@ -122,6 +124,44 @@
       </mat-card>
     </div>
     <!-- Active Project End -->
+    <!-- Archived Projects Start -->
+    <div class="analyticsCard">
+      <mat-card>
+        <mat-card-title>All Archived Projects</mat-card-title>
+        <mat-card-content>
+          <div id="accordion">
+            <div *ngFor="let project of getArchivedProjects(); index as i">
+              <app-accordian>
+                <p header>{{ project.title }}</p>
+                <div content>
+                  <div class="viewLink">
+                    <p>
+                      <a href="{{ project.azureLink }}" rel="noopener" target="_blank">Click here to see the Azure board for this project.</a>
+                      <!-- image from https://commons.wikimedia.org/wiki/File:Edit_icon_(the_Noun_Project_30184).svg accessed June 4, 2021 -->
+                      <input type="image" class="icon" src="..\..\assets\images\editIcon.png" alt="Edit link" (click)="toggleEditLinkTextbox(i)">
+                    </p>
+                  </div>
+                  <div class="editLink" style="display: none">
+                    <label for="editLinkTextbox">Enter Azure link:</label>
+                    <input type="text" class="editLinkTextbox">
+                    <!-- image from https://www.pngwing.com/en/free-png-ynlki/download accessed June 4, 2021 -->
+                    <input type="image" class="icon" src="..\..\assets\images\checkIcon.png" alt="Confirm" (click)="editAzureLink(i, project)">
+                    <!-- image from https://www.pngjoy.com/preview/p8c3o7r0f0w8i1_cancel-icon-cross-transparent-png/ accessed June 4, 2021 -->
+                    <input type="image" class="icon" src="..\..\assets\images\cancelIcon.png" alt="Cancel" (click)="toggleEditLinkTextbox(i)">
+                  </div>
+                  <br>
+                  <br>
+                  {{ project.descLong }}
+                  <hr>
+                  <button class="actionButton" (click)="unarchiveProject(project)">Unarchive</button>
+                </div>
+              </app-accordian>
+            </div>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+    <!-- Archived Projects End -->
     <div class="analyticsCard">
       <mat-card>
         <mat-card-title>Due Dates</mat-card-title>

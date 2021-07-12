@@ -40,6 +40,10 @@ p {
   margin-bottom: 0px;
 }
 
+.statement {
+  max-width: 75%;
+}
+
 .contactUsDiv {
   display: flex;
   flex-flow: row wrap;

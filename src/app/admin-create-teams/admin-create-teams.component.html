@@ -58,11 +58,12 @@
             <option value="default">Select a team</option>
             <option *ngFor='let team of getTeams(); trackBy: dropDownFix' value={{team.key}}>{{team.name}}</option>
           </select>
-
-            <mat-card *ngFor="let student of teamMembers" cdkDrag>
+            <mat-card *ngFor="let student of teamMembers"  cdkDrag>
               <mat-card-header>
-                <mat-card-title value={{student.studentID}} id="name">{{student.fName}} {{student.sName}}</mat-card-title>
+                <mat-card-title  value={{student.studentID}} id="name">{{student.fName}} {{student.sName}}</mat-card-title>
+                <span   *ngIf="student.teamLeader"> (Leader)</span> 
               </mat-card-header>
+
             </mat-card>
           </div>
         </div>

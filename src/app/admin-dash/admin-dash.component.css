@@ -110,3 +110,7 @@
   background-color: #707372;
   color: white;
 }
+
+hr {
+  border-top: 3px solid #707372;
+}
