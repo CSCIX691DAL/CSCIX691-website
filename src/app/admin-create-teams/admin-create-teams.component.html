@@ -27,10 +27,8 @@
     
     <div class="container" >
       <h1 class="title">Create or Edit Project Groups</h1>
-      <div class="list-container"><!--Code taken from https://medium.com/codetobe/learn-how-to-drag-drop-items-in-angular-7-20395c262ab0-->
-
-        <div class="column-container">
-          
+      <div class="list-container" >
+        <div class="column-container" id="questionnaire" >
           <mat-card>
             <mat-card-title>Active Students and Questionnaires</mat-card-title>
             <mat-card-content>
@@ -42,18 +40,15 @@
                 </tr>
                 </thead>
                 <tbody>
-                  <tr *ngFor="let todo of getActiveStudentsFromDB()">
-                    <td>{{todo.fName}} {{todo.sName}}</td>
+                  <tr *ngFor="let student of getActiveStudentsFromDB()">
+                    <td>{{student.fName}} {{student.sName}}</td>
                   </tr>
                 </tbody>
               </table>
             </mat-card-content>
           </mat-card>
       </div>
-
-
-
-        <div class="column-container"style="padding-left: 10px;">
+        <div class="column-container"style="padding-left: 10px;"><!--Code created using https://medium.com/codetobe/learn-how-to-drag-drop-items-in-angular-7-20395c262ab0-->
           <div class="list"
               cdkDropList
               #todoList="cdkDropList"
@@ -61,9 +56,9 @@
               [cdkDropListConnectedTo]="[doneList]"
               (cdkDropListDropped)="changeDragDropTable($event)">
             <h2 id="tableTitle">Available Students</h2>
-            <mat-card *ngFor="let todo of getActiveStudentsFromDB()" cdkDrag>
+            <mat-card *ngFor="let student of getActiveStudentsFromDB()" cdkDrag>
               <mat-card-header>
-                <mat-card-title>{{todo.fName}} {{todo.sName}}</mat-card-title>
+                <mat-card-title>{{student.fName}} {{student.sName}}</mat-card-title>
               </mat-card-header>
             </mat-card>
           </div>

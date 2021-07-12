@@ -149,16 +149,20 @@ mat-card {
 }
 
 .column-container{
-  width: 30% !important;
+  width: 30%;
   height: 100%;
-  margin-left: 0% !important;
-  margin-right: 0% !important;
-
-  display: inline-block;
+  margin-left: 0% ;
+  margin-right: 0% ;
+  bottom: 100px;
+  display: inline-flex;
   margin-top: 0%;
 }
+#questionnaire{
+  position: relative !important;
+  top: 10px !important;
+}
 .list-container{
-  width: 100% !important;
+  width: 100%;
 }
 h1{
   padding-top: 20px;

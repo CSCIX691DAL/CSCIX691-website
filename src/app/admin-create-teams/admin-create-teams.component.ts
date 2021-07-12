@@ -40,7 +40,7 @@ export class AdminCreateTeamsComponent implements OnInit {
   }
 
 
-  changeDragDropTable(event: CdkDragDrop<string[]>) {//Code taken from https://medium.com/codetobe/learn-how-to-drag-drop-items-in-angular-7-20395c262ab0
+  changeDragDropTable(event: CdkDragDrop<string[]>) {//Code created using https://medium.com/codetobe/learn-how-to-drag-drop-items-in-angular-7-20395c262ab0
     if (event.previousContainer === event.container) {
         moveItemInArray(event.container.data,
         event.previousIndex,
