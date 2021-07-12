@@ -5,8 +5,14 @@ import { TeamService } from './../service/team.service';
 import { Student } from '../user/student.model';
 import { User } from '../user/user.model';
 import { UserService } from './../service/user.service';
+
+
+import { QuestionnaireService } from './../service/questionnaire.service';
+
+
 import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
 import Team from '../team/team.model';
+import Questionnaire from '../student-questionnaire/student-questionnaire.model';
 
 
 @Component({
@@ -19,6 +25,8 @@ export class AdminCreateTeamsComponent implements OnInit {
 
 
   constructor(private TeamService: TeamService,
+    private questService: QuestionnaireService,
+
     private userService: UserService
 
 
@@ -27,6 +35,16 @@ export class AdminCreateTeamsComponent implements OnInit {
   ngOnInit(): void {
 
   }
+
+
+  getStudentQuest(): Questionnaire[] {
+    return this.questService.getQuest();
+  }
+
+
+
+
+
 
   getTeams(): Team[] {
     return Object.values(this.TeamService.getTeams());
@@ -82,6 +100,12 @@ export class AdminCreateTeamsComponent implements OnInit {
     });
   }
 
+
+
+
+
+
+
   // On-change listener for the Teams drop-down
   getTeamMembers(teamKey: string) {
     // if no team is selected
@@ -95,6 +119,9 @@ export class AdminCreateTeamsComponent implements OnInit {
       });
     }
   }
+
+
+
 }
 
 
