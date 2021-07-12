@@ -71,7 +71,7 @@ export class AdminDashComponent implements OnInit {
     })
   }
 
-  // Returns a list of projects with status 'Active'
+  // Returns a list of projects with status 'Archived'
   getArchivedProjects(): Project[] {
     return this.projectService.getProjects().filter((project, index, array) => {
       return project.status == 'Archived';
