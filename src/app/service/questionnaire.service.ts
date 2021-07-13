@@ -50,7 +50,7 @@ export class QuestionnaireService {
           { text:  'Questionnaire: ' + quest.firstName + ' '+ quest.familyName + '\n\n', fontSize: 32, style: 'header' },
           {
             ul: [
-              'BannerID: ' + quest.firstName + '\n\n',
+              'BannerID: ' + quest.b00 + '\n\n',
               'Course: ' + quest.course + '\n\n',
               'Project Choice 1: ' + quest.projectChoice1 + '\n\n',
               'Project Choice 2: ' + quest.projectChoice2 + '\n\n',
