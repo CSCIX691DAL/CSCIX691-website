@@ -8,6 +8,13 @@ import { UserService } from './../service/user.service';
 import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
 import Team from '../team/team.model';
 
+import Questionnaire from '../student-questionnaire/student-questionnaire.model';
+import {QuestionnaireService} from '../service/questionnaire.service';
+import pdfMake from 'pdfmake/build/pdfmake';
+import pdfFonts from 'pdfmake/build/vfs_fonts';
+
+
+
 
 @Component({
   selector: 'app-admin-create-teams',
@@ -19,7 +26,8 @@ export class AdminCreateTeamsComponent implements OnInit {
 
 
   constructor(private TeamService: TeamService,
-    private userService: UserService
+    private userService: UserService,
+    private questService: QuestionnaireService
 
 
     ) { }
@@ -32,6 +40,20 @@ export class AdminCreateTeamsComponent implements OnInit {
     return Object.values(this.TeamService.getTeams());
   }
 
+
+    // returns a list of pending RFPs
+    getQuest(): Questionnaire[] {
+      return this.questService.getQuest().filter((quest, index, array) => {
+        return quest.userID != '';
+      });
+    }
+
+    generatePDF(quest: Questionnaire): void {
+      const docDefinition = this.questService.getDocumentDefinition(quest);
+      pdfMake.createPdf(docDefinition).open();
+    }
+
+    
 
   //this method is intended to return either null or the teams Id to prevent the teams dropdown from resetting after student is added
   dropDownFix(team){

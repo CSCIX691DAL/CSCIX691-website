@@ -36,14 +36,17 @@
               <table class="table">
                 <thead>
                 <tr>
+                  
                   <th scope="col">Student</th>
                   <th scope="col">Questionaire</th>
                 </tr>
                 </thead>
                 <tbody>
-                  <tr *ngFor="let student of getAllStudentsFromDB()">
-                    <td>{{student.fName}} {{student.sName}}</td>
+                  <tr *ngFor="let student of getQuest()" >
+                    <td>{{student.firstName}} {{student.familyName}}</td>
+                    <td (click)="generatePDF(student)" class="linkDisplay"><a href="/admin-create-teams">View Questionnaire</a></td>
                   </tr>
+                  
                 </tbody>
               </table>
             </mat-card-content>
