@@ -17,11 +17,16 @@ import Feedback from './clientFeedback.model';
 })
 export class ClientDashComponent implements OnInit {
 
+  
+
   constructor(private rfpService: RfpService, private projectService: ProjectService,
               private testimonial: TestimonialService,
               private feedback: FeedBacklService ) { }
 
   clientID: string;
+  feedbackTeam: string = '';
+
+
 
   
 
@@ -32,6 +37,10 @@ export class ClientDashComponent implements OnInit {
 
     this.clientID = localStorage['uid']; // get id of currently logged-in client
     pdfMake.vfs = pdfFonts.pdfMake.vfs;
+  }
+
+  getFeedbackTeam (event: any){
+    this.feedbackTeam = event;
   }
 
   getMyRFPs(): RFP[] {
@@ -59,7 +68,7 @@ export class ClientDashComponent implements OnInit {
     newTestimonial.rating = (<HTMLInputElement>document.getElementById("testimonialRating")).value;
     newTestimonial.client_name = localStorage.getItem("name");
     newTestimonial.company_name = localStorage.getItem("org");// there have a issue
-
+  
     if(newTestimonial.client_designation == "" ||newTestimonial.testimonial_text  == "" || newTestimonial.rating =="" ){
       window.alert("Please fill out all sections");
     }
@@ -75,12 +84,12 @@ export class ClientDashComponent implements OnInit {
 
     let newFeedback= new Feedback();
     newFeedback.title = (<HTMLInputElement>document.getElementById("feedbackTitle")).value;
-    newFeedback.team = (<HTMLInputElement>document.getElementById("feedbackTeam")).value;
-    newFeedback.client = (<HTMLInputElement>document.getElementById("feedbackClient")).value;
-    newFeedback.date = (<HTMLInputElement>document.getElementById("feedbackDate")).value;
-    newFeedback.body= (<HTMLInputElement>document.getElementById("feedbackBody")).value;// there have a issue
+    newFeedback.team = this.feedbackTeam;
+    newFeedback.client = localStorage.getItem('uid');
+    newFeedback.date = Date();
+    newFeedback.body= (<HTMLInputElement>document.getElementById("feedbackBody")).value;
 
-    if(newFeedback.title == "" ||newFeedback.team  == "" || newFeedback.client  == "" || newFeedback.date  == "" ||newFeedback.body  == ""  ){
+    if(newFeedback.title == "" ||newFeedback.team  == "" || newFeedback.date  == "" ||newFeedback.body  == ""  ){
       window.alert("Please fill out all sections");
     }
     else{

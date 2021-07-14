@@ -11,7 +11,7 @@ export class FeedBacklService {
     feedback?: Feedback[];
 
   constructor(private db: AngularFireDatabase) {
-    this.feedBackReference = db.list('feedBack/');
+    this.feedBackReference = db.list('feedback/');
     this.refreshFeedback();
   }
 
@@ -41,7 +41,7 @@ export class FeedBacklService {
   }
 
   // Change an existing feedback
-  updateFeedback(testimonial: Feedback, changes: Object): Promise<void> {
+  updateFeedback(feedback: Feedback, changes: Object): Promise<void> {
     return this.feedBackReference.update(feedback.key, changes);
   }
 
@@ -49,5 +49,4 @@ export class FeedBacklService {
   deleteFeedback(feedback: Feedback): Promise<void> {
     return this.feedBackReference.remove(feedback.key);
   }
-
 }
