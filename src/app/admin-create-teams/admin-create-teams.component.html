@@ -28,28 +28,29 @@
     <div class="container" >
       <h1 class="title">Create or Edit Project Groups</h1>
       <div class="list-container" >
-        <div class="column-container" style="position: relative !important; top: 23px !important;
+        <div class="column-container" style="position: relative !important; top: 20px !important;
         overflow-y: scroll;" >
+            
           <mat-card>
-            <mat-card-title>Students and Questionnaires</mat-card-title>
-            <mat-card-content>
-              <table class="table">
-                <thead>
-                <tr>
-                  
-                  <th scope="col">Student</th>
-                  <th scope="col">Questionaire</th>
-                </tr>
-                </thead>
-                <tbody>
-                  <tr *ngFor="let student of getQuest()" >
-                    <td>{{student.firstName}} {{student.familyName}}</td>
-                    <td (click)="generatePDF(student)" class="linkDisplay"><a href="/admin-create-teams">View Questionnaire</a></td>
-                  </tr>
-                  
-                </tbody>
-              </table>
-            </mat-card-content>
+            <h3>Students and Questionnaires</h3>
+            <div *ngFor="let student of getAllStudentsFromDB()">
+              <app-accordian>
+                
+                <p header>
+                  {{student.fName}} {{student.sName}}
+                 </p>
+                <div content>
+                  <div class="viewLink">
+                    Team currently assigned: {{getTeamName(student)}}<br>
+                    Leader: {{student.teamLeader}}<br>
+                    Class registered to: <br>
+                    Project choice 1: <br> 
+                    Project choice 2:<br>
+                    Project choice 3:
+                  </div>
+                </div>
+              </app-accordian>
+            </div>
           </mat-card>
       </div>
         <div class="column-container"style="padding-left: 10px;"><!--Code created using https://medium.com/codetobe/learn-how-to-drag-drop-items-in-angular-7-20395c262ab0-->

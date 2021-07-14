@@ -110,9 +110,21 @@ export class AdminCreateTeamsComponent implements OnInit {
       return this.userService.isStudent(user)
     });
 
+}   
+ getTeamName(Student: Student): string {
+  // if the user is a student and is on a team
+  if (Student.team) {
+    // get the team from the database
+    let team = this.TeamService.getTeamByKey(Student.team);
 
+    // if the team exists
+    if (team) {
+      return team.name;
+    }
+  }
 
-}  
+  return 'None';
+}
 
 
 
