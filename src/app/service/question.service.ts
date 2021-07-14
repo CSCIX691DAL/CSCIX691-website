@@ -1,5 +1,11 @@
+/*
+* Service function for retrieving the questions from the database and returning them to StudentQuestionnaireComponent where they are displayed
+* in a form that would be dynamic. The questions are currently hard coded as retrieving from the database as it is async and getQuestions() runs
+* before the database returns the form from firebase. 
+*
+* To be finished this class needs to pull from firebase and create textbox and dropdown questions.
+*/
 import { Injectable } from '@angular/core';
-
 import { DropdownQuestion } from '../questionnaire/questionDropdown';
 import { QuestionBase } from '../questionnaire/questionBase';
 import { TextboxQuestion } from '../questionnaire/questionTextbox';
@@ -11,9 +17,9 @@ import { StudentQuestionnaireService } from './studentQuestionnaire.service';
 export class QuestionService{
 
     studentQuestionnaireForm: Object;
-
+    // TODO: Make the studentQuestionnaireForm be defined before its eventual use in getQuestions()
     constructor(private db: AngularFireDatabase, private studentQuestionnaireService: StudentQuestionnaireService){
-        // get the RFP submission form from the database
+        // get the Student Questionnaire form from the database
         this.db.database.ref('Forms/Student Questionnaire').get().then(value => {
             this.studentQuestionnaireForm = value.val();
             }).catch(exception => {

@@ -1,5 +1,8 @@
+/*
+* Component that starts displaying the questions returned from the question.service.ts file. The template calls the dynamic-form html file.
+* This was all created with help from https://angular.io/guide/dynamic-form
+*/
 import { Component } from '@angular/core';
-
 import { QuestionService } from '../service/question.service';
 import { QuestionBase } from '../questionnaire/questionBase';
 import { Observable } from 'rxjs';
@@ -18,10 +21,10 @@ import { Observable } from 'rxjs';
   providers:  [QuestionService],
   styleUrls: ['./student-questionnaire.component.css']
 })
-export class StudentQuestionnaireComponent {
+export class StudentQuestionnaireComponent{
   questions$: Observable<QuestionBase<any>[]>;
 
-  constructor(service: QuestionService) {
-    this.questions$ = service.getQuestions();
+  constructor(private service: QuestionService) {
+    this.questions$ = this.service.getQuestions();
   }
 }
