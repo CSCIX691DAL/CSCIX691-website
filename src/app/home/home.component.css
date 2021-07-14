@@ -4,6 +4,7 @@
   flex-direction: column;
   justify-content: center;
   margin: auto;
+  line-height: 150%;
 }
 
   a {
@@ -89,6 +90,11 @@
   text-align: center;
   margin-left: 5rem;
   margin-top: 2rem;
+}
+.bigTitle {
+  font-size: calc(1rem + 1vw);
+  font-family:  'Arial Regular';
+  line-height: 100%;
 }
 
 .testimonials {
