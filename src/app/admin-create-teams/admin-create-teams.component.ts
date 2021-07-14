@@ -109,8 +109,14 @@ export class AdminCreateTeamsComponent implements OnInit {
     return this.userService.getUsers().filter((user, index, array) => {
       return this.userService.isStudent(user)
     });
-
-}   
+  }
+  
+  
+  getQuestionnaireFromKey(string:string): Questionnaire[] {
+    return this.questService.getQuest().filter((quest, index, array) => {
+      return quest.b00==string;
+    });
+  }
  getTeamName(Student: Student): string {
   // if the user is a student and is on a team
   if (Student.team) {
