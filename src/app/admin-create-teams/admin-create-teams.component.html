@@ -43,14 +43,16 @@
                   <div class="viewLink">
                     Team currently assigned: {{getTeamName(student)}}<br>
                     <div *ngIf="student.teamLeader">Team Leader:{{student.teamLeader}} <br></div>
+   
                     <div *ngIf="getQuestionnaireFromKey(student.studentID)!=null">
-                      <div *ngFor="let quest of getQuestionnaireFromKey(studentID)">
-                              Class registered to: {{quest.course}}  <br>
-                              Project choice 1: {{quest.projectChoice1}} <br> 
-                              Project choice 2: {{quest.projectChoice2}}<br>
-                              Project choice 3: {{quest.projectChoice3}}
-                       </div> 
-                  </div>
+                       <div *ngFor="let quest of getQuestionnaireFromKey(student.studentID)">
+                          Class registered to: {{quest.course}}  <br>
+                          Project choice 1: {{quest.projectChoice1}} <br> 
+                          Project choice 2: {{quest.projectChoice2}}<br>
+                          Project choice 3: {{quest.projectChoice3}}
+                      </div>
+
+                    </div>
                   </div>
                 </div>
               </app-accordian>

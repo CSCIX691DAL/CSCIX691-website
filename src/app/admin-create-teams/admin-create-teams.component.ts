@@ -112,9 +112,9 @@ export class AdminCreateTeamsComponent implements OnInit {
   }
   
   
-  getQuestionnaireFromKey(string:string): Questionnaire[] {
+  getQuestionnaireFromKey(stringy:string): Questionnaire[] {
     return this.questService.getQuest().filter((quest, index, array) => {
-      return quest.b00==string;
+      return quest.b00==stringy;
     });
   }
  getTeamName(Student: Student): string {
