@@ -35,12 +35,12 @@
             <h3>Students and Questionnaires</h3>
             <div *ngFor="let student of getAllStudentsFromDB()">
               <app-accordian>
-                
+                <!--This is the clickable header that displays the students-->
                 <p header>
                   {{student.fName}} {{student.sName}}
-                 </p>
+                </p>
                 <div content>
-                  <div class="viewLink">
+                  <div class="viewLink"><!--Th-->
                     Team currently assigned: {{getTeamName(student)}}<br>
                     <div *ngIf="student.teamLeader">Team Leader:{{student.teamLeader}} <br></div>
    
