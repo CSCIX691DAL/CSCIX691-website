@@ -4,6 +4,7 @@ import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
 import { map } from 'rxjs/operators';
 import Team from '../team/team.model';
 import { Student } from '../user/student.model';
+import Feedback from '../client-dash/clientFeedback.model';
 
 @Injectable({
   providedIn: 'root'
@@ -37,6 +38,11 @@ export class TeamService {
   addTeam(team: Team) {
     let key = this.teamReference.push(team).key; // add to database
     this.teamReference.update(key, { key: key });
+  }
+
+  // Adds a new team to the database
+  addTeamFeedback(feedback: Feedback, teamKey: string) {
+    let teamFeedbackReferance = this.db.database.ref('Teams/' + teamKey + '/feedback').push(feedback)// add to database
   }
 
   // Changes an existing team

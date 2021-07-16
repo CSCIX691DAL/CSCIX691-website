@@ -90,7 +90,7 @@
               <form id="FeedbackCreation" class="form">
                 <mat-form-field class="feedback"><mat-label>Team:</mat-label>
                   <mat-select name="feedbackTeam" id="feedbackTeam" (selectionChange)="getFeedbackTeam($event.value)">              
-                      <mat-option *ngFor="let project of getMyProjects()" value="{{ project.title }}">{{ project.title }}</mat-option>    
+                      <mat-option *ngFor="let team of getMyTeams()" value="{{ team.key }}">{{ team.name }}</mat-option>    
                   </mat-select>
               </mat-form-field>
                 <mat-form-field class="feedback"><mat-label>Title: </mat-label><input required name="feedbackTitle" id="feedbackTitle" matInput type="string"></mat-form-field>
