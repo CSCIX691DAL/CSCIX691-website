@@ -123,6 +123,11 @@
 .cdk-drop-list{
   width: 100% !important;
 }
+#topTitle {
+  display: flex;
+  justify-content: center;
+  color: black;
+}
 #tableTitle {
   display: flex;
   justify-content: center;

@@ -27,12 +27,12 @@
     
     <div class="container" >
 
-      <h1 id="tableTitle">Create or Edit Project Groups</h1>
+      <h1 id="topTitle">Create or Edit Project Groups</h1>
       <div class="list-container" >
         <div class="column-container" style="position: relative !important; top: 25px !important;
         overflow-y: scroll;" >
             
-          <mat-card>
+          <mat-card style="width: 400px !important;">
             <h3>Students and Questionnaires</h3>
             <div *ngFor="let student of getAllStudentsFromDB()">
               <app-accordian>
