@@ -144,6 +144,10 @@
 mat-card {
   margin: 1em;
   cursor: pointer;
+  
+}
+.students{
+  
   overflow-y: scroll;
 }
 .list {
