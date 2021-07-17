@@ -54,6 +54,8 @@ export class ClientDashComponent implements OnInit {
     });
   }
   //Method for getting the teams assined to projects of the logged in client
+  //TODO: Currently project keys are not saved with teams on creation. This needs to be added to teams on creation. 
+  //The project keys currently in the database were added for testing
   getMyTeams(): Team[] {
     //Getting projects assoiated with client
     let projects = this.projectService.getProjects().filter((project, index, array) => {
