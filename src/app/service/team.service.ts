@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
 import { map } from 'rxjs/operators';
 import Team from '../team/team.model';
+import Feedback from '../client-dash/clientFeedback.model';
 import { Student } from '../user/student.model';
 
 @Injectable({
@@ -95,5 +96,29 @@ export class TeamService {
   moveStudentToTeam(from: Team, to: Team, student: Student) {
     this.removeStudentFromTeam(from, student);
     this.addStudentToTeam(to, student);
+  }
+
+  //Get feedback given to the team the student is a part of
+  getTeamFeedback(){
+    let feedback;
+    let teamObject;
+    Object.values(this.teams).filter((team, index, array) => {
+      if(team.members){
+        if(team.members[localStorage.getItem('uid')]){
+          if(team.feedback){
+            feedback = team.feedback;
+            teamObject = team;
+          }
+        }
+      }
+    });
+
+    let feedbackArray = [];
+    Object.keys(feedback).forEach((key) => {
+      if(feedback[key] != teamObject.key)
+      feedbackArray.push(feedback[key]);
+    });
+
+    return feedbackArray;
   }
 }
