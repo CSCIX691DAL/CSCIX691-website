@@ -122,7 +122,9 @@ export class TeamService {
     //changing clientID to client first name + last name
     for(let x = 0; x < feedbackArray.length; x++){
       let user = this.userService.getUserByID(feedbackArray[x]['client']);
-      feedbackArray[x]['client'] = user.fName + " " + user.sName;
+      if(user){
+        feedbackArray[x]['client'] = user.fName + " " + user.sName;
+      }
     }
 
     return feedbackArray;
