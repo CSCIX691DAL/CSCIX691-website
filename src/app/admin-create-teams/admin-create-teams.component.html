@@ -34,7 +34,7 @@
             
           <mat-card style="width: 400px !important;" class="students">
             <h3>Students and Questionnaires</h3>
-            <div *ngFor="let student of getAllStudentsFromDB()">
+            <div *ngFor="let student of getActiveStudentsFromDB()">
               <app-accordian>
                 <!--This is the clickable header that displays the students-->
                 <p header>
@@ -45,16 +45,16 @@
                     Team currently assigned: {{getTeamName(student)}}<br>
                     <div *ngIf="student.teamLeader">Team Leader:{{student.teamLeader}} <br></div>
    
-                    <div *ngIf="getQuestionnaireFromKey(student.studentID)!=null">
+                    <div *ngIf="getQuestionnaireFromKey(student.studentID)!=null; else notComplete">
                        <div *ngFor="let quest of getQuestionnaireFromKey(student.studentID)">
                           Class registered to: {{quest.course}}  <br>
-                          Project choice 1: {{quest.projectChoice1}} <br> 
+                          Project choice 1: {{quest.projectChoice1}}<br> 
                           Project choice 2: {{quest.projectChoice2}}<br>
                           Project choice 3: {{quest.projectChoice3}}
                         <div (click)="generatePDF(quest)" class="linkDisplay"><a href="/admin-create-teams">View Full Questionnaire</a></div>
                       </div>
-
-                    </div>
+                   </div>
+                   <ng-template #notComplete> <div>Questionnaire is not compelete.</div></ng-template>
                   </div>
                 </div>
               </app-accordian>
