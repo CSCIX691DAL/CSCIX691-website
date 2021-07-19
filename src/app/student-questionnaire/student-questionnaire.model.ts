@@ -1,5 +1,7 @@
 export default class Questionnaire {
+
     key?: string | null;
+    userID: string;
     familyName: string;
     firstName: string;
     b00: string;

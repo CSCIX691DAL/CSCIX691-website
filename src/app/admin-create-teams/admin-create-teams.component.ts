@@ -8,6 +8,13 @@ import { UserService } from './../service/user.service';
 import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
 import Team from '../team/team.model';
 
+import Questionnaire from '../student-questionnaire/student-questionnaire.model';
+import {QuestionnaireService} from '../service/questionnaire.service';
+import pdfMake from 'pdfmake/build/pdfmake';
+import pdfFonts from 'pdfmake/build/vfs_fonts';
+
+
+
 
 @Component({
   selector: 'app-admin-create-teams',
@@ -19,7 +26,8 @@ export class AdminCreateTeamsComponent implements OnInit {
 
 
   constructor(private TeamService: TeamService,
-    private userService: UserService
+    private userService: UserService,
+    private questService: QuestionnaireService
 
 
     ) { }
@@ -33,6 +41,20 @@ export class AdminCreateTeamsComponent implements OnInit {
   }
 
 
+    // returns a list of pending RFPs
+    getQuest(): Questionnaire[] {
+      return this.questService.getQuest().filter((quest, index, array) => {
+        return quest.userID != '';
+      });
+    }
+
+    generatePDF(quest: Questionnaire): void {
+      const docDefinition = this.questService.getDocumentDefinition(quest);
+      pdfMake.createPdf(docDefinition).open();
+    }
+
+    
+
   //this method is intended to return either null or the teams Id to prevent the teams dropdown from resetting after student is added
   dropDownFix(team){
     if(!team) return null;
@@ -40,7 +62,7 @@ export class AdminCreateTeamsComponent implements OnInit {
   }
 
 
-  changeDragDropTable(event: CdkDragDrop<string[]>) {//Code taken from https://medium.com/codetobe/learn-how-to-drag-drop-items-in-angular-7-20395c262ab0
+  changeDragDropTable(event: CdkDragDrop<string[]>) {//Code created using https://medium.com/codetobe/learn-how-to-drag-drop-items-in-angular-7-20395c262ab0
     if (event.previousContainer === event.container) {
         moveItemInArray(event.container.data,
         event.previousIndex,
@@ -82,7 +104,38 @@ export class AdminCreateTeamsComponent implements OnInit {
     });
   }
 
-  // On-change listener for the Teams drop-down
+
+  getAllStudentsFromDB():User[]{
+    return this.userService.getUsers().filter((user, index, array) => {
+      return this.userService.isStudent(user)
+    });
+  }
+  
+  
+  getQuestionnaireFromKey(stringy:string): Questionnaire[] {
+    return this.questService.getQuest().filter((quest, index, array) => {
+      return quest.b00==stringy;
+    });
+  }
+ getTeamName(Student: Student): string {
+  // if the user is a student and is on a team
+  if (Student.team) {
+    // get the team from the database
+    let team = this.TeamService.getTeamByKey(Student.team);
+
+    // if the team exists
+    if (team) {
+      return team.name;
+    }
+  }
+
+  return 'None';
+}
+
+
+
+
+// On-change listener for the Teams drop-down
   getTeamMembers(teamKey: string) {
     // if no team is selected
     if (teamKey == 'default') {

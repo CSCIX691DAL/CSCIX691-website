@@ -25,27 +25,61 @@
       </nav>
     </div>
     
-    <div class="container">
-      <h1 class="title">Create or Edit Project Groups</h1>
-      <div class="list-container"><!--Code taken from https://medium.com/codetobe/learn-how-to-drag-drop-items-in-angular-7-20395c262ab0-->
-        <div class="column-container">
+    <div class="container" >
+
+      <h1 id="topTitle">Create or Edit Project Groups</h1>
+      <div class="list-container" >
+        <div class="column-container" style="position: relative !important; top: 25px !important;
+        overflow-y: scroll;" >
+            <!--This div controls the students and questionnaire container-->
+          <mat-card class="students">
+            <h3>Students and Questionnaires</h3>
+            <div *ngFor="let student of getActiveStudentsFromDB()">
+              <app-accordian>
+                <!--This is the clickable header that displays the students-->
+                <p header>
+                  {{student.fName}} {{student.sName}}
+                </p>
+                <div content>
+                  <div class="viewLink">
+                    Team currently assigned: {{getTeamName(student)}}<br>
+                    <div *ngIf="student.teamLeader">Team Leader:{{student.teamLeader}} <br></div>
+   
+                    <div *ngIf="getQuestionnaireFromKey(student.studentID).length > 0; else notComplete">
+                       <div *ngFor="let quest of getQuestionnaireFromKey(student.studentID)">
+                          Class registered to: {{quest.course}}  <br>
+                          Project choice 1: {{quest.projectChoice1}}<br> 
+                          Project choice 2: {{quest.projectChoice2}}<br>
+                          Project choice 3: {{quest.projectChoice3}}
+                        <div (click)="generatePDF(quest)" class="linkDisplay"><a href="/admin-create-teams">View Full Questionnaire</a></div>
+                      </div>
+                   </div>
+                   <ng-template #notComplete>Questionnaire is not compelete.</ng-template>
+                  </div>
+                </div>
+              </app-accordian>
+            </div>
+          </mat-card>
+      </div>
+        <div class="column-container"style="padding-left: 0px;"> 
+          <!--This div controls the middlec container which holds the active and available students Note that students are not active till they have changed their password  -->
           <div class="list"
-               cdkDropList
-               #todoList="cdkDropList"
-               [cdkDropListData]="getActiveStudentsFromDB()"
-               [cdkDropListConnectedTo]="[doneList]"
-               (cdkDropListDropped)="changeDragDropTable($event)">
+              cdkDropList
+              #todoList="cdkDropList"
+              [cdkDropListData]="getActiveStudentsFromDB()"
+              [cdkDropListConnectedTo]="[doneList]"
+              (cdkDropListDropped)="changeDragDropTable($event)">
             <h2 id="tableTitle">Available Students</h2>
-            <mat-card *ngFor="let todo of getActiveStudentsFromDB()" cdkDrag>
+            <mat-card *ngFor="let student of getActiveStudentsFromDB()" cdkDrag>
               <mat-card-header>
-                <mat-card-title>{{todo.fName}} {{todo.sName}}</mat-card-title>
+                <mat-card-title>{{student.fName}} {{student.sName}}</mat-card-title>
               </mat-card-header>
             </mat-card>
           </div>
         </div>
         
-        <div class="column-container">
-         
+        <div class="column-container"style="padding-left: 10px;">
+         <!--This div controls the right container that displays the members of the selected team-->
           <div class="list"
                cdkDropList
                #doneList="cdkDropList"
@@ -67,3 +101,4 @@
             </mat-card>
           </div>
         </div>
+      </div>

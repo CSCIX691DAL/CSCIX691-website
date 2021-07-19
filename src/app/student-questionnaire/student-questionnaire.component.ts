@@ -138,7 +138,7 @@ export class StudentQuestionnaireComponent implements OnInit {
     questionnaire.improve = String(improve);
     questionnaire.studentRep = String(this.studentRep);
     questionnaire.acc = String(this.acc);
-
+    questionnaire.userID = localStorage['uid'];
 
     questionnaire.operatingSystem = String(operatingSystem);
     questionnaire.backgroundEX = String(backgroundEX);
