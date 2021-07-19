@@ -159,7 +159,7 @@
               <mat-card-title class="feedbackTitle"> {{ feedback.title }} </mat-card-title>
               <mat-card-content> 
                 <p class="feedbackBody"> {{ feedback.body }} </p>
-                <p class="submitDate"> Submitted on {{ feedback.date | date:'yyyy/MM/dd h:mm:ss a' }} </p>
+                <p class="submitDate"> Submitted on {{ feedback.date | date:'yyyy/MM/dd h:mm:ss a' }} by {{ feedback.client }}</p>
               </mat-card-content>
             </mat-card>
             <br>
