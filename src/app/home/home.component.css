@@ -4,6 +4,7 @@
   flex-direction: column;
   justify-content: center;
   margin: auto;
+  line-height: 150%;
 }
 
   a {
@@ -80,15 +81,20 @@
   font-size: calc(1rem + 3vw);
   font-family:  'Arial Regular';
   margin-top: 6rem;
-  margin-left: 5rem;
+  margin: auto;
 }
 
 .jumboSubTitle {
   font-size: calc(1rem + 1vw);
   font-family:  'Arial Regular';
   text-align: center;
-  margin-left: 5rem;
+  margin:auto;
   margin-top: 2rem;
+}
+.bigTitle {
+  font-size: calc(1rem + 1vw);
+  font-family:  'Arial Regular';
+  line-height: 100%;
 }
 
 .testimonials {
@@ -103,4 +109,15 @@
 .focus{
   background-color: #3ba86b;
   color: #FFFFFF;
+}
+.focuscard{
+  width: 28%;
+  margin: 1.5rem;
+}
+
+@media only screen and (max-width: 1060px) {
+  .focuscard{
+    width: 100%;
+    margin: 1.5rem;
+  }
 }

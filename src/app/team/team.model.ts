@@ -7,5 +7,5 @@ export default class Team {
     name: string;
     members: string[]; // array of student keys
     feedback: Feedback[];
-    project: Project;
+    project: string;
   }

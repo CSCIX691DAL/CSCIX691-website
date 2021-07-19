@@ -40,6 +40,11 @@ export class TeamService {
     this.teamReference.update(key, { key: key });
   }
 
+  // Adds a new team to the database
+  addTeamFeedback(feedback: Feedback, teamKey: string) {
+    let teamFeedbackReferance = this.db.database.ref('Teams/' + teamKey + '/feedback').push(feedback)// add to database
+  }
+
   // Changes an existing team
   updateTeam(team: Team, changes: Object): Promise<void> {
     return this.teamReference.update(team.key, changes);
