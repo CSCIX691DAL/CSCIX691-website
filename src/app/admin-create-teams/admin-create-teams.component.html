@@ -66,11 +66,11 @@
           <div class="list"
               cdkDropList
               #todoList="cdkDropList"
-              [cdkDropListData]="getActiveStudentsFromDB()"
+              [cdkDropListData]="getActiveandAvailableStudentsFromDB()"
               [cdkDropListConnectedTo]="[doneList]"
               (cdkDropListDropped)="changeDragDropTable($event)">
             <h2 id="tableTitle">Available Students</h2>
-            <mat-card *ngFor="let student of getActiveStudentsFromDB()" cdkDrag>
+            <mat-card *ngFor="let student of getActiveandAvailableStudentsFromDB()" cdkDrag>
               <mat-card-header>
                 <mat-card-title>{{student.fName}} {{student.sName}}</mat-card-title>
               </mat-card-header>

@@ -97,10 +97,18 @@ export class AdminCreateTeamsComponent implements OnInit {
 
 
   //Returns a list of Active Students
-  getActiveStudentsFromDB(): User[] {
+  getActiveandAvailableStudentsFromDB(): User[] {
     return this.userService.getUsers().filter((user, index, array) => {
       
       return user.active && this.userService.isStudent(user)&& (<Student>user).team == undefined
+    });
+  }
+
+
+  getActiveStudentsFromDB(): User[] {
+    return this.userService.getUsers().filter((user, index, array) => {
+      
+      return user.active && this.userService.isStudent(user)
     });
   }
 
