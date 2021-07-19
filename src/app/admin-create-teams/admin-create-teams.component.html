@@ -31,8 +31,8 @@
       <div class="list-container" >
         <div class="column-container" style="position: relative !important; top: 25px !important;
         overflow-y: scroll;" >
-            
-          <mat-card style="width: 400px !important;" class="students">
+            <!--This div controls the students and questionnaire container-->
+          <mat-card class="students">
             <h3>Students and Questionnaires</h3>
             <div *ngFor="let student of getActiveStudentsFromDB()">
               <app-accordian>
@@ -41,7 +41,7 @@
                   {{student.fName}} {{student.sName}}
                 </p>
                 <div content>
-                  <div class="viewLink"><!--Th-->
+                  <div class="viewLink">
                     Team currently assigned: {{getTeamName(student)}}<br>
                     <div *ngIf="student.teamLeader">Team Leader:{{student.teamLeader}} <br></div>
    
@@ -61,7 +61,8 @@
             </div>
           </mat-card>
       </div>
-        <div class="column-container"style="padding-left: 0px;"><!--Code created using https://medium.com/codetobe/learn-how-to-drag-drop-items-in-angular-7-20395c262ab0-->
+        <div class="column-container"style="padding-left: 0px;"> 
+          <!--This div controls the middlec container which holds the active and available students Note that students are not active till they have changed their password  -->
           <div class="list"
               cdkDropList
               #todoList="cdkDropList"
@@ -78,7 +79,7 @@
         </div>
         
         <div class="column-container"style="padding-left: 10px;">
-        
+         <!--This div controls the right container that displays the members of the selected team-->
           <div class="list"
               cdkDropList
               #doneList="cdkDropList"
@@ -86,18 +87,17 @@
               [cdkDropListConnectedTo]="todoList"
               (cdkDropListDropped)="changeDragDropTable($event)">
     
-          <h2 id="tableTitle">Current Team in Selected Project</h2>
-          <select id="teams" (change)='getTeamMembers($event.target.value)'>
-            <option value="default">Select a team</option>
-            <option *ngFor='let team of getTeams(); trackBy: dropDownFix' value={{team.key}}>{{team.name}}</option>
-          </select>
+            <h2 id="tableTitle">Current Team in Selected Project</h2>
+            <select id="teams" (change)='getTeamMembers($event.target.value)'>
+              <option value="default">Select a team</option>
+              <option *ngFor='let team of getTeams(); trackBy: dropDownFix' value={{team.key}}>{{team.name}}</option>
+            </select>
 
-            <mat-card *ngFor="let student of teamMembers" cdkDrag>
-              <mat-card-header>
-                <mat-card-title value={{student.studentID}} id="name">{{student.fName}} {{student.sName}}</mat-card-title>
-              </mat-card-header>
-            </mat-card>
+              <mat-card *ngFor="let student of teamMembers" cdkDrag>
+                <mat-card-header>
+                  <mat-card-title value={{student.studentID}} id="name">{{student.fName}} {{student.sName}}</mat-card-title>
+                </mat-card-header>
+              </mat-card>
           </div>
         </div>
-        
       </div>
