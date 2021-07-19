@@ -45,7 +45,7 @@
                     Team currently assigned: {{getTeamName(student)}}<br>
                     <div *ngIf="student.teamLeader">Team Leader:{{student.teamLeader}} <br></div>
    
-                    <div *ngIf="getQuestionnaireFromKey(student.studentID)!=null; else notComplete">
+                    <div *ngIf="getQuestionnaireFromKey(student.studentID).length > 0; else notComplete">
                        <div *ngFor="let quest of getQuestionnaireFromKey(student.studentID)">
                           Class registered to: {{quest.course}}  <br>
                           Project choice 1: {{quest.projectChoice1}}<br> 
@@ -54,7 +54,7 @@
                         <div (click)="generatePDF(quest)" class="linkDisplay"><a href="/admin-create-teams">View Full Questionnaire</a></div>
                       </div>
                    </div>
-                   <ng-template #notComplete> <div>Questionnaire is not compelete.</div></ng-template>
+                   <ng-template #notComplete>Questionnaire is not compelete.</ng-template>
                   </div>
                 </div>
               </app-accordian>
