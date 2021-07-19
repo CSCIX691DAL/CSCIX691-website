@@ -5,5 +5,5 @@ export default class Team {
     key?: string | null;
     name: string;
     members: string[]; // array of student keys
-    project: Project;
+    project: string;
   }

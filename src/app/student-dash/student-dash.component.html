@@ -86,39 +86,7 @@
       </mat-card>
     </div>
     <!-- My Past Projects End -->
-    <div class="dueDates">
-      <!-- <mat-card>
-        <mat-card-title>Due Dates</mat-card-title>
-        <mat-card-content>
-          <div id="accordion">
-            <div *ngFor="let dueDates of getDueDates()">
-              <app-accordian>
-                <p header>{{ dueDates.title }}</p>
-                <h4 class="card-subtitle">{{ dueDates.date | date:'yyyy/MM/dd h:mm:ss a' }}</h4>
-              </app-accordian>
-            </div>
-          </div>
-        </mat-card-content>
-      </mat-card> -->
-      <mat-card-title>Due Dates</mat-card-title>
-        <mat-card-content>
-          <table class="table">
-            <thead>
-            <tr>
-              <th scope="col">Title</th>
-              <th scope="col"> DueDate</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr *ngFor='let dueDates of getDueDates()'>
-              <td>{{dueDates.title}}</td>
-              <td>{{ dueDates.date | date:'yyyy/MM/dd h:mm:ss a' }}</td>
-            </tr>
-
-            </tbody>
-          </table>
-        </mat-card-content>
-    </div>
+    
   </div>
   <!-- Column 1 End -->
   <!-- Column 2 Start -->
@@ -161,42 +129,40 @@
       <!-- Iteration Evaluations ends -->
     </div>
     <!-- Members End -->
-    <!-- Announcements Start -->
-    <div class="announcements">
-      <mat-card>
-        <mat-card-title>Class Announcements</mat-card-title>
+    <div class="dueDates">
+      <!-- <mat-card>
+        <mat-card-title>Due Dates</mat-card-title>
         <mat-card-content>
-          <ul class="list-group announcementLists">
-            <li class="list-group-item"><strong><a href="##">Brightspace Announcement</a></strong></li>
-            <li class="list-group-item"><strong><a href="##">Happy Reading Week</a></strong></li>
-            <li class="list-group-item"><strong><a href="##">Milestone 1 Grades Released</a></strong></li>
-          </ul>
+          <div id="accordion">
+            <div *ngFor="let dueDates of getDueDates()">
+              <app-accordian>
+                <p header>{{ dueDates.title }}</p>
+                <h4 class="card-subtitle">{{ dueDates.date | date:'yyyy/MM/dd h:mm:ss a' }}</h4>
+              </app-accordian>
+            </div>
+          </div>
         </mat-card-content>
-      </mat-card>
-    </div>
-    <!-- Announcements End -->
-    <!-- Other Start -->
-    <div class="otherCard">
-      <mat-card>
-        <mat-card-title>Other Student Stuffs</mat-card-title>
+      </mat-card> -->
+      <mat-card-title>Due Dates</mat-card-title>
         <mat-card-content>
           <table class="table">
+            <thead>
+            <tr>
+              <th scope="col">Title</th>
+              <th scope="col"> DueDate</th>
+            </tr>
+            </thead>
             <tbody>
-              <tr>
-                <td>
-                  Submit the Student Questionnaire - <a class="submitQuestions" href="../../assets/images/TopImage.JPG">Start Questionnaire</a>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  Take Agile Quiz <a class="submitQuestions" href="../../assets/images/TopImage.JPG">Here</a>
-                </td>
-              </tr>
+            <tr *ngFor='let dueDates of getDueDates()'>
+              <td>{{dueDates.title}}</td>
+              <td>{{ dueDates.date | date:'yyyy/MM/dd h:mm:ss a' }}</td>
+            </tr>
+
             </tbody>
           </table>
         </mat-card-content>
-      </mat-card>
     </div>
   </div>
+  
   <!-- Column 2 End -->
 </div>

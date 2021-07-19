@@ -47,4 +47,5 @@ h2 {
   flex-direction: column;
   justify-content: center;
   margin: auto;
+  line-height: 150%;
 }

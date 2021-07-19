@@ -4,6 +4,7 @@
   flex-direction: column;
   justify-content: center;
   margin: auto;
+  line-height: 150%;
 }
 
 a {
