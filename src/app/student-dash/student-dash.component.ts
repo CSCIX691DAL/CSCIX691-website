@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import Project from '../projects/project.model';
 import { ProjectService } from '../service/project.service';
-
+import { TeamService } from '../service/team.service';
 import { AngularFireDatabase } from '@angular/fire/database';
 import DueDates from '../dueDates/dueDates.model';
 import { dueDateService } from '../service/duedate.service';
@@ -16,7 +16,7 @@ import { dueDateService } from '../service/duedate.service';
 export class StudentDashComponent implements OnInit {
   uid: string;
 
-  constructor(private projectService: ProjectService, private duedateService: dueDateService) { }
+  constructor(private projectService: ProjectService, private duedateService: dueDateService, private teamService: TeamService) { }
 
   ngOnInit(): void {
     if (!localStorage.getItem("isLogin") || !(localStorage.getItem("userType") === "student")) {
@@ -52,5 +52,8 @@ export class StudentDashComponent implements OnInit {
     return this.duedateService.getdueDates();
   }
 
+  getTeamFeedback(){
+    return this.teamService.getTeamFeedback();
+  }
   
 }

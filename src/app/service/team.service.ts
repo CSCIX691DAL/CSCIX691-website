@@ -3,8 +3,8 @@ import { Injectable } from '@angular/core';
 import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
 import { map } from 'rxjs/operators';
 import Team from '../team/team.model';
-import { Student } from '../user/student.model';
 import Feedback from '../client-dash/clientFeedback.model';
+import { Student } from '../user/student.model';
 
 @Injectable({
   providedIn: 'root'
@@ -101,5 +101,37 @@ export class TeamService {
   moveStudentToTeam(from: Team, to: Team, student: Student) {
     this.removeStudentFromTeam(from, student);
     this.addStudentToTeam(to, student);
+  }
+
+  //Get feedback given to the team the student is a part of
+  getTeamFeedback(){
+    let feedback;
+    let teamObject;
+    Object.values(this.teams).filter((team, index, array) => {
+      if(team.members){
+        if(team.members[localStorage.getItem('uid')]){
+          if(team.feedback){
+            feedback = team.feedback;
+            teamObject = team;
+          }
+        }
+      }
+    });
+    //Following block created with help from following link: https://stackoverflow.com/questions/52912225/how-to-convert-firebase-object-to-array
+    //converting feedback object into array
+    let feedbackArray = [];
+    Object.keys(feedback).forEach((key) => {
+      if(feedback[key] != teamObject.key)
+      feedbackArray.push(feedback[key]);
+    });
+    //changing clientID to client first name + last name
+    for(let x = 0; x < feedbackArray.length; x++){
+      let user = this.userService.getUserByID(feedbackArray[x]['client']);
+      if(user){
+        feedbackArray[x]['client'] = user.fName + " " + user.sName;
+      }
+    }
+
+    return feedbackArray;
   }
 }
