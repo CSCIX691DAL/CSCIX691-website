@@ -114,6 +114,8 @@
                   <br>
                   <br>
                   {{ project.descLong }}
+                  <hr>
+                  <button class="actionButton" (click)="archiveProject(project)">Archive</button>
                 </div>
               </app-accordian>
             </div>
@@ -122,6 +124,44 @@
       </mat-card>
     </div>
     <!-- Active Project End -->
+    <!-- Archived Projects Start -->
+    <div class="analyticsCard">
+      <mat-card>
+        <mat-card-title>All Archived Projects</mat-card-title>
+        <mat-card-content>
+          <div id="accordion">
+            <div *ngFor="let project of getArchivedProjects(); index as i">
+              <app-accordian>
+                <p header>{{ project.title }}</p>
+                <div content>
+                  <div class="viewLink">
+                    <p>
+                      <a href="{{ project.azureLink }}" rel="noopener" target="_blank">Click here to see the Azure board for this project.</a>
+                      <!-- image from https://commons.wikimedia.org/wiki/File:Edit_icon_(the_Noun_Project_30184).svg accessed June 4, 2021 -->
+                      <input type="image" class="icon" src="..\..\assets\images\editIcon.png" alt="Edit link" (click)="toggleEditLinkTextbox(i)">
+                    </p>
+                  </div>
+                  <div class="editLink" style="display: none">
+                    <label for="editLinkTextbox">Enter Azure link:</label>
+                    <input type="text" class="editLinkTextbox">
+                    <!-- image from https://www.pngwing.com/en/free-png-ynlki/download accessed June 4, 2021 -->
+                    <input type="image" class="icon" src="..\..\assets\images\checkIcon.png" alt="Confirm" (click)="editAzureLink(i, project)">
+                    <!-- image from https://www.pngjoy.com/preview/p8c3o7r0f0w8i1_cancel-icon-cross-transparent-png/ accessed June 4, 2021 -->
+                    <input type="image" class="icon" src="..\..\assets\images\cancelIcon.png" alt="Cancel" (click)="toggleEditLinkTextbox(i)">
+                  </div>
+                  <br>
+                  <br>
+                  {{ project.descLong }}
+                  <hr>
+                  <button class="actionButton" (click)="unarchiveProject(project)">Unarchive</button>
+                </div>
+              </app-accordian>
+            </div>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+    <!-- Archived Projects End -->
     <div class="analyticsCard">
       <mat-card>
         <mat-card-title>Due Dates</mat-card-title>
@@ -224,34 +264,6 @@
       </mat-card>
     </div>
     <!-- RFP Submission Form Upload end -->
-    <!-- Other Start End -->
-    <div class="otherCard">
-      <mat-card>
-        <mat-card-title>Other Admin Stuffs</mat-card-title>
-        <mat-card-content>
-          Thank you for visiting the website for Dalhousie's Community Outreach class. This class provides students with
-          invaluable experience working with real-world projects and actual clients to ensure the clients' needs are
-          met. This
-          experience is all gained through group work and in-class guidance that provides students with a safe first
-          experience
-          with actual projects.
-        </mat-card-content>
-        <mat-card-content>
-          In this class, students are placed in groups that consist of second, third and fourth year students,
-          distributed evenly
-          to ensure a fair and productive mix of skill, learning and leadership development. These groups are overseen
-          and
-          mentored by exceptional and experienced Teaching Assistants that will ensure both that the students meet the
-          learning
-          outcomes and that the clients leave happy with a product that will be valuable to them. Student groups will
-          communicate directly with the client in order to fully understand client expectations, desired features and
-          receive
-          feedback and provide deliverables at specified increments. The students themselves will manage the
-          deliverables and
-          expectations and present the final product at the end of the designated semester.
-        </mat-card-content>
-      </mat-card>
-    </div>
 
   </div>
   <!-- Column 2 End -->

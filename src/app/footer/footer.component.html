@@ -3,13 +3,17 @@
   <ng-template #mymodal let-modal>
     <div class="modal-body modalBody">
       <h3>Course Instructor - Mohammed Etemad</h3>
-      <div class="contactUsDiv">
-        <p><strong>Email:</strong></p>
-        <p>etemad@dal.ca</p>
-      </div>
-      <div class="contactUsDiv">
-        <p><strong>Phone:</strong></p>
-        <p>+1 902-418-9420</p>
+      <div *ngFor="let r of getContact();">
+        <div class="contactUsDiv">
+          <p><strong>Email:</strong></p>
+          <p id="currentEmail" >{{ r.Email }}</p>
+          <input style="display: none;" type="text" id="newEmail" value="{{ r.Email }}" >
+        </div>  
+        <div class="contactUsDiv">
+          <p><strong>Phone:</strong></p>
+          <p id="currentPhone">{{ r.Phone }}</p>
+          <input style="display: none;" type="text" id="newPhone" value="{{ r.Phone }}" >
+        </div>
       </div>
       <div class="addressDiv">
         <p><strong>Address:</strong></p>
@@ -19,6 +23,26 @@
         PO BOX 15000<br/>
         Halifax, NS, B3H 4R2 <br/>
         Canada</p>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Ok</button>
+      <button id="editButtonFooter" type="button" class="btn btn-outline-dark" alt="saveButton" (click)='toggleEditContact()'>Edit</button>
+      <button id="saveButtonFooter" style="display: none;" type="button" class="btn btn-outline-dark" (click)='toggleEditContact(); updateContact();'>Save</button>
+    </div>
+  </ng-template>
+  <!-- Modal End -->
+  <!-- Modal Start -->
+  <ng-template #mymodal2 let-modal>
+    <div class="modal-body modalBody">
+      <h3>Privacy Statement from Dalhousie</h3>
+      <div class="PrivacyDiv">
+        <p><strong>Your privacy</strong></p>
+        <p class="statement">Dalhousie University is committed to providing our faculty, staff, students, and visitors with websites that respect their privacy. This page summarizes the privacy policy and practices for all official Dalhousie University websites.</p> 
+        <p class="statement">Our websites do not automatically gather any personal information from you, such as your name, phone number, or email address. This information is only obtained if you provide it voluntarily, through contacting us via email or through an online form. Any information that you choose to provide will be protected in accordance with applicable privacy legislation and Dalhousie University policies and procedures.</p>
+        <p class="statement">Dalhousie University will only use your personal information for the stated purposes for which it was collected, unless you provide consent otherwise. Your personal information will only be disclosed to or accessed by Dalhousie University employees with a need to know in relation to the purposes for which it was collected. Dalhousie University will not sell or rent your personal information to any third parties.</p>
+        <p class="statement">Some of our webites may collect more information than is described here and may have additional privacy requirements. Where applicable, please be sure to familiarize yourself with such requirements.</p>
+        <p class="statement">If you would like to view the full Statement on the Dal website <a href="https://www.dal.ca/privacy_statement.html" target="_blank" class="btn btndal btn-lg">Click here!</a><br /></p>
       </div>
     </div>
     <div class="modal-footer">
@@ -35,10 +59,10 @@
     </ul>
     <ul class="mt-2 mt-lg-0 w-100 footerNav">
       <li class="nav-item active">
-        <button class="btn contactButton" (click)="open(mymodal)">Contact Us</button>
+        <button id="contactButton" class="btn contactButton" (click)="open(mymodal); checkingAdmin()">Contact Us</button>
       </li>
       <li class="nav-item active">
-        <button class="btn contactButton" (click)="open(mymodal)">Privacy</button>
+        <button class="btn contactButton" (click)="open(mymodal2)">Privacy</button>
       </li>
     </ul>
   </div>

@@ -133,14 +133,7 @@
   justify-content: center;
   color: white;
 }
-/*
-.column-container {
-  width: 600px;
-  height: 500px;
-  margin: 0 15px 0;
-  vertical-align: top;
-  padding-top: 50px;
-}*/
+
 mat-card {
   margin: 1em;
   cursor: pointer;
@@ -157,6 +150,7 @@ mat-card {
   overflow-y: scroll;
   background-color: rgba(112, 115, 114);
 }
+
 
 .column-container{
   width: 30%;
@@ -175,6 +169,7 @@ mat-card {
   padding-bottom: 50px;
 
 }
+main
 h1{
   padding-top: 20px;
   font-size: 36px;
