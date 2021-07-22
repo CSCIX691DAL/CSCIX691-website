@@ -42,6 +42,8 @@ export class AdminDashComponent implements OnInit {
 
   }
 
+  feedbackTeamSelect: string = '';
+
   ngOnInit(): void {
     if (!localStorage.getItem("isLogin") || !(localStorage.getItem("userType") === "admin")) {
       window.location.href = "/";
@@ -302,8 +304,30 @@ export class AdminDashComponent implements OnInit {
     }
   
   }
+
   getDueDates(): DueDates[] {
     return this.dueDateService.getdueDates();
+  }
+
+  getTeams(){
+    return this.teamService.getTeamsInArray();
+  }
+
+  getTeamFeedback(event: any){
+    this.feedbackTeamSelect = event;
+  }
+
+  GetfeedbackBasedOnTeam(){
+    
+    if(this.feedbackTeamSelect == ''){
+      return null;
+    }
+    else if(this.feedbackTeamSelect == 'all'){
+      return this.teamService.getAllFeedback();
+    }
+    else{
+      return this.teamService.getFeedbackByTeamKey(this.feedbackTeamSelect);
+    }
   }
 
 }

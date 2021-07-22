@@ -114,3 +114,20 @@
 hr {
   border-top: 3px solid #707372;
 }
+
+.feedbackTitle {
+  font-size: 22px;
+}
+
+.submitDate {
+  font-size: 14px;
+  color: rgb(104, 103, 103);
+}
+
+.feedbackBody {
+  font-size: 16px;
+}
+
+.teamSelect {
+  width: 100%;
+}
