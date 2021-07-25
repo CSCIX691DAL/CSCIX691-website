@@ -15,6 +15,7 @@ import { AnnouncementComponent } from './announcement/announcement.component';
 import {StudentQuestionnaireComponent} from './student-questionnaire/student-questionnaire.component';
 import { UnsubscribeComponent } from './unsubscribe/unsubscribe.component';
 import { AdminCreateTeamsComponent } from './admin-create-teams/admin-create-teams.component';
+import { CourseLinksComponent } from './course-links/course-links.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent},
@@ -33,6 +34,7 @@ const routes: Routes = [
   { path: 'unsubscribe', component: UnsubscribeComponent},
   { path: 'members', component: MembersComponent},
   { path: 'admin-create-teams', component: AdminCreateTeamsComponent},
+  { path: 'course-links', component: CourseLinksComponent}
 ];
 
 @NgModule({

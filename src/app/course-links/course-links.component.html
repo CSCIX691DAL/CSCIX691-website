@@ -1,0 +1,56 @@
+<div>
+    <div
+    class="p-5 text-center bg-image"
+    style="
+      background-image: url('../../assets/images/TopImage.JPG');
+      height: 320px;
+    ">
+      <div class="mask">
+        <div class="d-flex justify-content-center align-items-center h-100">
+          <div>
+            <h1 class="mb-lg-3 jumboTitle">Welcome to CSCI X691</h1>
+            <h4 class="mb-3 jumboSubTitle">Dalhousie Community Outreach</h4>
+          </div>
+        </div>
+      </div>
+  </div>
+
+  <h1 class="heading1" >Welcome to the Course Links page</h1>
+  
+  <div *ngFor="let r of getCourselinks(); index as i">
+    <div  class="card card-block testimonials">
+        <div class="oldTitle">
+            <h2  style="display: block;" class="card-title">{{ r.title }}</h2>
+        </div>
+        <input style="display: none;" type="text" class="newTitle" value="{{ r.title }}" >
+        <mat-card-content class="oldLink" style="display: block;">
+          <a href="{{ r.link }}" target="_blank">Link to the Content</a>
+        </mat-card-content>
+        <input style="display: none;" type="text" class="newLink" value="{{ r.link }}" >
+        {{toggleAdminView(i)}}
+        <div class="courseLinksEditButton">
+            <button id="courseLinksEditButton" type="button" class="btn btn-outline-dark" (click)='toggleEditCourseLinks(i)'>Edit</button>
+            <button id="courseLinksDeleteButton" type="button" class="btn btn-outline-dark" (click)='deleteCourseLinks(r)'>Delete</button>
+        </div>
+        <div class="courseLinksSaveButton" style="display: none;">
+            <button id="courseLinksSaveButton"  type="button" class="btn btn-outline-dark" (click)='toggleEditCourseLinks(i); updateCourseLinks(i, r)'>Save</button>
+        </div>
+    </div>
+    <br>
+  </div>
+ 
+  <div class="addSection">
+    <div id="courseLinksAddButton"> 
+        <button (click)="toggleform()" type="submit" value="Submit"> Add a Course Link </button>
+      </div>
+      <div id="courseLinksForm" style="display: none;">
+        <form>
+            <label for="title">Title:</label><br>
+            <input type="text" id="formTitle" name="formTitle"><br>
+            <label for="link">Link:</label><br>
+            <input type="text" id="formLink" name="formLink"><br><br>
+            <input type="submit" value="Submit" (click)='addCourseLinks(); toggleform()'>
+        </form>
+      </div>
+  </div>
+</div>

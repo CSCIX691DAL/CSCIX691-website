@@ -1,0 +1,62 @@
+.annoIntro {
+    width: 75%;
+    line-height: 155%;
+    align-self: center;
+    margin: 2rem;
+    background-color: #707372;
+    color: #ffffff;
+  }
+
+  .heading1 {
+    display: flex;
+    width: 65%;
+    flex-direction: column;
+    margin: auto;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    font-weight: bold;
+    font-size: 40px;
+  }
+
+  .jumboTitle {
+    font-size:  calc(1rem + 3vw);
+    text-align: center;
+    margin-top: 6rem;
+    margin-left: 5rem;
+  }
+  
+  .jumboSubTitle {
+    text-align: center;
+    font-size: calc(1rem + 1vw);
+    margin-left: 5rem;
+  }
+  .card {
+    margin:auto;
+    padding: 1em;
+    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.1), 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+    width:65%;
+  }
+  
+  h2 {
+    margin-bottom: 0px;
+  }
+
+  .card-subtitle{
+    margin: 0px;
+  }
+
+  .mat-card-content{
+    margin-top: 16px;
+    margin-bottom: 16px;
+  }
+  
+  .addSection {
+    display: flex;
+    width: 65%;
+    flex-direction: column;
+    margin: auto;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    
+  }
+  

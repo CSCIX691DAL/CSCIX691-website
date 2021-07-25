@@ -40,7 +40,9 @@ import { importType } from '@angular/compiler/src/output/output_ast';
 import {UnsubscribeComponent} from './unsubscribe/unsubscribe.component';
 import { AdminCreateTeamsComponent } from './admin-create-teams/admin-create-teams.component';
 import { MembersComponent } from './members/members.component';
-import {DragDropModule} from '@angular/cdk/drag-drop'
+import {DragDropModule} from '@angular/cdk/drag-drop';
+import { CourseLinksComponent } from './course-links/course-links.component';
+
 
 @NgModule({
   declarations: [
@@ -67,6 +69,7 @@ import {DragDropModule} from '@angular/cdk/drag-drop'
     UnsubscribeComponent,
     MembersComponent,
     AdminCreateTeamsComponent,
+    CourseLinksComponent,
   ],
   imports: [
     BrowserModule,
