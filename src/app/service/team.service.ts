@@ -117,21 +117,103 @@ export class TeamService {
         }
       }
     });
-    //Following block created with help from following link: https://stackoverflow.com/questions/52912225/how-to-convert-firebase-object-to-array
-    //converting feedback object into array
-    let feedbackArray = [];
-    Object.keys(feedback).forEach((key) => {
-      if(feedback[key] != teamObject.key)
-      feedbackArray.push(feedback[key]);
-    });
-    //changing clientID to client first name + last name
-    for(let x = 0; x < feedbackArray.length; x++){
-      let user = this.userService.getUserByID(feedbackArray[x]['client']);
-      if(user){
-        feedbackArray[x]['client'] = user.fName + " " + user.sName;
+    if(feedback){
+      //Following block created with help from following link: https://stackoverflow.com/questions/52912225/how-to-convert-firebase-object-to-array
+      //converting feedback object into array
+      let feedbackArray = [];
+      Object.keys(feedback).forEach((key) => {
+        if(feedback[key] != teamObject.key)
+          feedbackArray.push(feedback[key]);
+      });
+      //changing clientID to client first name + last name
+      for(let x = 0; x < feedbackArray.length; x++){
+        let user = this.userService.getUserByID(feedbackArray[x]['client']);
+        if(user){
+          feedbackArray[x]['client'] = user.fName + " " + user.sName;
+        }
       }
+
+      return feedbackArray;
     }
 
-    return feedbackArray;
+    return null;
   }
+
+  getTeamsInArray(){
+    let teamArray = [];
+    Object.keys(this.teams).forEach((key) => {
+      teamArray.push(this.teams[key]);
+    });
+
+    return teamArray;
+  }
+  //For getting the feedback based on a teams key
+  getFeedbackByTeamKey(teamKey: string){
+    let feedback;
+    let teamObject;
+    Object.values(this.teams).filter((team, index, array) => {
+      if(team.key == teamKey){
+        if(team.feedback){
+          feedback = team.feedback;
+          teamObject = team;
+        }
+      }
+    });
+    if(feedback){
+      //Following block created with help from following link: https://stackoverflow.com/questions/52912225/how-to-convert-firebase-object-to-array
+      //converting feedback object into array
+      let feedbackArray = [];
+      Object.keys(feedback).forEach((key) => {
+        if(feedback[key] != teamObject.key)
+          feedbackArray.push(feedback[key]);
+      });
+      //changing clientID to client first name + last name
+      for(let x = 0; x < feedbackArray.length; x++){
+        let user = this.userService.getUserByID(feedbackArray[x]['client']);
+        if(user){
+          feedbackArray[x]['client'] = user.fName + " " + user.sName;
+        }
+      }
+
+      return feedbackArray;
+    }
+
+    return null;
+  }
+
+  getAllFeedback(){
+    let feedback = [];
+    let teamObject = [];
+    Object.values(this.teams).filter((team, index, array) => {
+      if(team.feedback){
+        feedback.push(team.feedback);
+        teamObject.push(team);
+      }
+    });
+    console.log(feedback);
+    if(feedback){
+      //Following block created with help from following link: https://stackoverflow.com/questions/52912225/how-to-convert-firebase-object-to-array
+      //converting feedback object into array
+      let feedbackArray = [];
+      for(let x = 0; x < feedback.length; x++){
+        Object.keys(feedback[x]).forEach((key) => {
+          if(feedback[x][key] != teamObject[x].key)
+            feedbackArray.push(feedback[x][key]);
+        });
+      }
+      console.log("Here: " + feedbackArray)
+      //changing clientID to client first name + last name
+      for(let x = 0; x < feedbackArray.length; x++){
+        let user = this.userService.getUserByID(feedbackArray[x]['client']);
+        if(user){
+          feedbackArray[x]['client'] = user.fName + " " + user.sName;
+        }
+      }
+
+      return feedbackArray;
+    }
+
+    return null;
+  }
+
 }

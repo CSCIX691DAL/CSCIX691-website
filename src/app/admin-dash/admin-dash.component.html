@@ -264,7 +264,35 @@
       </mat-card>
     </div>
     <!-- RFP Submission Form Upload end -->
-
+    <!-- Admin view feedback starts -->
+    <div class="otherCard">
+      <mat-card>
+        <mat-card-title> Client Feedback </mat-card-title>
+        <mat-card-content>
+          <form>
+            <mat-form-field class="teamSelect">
+              <mat-label> Team: </mat-label>
+              <mat-select name="teamFeedback" id="teamFeedback" (selectionChange)="getTeamFeedback($event.value)">
+                <mat-option value="all"> All </mat-option>
+                <mat-option *ngFor="let team of getTeams()" value="{{ team.key }}"> {{ team.name }} </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </form>
+          <br>
+          <div *ngFor="let feedback of GetfeedbackBasedOnTeam()">
+            <mat-card>
+              <mat-card-title class="feedbackTitle"> {{ feedback.title }} </mat-card-title>
+              <mat-card-content> 
+                <p class="feedbackBody"> {{ feedback.body }} </p>
+                <p class="submitDate"> Submitted on {{ feedback.date | date:'yyyy/MM/dd h:mm:ss a' }} by {{ feedback.client }} </p>
+              </mat-card-content>
+            </mat-card>
+            <br>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+    <!-- Admin view feedback ends -->
   </div>
   <!-- Column 2 End -->
 </div>
