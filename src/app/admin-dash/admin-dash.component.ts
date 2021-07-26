@@ -18,6 +18,7 @@ import { Student } from '../user/student.model';
 import DueDates from '../dueDates/dueDates.model';
 import { dueDateService } from '../service/duedate.service';
 import { AngularFireDatabase } from '@angular/fire/database';
+import * as SecureRandom from 'secure-random-password'
 
 @Component({
   selector: 'app-admin-dash',
@@ -122,7 +123,7 @@ export class AdminDashComponent implements OnInit {
     try {
       for (let student of this.studentRecords) {
         // generate a random password
-        let randomPassword = Math.random().toString(36)
+        let randomPassword = SecureRandom.randomPassword({length: 36})
         // TODO: Add users to Team specified in CSV file once teams are implemented
         await this.authService.signupStudent(student['Email'], randomPassword, student['First Name'], student['Last Name'], student['OrgDefindID'], student['Team Leaders'].toLowerCase() == 'true');
         
