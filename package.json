@@ -34,7 +34,6 @@
     "ngx-csv-parser": "0.0.7",
     "pdfmake": "^0.1.70",
     "rxjs": "~6.6.0",
-    "secure-random-password": "^0.2.3",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.2"
   },
