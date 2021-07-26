@@ -24,7 +24,7 @@
         </div>
         <input style="display: none;" type="text" class="newTitle" value="{{ r.title }}" >
         <mat-card-content class="oldLink" style="display: block;">
-          <a href="{{ r.link }}" target="_blank">Link to the Content</a>
+          <a href="{{ r.link }}" rel="noopener" target="_blank">Link to the Content</a>
         </mat-card-content>
         <input style="display: none;" type="text" class="newLink" value="{{ r.link }}" >
         {{toggleAdminView(i)}}
