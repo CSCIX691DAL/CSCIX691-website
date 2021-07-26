@@ -28,12 +28,14 @@
         </mat-card-content>
         <input style="display: none;" type="text" class="newLink" value="{{ r.link }}" >
         {{toggleAdminView(i)}}
-        <div class="courseLinksEditButton">
-            <button id="courseLinksEditButton" type="button" class="btn btn-outline-dark" (click)='toggleEditCourseLinks(i)'>Edit</button>
-            <button id="courseLinksDeleteButton" type="button" class="btn btn-outline-dark" (click)='deleteCourseLinks(r)'>Delete</button>
-        </div>
-        <div class="courseLinksSaveButton" style="display: none;">
-            <button id="courseLinksSaveButton"  type="button" class="btn btn-outline-dark" (click)='toggleEditCourseLinks(i); updateCourseLinks(i, r)'>Save</button>
+        <div>
+          <div class="courseLinksEditButton">
+              <button id="courseLinksEditButton" type="button" class="btn btn-outline-dark" (click)='toggleEditCourseLinks(i)'>Edit</button>
+              <button id="courseLinksDeleteButton" type="button" class="btn btn-outline-dark" (click)='deleteCourseLinks(r)'>Delete</button>
+          </div>
+          <div class="courseLinksSaveButton" style="display: none;">
+              <button id="courseLinksSaveButton"  type="button" class="btn btn-outline-dark" (click)='toggleEditCourseLinks(i); updateCourseLinks(i, r)'>Save</button>
+          </div>
         </div>
     </div>
     <br>
@@ -41,15 +43,15 @@
  
   <div class="addSection">
     <div id="courseLinksAddButton"> 
-        <button (click)="toggleform()" type="submit" value="Submit"> Add a Course Link </button>
+        <button (click)="toggleform()" type="button" class="btn btn-outline-dark" value="Submit"> Add a Course Link </button>
       </div>
       <div id="courseLinksForm" style="display: none;">
-        <form>
-            <label for="title">Title:</label><br>
-            <input type="text" id="formTitle" name="formTitle"><br>
-            <label for="link">Link:</label><br>
-            <input type="text" id="formLink" name="formLink"><br><br>
-            <input type="submit" value="Submit" (click)='addCourseLinks(); toggleform()'>
+        <form><br>
+            <label class="formLines" for="title">Title:</label><br>
+            <input class="formInput" type="text" id="formTitle" name="formTitle"><br>
+            <label class="formLines" for="link">Link:</label><br>
+            <input class="formInput" type="text" id="formLink" name="formLink"><br><br>
+            <input type="button" class="btn btn-outline-dark" value="Submit" (click)='addCourseLinks(); toggleform()'>
         </form>
       </div>
   </div>
