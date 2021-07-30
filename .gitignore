@@ -4,6 +4,8 @@
 /dist
 /tmp
 /out-tsc
+.env
+# This contains secrets, don't store in source control
 # Only exists if Bazel was run
 /bazel-out
 

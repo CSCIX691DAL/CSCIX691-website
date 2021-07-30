@@ -1,10 +1,20 @@
  // Set the configuration for your app
+
+  // require('dotenv').config();
+
   var config = {
+    //still needs to have environment variables
+    // apiKey: process.env.API_KEY,
+    // authDomain: process.env.AUTH_DOMAIN,
+    // databaseURL: process.env.DATABASEURL,
+    // storageBucket: process.env.STORAGEBUCKET
     apiKey: "AIzaSyDAankiYDzC3rw_3j34MtITjXt7PMG3QGU",
     authDomain: "x691webapp.firebaseapp.com",
     databaseURL: "https://x691webapp-default-rtdb.firebaseio.com",
     storageBucket: "x691webapp.appspot.com"
+
   };
+
   firebase.initializeApp(config);
 
   // Get a reference to the database service
