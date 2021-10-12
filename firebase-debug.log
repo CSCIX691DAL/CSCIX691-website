@@ -1,0 +1,218 @@
+[debug] [2021-10-06T15:10:40.111Z] ----------------------------------------------------------------------
+[debug] [2021-10-06T15:10:40.113Z] Command:       /usr/local/Cellar/node/16.9.1/bin/node /Users/arhamarshad/WebstormProjects/CSCIX691-website/node_modules/.bin/firebase init
+[debug] [2021-10-06T15:10:40.114Z] CLI Version:   9.3.0
+[debug] [2021-10-06T15:10:40.114Z] Platform:      darwin
+[debug] [2021-10-06T15:10:40.114Z] Node Version:  v16.9.1
+[debug] [2021-10-06T15:10:40.115Z] Time:          Wed Oct 06 2021 12:10:40 GMT-0300 (Atlantic Daylight Time)
+[debug] [2021-10-06T15:10:40.116Z] ----------------------------------------------------------------------
+[debug] [2021-10-06T15:10:40.116Z] 
+[debug] [2021-10-06T15:10:40.123Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2021-10-06T15:10:40.124Z] > authorizing via signed-in user
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  /Users/arhamarshad/WebstormProjects/CSCIX691-website
+
+Before we get started, keep in mind:
+
+  * You are initializing in an existing Firebase project directory
+
+[info] 
+=== Project Setup
+[info] 
+[info] First, let's associate this project directory with a Firebase project.
+[info] You can create multiple project aliases by running firebase use --add, 
+[info] but for now we'll just set up a default project.
+[info] 
+[info] i  .firebaserc already has a default project, using x691webapp. 
+[debug] [2021-10-06T15:10:44.217Z] > refreshing access token with scopes: []
+[debug] [2021-10-06T15:10:44.217Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2021-10-06T15:10:44.784Z] <<< HTTP RESPONSE 200 {"pragma":"no-cache","date":"Wed, 06 Oct 2021 15:10:44 GMT","expires":"Mon, 01 Jan 1990 00:00:00 GMT","cache-control":"no-cache, no-store, max-age=0, must-revalidate","content-type":"application/json; charset=utf-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","server":"scaffolding on HTTPServer2","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-10-06T15:10:44.809Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/x691webapp [none]
+[debug] [2021-10-06T15:10:45.621Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/x691webapp 200
+[debug] [2021-10-06T15:10:45.621Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/x691webapp {"projectId":"x691webapp","projectNumber":"515129911876","displayName":"X691webapp","name":"projects/x691webapp","resources":{"hostingSite":"x691webapp","realtimeDatabaseInstance":"x691webapp-default-rtdb","storageBucket":"x691webapp.appspot.com","locationId":"us-central"},"state":"ACTIVE"}
+[info] 
+=== Hosting Setup
+[info] 
+[info] Your public directory is the folder (relative to your project directory) that
+[info] will contain Hosting assets to be uploaded with firebase deploy. If you
+[info] have a build process for your assets, use your build's output directory.
+[info] 
+[debug] [2021-10-06T15:11:23.670Z] >>> [apiv2][query] GET https://www.gstatic.com/firebasejs/releases.json [none]
+[debug] [2021-10-06T15:11:24.136Z] <<< [apiv2][status] GET https://www.gstatic.com/firebasejs/releases.json 200
+[debug] [2021-10-06T15:11:24.136Z] <<< [apiv2][body] GET https://www.gstatic.com/firebasejs/releases.json {"current":{"version":"9.1.1","browserURL":"https://www.gstatic.com/firebasejs/9.1.1/firebase.js","packageURL":"https://www.gstatic.com/firebasejs/9.1.1/firebase.tgz"},"live":{"version":"9.1","browserURL":"https://www.gstatic.com/firebasejs/live/9.1/firebase.js","packageURL":"https://www.gstatic.com/firebasejs/live/9.1/firebase.tgz"},"components":{"analytics":"https://www.gstatic.com/firebasejs/9.1.1/firebase-analytics.js","app":"https://www.gstatic.com/firebasejs/9.1.1/firebase-app.js","app-check":"https://www.gstatic.com/firebasejs/9.1.1/firebase-app-check.js","auth":"https://www.gstatic.com/firebasejs/9.1.1/firebase-auth.js","auth/cordova":"https://www.gstatic.com/firebasejs/9.1.1/firebase-auth/cordova.js","auth/react-native":"https://www.gstatic.com/firebasejs/9.1.1/firebase-auth/react-native.js","functions":"https://www.gstatic.com/firebasejs/9.1.1/firebase-functions.js","firestore":"https://www.gstatic.com/firebasejs/9.1.1/firebase-firestore.js","firestore/lite":"https://www.gstatic.com/firebasejs/9.1.1/firebase-firestore/lite.js","storage":"https://www.gstatic.com/firebasejs/9.1.1/firebase-storage.js","performance":"https://www.gstatic.com/firebasejs/9.1.1/firebase-performance.js","remote-config":"https://www.gstatic.com/firebasejs/9.1.1/firebase-remote-config.js","messaging":"https://www.gstatic.com/firebasejs/9.1.1/firebase-messaging.js","messaging/sw":"https://www.gstatic.com/firebasejs/9.1.1/firebase-messaging/sw.js","database":"https://www.gstatic.com/firebasejs/9.1.1/firebase-database.js","firestore.memory":"https://www.gstatic.com/firebasejs/9.1.1/firebase-firestore.memory.js"}}
+[info] ✔  Wrote firebase deploy/index.html 
+[info] 
+[info] i  Detected a .git folder at /Users/arhamarshad/WebstormProjects/CSCIX691-website 
+[info] i  Authorizing with GitHub to upload your service account to a GitHub repository's secrets store. 
+[info] 
+[info] Visit this URL on this device to log in:
+[info] https://github.com/login/oauth/authorize?client_id=89cf50f02ac6aaed3484&state=418695434&redirect_uri=http%3A%2F%2Flocalhost%3A9005&scope=read%3Auser%20repo%20public_repo
+[info] 
+[info] Waiting for authentication...
+[debug] [2021-10-06T15:11:36.075Z] >>> HTTP REQUEST POST https://github.com/login/oauth/access_token  
+ {"client_id":"89cf50f02ac6aaed3484","client_secret":"3330d14abc895d9a74d5f17cd7a00711fa2c5bf0","code":"18ecce8af62a32ad9572","redirect_uri":"http://localhost:9005","state":"418695434"}
+[debug] [2021-10-06T15:11:36.491Z] <<< HTTP RESPONSE 200 {"server":"GitHub.com","date":"Wed, 06 Oct 2021 15:11:36 GMT","content-type":"application/json; charset=utf-8","transfer-encoding":"chunked","vary":"X-PJAX, X-PJAX-Container, Accept-Encoding, Accept, X-Requested-With","permissions-policy":"interest-cohort=()","etag":"W/\"7a20400ff1ba8b91d766dd7c49fb061f\"","cache-control":"max-age=0, private, must-revalidate","strict-transport-security":"max-age=31536000; includeSubdomains; preload","x-frame-options":"deny","x-content-type-options":"nosniff","x-xss-protection":"0","referrer-policy":"origin-when-cross-origin, strict-origin-when-cross-origin","expect-ct":"max-age=2592000, report-uri=\"https://api.github.com/_private/browser/errors\"","content-security-policy":"default-src 'none'; base-uri 'self'; block-all-mixed-content; child-src github.com/assets-cdn/worker/ gist.github.com/assets-cdn/worker/; connect-src 'self' uploads.github.com www.githubstatus.com collector.githubapp.com api.github.com github-cloud.s3.amazonaws.com github-production-repository-file-5c1aeb.s3.amazonaws.com github-production-upload-manifest-file-7fdce7.s3.amazonaws.com github-production-user-asset-6210df.s3.amazonaws.com cdn.optimizely.com logx.optimizely.com/v1/events translator.github.com wss://alive.github.com; font-src github.githubassets.com; form-action 'self' github.com gist.github.com; frame-ancestors 'none'; frame-src render.githubusercontent.com viewscreen.githubusercontent.com viewscreen-lab.githubusercontent.com; img-src 'self' data: github.githubassets.com identicons.github.com collector.githubapp.com github-cloud.s3.amazonaws.com secured-user-images.githubusercontent.com/ *.githubusercontent.com; manifest-src 'self'; media-src github.com user-images.githubusercontent.com/; script-src github.githubassets.com; style-src 'unsafe-inline' github.githubassets.com; worker-src github.com/assets-cdn/worker/ gist.github.com/assets-cdn/worker/ github.com/socket-worker-0af8a29d.js gist.github.com/socket-worker-0af8a29d.js","x-github-request-id":"F5DC:0A47:507033:A6C540:615DBCA8"}
+[debug] [2021-10-06T15:11:36.494Z] >>> [apiv2][query] GET https://api.github.com/user [none]
+[debug] [2021-10-06T15:11:36.712Z] <<< [apiv2][status] GET https://api.github.com/user 200
+[debug] [2021-10-06T15:11:36.713Z] <<< [apiv2][body] GET https://api.github.com/user {"login":"arhamarshad1","id":68512793,"node_id":"MDQ6VXNlcjY4NTEyNzkz","avatar_url":"https://avatars.githubusercontent.com/u/68512793?v=4","gravatar_id":"","url":"https://api.github.com/users/arhamarshad1","html_url":"https://github.com/arhamarshad1","followers_url":"https://api.github.com/users/arhamarshad1/followers","following_url":"https://api.github.com/users/arhamarshad1/following{/other_user}","gists_url":"https://api.github.com/users/arhamarshad1/gists{/gist_id}","starred_url":"https://api.github.com/users/arhamarshad1/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/arhamarshad1/subscriptions","organizations_url":"https://api.github.com/users/arhamarshad1/orgs","repos_url":"https://api.github.com/users/arhamarshad1/repos","events_url":"https://api.github.com/users/arhamarshad1/events{/privacy}","received_events_url":"https://api.github.com/users/arhamarshad1/received_events","type":"User","site_admin":false,"name":"Arham Arshad","company":"Dalhousie University","blog":"www.arhamarshad.com","location":"Halifax, NS","email":null,"hireable":null,"bio":null,"twitter_username":null,"public_repos":6,"public_gists":0,"followers":0,"following":0,"created_at":"2020-07-19T17:42:22Z","updated_at":"2021-09-23T21:30:06Z","private_gists":0,"total_private_repos":1,"owned_private_repos":1,"disk_usage":31970,"collaborators":1,"two_factor_authentication":true,"plan":{"name":"free","space":976562499,"collaborators":0,"private_repos":10000}}
+[info] 
+[info] ✔  Success! Logged into GitHub as arhamarshad1 
+[info] 
+[debug] [2021-10-06T15:12:06.747Z] >>> [apiv2][query] GET https://api.github.com/repos/firebase open/actions/secrets/public-key type=owner
+[debug] [2021-10-06T15:12:07.141Z] <<< [apiv2][status] GET https://api.github.com/repos/firebase open/actions/secrets/public-key 404
+[debug] [2021-10-06T15:12:07.141Z] <<< [apiv2][body] GET https://api.github.com/repos/firebase open/actions/secrets/public-key {"message":"Not Found","documentation_url":"https://docs.github.com/rest"}
+[debug] [2021-10-06T15:12:30.177Z] >>> [apiv2][query] GET https://api.github.com/repos/https://github.com/CSCIX691DAL/CSCIX691-website/actions/secrets/public-key type=owner
+[debug] [2021-10-06T15:12:30.351Z] <<< [apiv2][status] GET https://api.github.com/repos/https://github.com/CSCIX691DAL/CSCIX691-website/actions/secrets/public-key 404
+[debug] [2021-10-06T15:12:30.351Z] <<< [apiv2][body] GET https://api.github.com/repos/https://github.com/CSCIX691DAL/CSCIX691-website/actions/secrets/public-key {"message":"Not Found","documentation_url":"https://docs.github.com/rest"}
+[debug] [2021-10-06T15:21:08.281Z] Error: setRawMode EBADF
+    at ReadStream.setRawMode (node:tty:78:31)
+    at Interface._setRawMode (node:readline:399:16)
+    at Interface.close (node:readline:583:10)
+    at ReadStream.ontermend (node:readline:284:10)
+    at ReadStream.emit (node:events:406:35)
+    at ReadStream.emit (node:domain:475:12)
+    at endReadableNT (node:internal/streams/readable:1343:12)
+    at processTicksAndRejections (node:internal/process/task_queues:83:21)
+[error] 
+[error] Error: An unexpected error has occurred.
+[debug] [2021-10-06T15:21:08.298Z] Error: write EIO
+    at afterWriteDispatched (node:internal/stream_base_commons:164:15)
+    at writeGeneric (node:internal/stream_base_commons:155:3)
+    at WriteStream.Socket._writeGeneric (node:net:780:11)
+    at WriteStream.Socket._write (node:net:792:8)
+    at writeOrBuffer (node:internal/streams/writable:389:12)
+    at _write (node:internal/streams/writable:330:10)
+    at WriteStream.Writable.write (node:internal/streams/writable:334:10)
+    at Console.log (/Users/arhamarshad/WebstormProjects/CSCIX691-website/node_modules/winston/lib/winston/transports/console.js:79:23)
+    at Console._write (/Users/arhamarshad/WebstormProjects/CSCIX691-website/node_modules/winston-transport/index.js:103:17)
+    at doWrite (/Users/arhamarshad/WebstormProjects/CSCIX691-website/node_modules/readable-stream/lib/_stream_writable.js:428:64)
+    at writeOrBuffer (/Users/arhamarshad/WebstormProjects/CSCIX691-website/node_modules/readable-stream/lib/_stream_writable.js:417:5)
+    at Console.Writable.write (/Users/arhamarshad/WebstormProjects/CSCIX691-website/node_modules/readable-stream/lib/_stream_writable.js:334:11)
+    at DerivedLogger.ondata (/Users/arhamarshad/WebstormProjects/CSCIX691-website/node_modules/winston/node_modules/readable-stream/lib/_stream_readable.js:681:20)
+    at DerivedLogger.emit (node:events:406:35)
+    at DerivedLogger.emit (node:domain:475:12)
+    at addChunk (/Users/arhamarshad/WebstormProjects/CSCIX691-website/node_modules/winston/node_modules/readable-stream/lib/_stream_readable.js:298:12)
+[error] 
+[error] Error: An unexpected error has occurred.
+[debug] [2021-10-06T15:21:08.301Z] Error: write EIO
+    at afterWriteDispatched (node:internal/stream_base_commons:164:15)
+    at writeGeneric (node:internal/stream_base_commons:155:3)
+    at WriteStream.Socket._writeGeneric (node:net:780:11)
+    at WriteStream.Socket._write (node:net:792:8)
+    at writeOrBuffer (node:internal/streams/writable:389:12)
+    at _write (node:internal/streams/writable:330:10)
+    at WriteStream.Writable.write (node:internal/streams/writable:334:10)
+    at Console.log (/Users/arhamarshad/WebstormProjects/CSCIX691-website/node_modules/winston/lib/winston/transports/console.js:79:23)
+    at Console._write (/Users/arhamarshad/WebstormProjects/CSCIX691-website/node_modules/winston-transport/index.js:103:17)
+    at doWrite (/Users/arhamarshad/WebstormProjects/CSCIX691-website/node_modules/readable-stream/lib/_stream_writable.js:428:64)
+    at writeOrBuffer (/Users/arhamarshad/WebstormProjects/CSCIX691-website/node_modules/readable-stream/lib/_stream_writable.js:417:5)
+    at Console.Writable.write (/Users/arhamarshad/WebstormProjects/CSCIX691-website/node_modules/readable-stream/lib/_stream_writable.js:334:11)
+    at DerivedLogger.ondata (/Users/arhamarshad/WebstormProjects/CSCIX691-website/node_modules/winston/node_modules/readable-stream/lib/_stream_readable.js:681:20)
+    at DerivedLogger.emit (node:events:406:35)
+    at DerivedLogger.emit (node:domain:475:12)
+    at addChunk (/Users/arhamarshad/WebstormProjects/CSCIX691-website/node_modules/winston/node_modules/readable-stream/lib/_stream_readable.js:298:12)
+[error] 
+[error] Error: An unexpected error has occurred.
+[debug] [2021-10-06T15:21:08.302Z] Error: write EIO
+    at afterWriteDispatched (node:internal/stream_base_commons:164:15)
+    at writeGeneric (node:internal/stream_base_commons:155:3)
+    at WriteStream.Socket._writeGeneric (node:net:780:11)
+    at WriteStream.Socket._write (node:net:792:8)
+    at writeOrBuffer (node:internal/streams/writable:389:12)
+    at _write (node:internal/streams/writable:330:10)
+    at WriteStream.Writable.write (node:internal/streams/writable:334:10)
+    at Console.log (/Users/arhamarshad/WebstormProjects/CSCIX691-website/node_modules/winston/lib/winston/transports/console.js:79:23)
+    at Console._write (/Users/arhamarshad/WebstormProjects/CSCIX691-website/node_modules/winston-transport/index.js:103:17)
+    at doWrite (/Users/arhamarshad/WebstormProjects/CSCIX691-website/node_modules/readable-stream/lib/_stream_writable.js:428:64)
+    at writeOrBuffer (/Users/arhamarshad/WebstormProjects/CSCIX691-website/node_modules/readable-stream/lib/_stream_writable.js:417:5)
+    at Console.Writable.write (/Users/arhamarshad/WebstormProjects/CSCIX691-website/node_modules/readable-stream/lib/_stream_writable.js:334:11)
+    at DerivedLogger.ondata (/Users/arhamarshad/WebstormProjects/CSCIX691-website/node_modules/winston/node_modules/readable-stream/lib/_stream_readable.js:681:20)
+    at DerivedLogger.emit (node:events:406:35)
+    at DerivedLogger.emit (node:domain:475:12)
+    at addChunk (/Users/arhamarshad/WebstormProjects/CSCIX691-website/node_modules/winston/node_modules/readable-stream/lib/_stream_readable.js:298:12)
+[error] 
+[error] Error: An unexpected error has occurred.
+[debug] [2021-10-06T15:21:08.304Z] Error: write EIO
+    at afterWriteDispatched (node:internal/stream_base_commons:164:15)
+    at writeGeneric (node:internal/stream_base_commons:155:3)
+    at WriteStream.Socket._writeGeneric (node:net:780:11)
+    at WriteStream.Socket._write (node:net:792:8)
+    at writeOrBuffer (node:internal/streams/writable:389:12)
+    at _write (node:internal/streams/writable:330:10)
+    at WriteStream.Writable.write (node:internal/streams/writable:334:10)
+    at Console.log (/Users/arhamarshad/WebstormProjects/CSCIX691-website/node_modules/winston/lib/winston/transports/console.js:79:23)
+    at Console._write (/Users/arhamarshad/WebstormProjects/CSCIX691-website/node_modules/winston-transport/index.js:103:17)
+    at doWrite (/Users/arhamarshad/WebstormProjects/CSCIX691-website/node_modules/readable-stream/lib/_stream_writable.js:428:64)
+    at writeOrBuffer (/Users/arhamarshad/WebstormProjects/CSCIX691-website/node_modules/readable-stream/lib/_stream_writable.js:417:5)
+    at Console.Writable.write (/Users/arhamarshad/WebstormProjects/CSCIX691-website/node_modules/readable-stream/lib/_stream_writable.js:334:11)
+    at DerivedLogger.ondata (/Users/arhamarshad/WebstormProjects/CSCIX691-website/node_modules/winston/node_modules/readable-stream/lib/_stream_readable.js:681:20)
+    at DerivedLogger.emit (node:events:406:35)
+    at DerivedLogger.emit (node:domain:475:12)
+    at addChunk (/Users/arhamarshad/WebstormProjects/CSCIX691-website/node_modules/winston/node_modules/readable-stream/lib/_stream_readable.js:298:12)
+[error] 
+[error] Error: An unexpected error has occurred.
+[debug] [2021-10-06T15:21:08.305Z] Error: write EIO
+    at afterWriteDispatched (node:internal/stream_base_commons:164:15)
+    at writeGeneric (node:internal/stream_base_commons:155:3)
+    at WriteStream.Socket._writeGeneric (node:net:780:11)
+    at WriteStream.Socket._write (node:net:792:8)
+    at writeOrBuffer (node:internal/streams/writable:389:12)
+    at _write (node:internal/streams/writable:330:10)
+    at WriteStream.Writable.write (node:internal/streams/writable:334:10)
+    at Console.log (/Users/arhamarshad/WebstormProjects/CSCIX691-website/node_modules/winston/lib/winston/transports/console.js:79:23)
+    at Console._write (/Users/arhamarshad/WebstormProjects/CSCIX691-website/node_modules/winston-transport/index.js:103:17)
+    at doWrite (/Users/arhamarshad/WebstormProjects/CSCIX691-website/node_modules/readable-stream/lib/_stream_writable.js:428:64)
+    at writeOrBuffer (/Users/arhamarshad/WebstormProjects/CSCIX691-website/node_modules/readable-stream/lib/_stream_writable.js:417:5)
+    at Console.Writable.write (/Users/arhamarshad/WebstormProjects/CSCIX691-website/node_modules/readable-stream/lib/_stream_writable.js:334:11)
+    at DerivedLogger.ondata (/Users/arhamarshad/WebstormProjects/CSCIX691-website/node_modules/winston/node_modules/readable-stream/lib/_stream_readable.js:681:20)
+    at DerivedLogger.emit (node:events:406:35)
+    at DerivedLogger.emit (node:domain:475:12)
+    at addChunk (/Users/arhamarshad/WebstormProjects/CSCIX691-website/node_modules/winston/node_modules/readable-stream/lib/_stream_readable.js:298:12)
+[error] 
+[error] Error: An unexpected error has occurred.
+[debug] [2021-10-06T15:21:08.307Z] Error: write EIO
+    at afterWriteDispatched (node:internal/stream_base_commons:164:15)
+    at writeGeneric (node:internal/stream_base_commons:155:3)
+    at WriteStream.Socket._writeGeneric (node:net:780:11)
+    at WriteStream.Socket._write (node:net:792:8)
+    at writeOrBuffer (node:internal/streams/writable:389:12)
+    at _write (node:internal/streams/writable:330:10)
+    at WriteStream.Writable.write (node:internal/streams/writable:334:10)
+    at Console.log (/Users/arhamarshad/WebstormProjects/CSCIX691-website/node_modules/winston/lib/winston/transports/console.js:79:23)
+    at Console._write (/Users/arhamarshad/WebstormProjects/CSCIX691-website/node_modules/winston-transport/index.js:103:17)
+    at doWrite (/Users/arhamarshad/WebstormProjects/CSCIX691-website/node_modules/readable-stream/lib/_stream_writable.js:428:64)
+    at writeOrBuffer (/Users/arhamarshad/WebstormProjects/CSCIX691-website/node_modules/readable-stream/lib/_stream_writable.js:417:5)
+    at Console.Writable.write (/Users/arhamarshad/WebstormProjects/CSCIX691-website/node_modules/readable-stream/lib/_stream_writable.js:334:11)
+    at DerivedLogger.ondata (/Users/arhamarshad/WebstormProjects/CSCIX691-website/node_modules/winston/node_modules/readable-stream/lib/_stream_readable.js:681:20)
+    at DerivedLogger.emit (node:events:406:35)
+    at DerivedLogger.emit (node:domain:475:12)
+    at addChunk (/Users/arhamarshad/WebstormProjects/CSCIX691-website/node_modules/winston/node_modules/readable-stream/lib/_stream_readable.js:298:12)
+[error] 
+[error] Error: An unexpected error has occurred.
+[debug] [2021-10-06T15:21:08.308Z] Error: write EIO
+    at afterWriteDispatched (node:internal/stream_base_commons:164:15)
+    at writeGeneric (node:internal/stream_base_commons:155:3)
+    at WriteStream.Socket._writeGeneric (node:net:780:11)
+    at WriteStream.Socket._write (node:net:792:8)
+    at writeOrBuffer (node:internal/streams/writable:389:12)
+    at _write (node:internal/streams/writable:330:10)
+    at WriteStream.Writable.write (node:internal/streams/writable:334:10)
+    at Console.log (/Users/arhamarshad/WebstormProjects/CSCIX691-website/node_modules/winston/lib/winston/transports/console.js:79:23)
+    at Console._write (/Users/arhamarshad/WebstormProjects/CSCIX691-website/node_modules/winston-transport/index.js:103:17)
+    at doWrite (/Users/arhamarshad/WebstormProjects/CSCIX691-website/node_modules/readable-stream/lib/_stream_writable.js:428:64)
+    at writeOrBuffer (/Users/arhamarshad/WebstormProjects/CSCIX691-website/node_modules/readable-stream/lib/_stream_writable.js:417:5)
+    at Console.Writable.write (/Users/arhamarshad/WebstormProjects/CSCIX691-website/node_modules/readable-stream/lib/_stream_writable.js:334:11)
+    at DerivedLogger.ondata (/Users/arhamarshad/WebstormProjects/CSCIX691-website/node_modules/winston/node_modules/readable-stream/lib/_stream_readable.js:681:20)
+    at DerivedLogger.emit (node:events:406:35)
+    at DerivedLogger.emit (node:domain:475:12)
+    at addChunk (/Users/arhamarshad/WebstormProjects/CSCIX691-website/node_modules/winston/node_modules/readable-stream/lib/_stream_readable.js:298:12)
+[error] 
+[error] Error: An unexpected error has occurred.
