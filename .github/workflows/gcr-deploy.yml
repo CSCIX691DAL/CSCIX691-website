@@ -8,7 +8,7 @@ on:
 env:
   PROJECT_ID: ${{ secrets.GCR_PROJECT }}
   RUN_REGION: us-central1
-  SERVICE_NAME: medium-react-app
+  SERVICE_NAME: hello
 
 jobs:
   build:
