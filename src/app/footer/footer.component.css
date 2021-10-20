@@ -5,7 +5,7 @@ bg-light text-center text-lg-start{
 .footDiv {
   display: flex;
   flex-flow: row wrap;
-  background-color: rgba(112, 115, 114, 1);
+  background-color: black;
   color: white;
   /*margin-top: 2rem;*/
 }
