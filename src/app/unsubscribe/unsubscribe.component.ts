@@ -22,6 +22,7 @@ export class UnsubscribeComponent implements OnInit {
     let curEmail = localStorage.getItem('email');
     let user = this.userService.getUserByEmail(email);
     if (email == curEmail) {
+    
       this.userService.updateUser(user, { "emailList": false});
               alert("Unsubscribe Successfully!")
               }
