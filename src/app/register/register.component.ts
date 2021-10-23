@@ -10,7 +10,7 @@ import {NavbarComponent} from "../navbar/navbar.component";
 export class RegisterComponent implements OnInit {
   //Possible errors
   FIELDS_NOT_FILLED = 'Please fill out all fields. '
-  PASSWORD_NOT_SECURE = 'Password must have capital leter,small letter,specialcharacter,digit and length>=6 '
+  PASSWORD_NOT_SECURE = 'Password must be atleast 6 characters long. Must have a capital leter, small letter, special character and a number'
   INCORRECT_EMAIL_FORMAT = 'Not a valid email address. '
   EMAIL_ALREADY_IN_USE = 'This email is already in use. '
   // INCORRECT_BANNER_FORMAT = 'Not a valid banner number. '
