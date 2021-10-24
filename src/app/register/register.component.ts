@@ -10,7 +10,7 @@ import {NavbarComponent} from "../navbar/navbar.component";
 export class RegisterComponent implements OnInit {
   //Possible errors
   FIELDS_NOT_FILLED = 'Please fill out all fields. '
-  PASSWORD_NOT_SECURE = 'Password must be atleast 6 characters long. Must have a capital leter, small letter, special character and a number'
+  PASSWORD_NOT_SECURE = 'Password must be atleast 6 characters long. Must have a capital leter, small letter, special character and a number. Must be between 6-20 characters.'
   INCORRECT_EMAIL_FORMAT = 'Not a valid email address. '
   EMAIL_ALREADY_IN_USE = 'This email is already in use. '
   // INCORRECT_BANNER_FORMAT = 'Not a valid banner number. '
@@ -58,9 +58,11 @@ export class RegisterComponent implements OnInit {
       return false;
     }
 
-    if( this.password=="((?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*\W)\w.{6,50}\w)") {
+    var regex = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})");
+
+    if(this.password.length < 6 || !regex.test(this.password)){
       this.errorMessage = this.PASSWORD_NOT_SECURE;
-      return true;
+      return false;
     }
 
 
