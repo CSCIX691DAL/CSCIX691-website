@@ -16,10 +16,15 @@ https://www.figma.com/files/team/931947114085387645/X691-Website-Winter-2021
 
 
 ### LocalHost
-cd to local repo directory.
 
-Execute: npm install
+For Windows:
 
-Execute: ng serve
+Use Win + R open CMD (Command Line)  
+
+cd to local repo directory. 
+
+Execute: npm install  
+
+Execute: ng serve  
 
 Web browser: localhost:4200

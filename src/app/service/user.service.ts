@@ -34,15 +34,20 @@ export class UserService {
     });
   }
 
-  getUsers(): User[] {
-    return this.users;
+
+
+ 
+//get the userEmail who is logged in
+getUserEmail(): string {
+    return localStorage.getItem('userEmail');
   }
-  getUserByEmail(email: string): User{
+
+  /*getUserByEmail(email: string): User{
     let user = Object.values(this.users).filter((user, index, array) => {
       return (<User>user).email == email;
     });
     return <User>user[0];
-  }
+  }*/
 
   getStudentByID(studentID: string): Student {
     let student = Object.values(this.users).filter((user, index, array) => {
@@ -58,11 +63,17 @@ export class UserService {
     });
     return <User>user[0];
   }
+  //updarates the input email at database
+  
+  
 
-  // Change an existing user
+  
+
+
+  /*// Change an existing user
   updateUser(user: User, changes: Object): Promise<void> {
     return this.userReference.update(user.key, changes);
-  }
+  }*/
 
   // Adds a user to the database
   addUser(id: string, user: User) {
