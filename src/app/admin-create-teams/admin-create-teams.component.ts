@@ -14,20 +14,19 @@ import pdfMake from 'pdfmake/build/pdfmake';
 import pdfFonts from 'pdfmake/build/vfs_fonts';
 
 
-
-
 @Component({
   selector: 'app-admin-create-teams',
   templateUrl: './admin-create-teams.component.html',
   styleUrls: ['./admin-create-teams.component.css']
 })
 export class AdminCreateTeamsComponent implements OnInit {
-  teamMembers=[];
+  teamMembers = [];
 
 
+  // tslint:disable-next-line:no-shadowed-variable
   constructor(private TeamService: TeamService,
-    private userService: UserService,
-    private questService: QuestionnaireService
+              private userService: UserService,
+              private questService: QuestionnaireService
 
 
     ) { }
@@ -44,6 +43,7 @@ export class AdminCreateTeamsComponent implements OnInit {
     // returns a list of pending RFPs
     getQuest(): Questionnaire[] {
       return this.questService.getQuest().filter((quest, index, array) => {
+        // tslint:disable-next-line:triple-equals
         return quest.userID != '';
       });
     }
@@ -53,83 +53,92 @@ export class AdminCreateTeamsComponent implements OnInit {
       pdfMake.createPdf(docDefinition).open();
     }
 
-    
 
-  //this method is intended to return either null or the teams Id to prevent the teams dropdown from resetting after student is added
+
+  // this method is intended to return either null or the teams Id to prevent the teams dropdown from resetting after student is added
+  // tslint:disable-next-line:typedef
   dropDownFix(team){
-    if(!team) return null;
+    if (!team) { return null; }
     return team.our_team_id;
   }
 
 
-  changeDragDropTable(event: CdkDragDrop<string[]>) {//Code created using https://medium.com/codetobe/learn-how-to-drag-drop-items-in-angular-7-20395c262ab0
+  // tslint:disable-next-line:typedef
+  changeDragDropTable(event: CdkDragDrop<string[]>) {// Code created using https://medium.com/codetobe/learn-how-to-drag-drop-items-in-angular-7-20395c262ab0
     if (event.previousContainer === event.container) {
         moveItemInArray(event.container.data,
         event.previousIndex,
         event.currentIndex);
-        event.container.data
-       
-    } 
+      // tslint:disable-next-line:no-unused-expression
+        event.container.data;
+
+    }
     else {
     transferArrayItem(event.previousContainer.data,
     event.container.data,
     event.previousIndex, event.currentIndex);
-    if(event.container.id=='cdk-drop-list-1'){
+      // tslint:disable-next-line:triple-equals
+    if (event.container.id == 'cdk-drop-list-1'){
       // get the key of the team to add student to
-      let teamKey = (<HTMLInputElement>document.getElementById("teams")).value;
+      const teamKey = (document.getElementById('teams') as HTMLInputElement).value;
       // get the student being added
-      let studentString = JSON.stringify(event.container.data[event.currentIndex])
-      let student = JSON.parse(studentString);
+      const studentString = JSON.stringify(event.container.data[event.currentIndex]);
+      const student = JSON.parse(studentString);
       // add the student to the team
-      this.TeamService.addStudentToTeam(this.TeamService.getTeamByKey(teamKey), student)
+      this.TeamService.addStudentToTeam(this.TeamService.getTeamByKey(teamKey), student);
     }
-    if (event.container.id=='cdk-drop-list-0'){
-      let teamName = (<HTMLInputElement>document.getElementById("teams")).value;
-      let studentString = JSON.stringify(event.container.data[event.currentIndex])
-      let student = JSON.parse(studentString);
+      // tslint:disable-next-line:triple-equals
+    if (event.container.id == 'cdk-drop-list-0'){
+      const teamName = (document.getElementById('teams') as HTMLInputElement).value;
+      const studentString = JSON.stringify(event.container.data[event.currentIndex]);
+      const student = JSON.parse(studentString);
       this.TeamService.removeStudentFromTeam(this.TeamService.getTeamByKey(teamName), student);
-     
+
     }
-  
+
    }
   }
 
 
 
-  //Returns a list of Active Students
+  // Returns a list of Active Students
   getActiveandAvailableStudentsFromDB(): User[] {
     return this.userService.getUsers().filter((user, index, array) => {
-      
-      return user.active && this.userService.isStudent(user)&& (<Student>user).team == undefined
+
+      // tslint:disable-next-line:triple-equals
+      return user.active && this.userService.isStudent(user) && (user as Student).team == undefined;
     });
   }
 
 
   getActiveStudentsFromDB(): User[] {
     return this.userService.getUsers().filter((user, index, array) => {
-      
-      return user.active && this.userService.isStudent(user)
+
+      return user.active && this.userService.isStudent(user);
     });
   }
 
 
-  getAllStudentsFromDB():User[]{
+  getAllStudentsFromDB(): User[]{
     return this.userService.getUsers().filter((user, index, array) => {
-      return this.userService.isStudent(user)
+      return this.userService.isStudent(user);
     });
   }
-  
-  
-  getQuestionnaireFromKey(stringy:string): Questionnaire[] {
+
+
+  getQuestionnaireFromKey(stringy: string): Questionnaire[] {
     return this.questService.getQuest().filter((quest, index, array) => {
-      return quest.b00==stringy;
+      // tslint:disable-next-line:triple-equals
+      return quest.b00 == stringy;
     });
   }
- getTeamName(Student: Student): string {
+
+  // tslint:disable-next-line:no-shadowed-variable
+    getTeamName(Student: User): string {
   // if the user is a student and is on a team
   if (Student.team) {
     // get the team from the database
-    let team = this.TeamService.getTeamByKey(Student.team);
+    const team = this.TeamService.getTeamByKey(Student.team);
 
     // if the team exists
     if (team) {
@@ -140,10 +149,8 @@ export class AdminCreateTeamsComponent implements OnInit {
   return 'None';
 }
 
-
-
-
 // On-change listener for the Teams drop-down
+  // tslint:disable-next-line:typedef
   getTeamMembers(teamKey: string) {
     // if no team is selected
     if (teamKey == 'default') {
@@ -152,10 +159,11 @@ export class AdminCreateTeamsComponent implements OnInit {
     // if a team is selected
     else {
       this.teamMembers = this.userService.getUsers().filter((user, index, array) => {
-        return user.active && this.userService.isStudent(user) && (<Student>user).team == teamKey;
+        // tslint:disable-next-line:triple-equals
+        return user.active && this.userService.isStudent(user) && (user as Student).team == teamKey;
       });
     }
   }
 }
-    
+
 

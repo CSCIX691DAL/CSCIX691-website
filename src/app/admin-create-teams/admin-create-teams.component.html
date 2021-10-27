@@ -24,7 +24,7 @@
         </ul>
       </nav>
     </div>
-    
+
     <div class="container" >
 
       <h1 id="topTitle">Create or Edit Project Groups</h1>
@@ -43,12 +43,12 @@
                 <div content>
                   <div class="viewLink">
                     Team currently assigned: {{getTeamName(student)}}<br>
-                    <div *ngIf="student.teamLeader">Team Leader:{{student.teamLeader}} <br></div>
-   
+                    <div *ngIf="student.active">Team Leader:{{student.active}} <br></div>
+
                     <div *ngIf="getQuestionnaireFromKey(student.studentID).length > 0; else notComplete">
                        <div *ngFor="let quest of getQuestionnaireFromKey(student.studentID)">
                           Class registered to: {{quest.course}}  <br>
-                          Project choice 1: {{quest.projectChoice1}}<br> 
+                          Project choice 1: {{quest.projectChoice1}}<br>
                           Project choice 2: {{quest.projectChoice2}}<br>
                           Project choice 3: {{quest.projectChoice3}}
                         <div (click)="generatePDF(quest)" class="linkDisplay"><a href="/admin-create-teams">View Full Questionnaire</a></div>
@@ -61,7 +61,7 @@
             </div>
           </mat-card>
       </div>
-        <div class="column-container"style="padding-left: 0px;"> 
+        <div class="column-container"style="padding-left: 0px;">
           <!--This div controls the middlec container which holds the active and available students Note that students are not active till they have changed their password  -->
           <div class="list"
               cdkDropList
@@ -77,7 +77,7 @@
             </mat-card>
           </div>
         </div>
-        
+
         <div class="column-container"style="padding-left: 10px;">
          <!--This div controls the right container that displays the members of the selected team-->
           <div class="list"
@@ -86,7 +86,7 @@
                [cdkDropListData]="teamMembers"
                [cdkDropListConnectedTo]="todoList"
                (cdkDropListDropped)="changeDragDropTable($event)">
-     
+
           <h2 id="tableTitle">Current Team in Selected Project</h2>
           <select id="teams" (change)='getTeamMembers($event.target.value)'>
             <option value="default">Select a team</option>
@@ -95,7 +95,7 @@
             <mat-card *ngFor="let student of teamMembers"  cdkDrag>
               <mat-card-header>
                 <mat-card-title  value={{student.studentID}} id="name">{{student.fName}} {{student.sName}}</mat-card-title>
-                <span   *ngIf="student.teamLeader"> (Leader)</span> 
+                <span   *ngIf="student.teamLeader"> (Leader)</span>
               </mat-card-header>
 
             </mat-card>
