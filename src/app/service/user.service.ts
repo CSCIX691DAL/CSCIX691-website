@@ -79,10 +79,10 @@ getUserEmail(): string {
   
 
 
-  /*// Change an existing user
+  // Change an existing user
   updateUser(user: User, changes: Object): Promise<void> {
     return this.userReference.update(user.key, changes);
-  }*/
+  }
 
   // Adds a user to the database
   addUser(id: string, user: User) {
