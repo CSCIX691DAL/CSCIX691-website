@@ -20,14 +20,14 @@ export class UnsubscribeComponent implements OnInit {
   updateEmail(){
     let email = (<HTMLInputElement>document.getElementById("email")).value;
     
-    var userEmail = this.userService.getUserEmail();
+    let userEmail = this.userService.getUserEmail();
     //get user email
     
 
     if (userEmail == null){
       alert ("Invalid input");
     }else if (email=userEmail){ 
-      this.userService.updateUser(userEmail,{"emailList":false});
+      this.userService.unsubscribeUser();
       alert ("You have unsubscribed from our email list");
     }else if (email!=userEmail){
       alert("You input email is not your email");

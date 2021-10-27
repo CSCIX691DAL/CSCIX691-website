@@ -33,6 +33,9 @@ export class UserService {
       this.users = data;
     });
   }
+  getUsers(): User[] {
+    return this.users;
+  }
 
 
 
@@ -63,8 +66,14 @@ getUserEmail(): string {
     });
     return <User>user[0];
   }
-  //updarates the input email at database
-  
+  //update input user email 
+  updateUserEmail(user: User, email: string): void {
+    user.email = email;
+    this.userReference.update(user.key, user);
+  }
+  unsubscribeUser(): void {
+    this.db.database.ref('users/').off();
+  }
   
 
   
