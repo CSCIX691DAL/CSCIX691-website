@@ -62,8 +62,6 @@ export class AdminCreateTeamsComponent implements OnInit {
     return team.our_team_id;
   }
 
-
-  // tslint:disable-next-line:typedef
   changeDragDropTable(event: CdkDragDrop<string[]>) {// Code created using https://medium.com/codetobe/learn-how-to-drag-drop-items-in-angular-7-20395c262ab0
     if (event.previousContainer === event.container) {
         moveItemInArray(event.container.data,
@@ -153,7 +151,7 @@ export class AdminCreateTeamsComponent implements OnInit {
   // tslint:disable-next-line:typedef
   getTeamMembers(teamKey: string) {
     // if no team is selected
-    if (teamKey == 'default') {
+    if (teamKey === 'default') {
       this.teamMembers = [];
     }
     // if a team is selected
