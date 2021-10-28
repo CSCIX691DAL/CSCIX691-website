@@ -21,6 +21,7 @@ export class UnsubscribeComponent implements OnInit {
     let email = (<HTMLInputElement>document.getElementById("email")).value;
     let curEmail = localStorage.getItem('email');
     let user = this.userService.getUserByEmail(email);
+
     if (email == curEmail) {
     
       this.userService.updateUser(user, { "emailList": false});
@@ -29,6 +30,18 @@ export class UnsubscribeComponent implements OnInit {
     else if (user == null) {
       alert("Invalid Input or Unregistered Email Address!")
       }
+
+    //Determine whether the input email address is the current login email address
+    if (email == curEmail) {
+      this.userService.updateUser(user, { "emailList": false});
+              alert("Unsubscribe Successfully!")
+              }
+    //input error
+    else if (user == null) {
+      alert("Invalid Input or Unregistered Email Address!")
+      }
+    //email address is not the current login email address.
+
     else{
       alert("It is not your current E-mail address! Please try again!")
     }
