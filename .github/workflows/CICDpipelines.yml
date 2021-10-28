@@ -3,7 +3,7 @@ name: Deployment
 on: push
 
 jobs:
-  run checks:
+  super-lint:
     name: Lint code base
     runs-on: ubuntu-latest
     steps:
