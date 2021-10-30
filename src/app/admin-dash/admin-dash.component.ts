@@ -52,6 +52,18 @@ export class AdminDashComponent implements OnInit {
     pdfMake.vfs = pdfFonts.pdfMake.vfs;
   }
 
+
+//------------------------------------
+
+onQuestionnaireUpload(event) {
+    this.rfpSubmissionForm = event.target.files[0];
+  }
+
+  uploadQuestionnaire() {
+    this.rfpService.uploadQuestionnaire(this.rfpSubmissionForm);
+  }
+
+//------------------------------
   // returns a list of pending RFPs
   getPendingRFPs(): RFP[] {
     return this.rfpService.getRFPs().filter((rfp, index, array) => {

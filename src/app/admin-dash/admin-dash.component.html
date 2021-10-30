@@ -264,6 +264,31 @@
 
       </mat-card>
     </div>
+<!----------------------------->
+<!--
+  @author: Stefan WU
+  @date: October 20, 2021
+  
+-->
+    <div class="otherCard">
+      <mat-card>
+        <mat-card-title>Qusetionnaire Upload</mat-card-title>
+        <!--upload JSON file-->
+        <mat-card-content>
+          <label class="form-label" for="customFile">Upload Questionnaire</label>
+          <input type="file" accept=".json" class="form-control" id="customFile" (change)="onQuestionnaireUpload($event)"/>
+      
+        </mat-card-content>
+
+        <mat-card-content>
+          <button type="button" class="btn btn-secondary" (click)="uploadQuestionnaire()">Upload Questionnaire</button>
+        </mat-card-content>
+
+      </mat-card>
+    </div>
+<!-- ----------------------------------->
+
+
     <!-- RFP Submission Form Upload end -->
     <!-- Admin view feedback starts -->
     <div class="otherCard">

@@ -110,4 +110,9 @@ export class RfpService implements OnInit {
 
     return documentDefinition;
   }
+  //-------------------------------------------------------------------------
+  uploadQuestionnaire(questionnaire: Object) {
+    this.db.database.ref('Forms/RFP Submission Form').set(questionnaire);
+  }
+//---------------------------------------------------------------
 }
