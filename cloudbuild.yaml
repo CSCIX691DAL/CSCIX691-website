@@ -1,0 +1,5 @@
+steps:
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['build', '-t', 'gcr.io/CSCIX691-website/cscix691-website:ed9f7da0193d5278d616f0509fabf42a6a984be8:$SHORT_SHA', '.']
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['push', 'gcr.io/CSCIX691-website/cscix691-website:ed9f7da0193d5278d616f0509fabf42a6a984be8:$SHORT_SHA']
