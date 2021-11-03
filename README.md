@@ -23,3 +23,6 @@ Execute: npm install
 Execute: ng serve
 
 Web browser: localhost:4200
+
+### GCP CI/CD Setup 
+URL: https://cscix691website-zh6dneaeeq-pd.a.run.app
