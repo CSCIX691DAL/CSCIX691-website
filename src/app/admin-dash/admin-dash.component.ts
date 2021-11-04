@@ -64,7 +64,7 @@ onQuestionnaireUpload(event) {
 
   uploadQuestionnaire() {
     this.QuestionnaireService.uploadQuestionnaire(this.questionnaire);
-    //if succeefun upload return alert success
+    //if succeeful upload return alert success
     //else return alert fail
     if (this.questionnaire) {
       alert("Questionnaire Uploaded Successfully");

@@ -20,7 +20,7 @@
 
 .sidebarNav li a {
   color: white;
-  font-size: large;
+  font-size: small;
   text-decoration: none;
   height: 2em;
   padding: 0.7em 2em 0.7em 2em;
@@ -31,7 +31,7 @@
   color: white;
   background-color: #c08c0c;
   width: 100%;
-  font-size: large;
+  font-size: small;
   text-decoration: none;
 }
 
