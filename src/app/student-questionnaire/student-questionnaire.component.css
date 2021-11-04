@@ -32,7 +32,7 @@
     color: white;
     background-color: #c08c0c;
     width: 100%;
-    font-size: large;
+    font-size: small;
     text-decoration: none;
   }
   form{
@@ -64,6 +64,7 @@
   }
   h1{
     font-weight: bold;
+    padding-left: 160px; 
   }
   label{
     font-variant: bold; 
