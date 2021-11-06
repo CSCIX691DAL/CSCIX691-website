@@ -4,6 +4,7 @@ import { map } from 'rxjs/operators';
 import pdfMake from 'pdfmake/build/pdfmake';
 import pdfFonts from 'pdfmake/build/vfs_fonts';
 import RFP from '../rfp/rfp.model';
+import { fileURLToPath } from 'url';
 
 @Injectable({
   providedIn: 'root'
@@ -24,6 +25,7 @@ export class RfpService implements OnInit {
     }).catch(exception => {
       console.log(exception);
     });
+    
   }
 
   ngOnInit(): void {
@@ -110,4 +112,23 @@ export class RfpService implements OnInit {
 
     return documentDefinition;
   }
+  //-------------------------------------------------------------------------
+  //uploadQuestionnaire(questionnaire: Object) {
+ //   this.db.database.ref('Forms/Questionnaire').set(questionnaire);
+  //}
+//---------------------------------------------------------------
 }
+//JSON file
+// {
+//   "questions": {
+//     "1": {
+//       "question": "What is the name of the project?"
+//     },
+//     "2": {
+//       "question": "What is the name of the organization?"
+//     },
+//     "3": {
+//       "question": "What is the contact email?"
+//     },
+//}
+//}

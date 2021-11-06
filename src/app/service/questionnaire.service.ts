@@ -24,6 +24,15 @@ export class QuestionnaireService {
 
   }
 
+//==============================
+
+//put json file into database
+uploadQuestionnaire(questionnaire: Object) {
+  this.db.database.ref('StudentQuestionnaire/').set(questionnaire);
+}
+
+//========================
+
 
   getQuest() : Questionnaire[] {
     return this.quest;

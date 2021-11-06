@@ -18,6 +18,7 @@ import { Student } from '../user/student.model';
 import DueDates from '../dueDates/dueDates.model';
 import { dueDateService } from '../service/duedate.service';
 import { AngularFireDatabase } from '@angular/fire/database';
+import { QuestionnaireService} from '../service/questionnaire.service';
 
 @Component({
   selector: 'app-admin-dash',
@@ -28,6 +29,7 @@ export class AdminDashComponent implements OnInit {
   showConfirm: boolean = false;
   studentRecords: any[] = [];
   rfpSubmissionForm: File;
+  questionnaire: File;
 
 
   constructor(private userService: UserService,
@@ -38,7 +40,8 @@ export class AdminDashComponent implements OnInit {
               private teamService: TeamService,
               private announcementService: AnnouncementService,
               private dueDateService: dueDateService,
-              private db: AngularFireDatabase) {
+              private db: AngularFireDatabase,
+              private QuestionnaireService: QuestionnaireService) {
 
   }
 
@@ -52,6 +55,25 @@ export class AdminDashComponent implements OnInit {
     pdfMake.vfs = pdfFonts.pdfMake.vfs;
   }
 
+
+//------------------------------------
+
+onQuestionnaireUpload(event) {
+    this.questionnaire = event.target.files[0];
+  }
+
+  uploadQuestionnaire() {
+    this.QuestionnaireService.uploadQuestionnaire(this.questionnaire);
+    //if succeeful upload return alert success
+    //else return alert fail
+    if (this.questionnaire) {
+      alert("Questionnaire Uploaded Successfully");
+    } else {
+      alert("Questionnaire Upload Failed");
+    }
+  }
+
+//------------------------------
   // returns a list of pending RFPs
   getPendingRFPs(): RFP[] {
     return this.rfpService.getRFPs().filter((rfp, index, array) => {
