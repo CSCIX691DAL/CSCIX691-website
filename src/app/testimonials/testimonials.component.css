@@ -4,7 +4,7 @@
   margin-left: 1em;
   margin-right: 1em;
   box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.1), 0 1px 3px 0 rgba(0, 0, 0, 0.1);
-  width: 95%;
+  background-color: rgba(112, 115, 114, 0.05);
 }
 
 .stars {

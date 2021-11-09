@@ -16,4 +16,7 @@ export class FirebaseService {
   getRFPs() {
 	return this.db.database.ref('RFPs/').get();
   }
+  getQuest() {
+    return this.db.database.ref('StudentQuestionnaire/').get();
+    }
 }

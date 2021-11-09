@@ -17,10 +17,13 @@
   margin: 2em;
   width: 100%;
 }
+.card-subtitle{
+  margin: 0px;
+}
 
 .sidebarNav li a {
   color: white;
-  font-size: large;
+  font-size: small;
   text-decoration: none;
   height: 2em;
   padding: 0.7em 2em 0.7em 2em;
@@ -31,7 +34,7 @@
   color: white;
   background-color: #c08c0c;
   width: 100%;
-  font-size: large;
+  font-size: small;
   text-decoration: none;
 }
 
@@ -56,6 +59,10 @@
 }
 
 .announcements {
+  width: 95%;
+  margin: 2rem;
+}
+.dueDates {
   width: 95%;
   margin: 2rem;
 }
@@ -97,3 +104,15 @@
   color: #c08c0c;
 }
 
+.feedbackTitle {
+  font-size: 22px;
+}
+
+.submitDate {
+  font-size: 14px;
+  color: rgb(104, 103, 103);
+}
+
+.feedbackBody {
+  font-size: 16px;
+}

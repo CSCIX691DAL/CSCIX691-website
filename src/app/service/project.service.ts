@@ -4,22 +4,29 @@ import { AngularFireDatabase, AngularFireList } from '@angular/fire/database'
 import { map } from 'rxjs/operators';
 import Project from '../projects/project.model';
 import RFP from '../rfp/rfp.model';
+import DueDate from '../dueDates/dueDates.model'
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProjectService {
   projectReference: AngularFireList<Project>;
+  projectduedate: AngularFireList<DueDate>;
   projects?: Project[];
+  duedates?: DueDate[];
 
   constructor(private db: AngularFireDatabase, private teamService: TeamService) {
     this.projectReference = db.list('Projects/');
+    
     this.refreshProjects();
   }
 
   // Returns a list of Projects
   getProjects() : Project[] {
     return this.projects;
+  }
+  getDueDate() : DueDate[] {
+    return this.duedates;
   }
 
   // Populates the list of Projects by reading from the database
@@ -42,8 +49,8 @@ export class ProjectService {
     project.rfp = rfp;
     project.contactName = rfp.contactName;
     project.client = rfp.client; // set client to currently logged-in user
-    project.descShort = rfp.problem;
-    project.descLong = 'Testing testing testing' // need further clarification of where this comes from
+    project.descShort = 'Testing short description'; // need further clarification of where this comes from
+    project.descLong = 'Testing long description' // need further clarification of where this comes from
     project.status = 'Accepted';
     project.team = null;
     project.term = this.setNextTerm();

@@ -38,7 +38,11 @@ import { HttpClientModule } from '@angular/common/http';
 import {AccordianComponent} from './accordian/accordian.component';
 import { importType } from '@angular/compiler/src/output/output_ast';
 import {UnsubscribeComponent} from './unsubscribe/unsubscribe.component';
+import { AdminCreateTeamsComponent } from './admin-create-teams/admin-create-teams.component';
 import { MembersComponent } from './members/members.component';
+import {DragDropModule} from '@angular/cdk/drag-drop';
+import { CourseLinksComponent } from './course-links/course-links.component';
+
 
 @NgModule({
   declarations: [
@@ -64,6 +68,8 @@ import { MembersComponent } from './members/members.component';
     AccordianComponent,
     UnsubscribeComponent,
     MembersComponent,
+    AdminCreateTeamsComponent,
+    CourseLinksComponent,
   ],
   imports: [
     BrowserModule,
@@ -84,6 +90,7 @@ import { MembersComponent } from './members/members.component';
     MatSelectModule,
     NgxCsvParserModule,
     HttpClientModule,
+    DragDropModule,
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]

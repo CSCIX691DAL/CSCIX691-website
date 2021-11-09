@@ -8,7 +8,7 @@ import {AuthService} from "../service/auth.service";
 })
 export class NavbarComponent implements OnInit {
   userType: string;
-
+  public isCollapsed = true;
   constructor(public authService: AuthService) { }
 
   public isLogin: any=localStorage.getItem('isLogin')

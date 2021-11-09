@@ -20,7 +20,7 @@
 
 .sidebarNav li a {
   color: white;
-  font-size: large;
+  font-size: small;
   text-decoration: none;
   height: 2em;
   padding: 0.7em 2em 0.7em 2em;
@@ -31,11 +31,15 @@
   color: white;
   background-color: #c08c0c;
   width: 100%;
-  font-size: large;
+  font-size: small;
   text-decoration: none;
 }
 
 .RFPCard {
+  width: 95%;
+  margin: 2rem;
+}
+.DueDates {
   width: 95%;
   margin: 2rem;
 }
@@ -105,4 +109,25 @@
 .actionButton:hover {
   background-color: #707372;
   color: white;
+}
+
+hr {
+  border-top: 3px solid #707372;
+}
+
+.feedbackTitle {
+  font-size: 22px;
+}
+
+.submitDate {
+  font-size: 14px;
+  color: rgb(104, 103, 103);
+}
+
+.feedbackBody {
+  font-size: 16px;
+}
+
+.teamSelect {
+  width: 100%;
 }

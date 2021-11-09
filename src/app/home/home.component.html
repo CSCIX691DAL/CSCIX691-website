@@ -1,8 +1,18 @@
+<!--
+Picture retreived from https://www.dal.ca/faculty/computerscience.html
+-->
 <div class="homeLayoutDiv lead">
   <div
     class="p-5 text-center bg-image"
     style="
       background-color: #c08c0c;
+      background: url('./assets/images/backgroundImage.jpg') no-repeat center center fixed;
+      height: 667px;
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      background-size: cover;
+      -o-background-size: cover;
+      padding: 100px;
     ">
     <div class="mask">
       <div class="d-flex justify-content-center align-items-center">
@@ -15,7 +25,7 @@
   </div>
   <div class="projIntro card m-auto mt-3 mb-3">
     <div class="card-body">
-      <h5 class="card-title">Course Introduction</h5>
+      <h4 class="card-title bigTitle">Course Introduction</h4>
       <p class="card-text">
         Thank you for visiting the website for Dalhousie's Community Outreach class.  This class provides students with
         invaluable experience working with real-world projects and actual clients to ensure the clients' needs are met.  This
@@ -32,7 +42,7 @@
         expectations and present the final product at the end of the designated semester.
       </p>
       <p class="card-text">
-        The course welcomes any client project that requires a development component.  We are constantly accepting new
+        The course welcomes any client project that requires a development component. We are constantly accepting new
         project applications and encourage you to view past completed project <a href="/projects">here</a>.  If you think you have
         a project that would match the courses students well, please feel free to complete a
         <a href="/register">RFP (Requirement for Project)</a>.  We are excited to work with you.
@@ -45,7 +55,7 @@
    <div class="card m-auto" style="width: 85%; margin: 1.5rem; background-color: rgba(112, 115, 114, 0.3);">
     <!-- <img class="card-img-top" src="./assets/images/clientImage.jpg" alt="client image"> -->
         <div class="card-body">
-          <h5 class="card-title">Looking to Become a Client?</h5>
+          <h5 class="card-title bigTitle">Looking to Become a Client?</h5>
           <p class="card-text">
             This course is focused on providing opportunities for students to learn and grow in their skills while
             providing clients with a quality applications.  If you have a project in the works and are looking for a
@@ -56,14 +66,14 @@
           <div class="text-center d-grid gap-2 mx-auto col-4">
             <a href="/register" class="btn btn-lg focus">REGISTER NOW</a>
           </div>
-          
+
         </div>
       </div>
-<div class="topRowLinks row row-cols-1 row-cols-md-3 g-4">
-      <div class="card" style="width: 28%; margin: 1.5rem;">
+<div class="topRowLinks row g-4">
+      <div class="card focuscard">
         <img class="card-img-top" src="./assets/images/studentImage.jpg" alt="student image">
         <div class="card-body">
-          <h5 class="card-title">Looking for Past Projects?</h5>
+          <h5 class="card-title bigTitle">Looking for Past Projects?</h5>
           <p class="card-text">
             Do you want to see what the students have produced before deciding to become a client with us?  Check out
             our Past Projects page to see what kind of projects we take on and the results that we produce.  If there is
@@ -72,10 +82,10 @@
           <a href="/projects" class="btndal btn btn-lg">READ MORE...</a>
         </div>
       </div>
-      <div class="card" style="width: 28%; margin: 1.5rem;">
+      <div class="card focuscard">
         <img class="card-img-top" src="./assets/images/pastProjects.jpg" alt="past products">
         <div class="card-body">
-          <h5 class="card-title">Are you a Student?</h5>
+          <h5 class="card-title bigTitle">Are you a Student?</h5>
           <p class="card-text">
             If you're a student looking for information on this course, such as how the course will run, the syllabus, or any other
             information, checkout your student dashboard. All students registered for the course will have an account already created for them!
@@ -83,23 +93,23 @@
           <a href="/auth" class="btn btndal btn-lg">LOGIN NOW</a>
         </div>
       </div>
-    <div class="card" style="width: 28%; margin: 1.5rem;">
+    <div class="card focuscard">
       <img class="card-img-top" src="./assets/images/DalCS.jpg" alt="Dal CS">
       <div class="card-body">
-        <h5 class="card-title">Dalhousie - Computer Science Links</h5>
+        <h5 class="card-title bigTitle">Dalhousie University - Computer Science Links</h5>
         <p class="card-text">
           If you're a student or client looking for information regarding Dalhousie's Faculty of Computer Science, such as general information,
           faculty and staff information, contact information, or any other information, checkout the links below. </p>
-        <a href="https://www.dal.ca/faculty/computerscience.html" target="_blank" class="btn btndal btn-lg">Dalhousie Computer Science</a><br />
+        <a href="https://www.dal.ca/faculty/computerscience.html" target="_blank" class="btn btndal btn-lg">Dalhousie Faculty of Computer Science</a><br />
         <a href="https://www.dal.ca/faculty/computerscience/about.html" target="_blank" class="btn btndal btn-lg">About Dal Computer Science</a><br />
-        <a href="https://www.dal.ca/faculty/computerscience/faculty-staff.html" target="_blank" class="btn btndal btn-lg">CS Faculty and Staff</a><br />
-        <a href="https://www.dal.ca/faculty/computerscience/about/contact.html" target="_blank" class="btn btndal btn-lg">Dalhousie Computer Science Contact</a><br />
+        <a href="https://www.dal.ca/faculty/computerscience/faculty-staff.html" target="_blank" class="btn btndal btn-lg">Faculty and Staff</a><br />
+        <a href="https://www.dal.ca/faculty/computerscience/about/contact.html" target="_blank" class="btn btndal btn-lg">Faculty of Computer Science Contact</a><br />
       </div>
     </div>
   </div>
 
   <div class="testimonials">
-    <h2 style="padding-left: 15px;">Past Client Testimonials</h2>
+    <h2 style="padding-left: 15px;" class="bigTitle">Past Client Testimonials</h2>
     <app-testimonials></app-testimonials>
     <a href="/testimonialsPage" class='btn btndal'>See more testimonials ></a>
   </div>

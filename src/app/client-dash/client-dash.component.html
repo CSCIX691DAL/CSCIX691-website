@@ -42,7 +42,7 @@
             <tr *ngFor='let RFPs of getMyRFPs()'>
               <td>{{RFPs.projectTitle}}</td>
               <td>{{RFPs.organization}}</td>
-              <td><a href="assets/images/TopImage.JPG">RFP</a></td>
+              <td (click)="generatePDF(RFPs)" class="linkDisplay"><a href="/client-dashboard">View RFP</a></td>
               <td>{{RFPs.status}}</td>
               <td>
                 <div *ngIf="RFPs.status != 'Approved'">
@@ -67,7 +67,7 @@
               <app-accordian>
                 <p header>{{ project.title }}</p>
                 <div content>
-                  <a href="{{ project.azureLink }}" target="_blank">Click here to see the Azure board for this project.</a>
+                  <a href="{{ project.azureLink }}" rel="noopener" target="_blank">Click here to see the Azure board for this project.</a>
                     <br>
                     <br>
                     {{ project.descLong }}
@@ -78,6 +78,30 @@
         </mat-card-content>
       </mat-card>
     </div>
+    <!-- Feedback From client start -->
+    <div class="projectsCard">
+      <mat-card>
+        <mat-card-title>Feedback </mat-card-title>
+        <mat-card-content>
+          <p> Fill in the boxes then click the button below to post a feedback for a team </p>
+        </mat-card-content>
+        <mat-card-content>
+          <div id="accordion">
+              <form id="FeedbackCreation" class="form">
+                <mat-form-field class="feedback"><mat-label>Team:</mat-label>
+                  <mat-select name="feedbackTeam" id="feedbackTeam" (selectionChange)="getFeedbackTeam($event.value)">              
+                      <mat-option *ngFor="let team of getMyTeams()" value="{{ team.key }}">{{ team.name }}</mat-option>    
+                  </mat-select>
+              </mat-form-field>
+                <mat-form-field class="feedback"><mat-label>Title: </mat-label><input required name="feedbackTitle" id="feedbackTitle" matInput type="string"></mat-form-field>
+                <mat-form-field class="feedback"><mat-label>Feedback: </mat-label><textarea required name="feedbackBody" id="feedbackBody" matInput type="string"></textarea></mat-form-field>
+                <button type="reset" class="btn btn-secondary" (click)="CreateFeedback()"> Create Feedback</button>
+              </form>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+    <!-- Feedback From client End -->
     <!-- Active Project End -->
     <!-- RFP Section Start -->
     <div class="RFPCard">
@@ -107,7 +131,7 @@
       <!-- Upcoming Iterations -->
       <mat-card class="members2">
         <mat-card-title> Create New Testimonial </mat-card-title>
-        
+
         <mat-card-content>
           <p> Fill in the boxes then click the button below to create a new testimonial. </p>
         </mat-card-content>
@@ -134,7 +158,7 @@
             <tbody>
             <tr *ngFor='let Projects of getMyProjects()'>
               <td>{{Projects.title}}</td>
-              <td><a href="{{Projects.azureLink}}" target="_blank">Link</a></td>
+              <td><a href="{{Projects.azureLink}}" rel="noopener" target="_blank">Link</a></td>
             </tr>
 
             </tbody>
@@ -146,7 +170,7 @@
     <!-- Other Start End -->
     <div class="otherCard">
       <mat-card>
-        <mat-card-title>Other Client Stuffs</mat-card-title>
+        <mat-card-title>Course Overview</mat-card-title>
         <mat-card-content>
           Thank you for visiting the website for Dalhousie's Community Outreach class.  This class provides students with
           invaluable experience working with real-world projects and actual clients to ensure the clients' needs are met.  This

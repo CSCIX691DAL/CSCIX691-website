@@ -15,7 +15,6 @@ import { AnnouncementComponent } from './announcement/announcement.component';
 import {StudentQuestionnaireComponent} from './student-questionnaire/student-questionnaire.component';
 import { UnsubscribeComponent } from './unsubscribe/unsubscribe.component';
 
-
 const routes: Routes = [
   { path: '', component: HomeComponent},
   { path: 'auth', component: AuthComponent},

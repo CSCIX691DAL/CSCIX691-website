@@ -1,15 +1,14 @@
 .homeLayoutDiv {
-  font-family: 'Bahnschrift', "Arial Narrow", serif;
+  font-family: Trebuchet MS, sans-serif;
   display: flex;
   flex-direction: column;
   justify-content: center;
   margin: auto;
+  line-height: 150%;
 }
-
   a {
     color: #c08c0c;
   }
-
 .titles {
   position: absolute;
   top: 180px;
@@ -39,12 +38,13 @@
 
 .startProjectSection {
   width: 30%;
-  margin: 1rem;
+  margin: 2rem;
 }
 
 .pastProjectsSection {
   width: 30%;
   margin: 1rem;
+  height: 85%;
 }
 
 .forStudentsSection {
@@ -66,7 +66,7 @@
   color: #c08c0c;
   background-color: transparent;
   border: none;
-  font-family: 'Bahnschrift', "Arial Narrow", serif;
+  font-family: Trebuchet MS, sans-serif;
   text-align: left;
   position: relative;right: 0.5rem;
 }
@@ -78,17 +78,22 @@
 
 .jumboTitle {
   font-size: calc(1rem + 3vw);
-  font-family:  'Arial Regular';
+  font-family: Trebuchet MS, sans-serif;
   margin-top: 6rem;
-  margin-left: 5rem;
+  margin: auto;
 }
 
 .jumboSubTitle {
   font-size: calc(1rem + 1vw);
-  font-family:  'Arial Regular';
+  font-family: Trebuchet MS, sans-serif;
   text-align: center;
-  margin-left: 5rem;
+  margin:auto;
   margin-top: 2rem;
+}
+.bigTitle {
+  font-size: calc(1rem + 1vw);
+  font-family: Trebuchet MS, sans-serif;
+  line-height: 100%;
 }
 
 .testimonials {
@@ -101,6 +106,17 @@
 }
 
 .focus{
-  background-color: #3ba86b;
+  background-color: forestgreen;
   color: #FFFFFF;
+}
+.focuscard{
+  width: 28%;
+  margin: 1.5rem;
+}
+
+@media only screen and (max-width: 1060px) {
+  .focuscard{
+    width: 100%;
+    margin: 1.5rem;
+  }
 }

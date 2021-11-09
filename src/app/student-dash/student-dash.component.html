@@ -1,3 +1,5 @@
+
+
 <div class="clientContent">
   <!-- Sidebar Start -->
   <div class="wrapper sideBar">
@@ -10,13 +12,16 @@
           <a href="student-dashboard">Submitted RFP's</a>
         </li>
         <li>
-          <a href="student-dashboard">Project Azure Links</a>
+          <a href="student-dashboard">Azure Links</a>
         </li>
         <li>
           <a href="student-dashboard">Past Projects</a>
         </li>
         <li>
-          <a href="student-questionnaire">Questionnaire</a>
+          <a href="student-questionnaire">Starter Questionnaire</a>
+        </li>
+        <li>
+          <a>Dynamic Questionnaire</a>
         </li>
         <li>
           <a href="student-dashboard">Other</a>
@@ -39,7 +44,7 @@
               <app-accordian>
                 <p header>{{ project.title }}</p>
                 <div content>
-                  <a href="{{ project.azureLink }}" target="_blank">Click here to see the Azure board for this project.</a>
+                  <a href="{{ project.azureLink }}" rel="noopener" target="_blank">Click here to see the Azure board for this project.</a>
                       <br> <br>
                       {{ project.descLong }}
                 </div>
@@ -86,6 +91,28 @@
       </mat-card>
     </div>
     <!-- My Past Projects End -->
+    <!-- Due date start -->
+    <div class="dueDates">
+      <mat-card>
+        <mat-card-title>Due Dates</mat-card-title>
+        <mat-card-content>
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Title</th>
+                <th scope="col"> DueDate</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor='let dueDates of getDueDates()'>
+                <td>{{dueDates.title}}</td>
+                <td>{{ dueDates.date | date:'yyyy/MM/dd h:mm:ss a' }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </mat-card-content>
+      </mat-card>
+    </div>
   </div>
   <!-- Column 1 End -->
   <!-- Column 2 Start -->
@@ -118,9 +145,8 @@
             <tbody>
             <tr *ngFor='let Projects of getMyActiveProjects()'>
               <td>{{Projects.title}}</td>
-              <td><a href="{{Projects.azureLink}}" target="_blank">Link</a></td>
+              <td><a href="{{Projects.azureLink}}" rel="noopener" target="_blank">Link</a></td>
             </tr>
-
             </tbody>
           </table>
         </mat-card-content>
@@ -128,42 +154,24 @@
       <!-- Iteration Evaluations ends -->
     </div>
     <!-- Members End -->
-    <!-- Announcements Start -->
+    <!-- Client feedback starts -->
     <div class="announcements">
       <mat-card>
-        <mat-card-title>Class Announcements</mat-card-title>
+        <mat-card-title> Client Feedback </mat-card-title>
         <mat-card-content>
-          <ul class="list-group announcementLists">
-            <li class="list-group-item"><strong><a href="##">Brightspace Announcement</a></strong></li>
-            <li class="list-group-item"><strong><a href="##">Happy Reading Week</a></strong></li>
-            <li class="list-group-item"><strong><a href="##">Milestone 1 Grades Released</a></strong></li>
-          </ul>
+          <div *ngFor='let feedback of getTeamFeedback()'>
+            <mat-card>
+              <mat-card-title class="feedbackTitle"> {{ feedback.title }} </mat-card-title>
+              <mat-card-content> 
+                <p class="feedbackBody"> {{ feedback.body }} </p>
+                <p class="submitDate"> Submitted on {{ feedback.date | date:'yyyy/MM/dd h:mm:ss a' }} by {{ feedback.client }}</p>
+              </mat-card-content>
+            </mat-card>
+            <br>
+          </div>
         </mat-card-content>
       </mat-card>
     </div>
-    <!-- Announcements End -->
-    <!-- Other Start -->
-    <div class="otherCard">
-      <mat-card>
-        <mat-card-title>Other Student Stuffs</mat-card-title>
-        <mat-card-content>
-          <table class="table">
-            <tbody>
-              <tr>
-                <td>
-                  Submit the Student Questionnaire - <a class="submitQuestions" href="../../assets/images/TopImage.JPG">Start Questionnaire</a>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  Take Agile Quiz <a class="submitQuestions" href="../../assets/images/TopImage.JPG">Here</a>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </mat-card-content>
-      </mat-card>
-    </div>
-  </div>
+    <!-- Client feedback ends -->
   <!-- Column 2 End -->
 </div>

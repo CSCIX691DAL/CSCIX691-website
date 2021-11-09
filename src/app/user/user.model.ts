@@ -13,4 +13,5 @@ export class User {
   hasLoggedInBefore: boolean;
   userType: UserType;
   emailList: boolean;
+  team: any;
 }
