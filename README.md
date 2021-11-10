@@ -1,4 +1,4 @@
-# CSCI X691 Winter 2021
+# CSCI X691 Fall 2021
 ## Class Project - Course Website
 
 ### Helpful Links:
