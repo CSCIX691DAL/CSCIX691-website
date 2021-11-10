@@ -5,9 +5,7 @@ steps:
   # Build productive files
 - name: 'gcr.io/cloud-builders/npm'
   args: [ 'run', 'build', '--prod' ]
-  # Deploy to google cloud app egnine
-- name: 'gcr.io/cloud-builders/gcloud'
-  args: ['app', 'deploy', '--version=prod']
+  # Deploy to google cloud app egnine- name: 'gcr.io/cloud-builders/gcloud'args: ['app', 'deploy', '--version=prod']
 - name: 'gcr.io/cloud-builders/docker'
   args: ['build', '-t', 'gcr.io/x691webapp/cscix691-website:$SHORT_SHA', '.']
 - name: 'gcr.io/cloud-builders/docker'
