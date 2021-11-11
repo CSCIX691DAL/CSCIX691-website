@@ -39,18 +39,16 @@ export class UserService {
 
 
 
- 
-//get the userEmail who is logged in
-getUserEmail(): string {
-    return localStorage.getItem('userEmail');
-  }
 
-  /*getUserByEmail(email: string): User{
+//get the userEmail who is logged in
+
+
+  getUserByEmail(email: string): User{
     let user = Object.values(this.users).filter((user, index, array) => {
       return (<User>user).email == email;
     });
     return <User>user[0];
-  }*/
+  }
 
   getStudentByID(studentID: string): Student {
     let student = Object.values(this.users).filter((user, index, array) => {
@@ -66,7 +64,7 @@ getUserEmail(): string {
     });
     return <User>user[0];
   }
-  //update input user email 
+  //update input user email
   updateUserEmail(user: User, email: string): void {
     user.email = email;
     this.userReference.update(user.key, user);
@@ -74,9 +72,9 @@ getUserEmail(): string {
   unsubscribeUser(): void {
     this.db.database.ref('users/').off();
   }
-  
 
-  
+
+
 
 
   // Change an existing user
@@ -91,7 +89,7 @@ getUserEmail(): string {
     this.refreshUsers(); // update list of users
     return reference;
   }
-  
+
   deleteUser(user: User): Promise<void> {
     return this.userReference.remove(user.key);
   }

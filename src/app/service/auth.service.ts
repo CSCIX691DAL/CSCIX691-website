@@ -72,11 +72,7 @@ export class AuthService {
           localStorage.setItem('isLogin', 'true');
           localStorage.setItem('uid', userId);
           localStorage.setItem('name', userInfo['fName'] + " " + userInfo['sName']);
-
-          localStorage.setItem('email', userInfo['email']);
-
           localStorage.setItem('email',userInfo['email']);
-
           localStorage.setItem('org',userInfo['org']);
           if (userInfo['userType'] == UserType.Admin) {
             localStorage.setItem("userType", "admin");
