@@ -119,6 +119,10 @@
               "devServerTarget": "X691Website:serve:production"
             }
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {}
         }
       }
     }

@@ -1,5 +1,14 @@
 {
   "projects": {
     "default": "x691webapp"
+  },
+  "targets": {
+    "x691webapp": {
+      "hosting": {
+        "X691Website": [
+          "x691webapp"
+        ]
+      }
+    }
   }
 }
