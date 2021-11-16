@@ -8,7 +8,7 @@ env:
   CLOUD_RUN_REGION: us-west1
   GOOGLE_APPLICATION_CREDENTIALS: ${{ secrets.CLOUD_RUN_SERVICE_ACCOUNT }}
   YOUR_PROJECT_ID: ${{secrets.CLOUD_RUN_PROJECT_ID}}
-  REPO_NAME: CSCIX691-website
+  REPO_NAME: cscix691-website
   API_KEY: ${{ secrets.API_KEY }}
   AUTH_DOMAIN: ${{ secrets.AUTH_DOMAIN }}
   DATABASE_URL: ${{ secrets.DATABASE_URL }}
