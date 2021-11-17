@@ -21,6 +21,7 @@ import { ChangepwComponent } from './changepw/changepw.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { environment } from '../environments/environment';
 import { AngularFireModule } from '@angular/fire';
+
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { RouterModule } from '@angular/router';
 import { NgbCollapseModule } from '@ng-bootstrap/ng-bootstrap';
@@ -42,6 +43,8 @@ import { AdminCreateTeamsComponent } from './admin-create-teams/admin-create-tea
 import { MembersComponent } from './members/members.component';
 import {DragDropModule} from '@angular/cdk/drag-drop';
 import { CourseLinksComponent } from './course-links/course-links.component';
+import {DynamicFormsKendoUIModule} from '@ng-dynamic-forms/ui-kendo';
+import {DynamicFormsCoreModule} from '@ng-dynamic-forms/core';
 
 
 @NgModule({
@@ -70,6 +73,7 @@ import { CourseLinksComponent } from './course-links/course-links.component';
     MembersComponent,
     AdminCreateTeamsComponent,
     CourseLinksComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -91,6 +95,8 @@ import { CourseLinksComponent } from './course-links/course-links.component';
     NgxCsvParserModule,
     HttpClientModule,
     DragDropModule,
+    DynamicFormsCoreModule.forRoot(),
+    DynamicFormsKendoUIModule,
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]
