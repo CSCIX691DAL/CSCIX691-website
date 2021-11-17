@@ -1,5 +1,5 @@
 .projLayoutDiv {
-  font-family: "Bahnschrift", "Arial Narrow", serif;
+  font-family: Trebuchet MS, sans-serif;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -86,12 +86,12 @@ h1 {
 
 mat-card-content {
   font-size: 17px;
-  font-family: "Bahnschrift", "Arial Narrow", serif;
+  font-family: Trebuchet MS, sans-serif;
 }
 
 mat-card-title {
   font-size: 35px;
-  font-family: "Bahnschrift", "Arial Narrow", serif;
+  font-family: Trebuchet MS, sans-serif;
 }
 
 .client-text {
@@ -111,13 +111,13 @@ mat-card-title {
 
 button {
   background-color: #c08c0c;
-  font-family: "Bahnschrift", "Arial Narrow", serif;
+  font-family: Trebuchet MS, sans-serif;
 }
 .btn {
   color: #c08c0c;
   background-color: transparent;
   border: none;
-  font-family: "Bahnschrift", "Arial Narrow", serif;
+  font-family: Trebuchet MS, sans-serif;
 }
 
 .btn:hover {
