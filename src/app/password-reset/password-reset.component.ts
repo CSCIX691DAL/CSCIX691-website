@@ -12,6 +12,7 @@ export class PasswordResetComponent implements OnInit {
   ngOnInit(): void {
     if (localStorage.getItem("isLogin")) {
       window.location.href = "/";
+      window.alert("passwordrest initiated");
     }
   }
 

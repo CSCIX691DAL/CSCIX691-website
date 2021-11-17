@@ -39,6 +39,8 @@ export class RegisterComponent implements OnInit {
   onSubmit(): void {
     if (this.validate()) {
       this.authService.signupClient(this.email, this.password, this.firstName, this.lastName, this.organization);
+      
+      window.alert("signup complete");
     }
   }
 

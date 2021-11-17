@@ -25,6 +25,7 @@ export class AuthComponent implements OnInit{
     //console.log(this.email);
     this.authService.login(this.email, this.password);
     this.email = this.password = '';
+    window.alert("login succesfull");
   }
 
   open(content) {
@@ -52,7 +53,9 @@ export class AuthComponent implements OnInit{
   }
   ngOnInit(): void {
     if (localStorage.getItem("isLogin")) {
+      
       window.location.href = "/";
+      
     }
   }
 
