@@ -1,10 +1,10 @@
 .annoIntro {
-    width: 75%;
-    line-height: 155%;
-    align-self: center;
-    margin: 2rem;
-    background-color: #707372;
-    color: #ffffff;
+  width: 75%;
+  line-height: 155%;
+  align-self: center;
+  margin: 2rem;
+  background-color: #707372;
+  color: #ffffff;
   }
 
   .heading1 {
@@ -19,7 +19,7 @@
   }
 
   .jumboTitle {
-    font-size:  calc(1rem + 3vw);
+    font-size: calc(1rem + 3vw);
     text-align: center;
     margin-top: 6rem;
     margin-left: 5rem;
@@ -30,6 +30,7 @@
     font-size: calc(1rem + 1vw);
     margin-left: 5rem;
   }
+  
   .card {
     margin:auto;
     padding: 1em;

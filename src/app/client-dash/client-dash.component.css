@@ -4,15 +4,15 @@
   flex-flow: row wrap;
 }
 
-.submitRFP{
+.submitRFP {
 	background-color: #c08c0c;
-    color: white;
-    border: none;
-    border-radius: 25px;
-    height: 40px;
-    width:320px;
-    margin-top: 10px;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+  color: white;
+  border: none;
+  border-radius: 25px;
+  height: 40px;
+  width:320px;
+  margin-top: 10px;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
 }
 
 .sideBar {
