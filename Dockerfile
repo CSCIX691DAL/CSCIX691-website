@@ -1,8 +1,9 @@
-FROM node:14.15.4-alpine
+FROM node:12-slim
 WORKDIR /usr/src/app
-COPY . .
-RUN npm i
-RUN npx next telemetry disable
-ENV NODE_ENV production
+COPY package*.json ./
+RUN npm install -g @angular/cli
+RUN npm install
+COPY . ./
 RUN npm run build
-CMD [ "npm", "start" ]
+EXPOSE 8080
+CMD [ "node", "start" ]
