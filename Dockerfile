@@ -1,5 +1,5 @@
 FROM node:14.15.4-alpine
-WORKDIR /usr/app
+WORKDIR /usr/src/app
 COPY . .
 RUN npm i
 RUN npx next telemetry disable
