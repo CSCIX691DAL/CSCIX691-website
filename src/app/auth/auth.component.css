@@ -1,96 +1,91 @@
 :host {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    background-color:#d3d3d3;
-    font-family:  'Arial Regular'
-  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #d3d3d3;
+  font-family: 'Arial Regular';
 }
 
 .outer {
-    background-color: white;
-    width: 500px;
-    border-radius: 25px;
-    
+  background-color: white;
+  width: 500px;
+  border-radius: 25px;  
 }
 
 .welcome {
-    margin-left: 50px;
-    margin-top: 3rem;
-    margin-bottom: -1rem;
-    width:400px;
-    display: inline-block;
-    font-family:  'Arial Regular';
-    font-size:22px;
+  margin-left: 50px;
+  margin-top: 3rem;
+  margin-bottom: -1rem;
+  width:400px;
+  display: inline-block;
+  font-family:  'Arial Regular';
+  font-size:22px;
 }
 
 p {
-    text-align:center; 
-    vertical-align: middle;
+  text-align:center; 
+  vertical-align: middle;
 }
+
 a:link {
-    text-decoration: none;
-    color:#c08c0c;
-    font-family:  'Arial Regular'
+  text-decoration: none;
+  color:#c08c0c;
+  font-family: 'Arial Regular'
   }
 
   a:visited {
-    text-decoration: none;
-    color:#c08c0c;
+  text-decoration: none;
+  color:#c08c0c;
   }
 
 .form {
-    width: 20rem;
-    display: inline-block;
-    margin-left:85px;
-    margin-top:40px;
-    margin-right: auto;
-    text-align: left;
-    font-family:  'Arial Regular'
-    
+  width: 20rem;
+  display: inline-block;
+  margin-left:85px;
+  margin-top:40px;
+  margin-right: auto;
+  text-align: left;
+  font-family: 'Arial Regular' 
 }
 
 .login {
-    background-color: #c08c0c;
-    border: none;
-    border-radius: 25px;
-    height: 40px;
-    width:320px;
+  background-color: #c08c0c;
+  border: none;
+  border-radius: 25px;
+  height: 40px;
+  width:320px;
 	color: white;
-    margin-top: 10px;
-    font-family:  'Arial Regular'
+  margin-top: 10px;
+  font-family: 'Arial Regular'
 }
 
 .form-control {
-    display:block;
-    border-radius: 25px;
-    border:black;
-    background-color:white;
-	
-    
+  display:block;
+  border-radius: 25px;
+  border:black;
+  background-color:white;   
 }
 
 .form-footer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 25px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 25px;
 }
 
 .form-footer a:hover {
-    color:#c08c0c;
-  }
+  color:#c08c0c;
+}
 
-  .homeback a:hover {
-    color:#c08c0c;
-  }
+.homeback a:hover {
+  color:#c08c0c;
+}
 
-  .mat-label {
-    font-family:  'Arial Regular'
-  
-  }
+.mat-label {
+  font-family: 'Arial Regular'
+}
 
-  h4, mat-button {
-    font-family:  'Arial Regular'
-  }
+h4, mat-button {
+ font-family: 'Arial Regular'
+}

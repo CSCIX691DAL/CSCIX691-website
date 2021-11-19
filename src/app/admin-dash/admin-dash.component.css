@@ -6,7 +6,7 @@
 
 .sideBar {
   min-height: 800px;
-  background-color: #000000;
+  background-color: #000;
   max-width: 350px;
   width: 15%;
   color: white;
@@ -39,6 +39,7 @@
   width: 95%;
   margin: 2rem;
 }
+
 .DueDates {
   width: 95%;
   margin: 2rem;
@@ -54,7 +55,7 @@
   margin: 2rem;
 }
 
-.column1{
+.column1 {
   width: 40%;
 }
 
