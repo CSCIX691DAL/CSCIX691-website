@@ -1,40 +1,20 @@
 runtime: python27
-threadsafe: true
 api_version: 1
-
+threadsafe: true
 handlers:
-- url: /(.+\.js)
-  static_files: app/\1
-  upload: X691Website/(.+\.js)
-
-- url: /(.+\.css)
-  static_files: app/\1
-  upload: X691Website/(.+\.css)
-
-- url: /(.+\.png)
-  static_files: app/\1
-  upload: X691Website/(.+\.png)
-
-- url: /(.+\.jpg)
-  static_files: app/\1
-  upload: X691Website/(.+\.jpg)
-
-- url: /(.+\.svg)
-  static_files: app/\1
-  upload: X691Website/(.+\.svg)
-
-- url: /favicon.ico
-  static_files: app/favicon.ico
-  upload: X691Website/favicon.ico
-
-- url: /(.+\.json)
-  static_files: app/\1
-  upload: X691Website/(.+\.json)
-
-- url: /(.+)
-  static_files: app/index.html
-  upload: X691Website/index.html
-
 - url: /
-  static_files: app/index.html
-  upload: X691Website/index.html
+  static_files: dist/X691Website/index.html
+  upload: dist/X691Website/index.html
+- url: /
+  static_dir: dist/X691Website
+
+skip_files:
+  - e2e/
+  - node_modules/
+  - src/
+  - coverage
+  - ^(.*/)?\..*$
+  - ^(.*/)?.*\.json$
+  - ^(.*/)?.*\.md$
+  - ^(.*/)?.*\.yaml$
+  - ^LICENSE
