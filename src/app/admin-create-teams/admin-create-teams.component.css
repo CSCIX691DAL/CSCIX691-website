@@ -51,8 +51,8 @@
 }
 
 .otherCard {
-  width: 95%;
-  margin: 2rem;
+  float: left;
+  width: 33.33%;
 }
 .members2 {
   margin-top: 2rem;
@@ -137,7 +137,7 @@
 mat-card {
   margin: 1em;
   cursor: pointer;
-  
+
 }
 .students{
   width: 100% !important;

@@ -1,13 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import Project from '../projects/project.model';
 import { ProjectService } from '../service/project.service';
-import { TeamService } from './../service/team.service';
+import { TeamService } from '../service/team.service';
 import { Student } from '../user/student.model';
 import { User } from '../user/user.model';
-import { UserService } from './../service/user.service';
+import { UserService } from '../service/user.service';
 import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
 import Team from '../team/team.model';
-
+import DueDate from '../dueDates/dueDates.model';
 import Questionnaire from '../student-questionnaire/student-questionnaire.model';
 import {QuestionnaireService} from '../service/questionnaire.service';
 import pdfMake from 'pdfmake/build/pdfmake';
@@ -21,7 +21,6 @@ import pdfFonts from 'pdfmake/build/vfs_fonts';
 })
 export class AdminCreateTeamsComponent implements OnInit {
   teamMembers = [];
-
 
   // tslint:disable-next-line:no-shadowed-variable
   constructor(private TeamService: TeamService,
@@ -161,6 +160,10 @@ export class AdminCreateTeamsComponent implements OnInit {
         return user.active && this.userService.isStudent(user) && (user as Student).team == teamKey;
       });
     }
+  }
+
+  dueDates() {
+    //to be implemented
   }
 }
 

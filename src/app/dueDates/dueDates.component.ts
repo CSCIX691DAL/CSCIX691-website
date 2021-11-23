@@ -8,7 +8,7 @@ import { AngularFireDatabase } from '@angular/fire/database';
     templateUrl: './dueDates.component.html',
     styleUrls: ['./dueDates.component.css']
   })
-export class DueDateComponent implements OnInit {
+export class DueDatesComponent implements OnInit {
     uid: string;
     constructor(private db: AngularFireDatabase) { }
 
@@ -25,7 +25,7 @@ makeTeam(dueDates: Object){
   this.db.database.ref('DueDates').push(dueDates);
 }
 
-dueDates(){
+public dueDates(){
 let dueDate = new dueDates();
     dueDate.title = "test";
     dueDate.date = "date";

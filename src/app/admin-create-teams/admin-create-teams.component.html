@@ -1,106 +1,123 @@
-
 <div class="adminContent">
-    <!-- Sidebar Start -->
-    <div class="wrapper sideBar">
-      <nav id="sidebar">
-        <ul class="list-unstyled components sidebarNav">
-          <li class="active">
-            <a href="admin-dashboard">Overview</a>
-          </li>
-          <li>
-            <a href="members">Members</a>
-          </li>
-          <li>
-            <a href="admin-dashboard">Projects</a>
-          </li>
-          <li>
-            <a href="admin-dashboard">RFPs</a>
-          </li>
-          <li>
-            <a href="admin-create-teams">Create Teams</a>
-          </li>
-          <li>
-            <a href="../changepw">Update Password</a>
-        </ul>
-      </nav>
-    </div>
-
-    <div class="container" >
-
-      <h1 id="topTitle">Create or Edit Project Groups</h1>
-      <div class="list-container" >
-        <div class="column-container" style="position: relative !important; top: 25px !important;
-        overflow-y: scroll;" >
-            <!--This div controls the students and questionnaire container-->
-          <mat-card class="students">
-            <h3>Students and Questionnaires</h3>
-            <div *ngFor="let student of getActiveStudentsFromDB()">
-              <app-accordian>
-                <!--This is the clickable header that displays the students-->
-                <p header>
-                  {{student.fName}} {{student.sName}}
-                </p>
-                <div content>
-                  <div class="viewLink">
-                    Team currently assigned: {{getTeamName(student)}}<br>
-                    <div *ngIf="student.active">Team Leader:{{student.active}} <br></div>
-
-                    <div *ngIf="getQuestionnaireFromKey(student.studentID).length > 0; else notComplete">
-                       <div *ngFor="let quest of getQuestionnaireFromKey(student.studentID)">
-                          Class registered to: {{quest.course}}  <br>
-                          Project choice 1: {{quest.projectChoice1}}<br>
-                          Project choice 2: {{quest.projectChoice2}}<br>
-                          Project choice 3: {{quest.projectChoice3}}
-                        <div (click)="generatePDF(quest)" class="linkDisplay"><a href="/admin-create-teams">View Full Questionnaire</a></div>
-                      </div>
-                   </div>
-                   <ng-template #notComplete>Questionnaire is not compelete.</ng-template>
-                  </div>
+  <!-- Sidebar Start -->
+  <div class="wrapper sideBar">
+    <nav id="sidebar">
+      <ul class="list-unstyled components sidebarNav">
+        <li class="active">
+          <a href="admin-dashboard">Overview</a>
+        </li>
+        <li>
+          <a href="members">Members</a>
+        </li>
+        <li>
+          <a href="admin-dashboard">Projects</a>
+        </li>
+        <li>
+          <a href="admin-dashboard">RFPs</a>
+        </li>
+        <li>
+          <a href="admin-create-teams">Create Teams</a>
+        </li>
+        <li>
+          <a href="../changepw">Update Password</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+  <!-- Sidebar End -->
+  <!-- Column 2 Start -->
+  <div class="column2">
+    <!-- Announcement Creation start -->
+    <div class="otherCard" *ngFor="let student of getActiveStudentsFromDB()">
+      <mat-card>
+        <mat-card-title> Create or Edit Project Groups </mat-card-title>
+        <mat-card-content>
+          <p> Students and Questionnaires </p>
+          <p header>
+            {{student.fName}} {{student.sName}}
+          </p>
+          <div content>
+            <div class="viewLink">
+              Team currently assigned: {{getTeamName(student)}}<br>
+              <div *ngIf="student.active">Team Leader:{{student.active}} <br></div>
+              <div *ngIf="getQuestionnaireFromKey(student.studentID).length > 0; else notComplete">
+                <div *ngFor="let quest of getQuestionnaireFromKey(student.studentID)">
+                  Class registered to: {{quest.course}}  <br>
+                  Project choice 1: {{quest.projectChoice1}}<br>
+                  Project choice 2: {{quest.projectChoice2}}<br>
+                  Project choice 3: {{quest.projectChoice3}}
+                  <div (click)="generatePDF(quest)" class="linkDisplay"><a href="/admin-create-teams">View Full Questionnaire</a></div>
                 </div>
-              </app-accordian>
+              </div>
+              <ng-template #notComplete>Questionnaire is not complete.</ng-template>
             </div>
-          </mat-card>
-      </div>
-        <div class="column-container"style="padding-left: 0px;">
-          <!--This div controls the middlec container which holds the active and available students Note that students are not active till they have changed their password  -->
-          <div class="list"
-              cdkDropList
-              #todoList="cdkDropList"
-              [cdkDropListData]="getActiveandAvailableStudentsFromDB()"
-              [cdkDropListConnectedTo]="[doneList]"
-              (cdkDropListDropped)="changeDragDropTable($event)">
-            <h2 id="tableTitle">Available Students</h2>
-            <mat-card *ngFor="let student of getActiveandAvailableStudentsFromDB()" cdkDrag>
-              <mat-card-header>
-                <mat-card-title>{{student.fName}} {{student.sName}}</mat-card-title>
-              </mat-card-header>
-            </mat-card>
           </div>
-        </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+    <!-- Announcement Creation end -->
+    <!-- Create new due date -->
+    <div class="otherCard">
+      <mat-card>
+        <mat-card-title> Create New Due Date </mat-card-title>
+        <mat-card-content>
+          <p> Fill in the boxes then click the button below to create a new  Assignment and Due date (Click on calendar icon to get date and time)</p>
+        </mat-card-content>
 
-        <div class="column-container"style="padding-left: 10px;">
-         <!--This div controls the right container that displays the members of the selected team-->
-          <div class="list"
-               cdkDropList
-               #doneList="cdkDropList"
-               [cdkDropListData]="teamMembers"
-               [cdkDropListConnectedTo]="todoList"
-               (cdkDropListDropped)="changeDragDropTable($event)">
+        <mat-card-content>
+          <form id="announcementCreation" class="form">
+            <mat-form-field class="announcement"><mat-label>Due date Title: </mat-label><input required name="title" id="duedatetitle" matInput type="string"></mat-form-field>
+            <mat-form-field class="announcement"><input type="datetime-local" required name="duedate" id="duedate" matInput type="string"></mat-form-field>
+            <button type="reset" class="btn btn-secondary" (click)="dueDates()"> Create Due Date </button>
+          </form>
+        </mat-card-content>
+      </mat-card>
+    </div>
+    <!-- end of create due date -->
+    <!-- csv upload start -->
+    <div>
+      <div class="column-container"style="padding-left: 0px;">
+        <!--This div controls the middlec container which holds the active and available students Note that students are not active till they have changed their password  -->
+        <div class="list"
+             cdkDropList
+             #todoList="cdkDropList"
+             [cdkDropListData]="getActiveandAvailableStudentsFromDB()"
+             [cdkDropListConnectedTo]="[doneList]"
+             (cdkDropListDropped)="changeDragDropTable($event)">
+          <h2 id="tableTitle">Available Students</h2>
+          <mat-card *ngFor="let student of getActiveandAvailableStudentsFromDB()" cdkDrag>
+            <mat-card-header>
+              <mat-card-title>{{student.fName}} {{student.sName}}</mat-card-title>
+            </mat-card-header>
+          </mat-card>
+        </div>
+      </div>
+    </div>
+    <!-- csv upload end -->
+    <!-- RFP Submission Form Upload start -->
+    <div>
+      <div class="column-container"style="padding-left: 10px;">
+        <!--This div controls the right container that displays the members of the selected team-->
+        <div class="list"
+             cdkDropList
+             #doneList="cdkDropList"
+             [cdkDropListData]="teamMembers"
+             [cdkDropListConnectedTo]="todoList"
+             (cdkDropListDropped)="changeDragDropTable($event)">
 
           <h2 id="tableTitle">Current Team in Selected Project</h2>
           <select id="teams" (change)='getTeamMembers($event.target.value)'>
             <option value="default">Select a team</option>
             <option *ngFor='let team of getTeams(); trackBy: dropDownFix' value={{team.key}}>{{team.name}}</option>
           </select>
-            <mat-card *ngFor="let student of teamMembers"  cdkDrag>
-              <mat-card-header>
-                <mat-card-title  value={{student.studentID}} id="name">{{student.fName}} {{student.sName}}</mat-card-title>
-                <span   *ngIf="student.teamLeader"> (Leader)</span>
-              </mat-card-header>
-
-            </mat-card>
-          </div>
-        </div>
-      </div>
+          <mat-card *ngFor="let student of teamMembers"  cdkDrag>
+            <mat-card-header>
+              <mat-card-title  value={{student.studentID}} id="name">{{student.fName}} {{student.sName}}</mat-card-title>
+              <span   *ngIf="student.teamLeader"> (Leader)</span>
+            </mat-card-header>
+          </mat-card>
     </div>
+  </div>
+</div>
+  </div>
 </div>
