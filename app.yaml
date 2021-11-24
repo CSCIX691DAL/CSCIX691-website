@@ -2,10 +2,10 @@ runtime: python27
 api_version: 1
 threadsafe: true
 handlers:
-  - url: /^$
+  - url: ./
     static_files: dist/X691Website/index.html
     upload: dist/X691Website/index.html
-  - url: /*
+  - url: ./
     static_dir: dist/X691Website
 
 skip_files:
