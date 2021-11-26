@@ -16,6 +16,7 @@ import {StudentQuestionnaireComponent} from './student-questionnaire/student-que
 import { UnsubscribeComponent } from './unsubscribe/unsubscribe.component';
 import { AdminCreateTeamsComponent } from './admin-create-teams/admin-create-teams.component';
 import { CourseLinksComponent } from './course-links/course-links.component';
+import { DiscussionBoardComponent } from './discussion-board/discussion-board.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent},
@@ -34,7 +35,8 @@ const routes: Routes = [
   { path: 'unsubscribe', component: UnsubscribeComponent},
   { path: 'members', component: MembersComponent},
   { path: 'admin-create-teams', component: AdminCreateTeamsComponent},
-  { path: 'course-links', component: CourseLinksComponent}
+  { path: 'course-links', component: CourseLinksComponent},
+  { path: 'discussion-board', component: DiscussionBoardComponent}
 ];
 
 @NgModule({
