@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit }  from '@angular/core';
 import { AngularFireDatabase } from '@angular/fire/database';
 import Project from '../projects/project.model';
 import { ProjectService } from '../service/project.service';
 import Questionnaire from './student-questionnaire.model';
-import { QuestionnaireService } from '../service/questionnaire.service';
-import { QuestionBase }from './question-base';
+import { QuestionBase }              from './question-base';
+import { QuestionControlService }    from './question-control.service';
+import { FormGroup }                 from '@angular/forms';
 @Component({
   selector: 'app-student-questionnaire',
   templateUrl: './student-questionnaire.component.html',
