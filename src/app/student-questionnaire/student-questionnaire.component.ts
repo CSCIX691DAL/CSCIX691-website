@@ -3,12 +3,27 @@ import { AngularFireDatabase } from '@angular/fire/database';
 import Project from '../projects/project.model';
 import { ProjectService } from '../service/project.service';
 import Questionnaire from './student-questionnaire.model';
+import { QuestionnaireService } from '../service/questionnaire.service';
+import { QuestionBase }from './question-base';
 @Component({
   selector: 'app-student-questionnaire',
   templateUrl: './student-questionnaire.component.html',
-  styleUrls: ['./student-questionnaire.component.css']
+  styleUrls: ['./student-questionnaire.component.css'],
+  providers: [ QuestionControlService ]
+
 })
 export class StudentQuestionnaireComponent implements OnInit {
+ 
+  @Input() questions: QuestionBase<any>[] = [];
+  form: FormGroup;
+  payLoad = '';
+ 
+ 
+ 
+ 
+ 
+ 
+ 
   leader: string = ''; 
   pastCourses: string = ''; 
   studentRep: string = ''; 
@@ -33,7 +48,14 @@ export class StudentQuestionnaireComponent implements OnInit {
   constructor(private db: AngularFireDatabase, private projectService: ProjectService) { }
 
   ngOnInit(): void {
+    this.form = this.qcs.toFormGroup(this.questions);
   }
+  onSubmit() {
+    this.payLoad = JSON.stringify(this.form.value);
+  }
+
+
+
   pastRealityCheck (event: any){
     this.pastReality = event.target.value;
   }
