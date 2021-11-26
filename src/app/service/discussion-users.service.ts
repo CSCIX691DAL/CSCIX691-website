@@ -37,7 +37,7 @@ import { UserService } from './../service/user.service';
   // Adds a new discussion
   createDiscussion(discussion: Discussion): any {
     let reference = this.discussionReference.push(discussion);
-    this.refreshDiscussion(); // update list of testimonial
+    this.refreshDiscussion(); // update list of discussion
     return reference;
   }
 
