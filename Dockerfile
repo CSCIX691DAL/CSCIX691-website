@@ -4,6 +4,6 @@ COPY package*.json ./
 RUN npm install -g @angular/cli
 RUN npm install
 COPY . ./
-RUN ng build
+RUN npm run build --prod
 EXPOSE 8080
 CMD [ "node", "server.js" ]
