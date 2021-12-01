@@ -1,0 +1,17 @@
+<div [formGroup]="form">
+    <label [attr.for]="question.key">{{question.label}}</label>
+  
+    <div [ngSwitch]="question.controlType">
+  
+      <input *ngSwitchCase="'textbox'" [formControlName]="question.key"
+              [id]="question.key" [type]="question.type">
+  
+     
+  
+    </div> 
+  
+    <div class="errorMessage" *ngIf="!isValid">{{question.label}} is required</div>
+  </div>
+  
+  
+  

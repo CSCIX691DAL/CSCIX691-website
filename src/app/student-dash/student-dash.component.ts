@@ -6,17 +6,24 @@ import { TeamService } from '../service/team.service';
 import { AngularFireDatabase } from '@angular/fire/database';
 import DueDates from '../dueDates/dueDates.model';
 import { dueDateService } from '../service/duedate.service';
-
+import { QuestionService } from '../dynamic-form/question.service';
 
 @Component({
   selector: 'app-student-dash',
   templateUrl: './student-dash.component.html',
-  styleUrls: ['./student-dash.component.css']
+  styleUrls: ['./student-dash.component.css'],
+  //----------------------------------------------------------------------------------------------------------------------
+  providers:  [QuestionService]
+  //----------------------------------------------------------------------------------------------------------------------
 })
 export class StudentDashComponent implements OnInit {
   uid: string;
-
-  constructor(private projectService: ProjectService, private duedateService: dueDateService, private teamService: TeamService) { }
+  questions: any[];
+  constructor(service: QuestionService,private projectService: ProjectService, private duedateService: dueDateService, private teamService: TeamService) { 
+    //----------------------------------------------------------------------------------------------------------------------
+    this.questions = service.getQuestions();
+    //----------------------------------------------------------------------------------------------------------------------
+  }
 
   ngOnInit(): void {
     if (!localStorage.getItem("isLogin") || !(localStorage.getItem("userType") === "student")) {
