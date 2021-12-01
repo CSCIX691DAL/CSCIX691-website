@@ -1,8 +1,12 @@
+
 steps:
-- name: 'gcr.io/cloud-builders/docker'
-  args: ['build', '-t', 'gcr.io/x691webapp/cscix691-website:$SHORT_SHA', '.']
-- name: 'gcr.io/cloud-builders/docker'
-  args: ['push', 'gcr.io/x691webapp/cscix691-website:$SHORT_SHA']
-- name: 'gcr.io/cloud-builders/gcloud'
-  args: ['run', 'deploy', 'cscix691website', '--region=northamerica-northeast2', '--platform=managed', '--image=gcr.io/x691webapp/cscix691-website:$SHORT_SHA']
+
+- name: gcr.io/cloud-builders/npm
+  args: [ install ]
+
+- name: gcr.io/cloud-builders/npm
+  args: [ run, build, --prod ]
+
+- name: gcr.io/cloud-builders/gcloud
+  args: [ app, deploy, --version=$SHORT_SHA ]
 # References: https://github.com/ricardolsmendes/gcp-cloudbuild-gae-angular/blob/master/cloudbuild.yaml
