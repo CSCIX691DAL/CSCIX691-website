@@ -5,6 +5,7 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
+    "prod": "ng build --prod",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
@@ -26,6 +27,7 @@
     "@ng-bootstrap/ng-bootstrap": "^9.0.2",
     "bootstrap": "^5.0.0-beta2",
     "bootstrap-icons": "^1.4.0",
+    "express": "^4.17.1",
     "firebase": "^8.2.6",
     "firebase-admin": "^9.4.2",
     "firebase-auth": "^0.1.2",
