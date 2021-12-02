@@ -43,8 +43,12 @@ import { MembersComponent } from './members/members.component';
 import {DragDropModule} from '@angular/cdk/drag-drop';
 import { CourseLinksComponent } from './course-links/course-links.component';
 import {DueDatesComponent} from './dueDates/dueDates.component';
+
+import { DiscussionBoardComponent } from './discussion-board/discussion-board.component';
+
 import { DynamicFormComponent }         from './dynamic-form/dynamic-form.component';
 import { DynamicFormQuestionComponent } from './dynamic-form/dynamic-form-question.component';
+
 
 
 @NgModule({
@@ -74,9 +78,13 @@ import { DynamicFormQuestionComponent } from './dynamic-form/dynamic-form-questi
         AdminCreateTeamsComponent,
         CourseLinksComponent,
         DueDatesComponent,
+
+        DiscussionBoardComponent,
+
         DynamicFormComponent,
         DynamicFormQuestionComponent
         
+
     ],
   imports: [
     BrowserModule,
