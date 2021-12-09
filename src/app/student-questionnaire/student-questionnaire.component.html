@@ -29,6 +29,9 @@
         </ul>
       </nav>
     </div>
+  <!-- Sidebar End -->
+  <app-dynamic-form [questions]="questions"></app-dynamic-form>
+  <!--  ---------------------------->
     <div class="quest">
         <form >
             <h1>Starter Questionnaire</h1>
@@ -48,7 +51,7 @@
           <br>
           <br>
           <label class="title">4. Which course are you registered in? *</label>
-          <br>          
+          <br>
           <select id="courses" >
             <option value="CSCI 2691">CSCI 2691</option>
             <option value="CSCI 3691">CSCI 3691</option>
@@ -108,7 +111,7 @@
           <label>&nbsp;  No</label><br>
           <br>
 
-          <label class="title">12. Have you taken any of the remote versions of CSCI X691 offered in Winter 2020, 
+          <label class="title">12. Have you taken any of the remote versions of CSCI X691 offered in Winter 2020,
             <br>Summer 2020, Fall 2021, Winter 2021 *</label>
           <br>
           <input (change)="pastRemoteCheck($event)" class="rad" type="radio" name="pastRemote" value="Yes">
@@ -117,7 +120,7 @@
           <label>&nbsp;  No</label><br>
           <br>
 
-          <label class="title">13. If you answered Yes to the previous question, how was your experience and 
+          <label class="title">13. If you answered Yes to the previous question, how was your experience and
             <br>what is your comment on it? Tell us if there is anything we can improve this term.</label>
           <br>
           <input class="bar" id="improve" type="text">
@@ -137,8 +140,8 @@
           <br>
           <br>
           <label>16. Explain what background/experience you have that you would<br>
-             bring to the project. For example, relevant courses you have taken, 
-             <br>programming languages you know, co-op and/or work experience 
+             bring to the project. For example, relevant courses you have taken,
+             <br>programming languages you know, co-op and/or work experience
              <br>you have, other projects you have worked on, etc. *</label>
           <br>
           <input class="bar" id="backgroundEX" type="text">
@@ -325,10 +328,10 @@
           <label>&nbsp;  Average level</label><br>
           <input (change)="pastRealityCheck($event)" class="rad" type="radio" name="pastReality" value="Use it frequently">
           <label>&nbsp;  Use it frequently</label><br>
-          <br> 
+          <br>
 
           <br>
-          <label class="title">32. From which time zone (country, city and time difference to Halifax) 
+          <label class="title">32. From which time zone (country, city and time difference to Halifax)
             <br>you are connecting to the course? *</label>
           <br>
           <input class="bar" id="timeZone" type="text">

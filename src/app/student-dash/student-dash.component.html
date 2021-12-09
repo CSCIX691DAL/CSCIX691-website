@@ -31,9 +31,7 @@
       </ul>
     </nav>
   </div>
- 
-  <app-dynamic-form [questions]="questions"></app-dynamic-form>
-   
+
   <!-- Sidebar End -->
   <!-- Column 1 Start -->
   <div class="column1">
@@ -165,7 +163,7 @@
           <div *ngFor='let feedback of getTeamFeedback()'>
             <mat-card>
               <mat-card-title class="feedbackTitle"> {{ feedback.title }} </mat-card-title>
-              <mat-card-content> 
+              <mat-card-content>
                 <p class="feedbackBody"> {{ feedback.body }} </p>
                 <p class="submitDate"> Submitted on {{ feedback.date | date:'yyyy/MM/dd h:mm:ss a' }} by {{ feedback.client }}</p>
               </mat-card-content>
