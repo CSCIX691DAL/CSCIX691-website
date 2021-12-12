@@ -28,6 +28,3 @@ Execute: npm install
 Execute: ng serve  
 
 Web browser: localhost:4200
-
-### GCP CI/CD Setup 
-URL: https://x691webapp.uc.r.appspot.com
