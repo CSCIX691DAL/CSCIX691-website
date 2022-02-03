@@ -1,0 +1,19 @@
+name: Angular CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Angular Full CI
+      uses: colbyhill21/angular-full-ci@v1.0
+      with:
+        testcommand: tests
+        mocha: false
