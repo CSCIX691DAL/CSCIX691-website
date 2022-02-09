@@ -33,61 +33,71 @@
 
   <!--  ---------------------------->
     <div class="quest">
+     
         <form >
             <h1>Starter Questionnaire</h1>
-          <label class="title">1. Family Name *</label>
+            
+
+            
+            
+              <!-- <div class="form-group" id="#names">
+                <label>Family Name: *</label>
+                <input type="text" class="form-control" id="FamilyName" >
+              <br>
+                <label>First Name: *</label>
+                <input type="text" class="form-control" id="FirstName">
+              </div> -->
+             
+             
+            
+         
           <br>
-          <input class="bar" id="familyName" type="text" required>
+          <!-- <div class="form-group">
+            <label>Which courses are you registered in?</label>
+            <br> 
+            <select id="courses" class ="form-control">
+              <option value="CSCI 2691">CSCI 2691</option>
+              <option value="CSCI 3691">CSCI 3691</option>
+              <option value="CSCI 4691">CSCI 4691</option>
+            </select>
+          </div> -->
           <br>
+        
+          
+           
+          
+        
+          <label>Project Choice #1 *</label>
           <br>
-          <label class="title">2. First Name *</label>
-          <br>
-          <input class="bar" id="firstName" type="text" required>
-          <br>
-          <br>
-          <label class="title">3. Your banner number starting with a B *</label>
-          <br>
-          <input class="bar" id="b00" type="text">
-          <br>
-          <br>
-          <label class="title">4. Which course are you registered in? *</label>
-          <br>
-          <select id="courses" >
-            <option value="CSCI 2691">CSCI 2691</option>
-            <option value="CSCI 3691">CSCI 3691</option>
-            <option value="CSCI 4691">CSCI 4691</option>
-          </select>
-          <br>
-          <br>
-          <label class="title">5. Project Choice #1 *</label>
-          <br>
-          <select id="projectChoice1" >
+          <select id="projectChoice1" class="form-control">
             <option *ngFor='let Projects of getProjects()' value={{Projects.title}}>{{Projects.title}}</option>
           </select>
           <br>
           <br>
-          <label class="title">6. Project Choice #2 *</label>
+          <label>Project Choice #2 *</label>
           <br>
-          <select id="projectChoice2" >
+          <select id="projectChoice2" class="form-control" >
+            <option *ngFor='let Projects of getProjects()' value={{Projects.title}}>{{Projects.title}}</option>
+          </select>
+
+          <br>
+          <br>
+          <label>Project Choice #3 *</label>
+          <br>
+          <select id="projectChoice2" class="form-control" >
             <option *ngFor='let Projects of getProjects()' value={{Projects.title}}>{{Projects.title}}</option>
           </select>
           <br>
           <br>
-          <label class="title">7. Project Choice #3 *</label>
+          <label> Would you like to be a leader *</label>
           <br>
-          <select id="projectChoice3" >
-            <option *ngFor='let Projects of getProjects()' value={{Projects.title}}>{{Projects.title}}</option>
-          </select>
-          <br>
-          <br>
-          <label class="title">8. Would you like to be a leader *</label>
-          <br>
+          
           <input (change)="leaderCheck($event)" class="rad" type="radio" name="leader" value="Yes" checked>
           <label>&nbsp; Yes</label><br>
           <input (change)="leaderCheck($event)" class="rad" type="radio" name="leader" value="No" checked>
           <label>&nbsp; No</label><br>
           <br>
-          <label class="title">9. Have you taken any of CSCI 2691, 3691, 4691 in Summer 2020, or Fall 2020? *</label>
+          <label>Have you taken any of CSCI 2691, 3691, 4691 in Summer 2020, or Fall 2020? *</label>
           <br>
           <input (change)="pastCoursesCheck($event)" class="rad" type="radio" name="pastCourses" value="Yes">
           <label>&nbsp; Yes</label><br>
@@ -95,7 +105,7 @@
           <label>&nbsp;  No</label><br>
           <br>
 
-          <label class="title">10. Would you like to be a student representative? *</label>
+          <label>Would you like to be a student representative? *</label>
           <br>
           <input (change)="studentRepCheck($event)" class="rad" type="radio" name="studentRep" value="Yes">
           <label>&nbsp; Yes</label><br>
@@ -103,7 +113,7 @@
           <label>&nbsp;  No</label><br>
           <br>
 
-          <label class="title">11. Are you comfortable accepting the IP and NDA policies of the client? *</label>
+          <label>Are you comfortable accepting the IP and NDA policies of the client? *</label>
           <br>
           <input (change)="ipNDACheck($event)" class="rad" type="radio" name="ipNDA" value="Yes">
           <label>&nbsp;  Yes</label><br>
@@ -111,7 +121,7 @@
           <label>&nbsp;  No</label><br>
           <br>
 
-          <label class="title">12. Have you taken any of the remote versions of CSCI X691 offered in Winter 2020,
+          <label> Have you taken any of the remote versions of CSCI X691 offered in Winter 2020,
             <br>Summer 2020, Fall 2021, Winter 2021 *</label>
           <br>
           <input (change)="pastRemoteCheck($event)" class="rad" type="radio" name="pastRemote" value="Yes">
@@ -120,35 +130,35 @@
           <label>&nbsp;  No</label><br>
           <br>
 
-          <label class="title">13. If you answered Yes to the previous question, how was your experience and
+          <label> If you answered Yes to the previous question, how was your experience and
             <br>what is your comment on it? Tell us if there is anything we can improve this term.</label>
           <br>
-          <input class="bar" id="improve" type="text">
+          <input class="bar" id="improve" type="text" class="form-control">
           <br>
           <br>
-          <label class="title">14. Do you need any accommodation? see <br>
-            https://www.dal.ca/campus_life/academic-support/<br>accessibility/accommodations-.html</label>
+          <label>Do you need any accommodation? see <br>
+            https://www.dal.ca/campus_life/academic-support/accessibility/accommodations-.html</label>
           <br>
           <input (change)="accCheck($event)" class="rad" type="radio" name="acc" value="Yes">
-          <label >&nbsp; Yes</label><br>
+          <label> &nbsp; Yes</label><br>
           <input (change)="accCheck($event)" class="rad" type="radio" name="acc" value="No">
           <label>&nbsp; No</label><br>
           <br>
-          <label class="title">15. Operating systems in the laptops you use *</label>
+          <label> Operating systems in the laptops you use *</label>
           <br>
-          <input class="bar" id="operatingSystem" type="text">
+          <input class="bar" id="operatingSystem" type="text" class="form-control">
           <br>
           <br>
-          <label>16. Explain what background/experience you have that you would<br>
+          <label class="form-group"> Explain what background/experience you have that you would<br>
              bring to the project. For example, relevant courses you have taken,
              <br>programming languages you know, co-op and/or work experience
              <br>you have, other projects you have worked on, etc. *</label>
           <br>
-          <input class="bar" id="backgroundEX" type="text">
+          <input class="bar" id="backgroundEX" type="text"  class="form-control">
           <br>
           <br>
 
-          <label class="title">17. Do you have any experience in Agile Software development? *</label>
+          <label> Do you have any experience in Agile Software development? *</label>
           <br>
           <input (change)="pastAgileSoftCheck($event)" class="rad" type="radio" name="pastAgileSoft" value="I do not know what is Agile">
           <label>&nbsp; I do not know what is Agile</label><br>
@@ -162,7 +172,7 @@
           <label >&nbsp;  I call myself Agile Practitioner</label><br>
           <br>
 
-          <label class="title">18. How much are you familiar with GitLab? *</label>
+          <label>How much are you familiar with GitLab? *</label>
           <br>
           <input (change)="pastGitEXCheck($event)" class="rad" type="radio" name="pastGitEX" value="Not at all">
           <label>&nbsp;  Not at all </label><br>
@@ -174,7 +184,7 @@
           <label>&nbsp;  Use it frequently</label><br>
           <br>
 
-          <label class="title">19. How much are you familiar with Agile/Scrum? *</label>
+          <label> How much are you familiar with Agile/Scrum? *</label>
           <br>
           <input (change)="pastAgileScrumCheck($event)" class="rad" type="radio" name="pastAgileScrum" value="Not at all">
           <label>&nbsp;  Not at all </label><br>
@@ -186,7 +196,7 @@
           <label>&nbsp;  Use it frequently</label><br>
           <br>
 
-          <label class="title">20. How much do you familiar with AngularJS/Angular? *</label>
+          <label> How much do you familiar with AngularJS/Angular? *</label>
           <br>
           <input (change)="pastAngularCheck($event)" class="rad" type="radio" name="pastAngular" value="Not at all">
           <label>&nbsp;  Not at all </label><br>
@@ -198,7 +208,7 @@
           <label>&nbsp;  Use it frequently</label><br>
           <br>
 
-          <label class="title">21. How much are you familiar with ReactJS? *</label>
+          <label> How much are you familiar with ReactJS? *</label>
           <br>
           <input (change)="pastReactCheck($event)" class="rad" type="radio" name="pastReact" value="Not at all">
           <label>&nbsp;  Not at all </label><br>
@@ -210,7 +220,7 @@
           <label>&nbsp;  Use it frequently</label><br>
           <br>
 
-          <label class="title">22. How much are you familiar with NextJS? *</label>
+          <label> How much are you familiar with NextJS? *</label>
           <br>
           <input (change)="pastNextCheck($event)" class="rad" type="radio" name="pastNext" value="Not at all">
           <label>&nbsp;  Not at all </label><br>
@@ -222,7 +232,7 @@
           <label>&nbsp;  Use it frequently</label><br>
           <br>
 
-          <label class="title">23. How much are you familiar with Flutter? *</label>
+          <label>How much are you familiar with Flutter? *</label>
           <br>
           <input (change)="pastFlutterCheck($event)" class="rad" type="radio" name="pastFlutter" value="Not at all">
           <label>&nbsp;  Not at all </label><br>
@@ -234,7 +244,7 @@
           <label>&nbsp;  Use it frequently</label><br>
           <br>
 
-          <label class="title">24. How much are you familiar with Firebase? *</label>
+          <label> How much are you familiar with Firebase? *</label>
           <br>
           <input (change)="pastFirebaseCheck($event)" class="rad" type="radio" name="pastFirebase" value="Not at all">
           <label>&nbsp;  Not at all </label><br>
@@ -246,7 +256,7 @@
           <label>&nbsp;  Use it frequently</label><br>
           <br>
 
-          <label class="title">25. How much are you familiar with Azure Board? *</label>
+          <label>How much are you familiar with Azure Board? *</label>
           <br>
           <input (change)="pastAzureCheck($event)" class="rad" type="radio" name="pastAzure" value="Not at all">
           <label>&nbsp;  Not at all </label><br>
@@ -258,7 +268,7 @@
           <label>&nbsp;  Use it frequently</label><br>
           <br>
 
-          <label class="title">26. How much are you familiar with AEM? *</label>
+          <label>How much are you familiar with AEM? *</label>
           <br>
           <input (change)="pastAEMCheck($event)" class="rad" type="radio" name="pastAEM" value="Not at all">
           <label>&nbsp;  Not at all </label><br>
@@ -270,7 +280,7 @@
           <label>&nbsp;  Use it frequently</label><br>
           <br>
 
-          <label class="title">27. How much are you familiar with HTML,CSS? *</label>
+          <label>How much are you familiar with HTML,CSS? *</label>
           <br>
           <input (change)="pastHTMLCSSCheck($event)" class="rad" type="radio" name="pastHTMLCSS" value="Not at all">
           <label>&nbsp;  Not at all </label><br>
@@ -282,7 +292,7 @@
           <label>&nbsp;  Use it frequently</label><br>
           <br>
 
-          <label class="title">28. How much are you familiar with PHP? *</label>
+          <label>How much are you familiar with PHP? *</label>
           <br>
           <input (change)="pastPHPCheck($event)" class="rad" type="radio" name="pastPHP" value="Not at all">
           <label>&nbsp;  Not at all </label><br>
@@ -294,7 +304,7 @@
           <label>&nbsp;  Use it frequently</label><br>
           <br>
 
-          <label class="title">29. How much are you familiar with wireframing? *</label>
+          <label> How much are you familiar with wireframing? *</label>
           <br>
           <input (change)="pastWireCheck($event)" class="rad" type="radio" name="pastWire" value="Not at all">
           <label>&nbsp;  Not at all </label><br>
@@ -306,7 +316,7 @@
           <label>&nbsp;  Use it frequently</label><br>
           <br>
 
-          <label class="title">30. How much are you familiar with digital animation? *</label>
+          <label> How much are you familiar with digital animation? *</label>
           <br>
           <input (change)="pastAnimationCheck($event)" class="rad" type="radio" name="pastAnimation" value="Not at all">
           <label>&nbsp;  Not at all </label><br>
@@ -318,7 +328,7 @@
           <label>&nbsp;  Use it frequently</label><br>
           <br>
 
-          <label class="title">31. How much are you familiar with augmented reality? *</label>
+          <label> How much are you familiar with augmented reality? *</label>
           <br>
           <input (change)="pastRealityCheck($event)" class="rad" type="radio" name="pastReality" value="Not at all">
           <label>&nbsp;  Not at all </label><br>
@@ -331,11 +341,11 @@
           <br>
 
           <br>
-          <label class="title">32. From which time zone (country, city and time difference to Halifax)
+          <label> From which time zone (country, city and time difference to Halifax)
             <br>you are connecting to the course? *</label>
           <br>
-          <input class="bar" id="timeZone" type="text">
+          <input class="bar" id="timeZone" type="text" class="form-control">
           <br>
-          <button (click)="addQuest()" type="submit" value="Submit"> Submit </button>
+          <button (click)="addQuest()" type="submit" class="btn btn-primary">Submit Form</button>
         </form>
       </div>

@@ -39,6 +39,8 @@
     font-weight: bold;
     padding-left: 40px; 
     padding-right: 0px;   
+    font-style: Roboto,Helvetica Neue,sans-serif;
+  
   }
   .quest {
     font-weight: bold;
@@ -59,12 +61,14 @@
   }
   select{
     font-style: bold;
-    height: 50px;
-    width: 600px;
+    height: 40px;
+    width: 700px;
   }
   h1{
     font-weight: bold;
     padding-left: 160px; 
+    font-style: Roboto,Helvetica Neue,sans-serif;
+
   }
   label{
     font-variant: bold; 
@@ -72,7 +76,7 @@
     font-weight: lighter;
   }
   button {
-    background-color:gray;
+    background-color:rgb(202, 160, 19);
     color: black;
     height: 50px;
     width: 600px;
@@ -80,3 +84,24 @@
     margin: 9px 0;
     border: hidden;
   }
+
+  
+ #label{
+   font-style: italic;
+ }
+
+  
+  .quest{
+    border: 0.5px solid black;
+    box-shadow: 0 0 10px 5px black;
+    padding: 10px;
+
+  }
+
+
+  body{
+    background-image: url("dal.png");
+
+  }
+
+  
