@@ -2,6 +2,15 @@
     min-height: 800px;
     display: flex;
     flex-flow: row wrap;
+    background-image: url("dal.png");
+ 
+    /* background-size: 300px 100px; */
+    background-size: cover;
+    background-repeat:round;
+
+
+  }
+  .background{
   }
   
   .sideBar {
@@ -40,6 +49,7 @@
     padding-left: 40px; 
     padding-right: 0px;   
     font-style: Roboto,Helvetica Neue,sans-serif;
+    background-color: white;
   
   }
   .quest {
@@ -94,8 +104,7 @@
   .quest{
     border: 0.5px solid black;
     box-shadow: 0 0 10px 5px black;
-    padding: 10px;
-
+   
   }
 
 
