@@ -8,12 +8,11 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
-
     steps:
-    - name: Angular Full CI
-      uses: colbyhill21/angular-full-ci@v1.0
+    - uses: actions/checkout@v2
+    - uses: actions/setup-node@v2
       with:
-        testcommand: tests
-        mocha: false
+        node-version: 12.x
+    - run: npm ci
+    - run: ng test -- --no-watch --no-progress --browsers=ChromeHeadlessCI
