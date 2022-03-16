@@ -1,5 +1,6 @@
 <!--
 Picture retreived from https://www.dal.ca/faculty/computerscience.html
+
 -->
 <div class="homeLayoutDiv lead">
   <div
@@ -21,17 +22,17 @@ Picture retreived from https://www.dal.ca/faculty/computerscience.html
           <h4 class="pb-1 mb-1 jumboSubTitle">Dalhousie Community Outreach</h4>
         </div>
       </div>
-      <!-- video adding here -->
-  <div>
-    <h5 class="pb-1 mb-1 jumboSubTitle" style="color: white;">Student showcase</h5>
-    <video width="800" height="450" controls Autoplay=autoplay>
-      <source src="/assets/media/Demo.mov"
-      type="video/mp4"/>
-      Your browser does not support the video tag.
-    </video>
-  </div>
-  <!-- video adding end here -->
     </div>
+  </div>
+  <div class="cases">
+    <ngb-accordion #acc="ngbAccordion" activeIds="ngb-panel-2" class="align-items-center">
+        <ngb-panel title="CSCI X691 Website">
+          <ng-template ngbPanelContent>
+            <img class="" style="width: 50%;" src="./assets/images/home.png">
+            <img class="" style="width: 50%;" src="./assets/images/dashboard.png">
+          </ng-template>
+        </ngb-panel>
+      </ngb-accordion>
   </div>
   <div class="projIntro card m-auto mt-3 mb-3">
     <div class="card-body">
