@@ -16,6 +16,12 @@
   padding-top: 0;
 }
 
+.rfpForm {
+  width: 90%;
+  margin: 5em auto 5em auto;  
+  background-color: #fafafad3;
+}
+
 .submitRFP{
   background-color: #c08c0c;
   color: white;
@@ -34,7 +40,7 @@
 }
 
 .form {
-  width: 95%;
+  width: 95%;               /*for the inner content of the form*/
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
@@ -43,7 +49,9 @@
 }
 
 .rfpInner {                                 /* Submit a request for project heading*/
-  max-width: 1300px;
+
+  max-width: 1500px;          /* for the inner form spacing*/
+
   margin: 0rem auto 0rem auto;        /*for the space left at the very top even on top of the logo*/
   display: flex;
   flex-flow: column;
@@ -63,14 +71,8 @@
   padding: 1rem;
 }
 
-.rfpForm {
-  width: 90%;
-  margin: 5em auto 5em auto;
-  background-color: #fafafad3;
-}
-
 .shortInput {
-  width: 35%;
+  width: 45%;                     /*for the short input form fields previously at 35%*/
   min-width: 10rem;
   margin: auto 1rem auto 1rem;
 }
@@ -82,14 +84,14 @@
 }
 
 .longInput {
-  width: 73%;
+  width: 92.5%;           /*for the long input form fields previously at 73%*/
   min-width: 10rem;
   margin: auto 1rem auto 1rem;
 }
 
 .Textarea {
-  width: 75%;
-  min-width: 10rem;
+  /* width: 75%;
+  min-width: 10rem; */
   margin: auto 1rem auto 1rem;
 }
 
@@ -104,7 +106,7 @@
   display: flex;
   flex-flow: column;
   /* text-align: right; */
-  width: 75%;
+  width: 94%;                       /* previously at 75% */
   margin: 1rem auto 1rem auto;
 }
 

@@ -14,4 +14,5 @@ export default class Project {
     term: string;
     title: string;
     type: string;
+  teamLeader: string;
   }

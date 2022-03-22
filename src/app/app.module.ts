@@ -48,7 +48,7 @@ import { DiscussionBoardComponent } from './discussion-board/discussion-board.co
 
 import { DynamicFormComponent }         from './dynamic-form/dynamic-form.component';
 import { DynamicFormQuestionComponent } from './dynamic-form/dynamic-form-question.component';
-
+import {MatExpansionModule} from '@angular/material/expansion';
 
 
 @NgModule({
@@ -82,8 +82,7 @@ import { DynamicFormQuestionComponent } from './dynamic-form/dynamic-form-questi
         DiscussionBoardComponent,
 
         DynamicFormComponent,
-        DynamicFormQuestionComponent
-        
+        DynamicFormQuestionComponent,
 
     ],
   imports: [
@@ -92,7 +91,7 @@ import { DynamicFormQuestionComponent } from './dynamic-form/dynamic-form-questi
     AppRoutingModule,
     RouterModule,
     BrowserAnimationsModule,
-    AngularFireModule.initializeApp(environment.firebaseConfig, 'X691app'),
+    AngularFireModule.initializeApp(environment.firebaseConfig, 'x691website'),
     AngularFireAuthModule,
     MatInputModule,
     MatCardModule,
@@ -106,7 +105,7 @@ import { DynamicFormQuestionComponent } from './dynamic-form/dynamic-form-questi
     NgxCsvParserModule,
     HttpClientModule,
     DragDropModule,
-    
+    MatExpansionModule,
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]

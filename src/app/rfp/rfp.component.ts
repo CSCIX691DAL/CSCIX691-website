@@ -4,13 +4,19 @@ import pdfMake from 'pdfmake/build/pdfmake';
 import pdfFonts from 'pdfmake/build/vfs_fonts';
 import RFP from './rfp.model';
 import { ActivatedRoute } from '@angular/router';
+import {MatExpansionModule} from '@angular/material/expansion';
+
+
 
 @Component({
   selector: 'app-rfp',
   templateUrl: './rfp.component.html',
   styleUrls: ['./rfp.component.css'],
 })
+
+
 export class RfpComponent implements OnInit {
+
   @ViewChild('form') form;
   rfp: RFP;
   id: string | undefined;
@@ -95,3 +101,4 @@ export class RfpComponent implements OnInit {
     }
   }
 }
+

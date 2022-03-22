@@ -7,6 +7,36 @@
       <h3 class="rfpH3">Complete an RFP to apply to have your application built by one of our student teams! Get a great project and help
       students gain real life experience simultaneously.  Please fill out all the fields below and provide as much detail as possible
       to give us a great idea of the scope of the desired project.</h3>
+      <h4><b>Estimated time to complete: 5 - 7 minutes</b></h4>
+
+      <!-- <mat-accordion>
+        <mat-expansion-panel hideToggle>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              This is the expansion title
+            </mat-panel-title>
+            <mat-panel-description>
+              This is a summary of the content
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <p>This is the primary content of the panel.</p>
+        </mat-expansion-panel>
+        <mat-expansion-panel (opened)="panelOpenState = true"
+                             (closed)="panelOpenState = false">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Self aware panel
+            </mat-panel-title>
+            <mat-panel-description>
+              Currently I am {{panelOpenState ? 'open' : 'closed'}}
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <p>I'm visible because I am open</p>
+        </mat-expansion-panel>
+      </mat-accordion> -->
+            
+
+      
         <mat-card-content>
           <form id="submitRFP" class="form" #form="ngForm">
             <!-- Required questions -->
@@ -24,16 +54,16 @@
                 <!-- Required questions -->
                 <div *ngIf="question['required'] == 'true'; else optionalTextQuestion">
                   <mat-label class="labels">{{ question['question'] }} </mat-label>
-                  <mat-form-field class="Textarea" appearance="outline" [style.width.px]=780><textarea required [(ngModel)]="rfp.supplementaryAnswers[i]" name="{{i}}" matInput type="string"></textarea></mat-form-field>
-                </div>
+                  <mat-form-field class="Textarea" appearance="outline" [style.width.%]=98><textarea required [(ngModel)]="rfp.supplementaryAnswers[i]" name="{{i}}" matInput type="string"></textarea></mat-form-field>
+                </div>                                                                <!--780 was the previous value -->
 
                 <!-- <hr> -->
                 
                 <!-- Optional questions -->
                 <ng-template #optionalTextQuestion>
                   <mat-label class="labels">{{ question['question'] }} </mat-label>
-                  <mat-form-field class="Textarea" appearance="outline" [style.width.px]=780><textarea [(ngModel)]="rfp.supplementaryAnswers[i]" name="{{i}}" matInput type="string"></textarea></mat-form-field>
-                </ng-template>
+                  <mat-form-field class="Textarea" appearance="outline" [style.width.%]=98><textarea [(ngModel)]="rfp.supplementaryAnswers[i]" name="{{i}}" matInput type="string"></textarea></mat-form-field>
+                </ng-template>                                                       <!--[style.width.px] = 780 was the previous value -->
               </div>
               <!-- Multiple choice questions -->
               <div *ngIf="question['type'] == 'select'">

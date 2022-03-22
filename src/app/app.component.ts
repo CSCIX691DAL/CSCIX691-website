@@ -10,9 +10,25 @@ import {Router} from '@angular/router';
   styleUrls: ['./app.component.css'],
  
 })
+
+
 export class AppComponent {
   title = 'X691Website';
   questions: any[];
+
+  step = 0;
+
+  setStep(index: number) {
+    this.step = index;
+  }
+
+  nextStep() {
+    this.step++;
+  }
+
+  prevStep() {
+    this.step--;
+  }
 
   constructor(public authService: AuthService, public fireAuth: AngularFireAuth, private router: Router) {
     
