@@ -92,7 +92,7 @@
 
   .discussions {
     display: flex;
-    width: 70%;
+    width: 90%;
     flex-direction: column;
     justify-content: center;
     align-self: center;
@@ -111,4 +111,55 @@ button {
     margin: 8px 0;
     box-sizing: border-box;
     border: 3px solid #555;
+}
+
+.discussion{
+  margin:auto;
+  padding: 100px;
+  margin-left: 150px;
+}
+
+#exampleFormControlTextarea1{
+  width: 50%;
+  margin:auto;
+}
+
+#exampleFormControlTextarea2{
+  width: 70%;
+  height: 200px;
+  margin:auto;
+}
+
+label{
+  font-size: larger;
+  padding-left: 700px;
+  padding-top: 30px;
+}
+.mb-3{
+  margin: 0 auto;
+}
+
+
+.container {
+  position: relative;
+  padding-left: 460px;
+ 
+}
+
+button{
+  width: 300px;
+  height: 100px;
+  background-color: #c08c0c;
+  margin-bottom: 100px;
+  color:white;
+  border:none;
+}
+
+.center {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
 }
