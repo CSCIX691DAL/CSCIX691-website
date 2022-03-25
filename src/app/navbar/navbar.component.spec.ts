@@ -39,4 +39,7 @@ describe('NavbarComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+  it('should be able to be authorized', () => {
+    expect(component.authService).toBeTruthy();
+  });
 });

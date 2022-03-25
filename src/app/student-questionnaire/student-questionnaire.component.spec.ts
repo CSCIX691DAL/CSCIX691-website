@@ -40,4 +40,23 @@ describe('StudentQuestionnaireComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+  it('should create questionnaire elements', () => {
+    expect(component.pastAEMCheck).toBeTruthy();
+    expect(component.pastAgileScrumCheck).toBeTruthy();
+    expect(component.pastAgileSoftCheck).toBeTruthy();
+    expect(component.pastAngularCheck).toBeTruthy();
+    expect(component.pastAnimationCheck).toBeTruthy();
+    expect(component.pastAzureCheck).toBeTruthy();
+    expect(component.pastCoursesCheck).toBeTruthy();
+    expect(component.pastFirebaseCheck).toBeTruthy();
+    expect(component.pastFlutterCheck).toBeTruthy();
+    expect(component.pastGitEXCheck).toBeTruthy();
+    expect(component.pastHTMLCSSCheck).toBeTruthy();
+    expect(component.pastNextCheck).toBeTruthy();
+    expect(component.pastPHPCheck).toBeTruthy();
+    expect(component.pastReactCheck).toBeTruthy();
+    expect(component.pastRealityCheck).toBeTruthy();
+    expect(component.pastRemoteCheck).toBeTruthy();
+    expect(component.pastWireCheck).toBeTruthy();
+  });
 });

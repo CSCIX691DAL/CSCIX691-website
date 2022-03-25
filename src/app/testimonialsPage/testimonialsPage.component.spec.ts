@@ -39,4 +39,8 @@ describe('TestimonialsPageComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+  it("should get testimonials and star ratings", () => {
+    expect(component.getTestimonialsFromDatabase).toBeTruthy();
+    expect(component.getStars).toBeTruthy();
+  });
 });

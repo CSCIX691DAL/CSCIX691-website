@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+/* import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ClientDashComponent } from './client-dash.component';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
@@ -52,3 +52,4 @@ describe('ClientDashComponent', () => {
     //test
   });
 });
+ */

@@ -41,4 +41,7 @@ describe('ClientDashComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+  it("accoridan should start closed", () => {
+    expect(component.collapsed).toBeTruthy();
+  })
 });

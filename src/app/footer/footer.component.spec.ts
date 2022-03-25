@@ -39,4 +39,10 @@ describe('FooterComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+  it('should get contact', () => {
+    expect(component.getContact).toBeTruthy();
+  });
+  it('should be able to open modals', () => {
+    expect(component.open).toBeTruthy();
+  });
 });

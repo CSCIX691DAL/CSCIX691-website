@@ -80,8 +80,6 @@ import { DynamicFormQuestionComponent } from './dynamic-form/dynamic-form-questi
 
         DynamicFormComponent,
         DynamicFormQuestionComponent
-        
-
     ],
   imports: [
     BrowserModule,
