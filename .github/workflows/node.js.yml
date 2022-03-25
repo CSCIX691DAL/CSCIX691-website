@@ -15,4 +15,4 @@ jobs:
       with:
         node-version: 12.x
     - run: npm ci
-    - run: ng test -- --no-watch --no-progress --browsers=ChromeHeadlessCI
+    - run: ng test --no-watch --no-progress
