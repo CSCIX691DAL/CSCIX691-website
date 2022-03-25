@@ -15,5 +15,5 @@ jobs:
       with:
         node-version: 12.x
     - run: npm ci
-    - run: ng --v
+    - run: npm ci @angular/cli
     - run: ng test -- --watch-false --browsers=ChromeHeadless
