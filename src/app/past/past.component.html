@@ -1,74 +1,176 @@
+
+<input matInput type="text" #box (keyup)="getValue(box.value)" placeholder="Search for projects" name="searchVal"
+style="width: 50%; display: block;
+margin-right: auto;
+margin-left: auto;
+padding: 10px;
+padding-left: 30px;
+border-radius: 40px;
+border: 3px solid #707372; margin-top: 20px; margin-bottom: 20px; font-size: 18px;">
+
+<div id="outerSearch">
+<div id="innerSearch">
+
+<div id="printVal0"></div>
+<div id="printVal4"></div>
+<div id="printVal"></div>
+<div id="printVal2"></div>
+<div id="printVal3"></div>
+
+</div>
+</div>
+
+
 <div class="projLayoutDiv">
-  <br />
-  <button class="term-header pt-3 pb-3" (click)="showDiv.summer = !showDiv.summer">
-    Summer 2020</button
-  ><br />
- 
-  <div *ngIf="showDiv.summer" class="summer-cards">
-    <div *ngFor="let Proj of getPastProjects(); index as i">
-      <div *ngIf="Proj.term === 'Summer 2020'" class="card mt-3">
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title" id="card-title">{{ Proj.title }}</h5>
-            <p class="card-text-short" id="card-text">
-              {{ Proj.descShort }}
-            </p>
-            <div [hidden]="!hide[i]" id="card-text">
-              <h4>{{ Proj.descLong }}</h4>
-            </div>
-            <button class="btn" (click)="hide[i] = !hide[i]">
-              Read More...
-            </button>
-            
-          </div>
-          <div class="card-footer">
-            <div class="leader-text" id="leader-text">
-              <small>{{ "Team leader: " + Proj.teamLeader }}</small>
-            </div>
-            <div class="client-text" id="client-text">
-              <small>{{ "Status: " + Proj.status }}</small>
-            </div>
-            <div class="status-text" id="status-text">
-              <small>{{ "Client: " + Proj.client }}</small>
-            </div>
-          </div>
+<br />
+<button class="term-header pt-3 pb-3" (click)="showDiv.summer = !showDiv.summer">
+Summer 2021</button
+><br />
+
+<div *ngIf="showDiv.summer" class="summer-cards">
+<div *ngFor="let Proj of getPastProjects(); index as i">
+  <div *ngIf="Proj.term === 'Summer 2021'" class="card mt-3">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title" id="card-title">{{ Proj.title }}</h5>
+        <p class="card-text-short" id="card-text">
+          {{ Proj.descShort }}
+        </p>
+        <div [hidden]="!hide[i]" id="card-text">
+          <h4>{{ Proj.descLong }}</h4>
+        </div>
+        <button class="btn" (click)="hide[i] = !hide[i]">
+          Read More...
+        </button>
+        
+      </div>
+      <div class="card-footer">
+        <div class="leader-text" id="leader-text">
+          <small>{{ "Team leader: " + Proj.teamLeader }}</small>
+        </div>
+        <div class="client-text" id="client-text">
+          <small>{{ "Status: " + Proj.status }}</small>
+        </div>
+        <div class="status-text" id="status-text">
+          <small>{{ "Client: " + Proj.client }}</small>
         </div>
       </div>
     </div>
   </div>
+</div>
+</div>
 
-  <br />
-  <button class="term-header pt-3 pb-3" (click)="showDiv.fall = !showDiv.fall">
-    Fall 2020</button
-  ><br />
+<br />
+<button class="term-header pt-3 pb-3" (click)="showDiv.fall = !showDiv.fall">
+Fall 2021</button
+><br />
 
-  <div *ngIf="showDiv.fall" class="summer-cards">
-    <div *ngFor="let Proj of getPastProjects(); index as i">
-      <div *ngIf="Proj.term === 'Fall 2020'" class="card mt-3">
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title">{{ Proj.title }}</h5>
-            <p class="card-text-short">{{ Proj.descShort }}</p>
-            <div [hidden]="!hide[i]">
-              <h4>{{ Proj.descLong }}</h4>
-            </div>
-            <button class="btn" (click)="hide[i] = !hide[i]">
-              Read More...
-            </button>
-          </div>
-          <div class="card-footer">
-            <div class="leader-text">
-              <small>{{ "Team leader: " + Proj.teamLeader }}</small>
-            </div>
-            <div class="client-text" id="client-text">
-              <small>{{ "Status: " + Proj.status }}</small>
-            </div>
-            <div class="status-text" id="status-text">
-              <small>{{ "Client: " + Proj.client }}</small>
-            </div>
-          </div>
+<div *ngIf="showDiv.fall" class="summer-cards">
+<div *ngFor="let Proj of getPastProjects(); index as i">
+  <div *ngIf="Proj.term === 'Fall 2021'" class="card mt-3">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">{{ Proj.title }}</h5>
+        <p class="card-text-short">{{ Proj.descShort }}</p>
+        <div [hidden]="!hide[i]">
+          <h4>{{ Proj.descLong }}</h4>
+        </div>
+        <button class="btn" (click)="hide[i] = !hide[i]">
+          Read More...
+        </button>
+      </div>
+      <div class="card-footer">
+        <div class="leader-text">
+          <small>{{ "Team leader: " + Proj.teamLeader }}</small>
+        </div>
+        <div class="client-text" id="client-text">
+          <small>{{ "Status: " + Proj.status }}</small>
+        </div>
+        <div class="status-text" id="status-text">
+          <small>{{ "Client: " + Proj.client }}</small>
         </div>
       </div>
     </div>
   </div>
+</div>
+</div>
+<br>
+<!--                                      change these values -->
+<button class="term-header pt-3 pb-3" (click)="showDiv.winter1 = !showDiv.winter1">
+Winter 2021</button
+><br />
+
+<div *ngIf="showDiv.winter1" class="summer-cards">
+<div *ngFor="let Proj of getPastProjects(); index as i">
+  <div *ngIf="Proj.term === 'Winter 2021'" class="card mt-3">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title" id="card-title">{{ Proj.title }}</h5>
+        <p class="card-text-short" id="card-text">
+          {{ Proj.descShort }}
+        </p>
+        <div [hidden]="!hide[i]" id="card-text">
+          <h4>{{ Proj.descLong }}</h4>
+        </div>
+        <button class="btn" (click)="hide[i] = !hide[i]">
+          Read More...
+        </button>
+        
+      </div>
+      <div class="card-footer">
+        <div class="leader-text" id="leader-text">
+          <small>{{ "Team leader: " + Proj.teamLeader }}</small>
+        </div>
+        <div class="client-text" id="client-text">
+          <small>{{ "Status: " + Proj.status }}</small>
+        </div>
+        <div class="status-text" id="status-text">
+          <small>{{ "Client: " + Proj.client }}</small>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<br>
+<button class="term-header pt-3 pb-3" (click)="showDiv.winter2 = !showDiv.winter2">
+Winter 2022</button
+><br />
+
+<div *ngIf="showDiv.winter2" class="summer-cards">
+<div *ngFor="let Proj of getPastProjects(); index as i">
+  <div *ngIf="Proj.term === 'Winter 2022'" class="card mt-3">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title" id="card-title">{{ Proj.title }}</h5>
+        <p class="card-text-short" id="card-text">
+          {{ Proj.descShort }}
+        </p>
+        <div [hidden]="!hide[i]" id="card-text">
+          <h4>{{ Proj.descLong }}</h4>
+        </div>
+        <button class="btn" (click)="hide[i] = !hide[i]">
+          Read More...
+        </button>
+        
+      </div>
+      <div class="card-footer">
+        <div class="leader-text" id="leader-text">
+          <small>{{ "Team leader: " + Proj.teamLeader }}</small>
+        </div>
+        <div class="client-text" id="client-text">
+          <small>{{ "Status: " + Proj.status }}</small>
+        </div>
+        <div class="status-text" id="status-text">
+          <small>{{ "Client: " + Proj.client }}</small>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<br>
+
 </div>
