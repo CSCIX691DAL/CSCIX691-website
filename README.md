@@ -16,6 +16,8 @@ https://console.firebase.google.com/u/0/project/x691webapp/overview
 #### Figma
 https://www.figma.com/files/team/931947114085387645/X691-Website-Winter-2021
 
+#### Dalhousie Outreach Production Site
+https://outreach.cs.dal.ca/
 
 ### LocalHost
 
