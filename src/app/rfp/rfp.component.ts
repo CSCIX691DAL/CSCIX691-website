@@ -100,5 +100,22 @@ export class RfpComponent implements OnInit {
       alert('Please fill all of the required fields');
     }
   }
+
+  handleClick(evt) {
+    
+    const content = evt.target.nextElementSibling
+    
+    if (!evt.target.parentNode.classList.contains('open')) {
+        content.style.height = `${content.scrollHeight}px`
+        // document.getElementById('mainQ1').setAttribute('style', 'height:200px;')
+        // content.style.marginTop = '0px'
+        evt.target.parentNode.classList.add('open')
+    } else {
+        content.style.height = `0px`
+        // content.style.marginTop = '0px'
+        evt.target.parentNode.classList.remove('open') } 
+  }
+
 }
 
+//  - (content.scrollHeight)/4

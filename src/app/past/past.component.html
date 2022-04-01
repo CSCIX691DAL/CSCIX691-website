@@ -10,51 +10,17 @@
     border-radius: 40px;
     border: 3px solid #707372; margin-top: 20px; margin-bottom: 20px; font-size: 18px;">
 
-    <div id="outerSearch">
-      <div id="innerSearch">
-        <div id="printVal4"></div>
-        <div id="printVal"></div>
-        <div id="printVal2"></div>
-        <div id="printVal3"></div>
-      </div>
-    </div>
+<div id="outerSearch">
+  <div id="innerSearch">
     
-    
-
-
-<!-- <div *ngFor="let Proj of getPastProjects(); index as i">
+    <div id="printVal0"></div>
+    <div id="printVal4"></div>
+    <div id="printVal"></div>
+    <div id="printVal2"></div>
+    <div id="printVal3"></div>
   
-  <hr>
-
-  <h5 class="card-title" id="card-title">{{ Proj.title }}</h5>
-
-  <br>
-
-  <small>{{ "Team leader: " + Proj.teamLeader }}</small>
-
-  <br>
-
-  <small>{{ "Status: " + Proj.status }}</small>
-
-  <br>
-  
-  <small>{{ "Client: " + Proj.client }}</small>
-
-  <br>
-
-  <p> {{ Proj.descShort }} </p>
-
-  <br>
-
-  <h4>{{ Proj.descLong }}</h4>
-
-  <br>
-
-  <hr>
-
-  
-</div> -->
-
+  </div>
+</div>
 
 
 <div class="projLayoutDiv">
@@ -131,13 +97,14 @@
     </div>
   </div>
 
+  <!--                                      change these values -->
   <button class="term-header pt-3 pb-3" (click)="showDiv.summer = !showDiv.summer">
     Winter 2020</button
   ><br />
  
   <div *ngIf="showDiv.summer" class="summer-cards">
     <div *ngFor="let Proj of getPastProjects(); index as i">
-      <div *ngIf="Proj.term === 'Summer 2020'" class="card mt-3">
+      <div *ngIf="Proj.term === 'Winter 2020'" class="card mt-3">
         <div class="card">
           <div class="card-body">
             <h5 class="card-title" id="card-title">{{ Proj.title }}</h5>
@@ -174,7 +141,7 @@
  
   <div *ngIf="showDiv.summer" class="summer-cards">
     <div *ngFor="let Proj of getPastProjects(); index as i">
-      <div *ngIf="Proj.term === 'Summer 2020'" class="card mt-3">
+      <div *ngIf="Proj.term === 'Summer 2021'" class="card mt-3">
         <div class="card">
           <div class="card-body">
             <h5 class="card-title" id="card-title">{{ Proj.title }}</h5>
@@ -211,7 +178,8 @@
  
   <div *ngIf="showDiv.summer" class="summer-cards">
     <div *ngFor="let Proj of getPastProjects(); index as i">
-      <div *ngIf="Proj.term === 'Summer 2020'" class="card mt-3">
+      <!--                   change this value -->
+      <div *ngIf="Proj.term === 'Fall 2024'" class="card mt-3">
         <div class="card">
           <div class="card-body">
             <h5 class="card-title" id="card-title">{{ Proj.title }}</h5>
@@ -248,7 +216,7 @@
  
   <div *ngIf="showDiv.summer" class="summer-cards">
     <div *ngFor="let Proj of getPastProjects(); index as i">
-      <div *ngIf="Proj.term === 'Summer 2020'" class="card mt-3">
+      <div *ngIf="Proj.term === 'Winter 2021'" class="card mt-3">
         <div class="card">
           <div class="card-body">
             <h5 class="card-title" id="card-title">{{ Proj.title }}</h5>
