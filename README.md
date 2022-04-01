@@ -1,4 +1,4 @@
-# CSCI X691 Fall 2021
+# CSCI X691
 ## Class Project - Course Website
 
 ### Helpful Links:
@@ -30,3 +30,6 @@ Execute: npm install
 Execute: ng serve  
 
 Web browser: localhost:4200
+
+### Testing
+As of the moment, there is some basic unit testing in place for the purpose of continiuous integration, but they are not being run automatically on merges due to an issue with github actions not recognizing "ng test" as a command it knows. The resolution of this has been left as an activity for a future group. For the moment, developers can run the tests locally with the command "ng test".
