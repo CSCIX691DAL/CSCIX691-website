@@ -408,21 +408,25 @@
                   <mat-label class="labels" id="projAccept">Do you accept the Project Agreement? </mat-label>
                   <br>
                   <br>
-                  <mat-form-field appearance="outline" >
+                  <mat-form-field appearance="outline" style="width: 395px;">
                     <mat-label>Select</mat-label>
-                    <mat-select [(ngModel)]="rfp.projectAgreement" name="projectAgreement">
+                    <mat-select [(ngModel)]="rfp.projectAgreement" name="projectAgreement" >
                       <mat-option value="Yes">Yes</mat-option>
                       <mat-option value="No">No</mat-option>
                     </mat-select>
                   </mat-form-field>
                 </div>
+
+                <div>
+                  <mat-form-field class="date" appearance="outline" style="width: 395px;"><mat-label>Date: </mat-label><input required [(ngModel)]="rfp.date" name="date" matInput type="date"></mat-form-field>
+                </div>
            </div>
+
+           
        </div>
     </div>
 
-            <div>
-              <mat-form-field class="date" appearance="outline"><mat-label>Date: </mat-label><input required [(ngModel)]="rfp.date" name="date" matInput type="date"></mat-form-field>
-            </div>
+            
             
             <button (click)="generatePDF(rfp)" class="submitRFP" mat-button>Submit RFP</button>
           </form>
