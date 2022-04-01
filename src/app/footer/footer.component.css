@@ -75,3 +75,8 @@ div p {
 .modalBody {
   background-image: url("../../assets/images/DalLogo.PNG");
 }
+
+footer{
+  /* position:sticky; */
+   width:100%;
+}

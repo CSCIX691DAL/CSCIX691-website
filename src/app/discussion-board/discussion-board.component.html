@@ -1,6 +1,16 @@
+<div class="mb-3">
+  <label for="exampleFormControlTextarea1" class="form-label">Discussion Title</label>
+  <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+</div>
+<div class="mb-3">
+  <label for="exampleFormControlTextarea1" class="form-label">Discussion post</label>
+  <textarea class="form-control" id="exampleFormControlTextarea2" rows="3"></textarea>
+</div>
+<div class="container">
+  <div class="centre">
+    <button type="reset"   (click)="CreateDiscussion()"> Post Discussion </button>
+    <!-- <button type="button" class="btn btn-warning">Post Discussion</button> -->
+  </div>
+</div>
 
-<form id="discussionBoard" class="form">
-  <mat-form-field class="discussion"><mat-label>Discussion Title: </mat-label><textarea required name="DiscussionTitle" id="DiscussionTitle" matInput type="string"></textarea></mat-form-field>
-  <mat-form-field class="discussion"><mat-label>Discussion Description: </mat-label><textarea required name="DiscussionDesc" id="DiscussionDesc" matInput type="string"></textarea></mat-form-field>
-  <button type="reset" class="btn btn-secondary" (click)="CreateDiscussion()"> Post Discussion </button>
-</form>
+

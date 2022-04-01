@@ -48,9 +48,6 @@ import { DiscussionBoardComponent } from './discussion-board/discussion-board.co
 
 import { DynamicFormComponent }         from './dynamic-form/dynamic-form.component';
 import { DynamicFormQuestionComponent } from './dynamic-form/dynamic-form-question.component';
-
-
-
 @NgModule({
     declarations: [
         AppComponent,
@@ -83,8 +80,6 @@ import { DynamicFormQuestionComponent } from './dynamic-form/dynamic-form-questi
 
         DynamicFormComponent,
         DynamicFormQuestionComponent
-        
-
     ],
   imports: [
     BrowserModule,
@@ -106,7 +101,6 @@ import { DynamicFormQuestionComponent } from './dynamic-form/dynamic-form-questi
     NgxCsvParserModule,
     HttpClientModule,
     DragDropModule,
-    
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]
