@@ -27,6 +27,13 @@
   font-size: 2em;
 }
 
+.cases{
+  width: 85%;
+  position: relative;
+  align-self: center;
+  justify-content: center;
+}
+
 .projIntro {
   width: 85%;
   align-self: center;
