@@ -7,33 +7,194 @@
       <h3 class="rfpH3">Complete an RFP to apply to have your application built by one of our student teams! Get a great project and help
       students gain real life experience simultaneously.  Please fill out all the fields below and provide as much detail as possible
       to give us a great idea of the scope of the desired project.</h3>
+      <h4><b>Estimated time to complete: 5 - 7 minutes</b></h4>
+
         <mat-card-content>
           <form id="submitRFP" class="form" #form="ngForm">
-            <!-- Required questions -->
-            <mat-form-field class="shortInput" appearance="outline"><mat-label>Project Title: </mat-label><input matInput required [(ngModel)]="rfp.projectTitle" name="projectTitle" type="string"></mat-form-field>
-            <mat-form-field class="shortInput" appearance="outline"><mat-label>Contact Name: </mat-label><input required [(ngModel)]="rfp.contactName" name="contactName" matInput type="string"></mat-form-field>
-            <mat-form-field class="longInput" appearance="outline"><mat-label>Organization: </mat-label><input required [(ngModel)]="rfp.organization" name="organization" matInput type="string"></mat-form-field>
-            <mat-form-field class="shortInput" appearance="outline"><mat-label>Contact Email: </mat-label><input required [(ngModel)]="rfp.contactEmail" name="contactEmail"matInput type="string"></mat-form-field>
-            <mat-form-field class="shortInput" appearance="outline"><mat-label>Contact Phone Number: </mat-label><input required [(ngModel)]="rfp.contactPhone" name="contactPhone"matInput type="string"></mat-form-field>
-            <mat-form-field class="longInput" appearance="outline"><mat-label>Mailing Address: </mat-label><input required [(ngModel)]="rfp.mailingAddress" name="mailingAddress" matInput type="string"></mat-form-field>
 
-            <!-- Supplementary questions -->
-            <div class="selectionDiv" *ngFor="let question of submissionForm['questions'].values(); index as i">
+            <div class="con-accordion">
+        <div class="accordion-item">
+            <header (click)="handleClick($event)">
+                <div class="con-icon">
+                    <i class='bx bx-plus'></i>
+                </div>
+                <h3>
+                    Project Details
+                </h3>
+            </header>
+            <div class="accordion-content">
+                
+                <p>
+                  <mat-form-field class="shortInput" appearance="outline"><mat-label>Project Title: </mat-label><input matInput required [(ngModel)]="rfp.projectTitle" name="projectTitle" type="string"></mat-form-field>
+                  <mat-form-field class="shortInput" appearance="outline"><mat-label>Contact Name: </mat-label><input required [(ngModel)]="rfp.contactName" name="contactName" matInput type="string"></mat-form-field>
+                  <mat-form-field class="longInput" appearance="outline"><mat-label>Organization: </mat-label><input required [(ngModel)]="rfp.organization" name="organization" matInput type="string"></mat-form-field>
+                  <mat-form-field class="shortInput" appearance="outline"><mat-label>Contact Email: </mat-label><input required [(ngModel)]="rfp.contactEmail" name="contactEmail"matInput type="string"></mat-form-field>
+                  <mat-form-field class="shortInput" appearance="outline"><mat-label>Contact Phone Number: </mat-label><input required [(ngModel)]="rfp.contactPhone" name="contactPhone"matInput type="string"></mat-form-field>
+                  <mat-form-field class="longInput" appearance="outline"><mat-label>Mailing Address: </mat-label><input required [(ngModel)]="rfp.mailingAddress" name="mailingAddress" matInput type="string"></mat-form-field>
+                </p>
+                
+            </div>
+        </div>
+        <div class="accordion-item">
+            <header (click)="handleClick($event)">
+                <div class="con-icon">
+                    <i class='bx bx-plus'></i>
+                </div>
+                <h3>
+                  Project Description
+                </h3>
+            </header>
+            <div class="accordion-content" id="mainQ1" style="max-height: 520px;">
+
+              <div class="selectionDiv" *ngFor="let question of submissionForm['questions'].values(); index as i">
+
+                <div *ngIf="i<4">
+                <!-- Text answer questions -->
+                <div *ngIf="question['type'] == 'text'">
+                  <!-- Required questions -->
+                  <div *ngIf="question['required'] == 'true'; else optionalTextQuestion">
+                    
+                    <mat-label class="labels">{{ question['question'] }} </mat-label>
+                    <mat-form-field class="Textarea" appearance="outline" [style.width.%]=98><textarea required [(ngModel)]="rfp.supplementaryAnswers[i]" name="{{i}}" matInput type="string"></textarea></mat-form-field>
+                    
+                  </div>                                                                <!--780 was the previous value -->
+                  
+                  <!-- Optional questions -->
+                  <ng-template #optionalTextQuestion>
+                    <mat-label class="labels">{{ question['question'] }} </mat-label>
+                    <mat-form-field class="Textarea" appearance="outline" [style.width.%]=98><textarea [(ngModel)]="rfp.supplementaryAnswers[i]" name="{{i}}" matInput type="string"></textarea></mat-form-field>
+                  </ng-template>                                                       <!--[style.width.px] = 780 was the previous value -->
+                </div>
+                <!-- Multiple choice questions -->
+                <div *ngIf="question['type'] == 'select'">
+                  <!-- Required questions -->
+                  <div *ngIf="question['required']; else optionalSelectQuestion">
+                    <mat-label class="labels">{{ question['question'] }} </mat-label>
+                    <mat-form-field class="selectInput" >
+                      <mat-label class="labels">Select</mat-label>
+                      <mat-select required [(ngModel)]="rfp.supplementaryAnswers[i]" name="{{i}}" >
+                        <mat-option *ngFor="let option of question['options']" [value]="option" >
+                          {{ option }}
+                        </mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                  </div>
+                  <!-- Optional questions -->
+                  <ng-template #optionalSelectQuestion>
+                    <mat-label class="labels">{{ question['question'] }} </mat-label>
+  
+                    <br> 
+                    <mat-form-field class="selectInput" appearance="outline">               <!-- borders for drop down list -->
+                      <mat-label class="labels">Select</mat-label>
+                      <mat-select [(ngModel)]="rfp.supplementaryAnswers[i]" name="{{i}}">
+                        <mat-option *ngFor="let option of question['options']" [value]="option">
+                          {{ option }}
+                        </mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                  </ng-template>
+                </div>
+
+                </div>
+              </div>
+
+            </div>
+
+        </div>
+        <div class="accordion-item">
+            <header (click)="handleClick($event)">
+                <div class="con-icon">
+                    <i class='bx bx-plus'></i>
+                </div>
+                <h3>
+                    Project Meetings
+                </h3>
+            </header>
+            <div class="accordion-content" style="max-height: 360px;">
+              <div class="selectionDiv" *ngFor="let question of submissionForm['questions'].values(); index as i" style="margin-top: -10px;">
+
+                <div *ngIf="i>3 && i<7">
+                <!-- Text answer questions -->
+                <div *ngIf="question['type'] == 'text'">
+                  <!-- Required questions -->
+                  <div *ngIf="question['required'] == 'true'; else optionalTextQuestion">
+                    
+                    <mat-label class="labels">{{ question['question'] }} </mat-label>
+                    <mat-form-field class="Textarea" appearance="outline" [style.width.%]=98><textarea required [(ngModel)]="rfp.supplementaryAnswers[i]" name="{{i}}" matInput type="string"></textarea></mat-form-field>
+                    
+                  </div>                                                                <!--780 was the previous value -->
+                  
+                  <!-- Optional questions -->
+                  <ng-template #optionalTextQuestion>
+                    <mat-label class="labels">{{ question['question'] }} </mat-label>
+                    <mat-form-field class="Textarea" appearance="outline" [style.width.%]=98><textarea [(ngModel)]="rfp.supplementaryAnswers[i]" name="{{i}}" matInput type="string"></textarea></mat-form-field>
+                  </ng-template>                                                       <!--[style.width.px] = 780 was the previous value -->
+                </div>
+                <!-- Multiple choice questions -->
+                <div *ngIf="question['type'] == 'select'">
+                  <!-- Required questions -->
+                  <div *ngIf="question['required']; else optionalSelectQuestion">
+                    <mat-label class="labels">{{ question['question'] }} </mat-label>
+                    <mat-form-field class="selectInput" >
+                      <mat-label class="labels">Select</mat-label>
+                      <mat-select required [(ngModel)]="rfp.supplementaryAnswers[i]" name="{{i}}" >
+                        <mat-option *ngFor="let option of question['options']" [value]="option" >
+                          {{ option }}
+                        </mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                  </div>
+                  <!-- Optional questions -->
+                  <ng-template #optionalSelectQuestion>
+                    <mat-label class="labels">{{ question['question'] }} </mat-label>
+  
+                    <br> 
+                    <mat-form-field class="selectInput" appearance="outline">               <!-- borders for drop down list -->
+                      <mat-label class="labels">Select</mat-label>
+                      <mat-select [(ngModel)]="rfp.supplementaryAnswers[i]" name="{{i}}">
+                        <mat-option *ngFor="let option of question['options']" [value]="option">
+                          {{ option }}
+                        </mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                  </ng-template>
+                </div>
+
+                </div>
+              </div>
+            </div>
+        </div>
+        
+
+
+        <div class="accordion-item">
+          <header (click)="handleClick($event)">
+              <div class="con-icon">
+                  <i class='bx bx-plus'></i>
+              </div>
+              <h3>
+                  NDA and IP
+              </h3>
+          </header>
+          <div class="accordion-content" style="max-height: 460px;">
+            <div class="selectionDiv" *ngFor="let question of submissionForm['questions'].values(); index as i" style="margin-top: -11px;">
+
+              <div *ngIf="i>6 && i < 11">
               <!-- Text answer questions -->
               <div *ngIf="question['type'] == 'text'">
                 <!-- Required questions -->
                 <div *ngIf="question['required'] == 'true'; else optionalTextQuestion">
+                  
                   <mat-label class="labels">{{ question['question'] }} </mat-label>
-                  <mat-form-field class="Textarea" appearance="outline" [style.width.px]=780><textarea required [(ngModel)]="rfp.supplementaryAnswers[i]" name="{{i}}" matInput type="string"></textarea></mat-form-field>
-                </div>
-
-                <!-- <hr> -->
+                  <mat-form-field class="Textarea" appearance="outline" [style.width.%]=98><textarea required [(ngModel)]="rfp.supplementaryAnswers[i]" name="{{i}}" matInput type="string"></textarea></mat-form-field>
+                  
+                </div>                                                                <!--780 was the previous value -->
                 
                 <!-- Optional questions -->
                 <ng-template #optionalTextQuestion>
                   <mat-label class="labels">{{ question['question'] }} </mat-label>
-                  <mat-form-field class="Textarea" appearance="outline" [style.width.px]=780><textarea [(ngModel)]="rfp.supplementaryAnswers[i]" name="{{i}}" matInput type="string"></textarea></mat-form-field>
-                </ng-template>
+                  <mat-form-field class="Textarea" appearance="outline" [style.width.%]=98><textarea [(ngModel)]="rfp.supplementaryAnswers[i]" name="{{i}}" matInput type="string"></textarea></mat-form-field>
+                </ng-template>                                                       <!--[style.width.px] = 780 was the previous value -->
               </div>
               <!-- Multiple choice questions -->
               <div *ngIf="question['type'] == 'select'">
@@ -53,9 +214,7 @@
                 <ng-template #optionalSelectQuestion>
                   <mat-label class="labels">{{ question['question'] }} </mat-label>
 
-                  <!-- <br> -->
                   <br> 
-
                   <mat-form-field class="selectInput" appearance="outline">               <!-- borders for drop down list -->
                     <mat-label class="labels">Select</mat-label>
                     <mat-select [(ngModel)]="rfp.supplementaryAnswers[i]" name="{{i}}">
@@ -66,59 +225,208 @@
                   </mat-form-field>
                 </ng-template>
               </div>
+
+              </div>
             </div>
+          </div>
+      </div>
 
-            <div>
-              <!-- Project Agreement -->
+      <div class="accordion-item">
+        <header (click)="handleClick($event)">
+            <div class="con-icon">
+                <i class='bx bx-plus'></i>
+            </div>
+            <h3>
+                Training
+            </h3>
+        </header>
+        <div class="accordion-content" style="max-height: 470px;">
+          <div class="selectionDiv" *ngFor="let question of submissionForm['questions'].values(); index as i" style="margin-top: -12px;">
 
-            <h2>Project Agreement</h2>
-            <h3> I agree that my organization / work group is aware of this project and I (or my delegate) am willing to
-              work with a student group to solve the business problem identified within the time period of the upcoming
-              school semester.
-              <br>I will address concerns primarily to my student team contact, escalating issues to the
-              instructor if a problem remains unaddressed.
-              <br>I agree that any change requests to the project-based off the
-              original proposal and/or project plan must be documented and signed by both the client and the student team
-              (leader). Any change requests deemed “major” in scope, time, quality, cost, etc as determined by the client
-              and/or the student group must also be forwarded to the instructor in a timely manner for consideration and/or
-              approval. Major change requests include, but are not exclusive to, the following:
-              <br>–A fluctuation of +/- 25% estimated workload
-              <br>–A fluctuation of +/- 25% estimated or actual budget
-              <br>–A change in dates for milestones, including the final deliverable
-              <br>–A change in the primary contact
-              <br>–A loss or gain of a major resource or stakeholder
-              <br>–A substantial change in project objectives or goals
-              <br>I acknowledge that I am aware of this general timeline for the project and will be available to complete the
-              appropriate reviews on schedule:
-              <br>–RFPs must be submitted before the first day of classes for the semester
-              <br>–I (or my delegate(s)) will attend the Project class (11:30 AM – 1:00 PM) to make a presentation
-              regarding this project to the students on the Tuesday or Thursday of the first week of the term, and to answer
-              any questions the students might have about the nature of the project. In Winter 2021, we attend classes remotely
-              using teams and collaborate ultra. The client can create a video presentation to upload in class or attend a remote session.
-              <br>–I will receive a student proposal within ten days of making this presentation.
-              <br>–I will review it and return it to the team with feedback or approval and will sign off the document with
-              the team lead no more than a week after receiving the proposal.
-              <br>–I will receive a mostly-complete deliverable about 2-3 weeks prior to the end of the term.
-              <br>–I will review the deliverable and return it to the team with feedback or approval within one week of receiving it.
-              <br>–I will receive the final deliverable no more than two weeks after receiving the ‘draft’version.
-              <br>–I will submit a feedback form to the instructor regarding the quality of the deliverable and my overall
-              satisfaction with the project within one week of receiving the final deliverable.</h3>
-
-              <div>
-                <mat-label class="labels" id="projAccept">Do you accept the Project Agreement? </mat-label>
-                <br>
-                <br>
-                <mat-form-field appearance="outline" >
-                  <mat-label>Select</mat-label>
-                  <mat-select [(ngModel)]="rfp.projectAgreement" name="projectAgreement">
-                    <mat-option value="Yes">Yes</mat-option>
-                    <mat-option value="No">No</mat-option>
+            <div *ngIf="i>10 && i < 15;">
+            <!-- Text answer questions -->
+            <div *ngIf="question['type'] == 'text'">
+              <!-- Required questions -->
+              <div *ngIf="question['required'] == 'true'; else optionalTextQuestion">
+                
+                <mat-label class="labels">{{ question['question'] }} </mat-label>
+                <mat-form-field class="Textarea" appearance="outline" [style.width.%]=98><textarea required [(ngModel)]="rfp.supplementaryAnswers[i]" name="{{i}}" matInput type="string"></textarea></mat-form-field>
+                
+              </div>                                                                <!--780 was the previous value -->
+              
+              <!-- Optional questions -->
+              <ng-template #optionalTextQuestion>
+                <mat-label class="labels">{{ question['question'] }} </mat-label>
+                <mat-form-field class="Textarea" appearance="outline" [style.width.%]=98><textarea [(ngModel)]="rfp.supplementaryAnswers[i]" name="{{i}}" matInput type="string"></textarea></mat-form-field>
+              </ng-template>                                                       <!--[style.width.px] = 780 was the previous value -->
+            </div>
+            <!-- Multiple choice questions -->
+            <div *ngIf="question['type'] == 'select'">
+              <!-- Required questions -->
+              <div *ngIf="question['required']; else optionalSelectQuestion">
+                <mat-label class="labels">{{ question['question'] }} </mat-label>
+                <mat-form-field class="selectInput" >
+                  <mat-label class="labels">Select</mat-label>
+                  <mat-select required [(ngModel)]="rfp.supplementaryAnswers[i]" name="{{i}}" >
+                    <mat-option *ngFor="let option of question['options']" [value]="option" >
+                      {{ option }}
+                    </mat-option>
                   </mat-select>
                 </mat-form-field>
               </div>
+              <!-- Optional questions -->
+              <ng-template #optionalSelectQuestion>
+                <mat-label class="labels">{{ question['question'] }} </mat-label>
 
-              <mat-form-field class="date" appearance="outline"><mat-label>Date: </mat-label><input required [(ngModel)]="rfp.date" name="date" matInput type="date"></mat-form-field>
+                <br> 
+                <mat-form-field class="selectInput" appearance="outline">               <!-- borders for drop down list -->
+                  <mat-label class="labels">Select</mat-label>
+                  <mat-select [(ngModel)]="rfp.supplementaryAnswers[i]" name="{{i}}">
+                    <mat-option *ngFor="let option of question['options']" [value]="option">
+                      {{ option }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </ng-template>
             </div>
+
+            </div>
+          </div>
+        </div>
+    </div>
+
+    <div class="accordion-item">
+      <header (click)="handleClick($event)">
+          <div class="con-icon">
+              <i class='bx bx-plus'></i>
+          </div>
+          <h3>
+              Testing
+          </h3>
+      </header>
+      <div class="accordion-content">
+        <div class="selectionDiv" *ngFor="let question of submissionForm['questions'].values(); index as i" style="margin-top: -14px;">
+
+          <div *ngIf="i>14 && i < 19">
+          <!-- Text answer questions -->
+          <div *ngIf="question['type'] == 'text'">
+            <!-- Required questions -->
+            <div *ngIf="question['required'] == 'true'; else optionalTextQuestion">
+              
+              <mat-label class="labels">{{ question['question'] }} </mat-label>
+              <mat-form-field class="Textarea" appearance="outline" [style.width.%]=98><textarea required [(ngModel)]="rfp.supplementaryAnswers[i]" name="{{i}}" matInput type="string"></textarea></mat-form-field>
+              
+            </div>                                                                <!--780 was the previous value -->
+            
+            <!-- Optional questions -->
+            <ng-template #optionalTextQuestion>
+              <mat-label class="labels">{{ question['question'] }} </mat-label>
+              <mat-form-field class="Textarea" appearance="outline" [style.width.%]=98><textarea [(ngModel)]="rfp.supplementaryAnswers[i]" name="{{i}}" matInput type="string"></textarea></mat-form-field>
+            </ng-template>                                                       <!--[style.width.px] = 780 was the previous value -->
+          </div>
+          <!-- Multiple choice questions -->
+          <div *ngIf="question['type'] == 'select'">
+            <!-- Required questions -->
+            <div *ngIf="question['required']; else optionalSelectQuestion">
+              <mat-label class="labels">{{ question['question'] }} </mat-label>
+              <mat-form-field class="selectInput" >
+                <mat-label class="labels">Select</mat-label>
+                <mat-select required [(ngModel)]="rfp.supplementaryAnswers[i]" name="{{i}}" >
+                  <mat-option *ngFor="let option of question['options']" [value]="option" >
+                    {{ option }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <!-- Optional questions -->
+            <ng-template #optionalSelectQuestion>
+              <mat-label class="labels">{{ question['question'] }} </mat-label>
+
+              <br> 
+              <mat-form-field class="selectInput" appearance="outline">               <!-- borders for drop down list -->
+                <mat-label class="labels">Select</mat-label>
+                <mat-select [(ngModel)]="rfp.supplementaryAnswers[i]" name="{{i}}">
+                  <mat-option *ngFor="let option of question['options']" [value]="option">
+                    {{ option }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </ng-template>
+          </div>
+
+          </div>
+        </div>
+      </div>
+  </div>
+        
+        <div class="accordion-item">
+            <header (click)="handleClick($event)">
+                <div class="con-icon">
+                    <i class='bx bx-plus'></i>
+                </div>
+                <h3>
+                  Project Agreement
+                </h3>
+            </header>
+            <div class="accordion-content">
+
+              <h2>Project Agreement</h2>
+              
+              <h3 style="opacity: 2;"> I agree that my organization / work group is aware of this project and I (or my delegate) am willing to
+                work with a student group to solve the business problem identified within the time period of the upcoming
+                school semester.
+                <br>I will address concerns primarily to my student team contact, escalating issues to the
+                instructor if a problem remains unaddressed.
+                <br>I agree that any change requests to the project-based off the
+                original proposal and/or project plan must be documented and signed by both the client and the student team
+                (leader). Any change requests deemed “major” in scope, time, quality, cost, etc as determined by the client
+                and/or the student group must also be forwarded to the instructor in a timely manner for consideration and/or
+                approval. Major change requests include, but are not exclusive to, the following:
+                <br>–A fluctuation of +/- 25% estimated workload
+                <br>–A fluctuation of +/- 25% estimated or actual budget
+                <br>–A change in dates for milestones, including the final deliverable
+                <br>–A change in the primary contact
+                <br>–A loss or gain of a major resource or stakeholder
+                <br>–A substantial change in project objectives or goals
+                <br>I acknowledge that I am aware of this general timeline for the project and will be available to complete the
+                appropriate reviews on schedule:
+                <br>–RFPs must be submitted before the first day of classes for the semester
+                <br>–I (or my delegate(s)) will attend the Project class (11:30 AM – 1:00 PM) to make a presentation
+                regarding this project to the students on the Tuesday or Thursday of the first week of the term, and to answer
+                any questions the students might have about the nature of the project. In Winter 2021, we attend classes remotely
+                using teams and collaborate ultra. The client can create a video presentation to upload in class or attend a remote session.
+                <br>–I will receive a student proposal within ten days of making this presentation.
+                <br>–I will review it and return it to the team with feedback or approval and will sign off the document with
+                the team lead no more than a week after receiving the proposal.
+                <br>–I will receive a mostly-complete deliverable about 2-3 weeks prior to the end of the term.
+                <br>–I will review the deliverable and return it to the team with feedback or approval within one week of receiving it.
+                <br>–I will receive the final deliverable no more than two weeks after receiving the ‘draft’version.
+                <br>–I will submit a feedback form to the instructor regarding the quality of the deliverable and my overall
+                satisfaction with the project within one week of receiving the final deliverable.</h3>
+  
+                <div>
+                  <mat-label class="labels" id="projAccept">Do you accept the Project Agreement? </mat-label>
+                  <br>
+                  <br>
+                  <mat-form-field appearance="outline" style="width: 395px;">
+                    <mat-label>Select</mat-label>
+                    <mat-select [(ngModel)]="rfp.projectAgreement" name="projectAgreement" >
+                      <mat-option value="Yes">Yes</mat-option>
+                      <mat-option value="No">No</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+
+                <div>
+                  <mat-form-field class="date" appearance="outline" style="width: 395px;"><mat-label>Date: </mat-label><input required [(ngModel)]="rfp.date" name="date" matInput type="date"></mat-form-field>
+                </div>
+           </div>
+
+           
+       </div>
+    </div>
+
+            
             
             <button (click)="generatePDF(rfp)" class="submitRFP" mat-button>Submit RFP</button>
           </form>
