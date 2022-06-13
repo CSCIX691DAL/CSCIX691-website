@@ -101,9 +101,9 @@ export class AuthService {
   logout(): void {
     this.firebaseAuth.signOut();
     localStorage.clear();
-    
+
     window.location.href = "/";
-    window.alert("logout succesfull"); 
+    window.alert("logout succesfull");
   }
   // delete(): void{
   //   this.firebaseAuth.

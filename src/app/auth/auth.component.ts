@@ -23,8 +23,10 @@ export class AuthComponent implements OnInit{
   // Login functionality that logs in existing user to firebase authentication
   public login(): void {
     //console.log(this.email);
-    this.authService.login(this.email, this.password);
-    this.email = this.password = '';
+    // this.authService.login(this.email, this.password);
+    // this.email = this.password = '';
+
+
     window.alert("login succesfull");
   }
 
@@ -53,9 +55,9 @@ export class AuthComponent implements OnInit{
   }
   ngOnInit(): void {
     if (localStorage.getItem("isLogin")) {
-      
+
       window.location.href = "/";
-      
+
     }
   }
 
