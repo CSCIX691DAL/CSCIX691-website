@@ -1,92 +1,129 @@
-# #Code from: Adnan Siddiqi 
-# #https://towardsdatascience.com/getting-started-with-apache-airflow-df1aa77d7b1b
-
-
-# from airflow import DAG
-# from airflow.operators.python import PythonOperator, BranchPythonOperator
-# from airflow.operators.bash import BashOperator
-# from datetime import datetime
-
-
-# def greet():
-#     print('Writing in file')
-#     with open('path/to/file/greet.txt', 'a+', encoding='utf8') as f:
-#         now = datetime.now()
-#         t = now.strftime("%Y-%m-%d %H:%M")
-#         f.write(str(t) + '\n')
-#     return 'Greeted'
-# def respond():
-#     return 'Greet Responded Again'
-
-
-# default_args = {
-#     'owner': 'airflow',
-#     'start_date': dt.datetime(2022, 6, 8, 13, 55, 00),
-#     'concurrency': 1,
-#     'retries': 0
-# }
-
-# #Creating the Airflow DAG object
-# #Has two params: dag_id and start_date
-
-# #dag_id: unique identifier of the DAG accross all DAGs
-
-# #start_date: defines the date at which your DAG starts being scheduled 
-# with DAG('my_simple_dag',
-#          default_args=default_args,
-#          schedule_interval='*/10 * * * *',
-#          ) as dag:
-#     opr_hello = BashOperator(task_id='say_Hi',
-#                              bash_command='echo "Hi!!"')
-
-#     opr_greet = PythonOperator(task_id='greet',
-#                                python_callable=greet)
-#     opr_sleep = BashOperator(task_id='sleep_me',
-#                              bash_command='sleep 5')
-
-#     opr_respond = PythonOperator(task_id='respond',
-#                                  python_callable=respond)
-# opr_hello >> opr_greet >> opr_sleep >> opr_respond
-
 from airflow import DAG
 from airflow.operators.python import PythonOperator, BranchPythonOperator
 from airflow.operators.bash import BashOperator
 from datetime import datetime
 from random import randint
-def _choosing_best_model(ti): 
-    accuracies = ti.xcom_pull(task_ids=[
-'training_model_A',
-'training_model_B',
-'training_model_C'
-])
 
-    if max(accuracies) > 8: 
-        return 'accurate'
-        return 'inaccurate'
+from tenacity import retry
 
-def _training_model(model):return randint(1, 10)
+def hire():
+    return 'Hire TA'
+
+def add():
+    return 'Add Projects'
+
+def enroll():
+    return 'Enroll Student'
+
+def assignStudents():
+    return 'Assign Students to projects'
+
+def assignLead():
+    return 'Assign Team Leader'
+
+def assignTAs():
+    return 'Assign TAs to projects'
+
+#Final grades task
+def _final_grades(ti):
+    #grade variable gets the "grade" of starting docs, and all other "grades"
+    weighted_marks_sum = ti.xcom_pull(task_ids=[
+'Project_Plan',
+'Team_Charter',
+'NDA'
+#Calculating final grade
+]) + ti.xcom_pull(task_id='_student_questionnaire') + ti.xcom_pull(task_id='planning') + ti.xcom_pull(task_id='quizzes') + ti.xcom_pull(task_id='_iterations') + ti.xcom_pull(task_id='closing_document')
+
+
+#Final grade determines a pass or fail
+    if weighted_marks_sum > 60:
+        return 'pass'
+    return 'fail'
+
+#Define Tasks
+def _starting_docs(model):
+    #returns random number as the "grade"
+    return randint(0, 100)
+
+def _planning_phase():
+    return randint(0,100)
+
+def quizzes():
+    return randint(0,100)
+
+def _student_questionnaire():
+    return randint(0,100)
+
+def _iterations():
+    return randint(0,100)
+
+def closing():
+    return randint(0,100)
+
+#DAG code
 with DAG("my_dag",
 start_date=datetime(2021, 6 ,14), 
 schedule_interval='@daily', 
-catchup=False) as dag: training_model_tasks = [
-PythonOperator(
-task_id=f"training_model_{model_id}",
-python_callable=_training_model,
-op_kwargs={
-"model": model_id
-}
-) for model_id in ['A', 'B', 'C']
-]
-choosing_best_model = BranchPythonOperator(
-task_id="choosing_best_model",
-python_callable=_choosing_best_model
-)
-accurate = BashOperator(
-task_id="accurate",
-bash_command="echo 'accurate'"
-)
-inaccurate = BashOperator(
-task_id="inaccurate",
-bash_command=" echo 'inaccurate'"
-)
-training_model_tasks >> choosing_best_model >> [accurate, inaccurate]
+catchup=False) as dag:
+
+    #Tasks 7,8,9
+    training_model_tasks = [
+        PythonOperator(
+            task_id=f"{model_id}",
+            python_callable=_starting_docs,
+            op_kwargs={
+                "model": model_id
+            }
+        ) for model_id in ['Project_Plan', 'Team_Charter', 'NDA']
+    ]
+
+    TA_Hire = PythonOperator(task_id='hire',
+                         python_callable=hire)
+
+    Add_Projects = PythonOperator(task_id='add',
+                         python_callable=add)
+                     
+    Enroll_Student = PythonOperator(task_id='enroll',
+                         python_callable=enroll)
+
+                         
+    Assign_Student = PythonOperator(task_id='assign',
+                         python_callable=assignStudents)
+
+    Student_Questionnaire = PythonOperator(task_id='student_Q',
+                            python_callable=_student_questionnaire)
+    
+    Assign_Leader = PythonOperator(task_id='assignLead',
+                            python_callable=assignLead)
+
+        
+    Assign_TA = PythonOperator(task_id='assignTA',
+                            python_callable=assignTAs)
+
+    Planning_Phase = PythonOperator(task_id='planning',
+                            python_callable=_planning_phase)
+    
+    Quizzes = PythonOperator(task_id='quizzes',
+                            python_callable=quizzes)
+    
+    Iterations = PythonOperator(task_id='_iterations',
+                            python_callable=_iterations)
+
+    Closing_Document = PythonOperator(task_id='closing_document',
+                            python_callable=closing)
+#Final Grades task
+    Final_Grades = BranchPythonOperator(
+        task_id="Final_Grades_Release",
+        python_callable=_final_grades
+    )
+    pass_course = BashOperator(
+        task_id="pass",
+        bash_command="echo 'Passed the course'"
+    )
+    fail_course = BashOperator(
+        task_id="fail",
+        bash_command=" echo 'Must retake the course'"
+    )
+
+TA_Hire >> Add_Projects >> Enroll_Student >> Student_Questionnaire >> Assign_Student >> Assign_Leader >> Assign_TA >> training_model_tasks >> Planning_Phase >> Quizzes >> Iterations >> Closing_Document >> Final_Grades >> [pass_course, fail_course]
+
