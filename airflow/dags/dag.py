@@ -29,34 +29,38 @@ def assignTAs():
 
 #Tasks that have a "grade" > random int between 0-100 
 def _training_model(ti):
-    mark = randint(0, 100)
+    mark = randint(0, 100)*0.01
     ti.xcom_push(key='grade', value=mark)
     
 
 def _planning_phase(ti):
-    mark = randint(0, 100)
+    mark = randint(0, 100)*0.9
     ti.xcom_push(key='grade', value=mark)
 
     
 
-def quizzes():
-    return randint(0,100)
+def quizzes(ti):
+    mark = randint(0,100)*0.05
+    ti.xcom_push(key='grade', value=mark)
 
-def _student_questionnaire():
-    return randint(0,100)
+def _student_questionnaire(ti):
+    mark = randint(0,100)*0.05
+    ti.xcom_push(key='grade', value=mark)
 
-def _iterations():
-    return randint(0,100)
+def _iterations(ti):
+    mark = randint(0,100)*0.50
+    ti.xcom_push(key='grade', value=mark)
 
-def closing():
-    return randint(0,100)
+def closing(ti):
+    mark = randint(0,100)*0.3
+    ti.xcom_push(key='grade', value=mark)
 
 def _final_grades(ti):
     mark = ti.xcom_pull(key='grade', task_ids=['Project_Plan', 'Team_Charter', 'NDA', 'planning', 'student_Q', 'quizzes', '_iterations', 'closing_document'])
     
     
     #choose pass or fail
-    finalgrade = sum(mark)/8
+    finalgrade = sum(mark)
     if finalgrade>60:
         return 'pass'
     else :
