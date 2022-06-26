@@ -1,7 +1,6 @@
 var express = require('express');
 var server = express();
 
-
 //session
 const session = require('express-session');
 
@@ -19,11 +18,8 @@ server.use(session({
   }
 }));
 
-
 server.use(express.json());
 server.use("/", api);
-
-
 
 server.listen(8080, () => {
   console.log("server is up at 8080")
