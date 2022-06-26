@@ -1,5 +1,15 @@
 var express = require('express');
 var server = express();
+var rateLimit = require("express-rate-limit");
+
+server.use(
+  rateLimit({
+    windowMs: 1 * 60 * 60 * 1000, // 1 hour duration in milliseconds
+    max: 100,
+    message: JSON.stringify({"result": false, "cause": "too many request: 100/h"}),
+    headers: true,
+  })
+);
 
 //session
 // const session = require('express-session');
