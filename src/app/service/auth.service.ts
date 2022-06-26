@@ -5,6 +5,8 @@ import { AngularFireDatabase, AngularFireList } from '@angular/fire/database'
 import { Router } from '@angular/router';
 import 'firebase/auth';
 import { UserType } from '../user/user.model';
+import { HttpClient } from '@angular/common/http';
+
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +15,11 @@ export class AuthService {
   email: string;
   authState: any = null;
 
-  constructor(private firebaseAuth: AngularFireAuth, private db: AngularFireDatabase, private router: Router, private userService: UserService) {
+  constructor(private firebaseAuth: AngularFireAuth,
+              private db: AngularFireDatabase,
+              private router: Router,
+              private userService: UserService,
+              private http: HttpClient) {
     this.firebaseAuth.authState.subscribe((auth) => {
       this.authState = auth;
     });
@@ -59,6 +65,13 @@ export class AuthService {
       .catch(err => {
         console.log('An error occurred while sending the reset: ' + err.message);
       });
+  }
+
+
+  loginWithCsId(csid: string, password: string): void {
+    this.http.post<any>('http://localhost:8080/auth/authentication', { "username": csid, "password": password }).subscribe(data => {
+      console.log(data);
+    });
   }
 
   login(email: string, password: string): void {
