@@ -69,7 +69,7 @@ export class AuthService {
 
 
   loginWithCsId(csid: string, password: string): void {
-    this.http.post<any>('http://localhost:8080/auth/authentication', { "username": csid, "password": password }).subscribe(data => {
+    this.http.post<any>('/api/authentication', { "username": csid, "password": password }).subscribe(data => {
       console.log(data);
     });
   }
