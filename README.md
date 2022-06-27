@@ -29,7 +29,7 @@ cd to local repo directory.
 
 Execute: npm install  
 
-Execute: ng serve  
+Execute: npm start
 
 Web browser: localhost:4200
 

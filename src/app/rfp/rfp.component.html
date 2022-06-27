@@ -23,7 +23,7 @@
                 </h3>
             </header>
             <div class="accordion-content">
-                
+
                 <p>
                   <mat-form-field class="shortInput" appearance="outline"><mat-label>Project Title: </mat-label><input matInput required [(ngModel)]="rfp.projectTitle" name="projectTitle" type="string"></mat-form-field>
                   <mat-form-field class="shortInput" appearance="outline"><mat-label>Contact Name: </mat-label><input required [(ngModel)]="rfp.contactName" name="contactName" matInput type="string"></mat-form-field>
@@ -32,7 +32,7 @@
                   <mat-form-field class="shortInput" appearance="outline"><mat-label>Contact Phone Number: </mat-label><input required [(ngModel)]="rfp.contactPhone" name="contactPhone"matInput type="string"></mat-form-field>
                   <mat-form-field class="longInput" appearance="outline"><mat-label>Mailing Address: </mat-label><input required [(ngModel)]="rfp.mailingAddress" name="mailingAddress" matInput type="string"></mat-form-field>
                 </p>
-                
+
             </div>
         </div>
         <div class="accordion-item">
@@ -53,12 +53,12 @@
                 <div *ngIf="question['type'] == 'text'">
                   <!-- Required questions -->
                   <div *ngIf="question['required'] == 'true'; else optionalTextQuestion">
-                    
+
                     <mat-label class="labels">{{ question['question'] }} </mat-label>
                     <mat-form-field class="Textarea" appearance="outline" [style.width.%]=98><textarea required [(ngModel)]="rfp.supplementaryAnswers[i]" name="{{i}}" matInput type="string"></textarea></mat-form-field>
-                    
+
                   </div>                                                                <!--780 was the previous value -->
-                  
+
                   <!-- Optional questions -->
                   <ng-template #optionalTextQuestion>
                     <mat-label class="labels">{{ question['question'] }} </mat-label>
@@ -82,8 +82,8 @@
                   <!-- Optional questions -->
                   <ng-template #optionalSelectQuestion>
                     <mat-label class="labels">{{ question['question'] }} </mat-label>
-  
-                    <br> 
+
+                    <br>
                     <mat-form-field class="selectInput" appearance="outline">               <!-- borders for drop down list -->
                       <mat-label class="labels">Select</mat-label>
                       <mat-select [(ngModel)]="rfp.supplementaryAnswers[i]" name="{{i}}">
@@ -118,12 +118,12 @@
                 <div *ngIf="question['type'] == 'text'">
                   <!-- Required questions -->
                   <div *ngIf="question['required'] == 'true'; else optionalTextQuestion">
-                    
+
                     <mat-label class="labels">{{ question['question'] }} </mat-label>
                     <mat-form-field class="Textarea" appearance="outline" [style.width.%]=98><textarea required [(ngModel)]="rfp.supplementaryAnswers[i]" name="{{i}}" matInput type="string"></textarea></mat-form-field>
-                    
+
                   </div>                                                                <!--780 was the previous value -->
-                  
+
                   <!-- Optional questions -->
                   <ng-template #optionalTextQuestion>
                     <mat-label class="labels">{{ question['question'] }} </mat-label>
@@ -147,8 +147,8 @@
                   <!-- Optional questions -->
                   <ng-template #optionalSelectQuestion>
                     <mat-label class="labels">{{ question['question'] }} </mat-label>
-  
-                    <br> 
+
+                    <br>
                     <mat-form-field class="selectInput" appearance="outline">               <!-- borders for drop down list -->
                       <mat-label class="labels">Select</mat-label>
                       <mat-select [(ngModel)]="rfp.supplementaryAnswers[i]" name="{{i}}">
@@ -164,7 +164,7 @@
               </div>
             </div>
         </div>
-        
+
 
 
         <div class="accordion-item">
@@ -184,12 +184,12 @@
               <div *ngIf="question['type'] == 'text'">
                 <!-- Required questions -->
                 <div *ngIf="question['required'] == 'true'; else optionalTextQuestion">
-                  
+
                   <mat-label class="labels">{{ question['question'] }} </mat-label>
                   <mat-form-field class="Textarea" appearance="outline" [style.width.%]=98><textarea required [(ngModel)]="rfp.supplementaryAnswers[i]" name="{{i}}" matInput type="string"></textarea></mat-form-field>
-                  
+
                 </div>                                                                <!--780 was the previous value -->
-                
+
                 <!-- Optional questions -->
                 <ng-template #optionalTextQuestion>
                   <mat-label class="labels">{{ question['question'] }} </mat-label>
@@ -214,7 +214,7 @@
                 <ng-template #optionalSelectQuestion>
                   <mat-label class="labels">{{ question['question'] }} </mat-label>
 
-                  <br> 
+                  <br>
                   <mat-form-field class="selectInput" appearance="outline">               <!-- borders for drop down list -->
                     <mat-label class="labels">Select</mat-label>
                     <mat-select [(ngModel)]="rfp.supplementaryAnswers[i]" name="{{i}}">
@@ -248,12 +248,12 @@
             <div *ngIf="question['type'] == 'text'">
               <!-- Required questions -->
               <div *ngIf="question['required'] == 'true'; else optionalTextQuestion">
-                
+
                 <mat-label class="labels">{{ question['question'] }} </mat-label>
                 <mat-form-field class="Textarea" appearance="outline" [style.width.%]=98><textarea required [(ngModel)]="rfp.supplementaryAnswers[i]" name="{{i}}" matInput type="string"></textarea></mat-form-field>
-                
+
               </div>                                                                <!--780 was the previous value -->
-              
+
               <!-- Optional questions -->
               <ng-template #optionalTextQuestion>
                 <mat-label class="labels">{{ question['question'] }} </mat-label>
@@ -278,7 +278,7 @@
               <ng-template #optionalSelectQuestion>
                 <mat-label class="labels">{{ question['question'] }} </mat-label>
 
-                <br> 
+                <br>
                 <mat-form-field class="selectInput" appearance="outline">               <!-- borders for drop down list -->
                   <mat-label class="labels">Select</mat-label>
                   <mat-select [(ngModel)]="rfp.supplementaryAnswers[i]" name="{{i}}">
@@ -312,12 +312,12 @@
           <div *ngIf="question['type'] == 'text'">
             <!-- Required questions -->
             <div *ngIf="question['required'] == 'true'; else optionalTextQuestion">
-              
+
               <mat-label class="labels">{{ question['question'] }} </mat-label>
               <mat-form-field class="Textarea" appearance="outline" [style.width.%]=98><textarea required [(ngModel)]="rfp.supplementaryAnswers[i]" name="{{i}}" matInput type="string"></textarea></mat-form-field>
-              
+
             </div>                                                                <!--780 was the previous value -->
-            
+
             <!-- Optional questions -->
             <ng-template #optionalTextQuestion>
               <mat-label class="labels">{{ question['question'] }} </mat-label>
@@ -342,7 +342,7 @@
             <ng-template #optionalSelectQuestion>
               <mat-label class="labels">{{ question['question'] }} </mat-label>
 
-              <br> 
+              <br>
               <mat-form-field class="selectInput" appearance="outline">               <!-- borders for drop down list -->
                 <mat-label class="labels">Select</mat-label>
                 <mat-select [(ngModel)]="rfp.supplementaryAnswers[i]" name="{{i}}">
@@ -358,7 +358,7 @@
         </div>
       </div>
   </div>
-        
+
         <div class="accordion-item">
             <header (click)="handleClick($event)">
                 <div class="con-icon">
@@ -371,7 +371,7 @@
             <div class="accordion-content">
 
               <h2>Project Agreement</h2>
-              
+
               <h3 style="opacity: 2;"> I agree that my organization / work group is aware of this project and I (or my delegate) am willing to
                 work with a student group to solve the business problem identified within the time period of the upcoming
                 school semester.
@@ -403,7 +403,7 @@
                 <br>–I will receive the final deliverable no more than two weeks after receiving the ‘draft’version.
                 <br>–I will submit a feedback form to the instructor regarding the quality of the deliverable and my overall
                 satisfaction with the project within one week of receiving the final deliverable.</h3>
-  
+
                 <div>
                   <mat-label class="labels" id="projAccept">Do you accept the Project Agreement? </mat-label>
                   <br>
@@ -422,12 +422,12 @@
                 </div>
            </div>
 
-           
+
        </div>
     </div>
 
-            
-            
+
+
             <button (click)="generatePDF(rfp)" class="submitRFP" mat-button>Submit RFP</button>
           </form>
         </mat-card-content>
