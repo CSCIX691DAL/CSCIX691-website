@@ -15,7 +15,6 @@ server.use(
 // const session = require('express-session');
 
 const api = require("./node_src/Routers/index");
-const {response} = require("express");
 
 // //60min
 // server.use(session({
@@ -29,6 +28,7 @@ const {response} = require("express");
 // }));
 
 server.use(express.json());
+server.use(express.urlencoded({ extended: true }));
 server.use("/", api);
 
 server.listen(3000, () => {

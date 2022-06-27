@@ -53,7 +53,7 @@ export class AnnouncementService {
   }
 
   sendEmail(emailTo: String, name: String, announcementTitle: String, announcementText: String){
-    return this.http.post('/api/sendEmail', {'email' : emailTo, "emailName" : name, "emailSubject" : announcementTitle, "emailBody" : announcementText});
+    return this.http.post('/api/email/sendEmail', {'email' : emailTo, "emailName" : name, "emailSubject" : announcementTitle, "emailBody" : announcementText});
   }
 
 }
