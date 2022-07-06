@@ -1,11 +1,12 @@
 import { UserService } from './user.service';
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
-import { AngularFireDatabase, AngularFireList } from '@angular/fire/database'
+import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
 import { Router } from '@angular/router';
 import 'firebase/auth';
 import { UserType } from '../user/user.model';
 import { HttpClient } from '@angular/common/http';
+import { environment } from '../../environments/environment';
 
 
 @Injectable({
@@ -69,7 +70,7 @@ export class AuthService {
 
 
   loginWithCsId(csid: string, password: string): void {
-    this.http.post('/api/auth/authentication', { "username": csid, "password": password }).subscribe(data => {
+    this.http.post(`${environment.apiURL}/auth/authentication`, { "username": csid, "password": password }).subscribe(data => {
       console.log(data);
     });
   }
