@@ -3,6 +3,7 @@ import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
 import { map } from 'rxjs/operators';
 import Announcement from '../announcement/announcement.model';
 import { HttpClient } from '@angular/common/http';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -53,7 +54,8 @@ export class AnnouncementService {
   }
 
   sendEmail(emailTo: String, name: String, announcementTitle: String, announcementText: String){
-    return this.http.post('/api/email/sendEmail', {'email' : emailTo, "emailName" : name, "emailSubject" : announcementTitle, "emailBody" : announcementText});
+    return this.http.post(`${environment.apiURL}/email/sendEmail`,
+      {'email' : emailTo, "emailName" : name, "emailSubject" : announcementTitle, "emailBody" : announcementText});
   }
 
 }

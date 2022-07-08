@@ -35,6 +35,7 @@
     "ngx-bootstrap": "^6.2.0",
     "ngx-csv-parser": "0.0.7",
     "pdfmake": "^0.1.70",
+    "process": "^0.11.10",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.2"
