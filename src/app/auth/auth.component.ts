@@ -19,15 +19,14 @@ export class AuthComponent implements OnInit{
 
   // Login functionality that logs in existing user to firebase authentication
   public login(): void {
-    // console.log(this.email);
-    // this.authService.login(this.username, this.password);
-    // this.email = this.password = '';
+    console.log(this.username);
+    this.authService.login(this.username, this.password);
+    this.username = this.password = '';
     window.alert('login succesfull');
   }
 
   public loginWithCsId(): void {
     this.authService.loginWithCsId(this.username, this.password);
-    window.alert('login successful wilt csid');
   }
 
   open(content) {
