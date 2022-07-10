@@ -1,3 +1,7 @@
 module.exports = {
-  extends: ["eslint:recommended"]
+  rules: {
+    // enable additional rules
+    quotes: ["error", "double"],
+    semi: ["error", "always"]
+  }
 };
