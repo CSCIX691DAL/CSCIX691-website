@@ -34,9 +34,10 @@ jobs:
           npm install eslint --force
           npm install @microsoft/eslint-formatter-sarif@2.1.7 --force
          
-
       - name: Run ESLint
-        run: npx eslint proxy.conf.js
+        run: npx eslint .
+          --config .eslintrc.js
+          --ext .js,.jsx,.ts,.tsx
           --format @microsoft/eslint-formatter-sarif 
           -o eslint-results.sarif
         continue-on-error: true
