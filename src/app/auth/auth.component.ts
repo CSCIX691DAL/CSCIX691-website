@@ -9,7 +9,7 @@ import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./auth.component.css']
 })
 export class AuthComponent implements OnInit{
-    email: string;
+    username: string;
     password: string;
     error: any;
     resetEmail: string;
@@ -17,15 +17,16 @@ export class AuthComponent implements OnInit{
   constructor( public authService: AuthService, private router: Router, private modalService: NgbModal) {
   }
 
-
-
-
   // Login functionality that logs in existing user to firebase authentication
   public login(): void {
-    //console.log(this.email);
-    this.authService.login(this.email, this.password);
-    this.email = this.password = '';
-    window.alert("login succesfull");
+    console.log(this.username);
+    this.authService.login(this.username, this.password);
+    this.username = this.password = '';
+    window.alert('login succesfull');
+  }
+
+  public loginWithCsId(): void {
+    this.authService.loginWithCsId(this.username, this.password);
   }
 
   open(content) {
@@ -53,9 +54,9 @@ export class AuthComponent implements OnInit{
   }
   ngOnInit(): void {
     if (localStorage.getItem("isLogin")) {
-      
+
       window.location.href = "/";
-      
+
     }
   }
 

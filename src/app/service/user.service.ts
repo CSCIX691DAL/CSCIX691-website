@@ -98,7 +98,7 @@ export class UserService {
   addClient(id: string, email: string, firstName: string, lastName: string, organization: string): void {
     // construct the client object
     let client = new Client();
-    client.active = true
+    client.active = true;
     client.email = email;
     client.fName = firstName;
     client.sName = lastName;
@@ -119,7 +119,7 @@ export class UserService {
     student.studentID = studentID;
     student.userType = UserType.Student;
     student.teamLeader = isTeamLeader;
-    student.active = false;
+    student.active = true;
     student.hasLoggedInBefore = false;
     student.emailList = true;
 

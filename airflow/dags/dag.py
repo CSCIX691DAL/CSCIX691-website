@@ -17,7 +17,7 @@ from tenacity import retry
 def save_students(ti):
     #xcom pull the return values from the get_posts tasks
     students = ti.xcom_pull(task_ids=['get_grades'])
-    #specify the path we want to write to 
+    #specify the path we want to write to
     with open('\opt\airflow\data\posts.json', 'w') as f:
         json.dump(students[0], f)
 
@@ -41,11 +41,11 @@ def assignTAs():
     return 'Assign TAs to projects'
 
 
-#Tasks that have a "grade" > random int between 0-100 
+#Tasks that have a "grade" > random int between 0-100
 def _training_model(ti):
     mark = randint(0, 100)*0.05
     ti.xcom_push(key='grade', value=mark)
-    
+
 
 def _planning_phase(ti):
     mark = randint(0, 100)*0.05
@@ -70,20 +70,20 @@ def closing(ti):
 
 def _final_grades(ti):
     mark = ti.xcom_pull(key='grade', task_ids=['Project_Plan', 'Team_Charter', 'NDA', 'planning', 'student_Q', 'quizzes', '_iterations', 'closing_document'])
-    
-    
+
+
     #choose pass or fail
     finalgrade = sum(mark)
     if finalgrade>60:
         return 'pass'
     else :
-        return 'fail'  
+        return 'fail'
 
 
 #DAG code
 with DAG("CSCIX691_process",
-start_date=datetime(2021, 7 ,2), 
-schedule_interval='@daily', 
+start_date=datetime(2021, 7 ,2),
+schedule_interval='@daily',
 catchup=False) as dag:
 
     training_model_tasks = [
@@ -121,8 +121,8 @@ catchup=False) as dag:
 
 
     #If you go to admin>xcom return values it will be the json objects
-   
-   #This task will save the return value locally 
+
+   #This task will save the return value locally
     task_save = PythonOperator(task_id='save_grades',
         python_callable=save_students
     )
@@ -132,36 +132,36 @@ catchup=False) as dag:
 
     Add_Projects = PythonOperator(task_id='add',
                          python_callable=add)
-                     
+
     Enroll_Student = PythonOperator(task_id='enroll',
                          python_callable=enroll)
 
-                         
+
     Assign_Student = PythonOperator(task_id='assign',
                          python_callable=assignStudents)
 
     Student_Questionnaire = PythonOperator(task_id='student_Q',
                             python_callable=_student_questionnaire)
-    
+
     Assign_Leader = PythonOperator(task_id='assign_TeamLead',
                             python_callable=assignLead)
 
-        
+
     Assign_TA = PythonOperator(task_id='assignTA',
                             python_callable=assignTAs)
 
     Planning_Phase = PythonOperator(task_id='planning',
                             python_callable=_planning_phase)
-    
+
     Quizzes = PythonOperator(task_id='quizzes',
                             python_callable=quizzes)
 
     Retro = PythonOperator(task_id='it1_retrospective',
-                            python_callable=quizzes)  
+                            python_callable=quizzes)
 
     Retro2 = PythonOperator(task_id='it2_retrospective',
-                            python_callable=quizzes)                                                 
-    
+                            python_callable=quizzes)
+
     Retro3 = PythonOperator(task_id='it3_retrospective',
                             python_callable=quizzes)
 
@@ -169,7 +169,7 @@ catchup=False) as dag:
                             python_callable=quizzes)
 
     Retro0 = PythonOperator(task_id='it0_retrospective',
-                            python_callable=quizzes)   
+                            python_callable=quizzes)
 
     Iteration0 = [
         PythonOperator(
@@ -179,7 +179,7 @@ catchup=False) as dag:
             "model": model_id
             }
         ) for model_id in ['_Planning_Meeting', '_Standup', '_Review_Meeting']
-    ] 
+    ]
 
     Iteration1 = [
         PythonOperator(
@@ -189,7 +189,7 @@ catchup=False) as dag:
             "model": model_id
             }
         ) for model_id in ['_Planning_Meeting', '_Standup', '_Review_Meeting']
-    ] 
+    ]
 
 
 
@@ -203,7 +203,7 @@ catchup=False) as dag:
         ) for model_id in ['_Planning_Meeting', '_Standup', '_Review_Meeting']
     ]
 
-    
+
     Iteration3 = [
         PythonOperator(
             task_id=f"it3{model_id}",
@@ -222,7 +222,7 @@ catchup=False) as dag:
             "model": model_id
             }
         ) for model_id in ['_Planning_Meeting', '_Standup', '_Review_Meeting']
-    ] 
+    ]
 
 
     Closing_Document = PythonOperator(task_id='closing_document',
@@ -243,11 +243,11 @@ catchup=False) as dag:
         task_id = 'fail'
     )
 
-    
 
 
 
 
-#Dependencies 
+
+#Dependencies
 TA_Hire >> Add_Projects >> Enroll_Student >> Student_Questionnaire >> Assign_Student >> Assign_Leader >> Assign_TA >> training_model_tasks >> Planning_Phase >> Quizzes >> Iteration0 >> Retro0 >> Iteration1 >> Retro >> Iteration2 >> Retro2 >> Iteration3 >> Retro3 >> Iteration4 >> Retro4 >> Closing_Document >>   task_is_api_active >> task_get_users >> task_save >> final_grades >> [_pass,_fail]
 
