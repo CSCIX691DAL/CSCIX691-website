@@ -119,7 +119,7 @@ export class UserService {
     student.studentID = studentID;
     student.userType = UserType.Student;
     student.teamLeader = isTeamLeader;
-    student.active = false;
+    student.active = true;
     student.hasLoggedInBefore = false;
     student.emailList = true;
 
